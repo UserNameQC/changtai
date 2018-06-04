@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <!--<LinearLayout
+        android:id="@+id/linearLayoute"
+        android:layout_width="fill_parent"
+        android:layout_height="90dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=" Read/Write 1443A String"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edit_uidtext"
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:editable="false"
+            android:textSize="15dp"></EditText>
+    </LinearLayout>-->
+
+    <!--<LinearLayout
+        android:id="@+id/linearLayoutf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_clear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:text="清除" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:gravity="center"
+            android:text="    " />
+
+        <Button
+            android:id="@+id/btn_readuid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:text="读UID" />
+    </LinearLayout>-->
+
+    <!--<LinearLayout
+        android:id="@+id/linearLayout_Button2"
+        android:layout_width="fill_parent"
+
+        android:layout_height="15dp">
+
+        <TextView
+            android:id="@+id/a_446"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:gravity="center"
+
+            />
+
+    </LinearLayout>-->
+
+
+    <!--<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.01"
+            android:gravity="center"
+            android:text="ReadString ：" />
+
+
+        <TextView
+
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+
+            android:layout_weight="0.01"
+            android:text=" " />
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.01" />
+    </LinearLayout>-->
+
+    <!--<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/edit_recetext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:editable="false"
+            android:textSize="12dp"
+
+            />
+
+    </LinearLayout>-->
+
+    <!--<LinearLayout
+        android:id="@+id/linearLayoutf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_clear2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:text="清除" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:gravity="center"
+            android:text="    " />
+        <Button
+            android:id="@+id/btn_clear3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:text="清除" />
+
+
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout_Button2"
+        android:layout_width="fill_parent"
+        android:layout_height="15dp">
+
+        <TextView
+            android:id="@+id/a_446"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:gravity="center"
+            android:text=" "
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.01"
+            android:gravity="center"
+            android:text="WriteString" />
+
+
+        <TextView
+
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+
+            android:layout_weight="0.01"
+            android:text="    " />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_weight="0.01" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="用户号："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_user_no"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="标志："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_bz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="累计购水量："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_purchaseTotal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="透支限量："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_overdraft"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="报警水量："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_alarm_value"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购水日期："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_buy_date"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_52"
+        android:layout_width="fill_parent"
+
+        android:layout_height="40dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/edit_sendtext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:editable="true" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutg"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_readstring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:textSize="18sp"
+            android:background="@drawable/btn_login_selector"
+            android:text="读卡" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:gravity="center"
+            android:text="    " />
+
+        <Button
+            android:id="@+id/btn_writestring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.01"
+            android:background="@drawable/btn_login_selector"
+            android:textSize="18sp"
+            android:text="写卡" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="18sp"
+        android:text=""/>
+
+</LinearLayout>

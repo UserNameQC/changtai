@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="管理员标识："
+                    android:textSize="@dimen/text_size_default" />
+
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="AdministratorId"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="是否为系统管理员："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_system_admin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="SysAdmin"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="联    系    人："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="Name"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="登 陆 账 号："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="Accounts"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="密           码："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="PassWord"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重 置 密 码："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_reset_pw"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="ReWritePassWord"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电          话："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="Phone"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="15dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="角 色 标 识："
+                    android:textSize="@dimen/text_size_default" />
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/mu_role_identification"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="RoleId"
+                    android:textSize="@dimen/text_size_default"/>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="12dp"
+                android:background="@color/silverGray" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Button
+            android:id="@+id/mu_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/btn_login_selector"
+            android:text="确定" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

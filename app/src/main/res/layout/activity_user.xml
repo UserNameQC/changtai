@@ -1,0 +1,773 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/user_list"
+        android:visibility="visible"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:id="@+id/user_scrollview">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="20sp"
+                        android:text="用水用户"/>
+
+                    <Button
+                        android:id="@+id/user_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="编辑"
+                        android:background="@null"
+                        android:textColor="#030303" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水利局编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_wcb_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="bureauno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水管站编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_wstation_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="stationno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="机 井  编 号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_list_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/text_size_default"
+                        android:tag="deviceno"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用    户    号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/text_size_default"
+                        android:tag="userno"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用 户  名 称："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:textSize="16sp"
+                        android:tag="username"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="索           引："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_index"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="index"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联    系   人："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="linkman"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电          话："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_iphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="phone"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="生 成 时 间："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_build_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:tag="createdatetime"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水 价 序 号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_wp_price_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="sjid"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="累计用水量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_water_consumption"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="usedtotal"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="累计购水量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_purchase_water"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchasetotal"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="年度累计购水量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_purchase_water_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchasetotalthisyear"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="透 支 限 量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_overdraft_limit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="overdraft"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="报 警 水 量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_alarm_water"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="alarmvalue"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="证   件   号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_idcard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="credentialno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="一级水价上限："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_first_max"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="limitsj1"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二级水价上限："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_second_max"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="limitsj2"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="备          注："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="comment"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="操   作   员："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="administratorname"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上一次购水日期："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_last_water_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:tag="lastdatetime"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="卡        号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_card_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="cardno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="发 卡 次 数："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_issued_times"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="creditcardtimes"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="数据更新标签："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_data_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="timespan"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="停 用 标 志："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="stopflag"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="版        本："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/user_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="version"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

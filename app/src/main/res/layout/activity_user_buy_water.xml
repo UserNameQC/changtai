@@ -1,0 +1,750 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/buy_listview"
+        android:visibility="visible"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/buy_scroll"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="20sp"
+                        android:text="购水明细"/>
+
+                    <Button
+                        android:id="@+id/bw_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="编辑"
+                        android:background="@null"
+                        android:textColor="#030303" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingEnd="15dp"
+                    android:paddingStart="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="购水明细表标识："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_details_index"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:tag="purchaserecordid"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水利局编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_wcb_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="bureauno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水管站编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_wstation_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="stationno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="机 井 编 号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_list_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="deviceno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用   户   号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="userno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="用 户 名 称："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dp"
+                        android:tag="username"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本次购水量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_this_buy_water"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchasetotalthistime"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本次购水金额："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_buy_water_amount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchaseamountthistime"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="本次购水时间："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:tag="purchasedatetimethistime"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="购 水 年 份："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchaseyear"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="当年购水量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_tyear_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchasetotalthisyear"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="累计购水量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_purchase_water"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="purchasetotal"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="一 级 水 价："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_first_wprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="pricesj1"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="一 级 水 量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_first_water_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="totalsj1"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="一 级 水 费："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_first_water_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="amountsj1"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二 级 水 价："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_second_wprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="pricesj2"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二 级 水 量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_second_water_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="totalsj2"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二 级 水 费："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_second_water_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="amountsj2"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="三 级 水 价："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_third_wprice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="pricesj3"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="三 级 水 量："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_third_water_num"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="totalsj3"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="三 级 水 费："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_third_water_fee"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="amountsj3"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="备        注："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="comment"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="操   作   员："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="administratorname"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="数据更新标签："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_data_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="timespan"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="版        本："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/bw_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="version"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

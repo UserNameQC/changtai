@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/well_list_view"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/well_scrollview"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textSize="20sp"
+                        android:text="机井信息"/>
+
+                    <Button
+                        android:id="@+id/well_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="编辑"
+                        android:background="@null"
+                        android:textColor="#030303" />
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水利局编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_wcb_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="bureauno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="水管站编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_wstation_nm"
+                        android:tag="stationno"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="机 井 编 号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_list_nm"
+                        android:tag="deviceno"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GPRS模块编号："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_gprs_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="gprsno"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="机 井 名 称："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_list_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="devicename"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="索        引："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_index"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="index"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="联   系   人："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="linkman"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电        话："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_iphone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="phone"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="安 装 位 置："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_install_loc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="location"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="登 记 时 间："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_login_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:tag="createdatetime"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="经        度："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_la"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="longitude"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="纬        度："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_lo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="latitude"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="备        注："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="comment"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="操   作   员："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_operator"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="administratorname"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="数据更新标签："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_data_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="timeSpan"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="停 用 标 志："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="stopflag"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="15dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="版        本："
+                        android:textSize="@dimen/text_size_default" />
+                    <EditText
+                        android:background="@null"
+                        android:id="@+id/well_version"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tag="version"
+                        android:textSize="@dimen/text_size_default"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:layout_marginLeft="12dp"
+                    android:background="@color/silverGray" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
