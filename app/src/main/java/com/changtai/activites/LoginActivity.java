@@ -254,9 +254,9 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         dialog.show();
     }
 
-    public int index = -1;
+    /*public int index = -1;
     public int index_a = 0;
-    public void sendPost(/*String url, RequestBody body*/){
+    public void sendPost(*//*String url, RequestBody body*//*){
         Entity.executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -316,5 +316,5 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 while (index == 0);
             }
         });
-    }
+    }*/
 }
