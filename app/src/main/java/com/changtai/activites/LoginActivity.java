@@ -171,6 +171,16 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         switch (view.getId())
         {
             case R.id.login_btn:
+
+                if(userName.length()<=0){
+                    Entity.toastMsg(this, "账户名不能为空");
+                    return;
+                }
+                if(passWord.length()<=0){
+                    Entity.toastMsg(this, "密码不能为空");
+                    return;
+                }
+
                 final ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).findFirst();
                 //if (configRealm == null) return;
 
@@ -184,14 +194,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 }
                 else
                 {
-                    if(userName.length()<=0){
-                        Entity.toastMsg(this, "账户名不能为空");
-                        return;
-                    }
-                    if(passWord.length()<=0){
-                        Entity.toastMsg(this, "密码不能为空");
-                        return;
-                    }
+
 
                     try {
                         progress();
