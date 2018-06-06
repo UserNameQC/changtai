@@ -186,9 +186,11 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 {
                     if(userName.length()<=0){
                         Entity.toastMsg(this, "账户名不能为空");
+                        return;
                     }
                     if(passWord.length()<=0){
                         Entity.toastMsg(this, "密码不能为空");
+                        return;
                     }
 
                     try {
