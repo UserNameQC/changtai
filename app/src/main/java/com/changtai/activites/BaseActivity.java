@@ -34,6 +34,7 @@ import okio.Timeout;
 
 /**
  * Created by SAMSUNG on 2018/5/22.
+ * wangjia
  */
 
 public class BaseActivity extends Activity {
