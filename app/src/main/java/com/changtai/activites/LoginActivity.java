@@ -181,7 +181,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                     return;
                 }
 
-                final ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).findFirst();
+                final ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("Id", 10010).findFirst();
                 //if (configRealm == null) return;
 
                 if (userName.getText().toString().equals("admin") && passWord.getText().toString().equals("admin"))
