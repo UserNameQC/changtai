@@ -184,62 +184,61 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 }
                 else
                 {
-                        if (userName.length() > 0 && passWord.length() > 0)
-                        {
-                            try {
-                                progress();
-                                final String baseId = configRealm.getValue();
-                                final String name = userName.getText().toString();
-                                final String pass = passWord.getText().toString();
-                                Entity.spres.edit().putString("USERNAME", name).apply();
-                                Entity.spres.edit().putString("PASSWORD", pass).apply();
-                                final String base64Pass = AESOperator.getInstance().encrypt(pass);
+                    if(userName.length()<=0){
+                        Entity.toastMsg(this, "账户名不能为空");
+                    }
+                    if(passWord.length()<=0){
+                        Entity.toastMsg(this, "密码不能为空");
+                    }
 
-                                System.out.println(pass + "   加密后：" + base64Pass);
+                    try {
+                        progress();
+                        final String baseId = configRealm.getValue();
+                        final String name = userName.getText().toString();
+                        final String pass = passWord.getText().toString();
+                        Entity.spres.edit().putString("USERNAME", name).apply();
+                        Entity.spres.edit().putString("PASSWORD", pass).apply();
+                        final String base64Pass = AESOperator.getInstance().encrypt(pass);
 
-                                Entity.executorService.execute(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Map<String, Object> map = new HashMap<String, Object>();
-                                        //JSONObject obj = new JSONObject();
+                        System.out.println(pass + "   加密后：" + base64Pass);
 
-                                        map.put("AREA_CODE",baseId);
-                                        map.put("USER_ACCOUNT", name);
-                                        map.put("USER_PWD", base64Pass);
-                                        map.put("USE_TYPE", "1");
+                        Entity.executorService.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                Map<String, Object> map = new HashMap<String, Object>();
+                                //JSONObject obj = new JSONObject();
+
+                                map.put("AREA_CODE",baseId);
+                                map.put("USER_ACCOUNT", name);
+                                map.put("USER_PWD", base64Pass);
+                                map.put("USE_TYPE", "1");
 //                                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 //                                    RequestBody body = RequestBody.create(JSON, obj.toString());
-                                        System.out.println("请求参数" + map.toString());
-                                        String result = HttpBaseTest.sendPost(null, map, Entity.loginUrl);
-                                        if (!TextUtils.isEmpty(result)) {
-                                            try {
-                                                JSONObject object = new JSONObject(result);
-                                                JSONObject array = object.getJSONObject("head");
-                                                String code = array.getString("code");
+                                System.out.println("请求参数" + map.toString());
+                                String result = HttpBaseTest.sendPost(null, map, Entity.loginUrl);
+                                if (!TextUtils.isEmpty(result)) {
+                                    try {
+                                        JSONObject object = new JSONObject(result);
+                                        JSONObject array = object.getJSONObject("head");
+                                        String code = array.getString("code");
 
-                                                if (code.equals("0000")) {
-                                                    Entity.token = object.getJSONObject("data").getString("token");
-                                                    mHandler.sendEmptyMessage(0);
-                                                }else if (code.equals("9999"))
-                                                {
-                                                    mHandler.sendEmptyMessage(1);
-                                                }
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                            }
+                                        if (code.equals("0000")) {
+                                            Entity.token = object.getJSONObject("data").getString("token");
+                                            mHandler.sendEmptyMessage(0);
+                                        }else if (code.equals("9999"))
+                                        {
+                                            mHandler.sendEmptyMessage(1);
                                         }
-                                        Log.e("LoginActivity", Entity.loginUrl + "; " + result);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
                                     }
-                                });
-                            } catch (Exception e) {
-                                e.printStackTrace();
+                                }
+                                Log.e("LoginActivity", Entity.loginUrl + "; " + result);
                             }
-                        }
-                        else
-                        {
-                            Entity.toastMsg(this, "账户名密码不能为空");
-                        }
-                  //  }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
         }
