@@ -36,5 +36,6 @@
         android:background="@android:color/transparent"
         android:text="确定"
         android:textSize="20sp"
+        android:onClick="onButtonClick"
         android:id="@+id/bt_ok"/>
 </LinearLayout>

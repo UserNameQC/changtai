@@ -30,44 +30,47 @@ public class SettingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settting);
         application = (MyApplication) this.getApplication();
-        final EditText editText = (EditText)findViewById(R.id.buy_water_id);
-        Button ok = (Button) findViewById(R.id.bt_ok);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (editText.length() > 0) {
-                    baseId = editText.getText().toString();
-                    RealmResults<ConfigRealm> configList = Entity.realm.where(ConfigRealm.class).findAll();
-                    if (!configList.isEmpty())
-                    {
-                        ConfigRealm config = configList.get(0);
-                        if (baseId.equals(config.getValue())) {
-                            Entity.toastMsg(SettingActivity.this, "水站号已存在");
-                            return;
-                        }
-                        else
-                        {
-                            Entity.realm.beginTransaction();
-                            config.setValue(baseId);
-                            Entity.realm.commitTransaction();
-                        }
+    }
 
-                    }
-                    else
-                    {
-                        Entity.realm.beginTransaction();
-                        ConfigRealm configRealm =
-                                Entity.realm.createObject(ConfigRealm.class, 10010);
-                        configRealm.setName("APP_BASEID");
-                        configRealm.setValue(baseId);
-                        configRealm.setComment("水站号");
-                        Entity.realm.commitTransaction();
-                        //Entity.isFirst = false;
-                    }
-                    startActivity(new Intent(SettingActivity.this, LoginActivity.class));
-                }
-                else Toast.makeText(SettingActivity.this, "请设置水站号，再次尝试", Toast.LENGTH_SHORT).show();
+    public void onButtonClick(View view) {
+        final EditText editText = (EditText)findViewById(R.id.buy_water_id);
+        if(editText.length()<=0){
+            Entity.toastMsg(this, "售水站号不能为空");
+            return;
+        }
+
+        if(editText.length()!=5){
+            Entity.toastMsg(this, "售水站号必须是5位数字");
+            return;
+        }
+        baseId = editText.getText().toString();
+        RealmResults<ConfigRealm> configList = Entity.realm.where(ConfigRealm.class).findAll();
+        if (!configList.isEmpty())
+        {
+            ConfigRealm config = configList.get(0);
+            if (baseId.equals(config.getValue())) {
+                Entity.toastMsg(SettingActivity.this, "售水站号已存在");
+                return;
             }
-        });
+            else
+            {
+                Entity.realm.beginTransaction();
+                config.setValue(baseId);
+                Entity.realm.commitTransaction();
+            }
+
+        }
+        else
+        {
+            Entity.realm.beginTransaction();
+            ConfigRealm configRealm =
+                    Entity.realm.createObject(ConfigRealm.class, 10010);
+            configRealm.setName("APP_BASEID");
+            configRealm.setValue(baseId);
+            configRealm.setComment("水站号");
+            Entity.realm.commitTransaction();
+            //Entity.isFirst = false;
+        }
+        startActivity(new Intent(SettingActivity.this, LoginActivity.class));
     }
 }
