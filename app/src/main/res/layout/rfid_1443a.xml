@@ -209,7 +209,8 @@
             android:id="@+id/rfid_user_no"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/text_size_default"/>
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
 
     </LinearLayout>
 
@@ -230,7 +231,8 @@
             android:id="@+id/rfid_bz"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/text_size_default"/>
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
     </LinearLayout>
 
     <LinearLayout
@@ -250,7 +252,8 @@
             android:id="@+id/rfid_purchaseTotal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/text_size_default"/>
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
     </LinearLayout>
 
     <LinearLayout
@@ -270,7 +273,8 @@
             android:id="@+id/rfid_overdraft"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/text_size_default"/>
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
     </LinearLayout>
 
 
@@ -291,7 +295,8 @@
             android:id="@+id/rfid_alarm_value"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/text_size_default"/>
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
     </LinearLayout>
 
 
@@ -312,8 +317,71 @@
             android:id="@+id/rfid_buy_date"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="购买水量："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_buy_purchase"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textSize="@dimen/text_size_default"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前水价："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_now_water_price"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default"
+            android:enabled="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="15dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="总金额："
+            android:textSize="@dimen/text_size_default" />
+        <EditText
+            android:background="@null"
+            android:id="@+id/rfid_buy_water_amount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_size_default" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/linearLayout_52"
