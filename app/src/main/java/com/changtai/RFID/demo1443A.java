@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 
 import com.android.RfidControll;
 import com.changtai.R;
+import com.changtai.Utils.Entity;
 import com.changtai.Utils.HelloWorldController;
+import com.changtai.realm.PurchaseRecordRealm;
 
 
 import android.app.Activity;
@@ -34,6 +36,7 @@ public class demo1443A extends Activity implements OnClickListener {
 	private EditText rfid_overdraft;
 	private EditText rfid_alarm_value;
 	private EditText rfid_buy_date;
+	private EditText rfid_now_price, rfid_amount, rfid_purchase;
 	private Spinner spinner;
 	private ArrayAdapter<String> adapter;
 	private static final String[] mBLOCK = new String[64*4];
@@ -56,6 +59,10 @@ public class demo1443A extends Activity implements OnClickListener {
 		rfid_overdraft = findViewById(R.id.rfid_overdraft);
 		rfid_alarm_value = findViewById(R.id.rfid_alarm_value);
 		rfid_buy_date = findViewById(R.id.rfid_buy_date);
+
+		rfid_amount = findViewById(R.id.rfid_buy_water_amount);
+		rfid_now_price = findViewById(R.id.rfid_now_water_price);
+		rfid_purchase = findViewById(R.id.rfid_buy_purchase);
 	}
 
  
@@ -101,6 +108,28 @@ public class demo1443A extends Activity implements OnClickListener {
 			if (res == 0) {
 				//Log.e("012", toHexString(snr, 4));
 				String result = toHexString(buffer1, 16);
+				String code = result.substring(10,12);
+				if (!code.equals("01"))
+				{
+					Entity.toastMsg(this, "非用户卡，请更换卡片后重试");
+					return;
+				}
+
+				PurchaseRecordRealm purchaseRecordRealm =
+						Entity.realm.where(PurchaseRecordRealm.class).equalTo("userno", result.substring(0,10)).findFirst();
+				if (purchaseRecordRealm != null)
+				{
+					if (Long.parseLong(purchaseRecordRealm.getPurchasetotal()) > Long.parseLong(result.substring(12, 20)))
+					{
+						Entity.toastMsg(this, "该用户已补卡，本卡是丢失的原用户卡，不允许继续使用");
+						return;
+					}
+					else if (Long.parseLong(purchaseRecordRealm.getPurchasetotal()) < Long.parseLong(result.substring(12, 20)))
+					{
+						Entity.toastMsg(this, "本卡数据缺失， 请同步数据后再操作");
+						return;
+					}
+				}
 				msendtext.setText(result.substring(0,10));//用户号
 				mUidxet.setText(result.substring(10,12));//标志
 				mrfid_purchaseTotal.setText(result.substring(12,20));//累计购水量
