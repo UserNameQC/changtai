@@ -189,4 +189,17 @@ public class WellList extends Activity implements View.OnClickListener{
         }
         return list;
     }
+
+    @Override
+    public void onBackPressed() {
+
+        if (etDeviceScroll.getVisibility() == View.VISIBLE)
+        {
+            etDeviceScroll.setVisibility(View.GONE);
+            deviceListView.setVisibility(View.VISIBLE);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 }

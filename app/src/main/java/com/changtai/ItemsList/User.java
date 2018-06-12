@@ -221,4 +221,17 @@ public class User extends Activity implements View.OnClickListener{
         }
         return userNumList;
     }
+
+    @Override
+    public void onBackPressed() {
+
+        if (scrollView.getVisibility() == View.VISIBLE)
+        {
+            scrollView.setVisibility(View.GONE);
+            useRListView.setVisibility(View.VISIBLE);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 }

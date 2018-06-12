@@ -215,4 +215,17 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
         }
         return list;
     }
+
+    @Override
+    public void onBackPressed() {
+
+        if (etScroll.getVisibility() == View.VISIBLE)
+        {
+            etScroll.setVisibility(View.GONE);
+            etListView.setVisibility(View.VISIBLE);
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 }
