@@ -19,7 +19,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class demo1443A extends Activity implements OnClickListener {
@@ -37,6 +39,10 @@ public class demo1443A extends Activity implements OnClickListener {
 	private EditText rfid_alarm_value;
 	private EditText rfid_buy_date;
 	private EditText rfid_now_price, rfid_amount, rfid_purchase;
+	private TextView rfid_click;
+	private EditText rfid_year_count, rfid_use_count, rfid_first, rfid_second, rfid_first_amount, rfid_second_amount, rfid_third_amount,
+				rfid_first_price, rfid_second_price, rfid_third_price, rfid_first_cost, rfid_second_cost, rfid_third_cost;
+	private LinearLayout linearLayout_more;
 	private Spinner spinner;
 	private ArrayAdapter<String> adapter;
 	private static final String[] mBLOCK = new String[64*4];
@@ -46,10 +52,12 @@ public class demo1443A extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rfid_1443a);
+		rfid.OpenComm();
+	}
+
+	public void initView(){
 		btn_read = (Button) findViewById(R.id.btn_readstring);
 		btn_write = (Button) findViewById(R.id.btn_writestring);
-
-		rfid.OpenComm();
 		btn_read.setOnClickListener(this);
 		btn_write.setOnClickListener(this);
 
@@ -60,9 +68,38 @@ public class demo1443A extends Activity implements OnClickListener {
 		rfid_alarm_value = findViewById(R.id.rfid_alarm_value);
 		rfid_buy_date = findViewById(R.id.rfid_buy_date);
 
-		rfid_amount = findViewById(R.id.rfid_buy_water_amount);
-		rfid_now_price = findViewById(R.id.rfid_now_water_price);
-		rfid_purchase = findViewById(R.id.rfid_buy_purchase);
+		rfid_amount = findViewById(R.id.rfid_buy_water_amount);//本次购水金额
+		rfid_now_price = findViewById(R.id.rfid_now_water_price);//当前水价
+		rfid_purchase = findViewById(R.id.rfid_buy_purchase);//本次购水量
+
+		linearLayout_more = findViewById(R.id.linearLayout_52);
+		rfid_click = findViewById(R.id.rfid_click_more);//点击查看更多
+		rfid_click.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				rfid_click.setVisibility(View.GONE);
+				linearLayout_more.setVisibility(View.VISIBLE);
+			}
+		});
+
+		rfid_year_count = findViewById(R.id.rfid_buy_year_amount);//年度购水量
+		rfid_use_count = findViewById(R.id.rfid_use_water_amount);//累计用水量
+		rfid_first = findViewById(R.id.rfid_first);//一级水量上限
+		rfid_second = findViewById(R.id.rfid_second);//二级水量上限
+		rfid_first_amount = findViewById(R.id.rfid_first_amount);//一级水量
+		rfid_second_amount = findViewById(R.id.rfid_second_amount);//二级水量
+		rfid_third_amount = findViewById(R.id.rfid_third_amount);//三级水量
+		rfid_first_price = findViewById(R.id.rfid_first_price);//一级水价
+		rfid_second_price = findViewById(R.id.rfid_second_price);//二级水价
+		rfid_third_price = findViewById(R.id.rfid_third_price);//三级水价
+		rfid_first_cost = findViewById(R.id.rfid_first_cost);//一级水费
+		rfid_second_cost = findViewById(R.id.rfid_second_cost);//二级水费
+		rfid_third_cost = findViewById(R.id.rfid_third_cost);//三级水费
+
+	}
+
+	public void initData(){
+
 	}
 
  
@@ -275,4 +312,14 @@ public class demo1443A extends Activity implements OnClickListener {
 		super.onDestroy();
 	}
 
+	@Override
+	public void onBackPressed() {
+		if (linearLayout_more.getVisibility() == View.VISIBLE)
+		{
+			linearLayout_more.setVisibility(View.GONE);
+			rfid_click.setVisibility(View.VISIBLE);
+		}
+		else
+		super.onBackPressed();
+	}
 }
