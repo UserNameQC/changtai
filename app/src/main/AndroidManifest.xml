@@ -40,16 +40,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activites.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activites.LoginActivity" />
         <activity android:name=".RFID.demo1443A" />
         <activity android:name=".BaiduMap.BaiduMapActivity" />
-        <activity android:name=".RFID.NfcDemoActivity"/>
+        <activity android:name=".RFID.NfcDemoActivity" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -62,8 +57,15 @@
         <activity android:name=".ItemsList.User" />
         <activity android:name=".ItemsList.UserBuyWater" />
         <activity android:name=".ItemsList.UserTakeWater" />
-        <activity android:name=".ItemsList.MainUser"/>
-        <activity android:name=".activites.ResetPassWord"/>
+        <activity android:name=".ItemsList.MainUser" />
+        <activity android:name=".activites.ResetPassWord" />
+        <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
