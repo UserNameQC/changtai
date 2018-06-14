@@ -15,6 +15,9 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * 从电脑版售水软件下载数据
+ */
 public class DownloadFromPcActivity extends AppCompatActivity {
 
     //消息显示框
