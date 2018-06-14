@@ -1,5 +1,6 @@
 package com.changtai.SynchronizationWithPC;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,20 +25,42 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     TextView textView ;
 
     Gson gson = new Gson();
+    //进度条
+    private ProgressDialog progressDialog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_from_pc);
         textView=(TextView)findViewById(R.id.tvDownloadFromPc);
+
+        //弹出要给ProgressDialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("提示信息");
+        progressDialog.setMessage("下载中，请稍后......");
+        //设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
+        progressDialog.setCancelable(false);
+        //设置ProgressDialog样式为水平的样式
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+
     }
 
     public void onClick(View view) {
-        new DownloadFromPcTask().execute("http://192.168.9.192:4000","010101","100","200");
+        new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
     }
 
 
-    class DownloadFromPcTask extends AsyncTask<String,String,String>{
+    class DownloadFromPcTask extends AsyncTask<String,Integer,String>{
+
+        //线程运行前执行，该方法在主线程执行
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //在onPreExecute()中我们让ProgressDialog显示出来
+            progressDialog.show();
+        }
+
+        //线程体，该方法在子线程执行
         @Override
         protected String doInBackground(String... strings) {
             String path = strings[0];
@@ -52,7 +75,8 @@ public class DownloadFromPcActivity extends AppCompatActivity {
                 for (int i=0;i<downLoadCreatePackageOut.count;i++){
                     String s = DownLoadPackageValue(path, downLoadCreatePackageOut.packageId, i);
                     stringBuilder.append(s);
-                    publishProgress(String.format("%d/%d",i,downLoadCreatePackageOut.count));
+                    int progress = i * 100 /downLoadCreatePackageOut.count;
+                    publishProgress(progress);
                 }
 
                 DownLoadDeletePackage(path,downLoadCreatePackageOut.packageId);
@@ -71,14 +95,16 @@ public class DownloadFromPcActivity extends AppCompatActivity {
 
         //线程执行进度，该方法在主线程执行
         @Override
-        protected void onProgressUpdate(String... values) {
-            textView.setText(values[0]);
+        protected void onProgressUpdate(Integer... values) {
+            progressDialog.setProgress(values[0]);
             super.onProgressUpdate(values);
         }
 
         //线程执行结束后运行，该方法在主线程执行
         @Override
         protected void onPostExecute(String s) {
+            //使ProgressDialog框消失
+            progressDialog.dismiss();
             textView.setText(s);
             Toast.makeText(DownloadFromPcActivity.this,"结束",Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
@@ -155,6 +181,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
                     InputStream inputStream = connection.getInputStream();
                     byte[] bytes = new byte[10000];
                     int length = inputStream.read(bytes);
+                    inputStream.close();
                     if(length==-1){
                         return "";
                     }
