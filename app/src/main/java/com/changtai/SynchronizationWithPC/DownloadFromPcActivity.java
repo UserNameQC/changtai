@@ -39,7 +39,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
         //弹出要给ProgressDialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("提示信息");
-        progressDialog.setMessage("下载中，请稍后......");
+        progressDialog.setMessage("工作中，请稍后......");
         //设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
         progressDialog.setCancelable(false);
         //设置ProgressDialog样式为水平的样式
@@ -48,8 +48,8 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        //new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
-        new UploadToPcTask().execute("http://192.168.9.192:4000/Upload");
+        new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
+
     }
 
 
@@ -62,6 +62,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            progressDialog.setMessage("正在下载数据，请稍后......");
             //在onPreExecute()中我们让ProgressDialog显示出来
             progressDialog.show();
         }
@@ -82,7 +83,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
                     String s = DownLoadPackageValue(path, downLoadCreatePackageOut.packageId, i);
                     stringBuilder.append(s);
                     int progress = i * 100 /downLoadCreatePackageOut.count;
-                    publishProgress(progress);
+                    publishProgress(i,downLoadCreatePackageOut.count);
                 }
 
                 DownLoadDeletePackage(path,downLoadCreatePackageOut.packageId);
@@ -103,6 +104,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             progressDialog.setProgress(values[0]);
+            progressDialog.setMax(values[1]);
             super.onProgressUpdate(values);
         }
 
@@ -111,9 +113,11 @@ public class DownloadFromPcActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             //使ProgressDialog框消失
             progressDialog.dismiss();
-            textView.setText(s);
+            //textView.setText(s);
             Toast.makeText(DownloadFromPcActivity.this,"结束",Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
+            //
+            new UploadToPcTask().execute("http://192.168.9.192:4000/Upload");
         }
 
         class DownLoadCreatePackageOut{
@@ -179,6 +183,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             //在onPreExecute()中我们让ProgressDialog显示出来
+            progressDialog.setMessage("正在上传数据，请稍后......");
             progressDialog.show();
         }
 
@@ -217,7 +222,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
                     }
 
                     int progress = i * 100 / stepCount;
-                    publishProgress(progress);
+                    publishProgress(i,stepCount);
                 }
                 UpLoadSavePackage(path, packageId);
             } catch (Exception e) {
@@ -232,6 +237,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
         @Override
         protected void onProgressUpdate(Integer... values) {
             progressDialog.setProgress(values[0]);
+            progressDialog.setMax(values[1]);
             super.onProgressUpdate(values);
         }
 
