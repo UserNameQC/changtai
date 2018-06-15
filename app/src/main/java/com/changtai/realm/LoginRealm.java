@@ -65,3 +65,5 @@ public class LoginRealm extends RealmObject {
         this.qxString = qxString;
     }
 }
+
+
