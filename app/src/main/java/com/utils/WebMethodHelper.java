@@ -6,6 +6,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
 
+/**
+ * HTTP通讯帮助类
+ */
 public class WebMethodHelper {
 
     public static String getStringByWebMethodPost(String path, Map<String, String> params) throws Exception {

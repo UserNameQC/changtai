@@ -193,8 +193,6 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 }
                 else
                 {
-
-
                     try {
                         progress();
                         final String baseId = configRealm.getValue();
