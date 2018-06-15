@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.changtai.Dal.LoginDal;
 import com.changtai.ItemsList.User;
 import com.changtai.R;
 import com.changtai.Utils.AESOperator;
@@ -24,6 +25,7 @@ import com.changtai.application.MyApplication;
 import com.changtai.db.Config;
 import com.changtai.realm.ConfigRealm;
 import com.changtai.realm.LoginMesRealm;
+import com.changtai.realm.LoginRealm;
 import com.example.john.greendaodemo.gen.ConfigDao;
 
 import org.json.JSONArray;
@@ -58,7 +60,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initView();
-        checkToken();
+        //checkToken();
         //sendPost();
     }
     public void initView(){
@@ -171,15 +173,32 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         switch (view.getId())
         {
             case R.id.login_btn:
+                final String name = userName.getText().toString();
+                final String pass = passWord.getText().toString();
 
-                if(userName.length()<=0){
+                if(name.length()<=0){
                     Entity.toastMsg(this, "账户名不能为空");
                     return;
                 }
-                if(passWord.length()<=0){
+                if(pass.length()<=0){
                     Entity.toastMsg(this, "密码不能为空");
                     return;
                 }
+
+                LoginDal loginDal = new LoginDal();
+                try {
+                    LoginRealm singleByLoginName = loginDal.findSingleByLoginName(name);
+                    Entity.toastMsg(this, singleByLoginName.toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    loginDal.Add(name,pass,"操作员");
+                } catch (Exception e) {
+                    Entity.toastMsg(this, e.toString());
+                    return;
+                }
+
 
                 final ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("Id", 10010).findFirst();
 
@@ -196,8 +215,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                     try {
                         progress();
                         final String baseId = configRealm.getValue();
-                        final String name = userName.getText().toString();
-                        final String pass = passWord.getText().toString();
+
                         Entity.spres.edit().putString("USERNAME", name).apply();
                         Entity.spres.edit().putString("PASSWORD", pass).apply();
                         final String base64Pass = AESOperator.getInstance().encrypt(pass);

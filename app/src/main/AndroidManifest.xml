@@ -41,7 +41,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activites.MainActivity">
         </activity>
-        <activity android:name=".activites.LoginActivity" />
+        <activity android:name=".activites.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".RFID.demo1443A" />
         <activity android:name=".BaiduMap.BaiduMapActivity" />
         <activity android:name=".RFID.NfcDemoActivity" />
@@ -60,11 +66,6 @@
         <activity android:name=".ItemsList.MainUser" />
         <activity android:name=".activites.ResetPassWord" />
         <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
