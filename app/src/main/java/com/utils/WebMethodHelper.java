@@ -38,7 +38,7 @@ public class WebMethodHelper {
                 String s = new String(bytes, 0, length);
                 return s;
             }
-            throw new Exception("服务器返回错误代码");
+            throw new Exception(String.format("%s,服务器返回错误代码",path));
         } finally {
             connection.disconnect();
         }
@@ -72,7 +72,7 @@ public class WebMethodHelper {
                 String s =new String(bytes,0,length);
                 return s;
             }
-            throw new Exception("服务器返回错误代码");
+            throw new Exception(String.format("%s,服务器返回错误代码",path));
         }
         finally {
             connection.disconnect();

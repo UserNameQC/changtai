@@ -48,8 +48,8 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
-        new Upload().execute("http://192.168.1.101:4000/Upload");
+        //new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
+        new UploadToPcTask().execute("http://192.168.9.192:4000/Upload");
     }
 
 
@@ -173,7 +173,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     /**
      * 上传线程
      */
-    class Upload extends AsyncTask<String,Integer,String> {
+    class UploadToPcTask extends AsyncTask<String,Integer,String> {
 
         @Override
         protected void onPreExecute() {
@@ -207,7 +207,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
                         //已经结束了
                         break;
                     }
-                    Integer endIndex = beginIndex + stepLength - 1;
+                    Integer endIndex = beginIndex + stepLength;
                     if (endIndex < value.length()) {
                         String subString = value.substring(beginIndex, endIndex);
                         UpLoadPackage(path, packageId, i, subString);
