@@ -10,6 +10,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
 /**
+ * 购水用户表
  * Created by qjcjo on 2018/4/1.
  */
 

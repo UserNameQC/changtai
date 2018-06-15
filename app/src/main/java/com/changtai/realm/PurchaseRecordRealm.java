@@ -8,6 +8,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
 /**
+ * 售水记录表
  * Created by qjcjo on 2018/4/1.
  */
 

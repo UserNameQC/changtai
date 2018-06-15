@@ -6,6 +6,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
 /**
+ * 配置表
  * Created by qjcjo on 2018/4/1.
  */
 

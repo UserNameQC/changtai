@@ -9,6 +9,7 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
 /**
+ * 水价表
  * Created by qjcjo on 2018/4/1.
  */
 

@@ -8,6 +8,8 @@ import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
 
 /**
+ * 取水用户表，该表在PDA端不维护   不维护
+ *
  * Created by qjcjo on 2018/4/1.
  */
 
