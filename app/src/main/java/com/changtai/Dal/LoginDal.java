@@ -1,9 +1,6 @@
 package com.changtai.Dal;
 
-import android.content.Context;
-
 import com.changtai.realm.LoginRealm;
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 
