@@ -12,9 +12,11 @@ import com.changtai.R;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.utils.WebMethodHelper.getStringByWebMethodGet;
+import static com.utils.WebMethodHelper.getStringByWebMethodPost;
 
 /**
  * 从电脑版售水软件下载数据
@@ -47,9 +49,13 @@ public class DownloadFromPcActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
+        new Upload().execute("http://192.168.1.101:4000/Upload");
     }
 
 
+    /**
+     * 下载线程
+     */
     class DownloadFromPcTask extends AsyncTask<String,Integer,String>{
 
         //线程运行前执行，该方法在主线程执行
@@ -160,40 +166,124 @@ public class DownloadFromPcActivity extends AppCompatActivity {
             getStringByWebMethodGet(path);
         }
 
-        /**
-         * 以GET方法请求服务器数据
-         * @param path uri
-         * @return 数据字符串
-         * @throws Exception
-         */
-        private String getStringByWebMethodGet(String path) throws Exception {
-            URL url = new URL(path);
-            HttpURLConnection connection =(HttpURLConnection) url.openConnection();
-            try{
-                connection.setRequestMethod("GET");
-                connection.setConnectTimeout(5000);
-                connection.setDoInput(true);
-                //connection.setDoOutput(true);
-                connection.connect();
-                //得到响应代码
-                int responseCode = connection.getResponseCode();
-                if(responseCode==200){
-                    InputStream inputStream = connection.getInputStream();
-                    byte[] bytes = new byte[10000];
-                    int length = inputStream.read(bytes);
-                    inputStream.close();
-                    if(length==-1){
-                        return "";
+
+    }
+
+
+    /**
+     * 上传线程
+     */
+    class Upload extends AsyncTask<String,Integer,String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //在onPreExecute()中我们让ProgressDialog显示出来
+            progressDialog.show();
+        }
+
+        //线程
+        @Override
+        protected String doInBackground(String... strings) {
+            String path = strings[0];
+            String value = "qwertyuiop[]asdfghjkl;'zxcvbnm,./" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
+                    "";
+            Integer stepLength = 1;
+            Integer stepCount = value.length() / stepLength + 1;
+
+            try {
+                String packageId = UpLoadCreatePackage(path);
+                for (int i = 0; i < stepCount; i++) {
+                    Integer beginIndex = i * stepLength;
+                    if (beginIndex >= value.length()) {
+                        //已经结束了
+                        break;
                     }
-                    String s =new String(bytes,0,length);
-                    return s;
+                    Integer endIndex = beginIndex + stepLength - 1;
+                    if (endIndex < value.length()) {
+                        String subString = value.substring(beginIndex, endIndex);
+                        UpLoadPackage(path, packageId, i, subString);
+                    } else {
+                        String subString = value.substring(beginIndex, value.length() - 1);
+                        UpLoadPackage(path, packageId, i, subString);
+                    }
+
+                    int progress = i * 100 / stepCount;
+                    publishProgress(progress);
                 }
-                throw new Exception("服务器返回错误代码");
-            }
-            finally {
-                connection.disconnect();
+                UpLoadSavePackage(path, packageId);
+            } catch (Exception e) {
+                Toast.makeText(DownloadFromPcActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                e.printStackTrace();
             }
 
+            return null;
+        }
+
+        //线程执行进度，该方法在主线程执行
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            progressDialog.setProgress(values[0]);
+            super.onProgressUpdate(values);
+        }
+
+
+        //线程执行结束后运行，该方法在主线程执行
+        @Override
+        protected void onPostExecute(String s) {
+            //使ProgressDialog框消失
+            progressDialog.dismiss();
+            Toast.makeText(DownloadFromPcActivity.this, "结束", Toast.LENGTH_LONG).show();
+            super.onPostExecute(s);
+        }
+
+        /**
+         * 在服务器创建空包
+         *
+         * @param path
+         * @return
+         * @throws Exception
+         */
+        private String UpLoadCreatePackage(String path) throws Exception {
+            path = String.format("%s/UpLoadCreatePackage", path);
+            String value = getStringByWebMethodGet(path);
+            return value;
+        }
+
+        /**
+         * 把本地数据上传到服务器空包中
+         *
+         * @param packageId
+         * @param index
+         * @param value
+         */
+        private void UpLoadPackage(String path, String packageId, int index, String value) throws Exception {
+            path = String.format("%s/UpLoadPackage", path);
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("packageId", packageId);
+            params.put("index", String.format("%d", index));
+            params.put("value", value);
+            getStringByWebMethodPost(path, params);
+        }
+
+        /**
+         * 通知服务器保存数据并删除包
+         *
+         * @param path
+         * @param packageId
+         * @throws Exception
+         */
+        private void UpLoadSavePackage(String path, String packageId) throws Exception {
+            path = String.format("%s/UpLoadSavePackage/%s", path, packageId);
+            getStringByWebMethodGet(path);
         }
     }
 }
