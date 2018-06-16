@@ -98,6 +98,8 @@ public class DownloadFromPcActivity extends AppCompatActivity {
 
                 DownLoadFromPcModel downLoadFromPcModel = gson.fromJson(value, DownLoadFromPcModel.class);
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
 
                 return value;
                 //转换成实体对像然后保存

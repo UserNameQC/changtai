@@ -9,8 +9,8 @@ import java.util.Date;
  * 当数据上传时到PC时,把数据库实体通过程序映射为该实体,然后序列化为json数据,再上传到PC
  */
 public class SwpDeviceModel {
+    public String AreaNo;//新增加
     public String DeviceNo;
-    public String AreaNo;
     public String GprsNo;
     public String DeviceName;
     public String Linkman;
@@ -26,8 +26,8 @@ public class SwpDeviceModel {
     public String Comment;
     public String AdministratorName;
     public boolean StopFlag;
-    public Long ServerVersion;
-    public long ClientVersion;
+    public Long ServerVersion;//新增加
+    public long ClientVersion;//新增加
     public boolean DelFlag;
 
 //    public Long Id;

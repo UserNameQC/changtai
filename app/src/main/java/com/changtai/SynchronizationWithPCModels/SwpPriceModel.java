@@ -7,4 +7,20 @@ package com.changtai.SynchronizationWithPCModels;
  * 当数据上传时到PC时,把数据库实体通过程序映射为该实体,然后序列化为json数据,再上传到PC
  */
 public class SwpPriceModel {
+
+    public String AreaNo;//新增加
+    public Long SjId;
+    public String Mc;
+    public String Sj1;
+    public String Sj2;
+    public String Sj3;
+    public Long ServerVersion;//新增加
+    public long ClientVersion;//新增加
+    public String AdministratorName;
+
+//    public Long Id;
+//    public Long StationNo;
+//    public String BureauNo;
+//    public String TimeSpan;
+//    public String Version;
 }
