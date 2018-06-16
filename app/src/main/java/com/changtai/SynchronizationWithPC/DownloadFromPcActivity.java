@@ -4,12 +4,15 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.changtai.R;
+import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
@@ -26,7 +29,10 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     //消息显示框
     TextView textView ;
 
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .create();
+
     //进度条
     private ProgressDialog progressDialog ;
 
@@ -48,7 +54,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
+        new DownloadFromPcTask().execute("http://192.168.1.5:4000/DownLoad","010101","100","200");
 
     }
 
@@ -89,6 +95,9 @@ public class DownloadFromPcActivity extends AppCompatActivity {
                 DownLoadDeletePackage(path,downLoadCreatePackageOut.packageId);
 
                 String value = stringBuilder.toString();
+
+                DownLoadFromPcModel downLoadFromPcModel = gson.fromJson(value, DownLoadFromPcModel.class);
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
 
                 return value;
                 //转换成实体对像然后保存
