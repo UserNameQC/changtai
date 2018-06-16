@@ -1,1 +1,4 @@
 该包用于与PC通讯的实体定义
+
+统一AreaNo,StationNo
+沟通Decaml类型在java中的实现并修改相关实体
