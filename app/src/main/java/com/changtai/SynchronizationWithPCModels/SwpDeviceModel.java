@@ -10,7 +10,7 @@ import java.util.Date;
  * 当数据上传时到PC时,把数据库实体通过程序映射为该实体,然后序列化为json数据,再上传到PC
  */
 public class SwpDeviceModel {
-    //机井编号
+    //机井编号,该字段可以做为主键
     public String DeviceNo;
     //售水站号
     public String StationNo;
