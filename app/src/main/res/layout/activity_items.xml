@@ -52,15 +52,16 @@
             android:layout_height="wrap_content"
             android:text="机井信息"
             android:textSize="18sp"/>
+
         <TextView
             android:id="@+id/item_user"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:drawablePadding="2dp"
             android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="用户信息"
-            android:textSize="18sp"/>
+            android:text="购水用户信息"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <View

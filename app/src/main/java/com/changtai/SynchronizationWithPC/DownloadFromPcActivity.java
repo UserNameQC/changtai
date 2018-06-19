@@ -1,9 +1,10 @@
 package com.changtai.SynchronizationWithPC;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -24,7 +25,7 @@ import static com.utils.WebMethodHelper.getStringByWebMethodPost;
 /**
  * 从电脑版售水软件下载数据
  */
-public class DownloadFromPcActivity extends AppCompatActivity {
+public class DownloadFromPcActivity extends Activity {
 
     //消息显示框
     TextView textView ;

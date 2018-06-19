@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activites.SynchronizationMain">
+
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBackPressed"
+        android:text="返回" />
+
+    <Button
+        android:id="@+id/button_SynchronizationWithPC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSynchronizationWithPC"
+        android:text="与售水客户端同步" />
+
+    <Button
+        android:id="@+id/button_SynchronizationWithWeb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSynchronizationWithWeb"
+        android:text="与服务器同步" />
+
+
+</LinearLayout>
