@@ -59,6 +59,10 @@ public class DownloadFromPcActivity extends Activity {
 
     }
 
+    public void onBackPressed(View view) {
+        super.onBackPressed();
+    }
+
 
     /**
      * 下载线程
