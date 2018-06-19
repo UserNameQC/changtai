@@ -1,5 +1,6 @@
 package com.changtai.SynchronizationWithPCModels;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -20,9 +21,9 @@ public class SwpDeviceModel {
     //售水断为Datetime类型
     public Date CreateDateTime;
     //售水断为decimal类型
-    public String Longitude;
+    public BigDecimal Longitude;
     //售水断为decimal类型
-    public String Latitude;
+    public BigDecimal Latitude;
     public String Comment;
     public String AdministratorName;
     public boolean StopFlag;

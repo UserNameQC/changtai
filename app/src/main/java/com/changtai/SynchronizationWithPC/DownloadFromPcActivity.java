@@ -54,7 +54,7 @@ public class DownloadFromPcActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        new DownloadFromPcTask().execute("http://192.168.1.5:4000/DownLoad","010101","100","200");
+        new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
 
     }
 
