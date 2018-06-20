@@ -51,7 +51,7 @@
 
         <activity android:name=".activites.SettingActivity" />
         <activity android:name=".activites.ItemsActivity" />
-        <activity android:name=".ItemsList.WellList" />
+        <activity android:name=".ItemsList.DeviceList" />
         <activity android:name=".ItemsList.WaterPice" />
         <activity android:name=".ItemsList.User" />
         <activity android:name=".ItemsList.UserBuyWater" />

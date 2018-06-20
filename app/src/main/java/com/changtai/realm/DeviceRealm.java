@@ -15,39 +15,37 @@ import io.realm.annotations.Required;
 public class DeviceRealm extends RealmObject {
 
     @PrimaryKey
-    public Long deviceno;
+    public Long deviceno;//机井编号
     @Required
-    public Long bureauno;
+    public Long stationno;//售水站号
     @Required
-    public Long stationno;
+    public String gprsno;//GPS模块编号
     @Required
-    public String gprsno;
+    public String devicename;//机井名称
+    public int index;//索引
     @Required
-    public String devicename;
-    public int index;
+    public String linkman;//联系人
     @Required
-    public String linkman;
+    public String phone;//电话
     @Required
-    public String phone;
+    public String location;//安装位置
     @Required
-    public String location;
+    public String createdatetime;//登记时间
     @Required
-    public String createdatetime;
+    public String longitude;//经度
     @Required
-    public String longitude;
+    public String latitude;//维度
     @Required
-    public String latitude;
+    public String comment;//备注
     @Required
-    public String comment;
+    public String administratorname;//操作员
     @Required
-    public String administratorname;
-    @Required
-    public String timeSpan;
-    @Required
-    public String stopflag;
-    public long version;
-    public long serverversion;
-    public long clientversion;
+    public String stopflag;//停用标志
+
+    public long serverversion;//服务器端数据编号
+    public long clientversion;//pc端数据版本
+
+    public boolean DelFlag;//删除标志
 
     public int key;
 
@@ -59,6 +57,13 @@ public class DeviceRealm extends RealmObject {
         this.key = key;
     }
 
+    public boolean isDelFlag() {
+        return DelFlag;
+    }
+
+    public void setDelFlag(boolean delFlag) {
+        DelFlag = delFlag;
+    }
 
     public Long getDeviceno() {
         return deviceno;
@@ -68,13 +73,13 @@ public class DeviceRealm extends RealmObject {
         this.deviceno = deviceno;
     }
 
-    public Long getBureauno() {
-        return bureauno;
-    }
-
-    public void setBureauno(Long bureauno) {
-        this.bureauno = bureauno;
-    }
+//    public Long getBureauno() {
+//        return bureauno;
+//    }
+//
+//    public void setBureauno(Long bureauno) {
+//        this.bureauno = bureauno;
+//    }
 
     public Long getStationno() {
         return stationno;
@@ -172,13 +177,13 @@ public class DeviceRealm extends RealmObject {
         this.administratorname = administratorname;
     }
 
-    public String getTimeSpan() {
-        return timeSpan;
-    }
-
-    public void setTimeSpan(String timeSpan) {
-        this.timeSpan = timeSpan;
-    }
+//    public String getTimeSpan() {
+//        return timeSpan;
+//    }
+//
+//    public void setTimeSpan(String timeSpan) {
+//        this.timeSpan = timeSpan;
+//    }
 
     public String getStopflag() {
         return stopflag;
@@ -188,13 +193,13 @@ public class DeviceRealm extends RealmObject {
         this.stopflag = stopflag;
     }
 
-    public long getVersion() {
-        return version;
-    }
-
-    public void setVersion(long version) {
-        this.version = version;
-    }
+//    public long getVersion() {
+//        return version;
+//    }
+//
+//    public void setVersion(long version) {
+//        this.version = version;
+//    }
 
     public long getServerversion() {
         return serverversion;

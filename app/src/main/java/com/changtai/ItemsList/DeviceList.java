@@ -1,10 +1,6 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,8 +16,6 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
-import com.changtai.Utils.SaveDataToFile;
-import com.changtai.activites.BaseActivity;
 import com.changtai.realm.DeviceRealm;
 import com.google.gson.Gson;
 
@@ -34,7 +28,7 @@ import java.util.Map;
 
 import io.realm.RealmResults;
 
-public class WellList extends Activity implements View.OnClickListener{
+public class DeviceList extends Activity implements View.OnClickListener{
 
     public EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14, et15, et16, et17;
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
@@ -167,7 +161,7 @@ public class WellList extends Activity implements View.OnClickListener{
                         RealmUtils.setEditEnable(etMap, false);
                         RealmUtils.setTimeUpdateToServer(deviceRealm.getClass(), "04");
                     } else {
-                        Entity.toastMsg(WellList.this, "输入不能空");
+                        Entity.toastMsg(DeviceList.this, "输入不能空");
                     }
                 }else{
                     button.setText("保存");

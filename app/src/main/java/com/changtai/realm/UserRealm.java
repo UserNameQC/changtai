@@ -14,62 +14,42 @@ import io.realm.annotations.Required;
  * Created by qjcjo on 2018/4/1.
  */
 
-public class UserRealm extends RealmObject{
+public class UserRealm extends RealmObject {
 
     @PrimaryKey
     public String userno;
-
-    @Required
-    public String bureauno;
-
     @Required
     public String stationno;
-
     @Required
     public String deviceno;
-
     @Required
     public String index;
-
     @Required
     public String username;
-
     @Required
     public String phone;
-
     @Required
     public String createdatetime;
-
     @Required
     public String linkman;
-
     @Required
     public String sjid;
-
     @Required
     public String usedtotal;
-
     @Required
     public String purchasetotal;
-
     @Required
     public String purchasetotalthisyear;
-
     @Required
     public String overdraft;
-
     @Required
     public String alarmvalue;
-
     @Required
     public String credentialno;
-
     @Required
     public String limitsj1;
-
     @Required
     public String limitsj2;
-
     @Required
     public String comment;
     @Required
@@ -81,12 +61,9 @@ public class UserRealm extends RealmObject{
     @Required
     public String creditcardtimes;
     @Required
-    public String timespan;
-    @Required
     public String lastdatetime;
-    @Required
-    public String version;
-
+    //删除标志
+    public boolean DelFlag;//新增加
     public int key;
     public long serverversion;
     public long clientversion;
@@ -99,6 +76,13 @@ public class UserRealm extends RealmObject{
         this.key = key;
     }
 
+    public boolean isDelFlag() {
+        return DelFlag;
+    }
+
+    public void setDelFlag(boolean delFlag) {
+        DelFlag = delFlag;
+    }
 
     public long getServerversion() {
         return serverversion;
@@ -120,13 +104,13 @@ public class UserRealm extends RealmObject{
         id = id;
     }
 
-    public String getBureauNo() {
-        return bureauno;
-    }
-
-    public void setBureauNo(String bureauNo) {
-        this.bureauno = bureauNo;
-    }
+//    public String getBureauNo() {
+//        return bureauno;
+//    }
+//
+//    public void setBureauNo(String bureauNo) {
+//        this.bureauno = bureauNo;
+//    }
 
     public String getStationno() {
         return stationno;
@@ -304,13 +288,13 @@ public class UserRealm extends RealmObject{
         this.creditcardtimes = creditcardtimes;
     }
 
-    public String getTimespan() {
-        return timespan;
-    }
-
-    public void setTimespan(String timespan) {
-        this.timespan = timespan;
-    }
+//    public String getTimespan() {
+//        return timespan;
+//    }
+//
+//    public void setTimespan(String timespan) {
+//        this.timespan = timespan;
+//    }
 
     public String getLastdatetime() {
         return lastdatetime;
@@ -320,11 +304,11 @@ public class UserRealm extends RealmObject{
         this.lastdatetime = lastdatetime;
     }
 
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
+//    public String getVersion() {
+//        return version;
+//    }
+//
+//    public void setVersion(String version) {
+//        this.version = version;
+//    }
 }

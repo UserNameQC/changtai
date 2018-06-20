@@ -16,8 +16,8 @@ public class PurchaseRecordRealm extends RealmObject {
 
     @PrimaryKey
     public String purchaserecordid;
-    @Required
-    public String bureauno;
+//    @Required
+//    public String bureauno;
     @Required
     public String deviceno;
     @Required
@@ -56,16 +56,28 @@ public class PurchaseRecordRealm extends RealmObject {
     public String totalsj3;
     @Required
     public String amountsj3;
+
+    @Required
+    public String comment;
     @Required
     public String administratorname;
-    @Required
-    public String timespan;
-    @Required
-    public String version;
+//    @Required
+//    public String timespan;
+//    @Required
+//    public String version;
     public long serverversion;
+
     public long clientversion;
 
     public int key;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public long getServerversion() {
         return serverversion;
@@ -99,13 +111,13 @@ public class PurchaseRecordRealm extends RealmObject {
         this.purchaserecordid = purchaserecordid;
     }
 
-    public String getBureauno() {
-        return bureauno;
-    }
-
-    public void setBureauno(String bureauno) {
-        this.bureauno = bureauno;
-    }
+//    public String getBureauno() {
+//        return bureauno;
+//    }
+//
+//    public void setBureauno(String bureauno) {
+//        this.bureauno = bureauno;
+//    }
 
     public String getDeviceno() {
         return deviceno;
@@ -267,19 +279,19 @@ public class PurchaseRecordRealm extends RealmObject {
         this.administratorname = administratorname;
     }
 
-    public String getTimespan() {
-        return timespan;
-    }
-
-    public void setTimespan(String timespan) {
-        this.timespan = timespan;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
+//    public String getTimespan() {
+//        return timespan;
+//    }
+//
+//    public void setTimespan(String timespan) {
+//        this.timespan = timespan;
+//    }
+//
+//    public String getVersion() {
+//        return version;
+//    }
+//
+//    public void setVersion(String version) {
+//        this.version = version;
+//    }
 }

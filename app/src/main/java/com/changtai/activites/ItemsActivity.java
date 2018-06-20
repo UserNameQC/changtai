@@ -1,20 +1,11 @@
 package com.changtai.activites;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.changtai.BaiduMap.BaiduMapActivity;
-import com.changtai.ItemsList.MainUser;
-import com.changtai.ItemsList.User;
-import com.changtai.ItemsList.UserBuyWater;
-import com.changtai.ItemsList.UserTakeWater;
-import com.changtai.ItemsList.WaterPice;
-import com.changtai.ItemsList.WellList;
 import com.changtai.R;
-import com.changtai.RFID.demo1443A;
 
 public class ItemsActivity extends Activity implements View.OnClickListener{
 
@@ -48,7 +39,7 @@ public class ItemsActivity extends Activity implements View.OnClickListener{
         switch (view.getId())
         {
 //            case R.id.item_well_list:
-//                startActivity(new Intent(ItemsActivity.this, WellList.class));
+//                startActivity(new Intent(ItemsActivity.this, DeviceList.class));
 //                break;
 //            case R.id.item_user_take_water:
 //                startActivity(new Intent(ItemsActivity.this, UserTakeWater.class));

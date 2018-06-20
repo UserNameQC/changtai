@@ -1,6 +1,5 @@
 package com.changtai.activites;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +8,13 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.changtai.BaiduMap.BaiduMapActivity;
+import com.changtai.ItemsList.DeviceList;
 import com.changtai.ItemsList.MainUser;
 import com.changtai.ItemsList.User;
 import com.changtai.ItemsList.UserBuyWater;
 import com.changtai.ItemsList.UserTakeWater;
 import com.changtai.ItemsList.WaterPice;
-import com.changtai.ItemsList.WellList;
 import com.changtai.R;
-import com.changtai.RFID.NfcDemoActivity;
 import com.changtai.RFID.demo1443A;
 import com.changtai.Utils.Entity;
 import com.changtai.fragment.FragmentMain;
@@ -110,7 +108,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(MainActivity.this, BaiduMapActivity.class));
                 break;
             case R.id.item_well_list:
-                startActivity(new Intent(MainActivity.this, WellList.class));
+                startActivity(new Intent(MainActivity.this, DeviceList.class));
                 break;
             case R.id.item_user:
                 startActivity(new Intent(MainActivity.this, User.class));

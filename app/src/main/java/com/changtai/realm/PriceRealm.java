@@ -15,18 +15,17 @@ import io.realm.annotations.Required;
 
 public class PriceRealm extends RealmObject {
 
+
     @PrimaryKey
-    public Long Id;
-    @Required
-    public Long StationNo;
-    @Required
     public Long SjId;
     @Required
-    public String BureauNo;
-    @Required
-    public String TimeSpan;
-    @Required
-    public String Version;
+    public Long StationNo;
+//    @Required
+//    public String BureauNo;
+//    @Required
+//    public String TimeSpan;
+//    @Required
+//    public String Version;
     @Required
     public String Mc;
     @Required
@@ -37,13 +36,25 @@ public class PriceRealm extends RealmObject {
     public String Sj3;
     @Required
     public String AdministratorName;
+    //服务器端数据版本
+    public Long ServerVersion;//新增加
+    //电脑版售水软件数据版本
+    public long ClientVersion;//新增加
 
-    public Long getId() {
-        return Id;
+    public Long getServerVersion() {
+        return ServerVersion;
     }
 
-    public void setId(Long id) {
-        Id = id;
+    public void setServerVersion(Long serverVersion) {
+        ServerVersion = serverVersion;
+    }
+
+    public long getClientVersion() {
+        return ClientVersion;
+    }
+
+    public void setClientVersion(long clientVersion) {
+        ClientVersion = clientVersion;
     }
 
     public Long getStationNo() {
@@ -60,30 +71,6 @@ public class PriceRealm extends RealmObject {
 
     public void setSjId(Long sjId) {
         SjId = sjId;
-    }
-
-    public String getBureauNo() {
-        return BureauNo;
-    }
-
-    public void setBureauNo(String bureauNo) {
-        BureauNo = bureauNo;
-    }
-
-    public String getTimeSpan() {
-        return TimeSpan;
-    }
-
-    public void setTimeSpan(String timeSpan) {
-        TimeSpan = timeSpan;
-    }
-
-    public String getVersion() {
-        return Version;
-    }
-
-    public void setVersion(String version) {
-        Version = version;
     }
 
     public String getMc() {
