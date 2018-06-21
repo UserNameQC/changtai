@@ -1,8 +1,5 @@
 package com.changtai.realm;
 
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Property;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -15,59 +12,59 @@ import io.realm.annotations.Required;
 public class PurchaseRecordRealm extends RealmObject {
 
     @PrimaryKey
-    public String purchaserecordid;
+    public String purchaseRecordId;
 //    @Required
 //    public String bureauno;
     @Required
-    public String deviceno;
+    public String deviceNo;
     @Required
-    public String stationno;
+    public String stationNo;
     @Required
-    public String username;
+    public String userName;
     @Required
-    public String userno;
+    public String userNo;
     @Required
-    public String purchasetotalthistime;
+    public String purchaseTotalThisTime;
     @Required
-    public String purchaseamountthistime;
+    public String purchaseaMountThisTime;
     @Required
-    public String purchasedatetimethistime;
+    public String purchaseDatetimeThisTime;
     @Required
-    public String purchaseyear;
+    public String purchaseYear;
     @Required
-    public String purchasetotalthisyear;
+    public String purchaseTotalThisYear;
     @Required
-    public String purchasetotal;
+    public String purchaseTotal;
     @Required
-    public String pricesj1;
+    public String priceSj1;
     @Required
-    public String totalsj1;
+    public String totalSj1;
     @Required
-    public String amountsj1;
+    public String amountSj1;
     @Required
-    public String pricesj2;
+    public String priceSj2;
     @Required
-    public String totalsj2;
+    public String totalSj2;
     @Required
-    public String amountsj2;
+    public String amountSj2;
     @Required
-    public String pricesj3;
+    public String priceSj3;
     @Required
-    public String totalsj3;
+    public String totalSj3;
     @Required
-    public String amountsj3;
+    public String amountSj3;
 
     @Required
     public String comment;
     @Required
-    public String administratorname;
+    public String administratorName;
 //    @Required
 //    public String timespan;
 //    @Required
 //    public String version;
-    public long serverversion;
+    public long serverVersion;
 
-    public long clientversion;
+    public long clientVersion;
 
     public int key;
 
@@ -79,20 +76,20 @@ public class PurchaseRecordRealm extends RealmObject {
         this.comment = comment;
     }
 
-    public long getServerversion() {
-        return serverversion;
+    public long getServerVersion() {
+        return serverVersion;
     }
 
-    public void setServerversion(long serverversion) {
-        this.serverversion = serverversion;
+    public void setServerVersion(long serverVersion) {
+        this.serverVersion = serverVersion;
     }
 
-    public long getClientversion() {
-        return clientversion;
+    public long getClientVersion() {
+        return clientVersion;
     }
 
-    public void setClientversion(long clientversion) {
-        this.clientversion = clientversion;
+    public void setClientVersion(long clientVersion) {
+        this.clientVersion = clientVersion;
     }
 
     public int getKey() {
@@ -103,12 +100,12 @@ public class PurchaseRecordRealm extends RealmObject {
         this.key = key;
     }
 
-    public String getPurchaserecordid() {
-        return purchaserecordid;
+    public String getPurchaseRecordId() {
+        return purchaseRecordId;
     }
 
-    public void setPurchaserecordid(String purchaserecordid) {
-        this.purchaserecordid = purchaserecordid;
+    public void setPurchaseRecordId(String purchaseRecordId) {
+        this.purchaseRecordId = purchaseRecordId;
     }
 
 //    public String getBureauno() {
@@ -119,164 +116,164 @@ public class PurchaseRecordRealm extends RealmObject {
 //        this.bureauno = bureauno;
 //    }
 
-    public String getDeviceno() {
-        return deviceno;
+    public String getDeviceNo() {
+        return deviceNo;
     }
 
-    public void setDeviceno(String deviceno) {
-        this.deviceno = deviceno;
+    public void setDeviceNo(String deviceNo) {
+        this.deviceNo = deviceNo;
     }
 
-    public String getStationno() {
-        return stationno;
+    public String getStationNo() {
+        return stationNo;
     }
 
-    public void setStationno(String stationno) {
-        this.stationno = stationno;
+    public void setStationNo(String stationNo) {
+        this.stationNo = stationNo;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUserno() {
-        return userno;
+    public String getUserNo() {
+        return userNo;
     }
 
-    public void setUserno(String userno) {
-        this.userno = userno;
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
     }
 
-    public String getPurchasetotalthistime() {
-        return purchasetotalthistime;
+    public String getPurchaseTotalThisTime() {
+        return purchaseTotalThisTime;
     }
 
-    public void setPurchasetotalthistime(String purchasetotalthistime) {
-        this.purchasetotalthistime = purchasetotalthistime;
+    public void setPurchaseTotalThisTime(String purchaseTotalThisTime) {
+        this.purchaseTotalThisTime = purchaseTotalThisTime;
     }
 
-    public String getPurchaseamountthistime() {
-        return purchaseamountthistime;
+    public String getPurchaseaMountThisTime() {
+        return purchaseaMountThisTime;
     }
 
-    public void setPurchaseamountthistime(String purchaseamountthistime) {
-        this.purchaseamountthistime = purchaseamountthistime;
+    public void setPurchaseaMountThisTime(String purchaseaMountThisTime) {
+        this.purchaseaMountThisTime = purchaseaMountThisTime;
     }
 
-    public String getPurchasedatetimethistime() {
-        return purchasedatetimethistime;
+    public String getPurchaseDatetimeThisTime() {
+        return purchaseDatetimeThisTime;
     }
 
-    public void setPurchasedatetimethistime(String purchasedatetimethistime) {
-        this.purchasedatetimethistime = purchasedatetimethistime;
+    public void setPurchaseDatetimeThisTime(String purchaseDatetimeThisTime) {
+        this.purchaseDatetimeThisTime = purchaseDatetimeThisTime;
     }
 
-    public String getPurchaseyear() {
-        return purchaseyear;
+    public String getPurchaseYear() {
+        return purchaseYear;
     }
 
-    public void setPurchaseyear(String purchaseyear) {
-        this.purchaseyear = purchaseyear;
+    public void setPurchaseYear(String purchaseYear) {
+        this.purchaseYear = purchaseYear;
     }
 
-    public String getPurchasetotalthisyear() {
-        return purchasetotalthisyear;
+    public String getPurchaseTotalThisYear() {
+        return purchaseTotalThisYear;
     }
 
-    public void setPurchasetotalthisyear(String purchasetotalthisyear) {
-        this.purchasetotalthisyear = purchasetotalthisyear;
+    public void setPurchaseTotalThisYear(String purchaseTotalThisYear) {
+        this.purchaseTotalThisYear = purchaseTotalThisYear;
     }
 
-    public String getPurchasetotal() {
-        return purchasetotal;
+    public String getPurchaseTotal() {
+        return purchaseTotal;
     }
 
-    public void setPurchasetotal(String purchasetotal) {
-        this.purchasetotal = purchasetotal;
+    public void setPurchaseTotal(String purchaseTotal) {
+        this.purchaseTotal = purchaseTotal;
     }
 
-    public String getPricesj1() {
-        return pricesj1;
+    public String getPriceSj1() {
+        return priceSj1;
     }
 
-    public void setPricesj1(String pricesj1) {
-        this.pricesj1 = pricesj1;
+    public void setPriceSj1(String priceSj1) {
+        this.priceSj1 = priceSj1;
     }
 
-    public String getTotalsj1() {
-        return totalsj1;
+    public String getTotalSj1() {
+        return totalSj1;
     }
 
-    public void setTotalsj1(String totalsj1) {
-        this.totalsj1 = totalsj1;
+    public void setTotalSj1(String totalSj1) {
+        this.totalSj1 = totalSj1;
     }
 
-    public String getAmountsj1() {
-        return amountsj1;
+    public String getAmountSj1() {
+        return amountSj1;
     }
 
-    public void setAmountsj1(String amountsj1) {
-        this.amountsj1 = amountsj1;
+    public void setAmountSj1(String amountSj1) {
+        this.amountSj1 = amountSj1;
     }
 
-    public String getPricesj2() {
-        return pricesj2;
+    public String getPriceSj2() {
+        return priceSj2;
     }
 
-    public void setPricesj2(String pricesj2) {
-        this.pricesj2 = pricesj2;
+    public void setPriceSj2(String priceSj2) {
+        this.priceSj2 = priceSj2;
     }
 
-    public String getTotalsj2() {
-        return totalsj2;
+    public String getTotalSj2() {
+        return totalSj2;
     }
 
-    public void setTotalsj2(String totalsj2) {
-        this.totalsj2 = totalsj2;
+    public void setTotalSj2(String totalSj2) {
+        this.totalSj2 = totalSj2;
     }
 
-    public String getAmountsj2() {
-        return amountsj2;
+    public String getAmountSj2() {
+        return amountSj2;
     }
 
-    public void setAmountsj2(String amountsj2) {
-        this.amountsj2 = amountsj2;
+    public void setAmountSj2(String amountSj2) {
+        this.amountSj2 = amountSj2;
     }
 
-    public String getPricesj3() {
-        return pricesj3;
+    public String getPriceSj3() {
+        return priceSj3;
     }
 
-    public void setPricesj3(String pricesj3) {
-        this.pricesj3 = pricesj3;
+    public void setPriceSj3(String priceSj3) {
+        this.priceSj3 = priceSj3;
     }
 
-    public String getTotalsj3() {
-        return totalsj3;
+    public String getTotalSj3() {
+        return totalSj3;
     }
 
-    public void setTotalsj3(String totalsj3) {
-        this.totalsj3 = totalsj3;
+    public void setTotalSj3(String totalSj3) {
+        this.totalSj3 = totalSj3;
     }
 
-    public String getAmountsj3() {
-        return amountsj3;
+    public String getAmountSj3() {
+        return amountSj3;
     }
 
-    public void setAmountsj3(String amountsj3) {
-        this.amountsj3 = amountsj3;
+    public void setAmountSj3(String amountSj3) {
+        this.amountSj3 = amountSj3;
     }
 
-    public String getAdministratorname() {
-        return administratorname;
+    public String getAdministratorName() {
+        return administratorName;
     }
 
-    public void setAdministratorname(String administratorname) {
-        this.administratorname = administratorname;
+    public void setAdministratorName(String administratorName) {
+        this.administratorName = administratorName;
     }
 
 //    public String getTimespan() {

@@ -61,6 +61,6 @@ public class SwpPurchaseRecordModel {
 
 //    public String TimeSpan;
 //    public String Version;
-//    public Long Id;
+//    public Long id;
 //    public String BureauNo;
 }

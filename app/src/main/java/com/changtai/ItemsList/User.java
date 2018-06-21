@@ -16,7 +16,6 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
-import com.changtai.activites.BaseActivity;
 import com.changtai.realm.UserRealm;
 import com.google.gson.Gson;
 
@@ -148,7 +147,7 @@ public class User extends Activity implements View.OnClickListener{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userRealm = Entity.realm.where(UserRealm.class).findAll().get(position);
                 userRealm = Entity.realm.copyFromRealm(userRealm);
-                //Log.e("AdministratorName", userRealm.getAdministratorName());
+                //Log.e("administratorName", userRealm.getAdministratorName());
                 useRListView.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
                 Gson gson = new Gson();
@@ -217,7 +216,7 @@ public class User extends Activity implements View.OnClickListener{
         for (int i = 0; i < realmResultList.size(); i++)
         {
             UserRealm userRealm = realmResultList.get(i);
-            userNumList.add(userRealm.getUserno());
+            userNumList.add(userRealm.getUserNo());
         }
         return userNumList;
     }

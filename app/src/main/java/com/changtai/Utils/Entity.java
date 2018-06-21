@@ -74,7 +74,7 @@ public class Entity {
      * 机井信息表
      */
     public static final  String BureauNo = "BureauNo";//水利局编号
-    public static final  String StationNo = "StationNo";//水管站编号
+    public static final  String StationNo = "stationNo";//水管站编号
     public static final  String DeviceNo = "DeviceNo";//机井编号
     public static final  String GprsNo = "GprsNo";//GPRS模块编号
     public static final  String DeviceName = "DeviceName";//机井名称
@@ -85,8 +85,8 @@ public class Entity {
     public static final  String CreateDateTime = "CreateDateTime";//登记时间
     public static final  String Longitude = "Longitude";//经度
     public static final  String Latitude = "Latitude";//纬度
-    public static final  String Comment = "Comment";//备注
-    public static final  String AdministratorName = "AdministratorName";//操作员
+    public static final  String Comment = "comment";//备注
+    public static final  String AdministratorName = "administratorName";//操作员
     public static final  String TimeSpan = "TimeSpan";//数据更新标签
     public static final  String StopFlag = "StopFlag";//停用标志
     public static final  String Version = "Version";//版本
@@ -94,11 +94,11 @@ public class Entity {
     /**
      *水价表
      */
-    public static final  String SjId = "SjId";//水价序号
-    public static final  String Mc = "Mc";//水价类型
-    public static final  String Sj1 = "Sj1";//一级水价
-    public static final  String Sj2 = "Sj2";//二级水价
-    public static final  String Sj3 = "Sj3";//三级水价
+    public static final  String SjId = "sjId";//水价序号
+    public static final  String Mc = "mc";//水价类型
+    public static final  String Sj1 = "sj1";//一级水价
+    public static final  String Sj2 = "sj2";//二级水价
+    public static final  String Sj3 = "sj3";//三级水价
     public static final String createTime = "createTime";
     public static final String updateTime = "updateTime";
 
@@ -124,7 +124,7 @@ public class Entity {
      */
     public static final String AdministratorId = "AdministratorId";
     public static final String SysAdmin = "SysAdmin";
-    public static final String Name = "Name";
+    public static final String Name = "name";
     public static final String Accounts = "Accounts";
     public static final String PassWord = "PassWord";
     public static final String ReWritePassWord = "ReWritePassWord";
@@ -151,7 +151,7 @@ public class Entity {
     /**
      * 用户取水表
      */
-    public static final String Id = "Id";
+    public static final String Id = "id";
     public static final String Flow = "Flow";
     public static final String PurchaseDate = "PurchaseDate";
     public static final String UsedAmount1 = "UsedAmount1";

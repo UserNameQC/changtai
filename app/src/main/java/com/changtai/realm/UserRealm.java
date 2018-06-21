@@ -1,10 +1,5 @@
 package com.changtai.realm;
 
-import com.google.gson.annotations.Expose;
-
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Property;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -17,56 +12,56 @@ import io.realm.annotations.Required;
 public class UserRealm extends RealmObject {
 
     @PrimaryKey
-    public String userno;
+    public String userNo;
     @Required
-    public String stationno;
+    public String stationNo;
     @Required
-    public String deviceno;
+    public String deviceNo;
     @Required
     public String index;
     @Required
-    public String username;
+    public String userName;
     @Required
     public String phone;
     @Required
-    public String createdatetime;
+    public String createDatetime;
     @Required
     public String linkman;
     @Required
-    public String sjid;
+    public String sjId;
     @Required
-    public String usedtotal;
+    public String usedTotal;
     @Required
-    public String purchasetotal;
+    public String purchaseTotal;
     @Required
-    public String purchasetotalthisyear;
+    public String purchaseTotalThisYear;
     @Required
     public String overdraft;
     @Required
-    public String alarmvalue;
+    public String alarmValue;
     @Required
-    public String credentialno;
+    public String credentialNo;
     @Required
-    public String limitsj1;
+    public String limitSj1;
     @Required
-    public String limitsj2;
+    public String limitSj2;
     @Required
     public String comment;
     @Required
-    public String administratorname;
+    public String administratorName;
     @Required
-    public String stopflag;
+    public String stopFlag;
     @Required
-    public String cardno;
+    public String cardNo;
     @Required
-    public String creditcardtimes;
+    public String creditcardTimes;
     @Required
-    public String lastdatetime;
+    public String lastDatetime;
     //删除标志
     public boolean DelFlag;//新增加
     public int key;
-    public long serverversion;
-    public long clientversion;
+    public long serverVersion;
+    public long clientVersion;
 
     public int getKey() {
         return key;
@@ -84,20 +79,20 @@ public class UserRealm extends RealmObject {
         DelFlag = delFlag;
     }
 
-    public long getServerversion() {
-        return serverversion;
+    public long getServerVersion() {
+        return serverVersion;
     }
 
-    public void setServerversion(long serverversion) {
-        this.serverversion = serverversion;
+    public void setServerVersion(long serverVersion) {
+        this.serverVersion = serverVersion;
     }
 
-    public long getClientversion() {
-        return clientversion;
+    public long getClientVersion() {
+        return clientVersion;
     }
 
-    public void setClientversion(long clientversion) {
-        this.clientversion = clientversion;
+    public void setClientVersion(long clientVersion) {
+        this.clientVersion = clientVersion;
     }
 
     public void setId(Long id) {
@@ -112,28 +107,28 @@ public class UserRealm extends RealmObject {
 //        this.bureauno = bureauNo;
 //    }
 
-    public String getStationno() {
-        return stationno;
+    public String getStationNo() {
+        return stationNo;
     }
 
-    public void setStationno(String stationno) {
-        this.stationno = stationno;
+    public void setStationNo(String stationNo) {
+        this.stationNo = stationNo;
     }
 
-    public String getDeviceno() {
-        return deviceno;
+    public String getDeviceNo() {
+        return deviceNo;
     }
 
-    public void setDeviceno(String deviceno) {
-        this.deviceno = deviceno;
+    public void setDeviceNo(String deviceNo) {
+        this.deviceNo = deviceNo;
     }
 
-    public String getUserno() {
-        return userno;
+    public String getUserNo() {
+        return userNo;
     }
 
-    public void setUserno(String userno) {
-        this.userno = userno;
+    public void setUserNo(String userNo) {
+        this.userNo = userNo;
     }
 
     public String getIndex() {
@@ -144,12 +139,12 @@ public class UserRealm extends RealmObject {
         this.index = index;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
@@ -160,12 +155,12 @@ public class UserRealm extends RealmObject {
         this.phone = phone;
     }
 
-    public String getCreatedatetime() {
-        return createdatetime;
+    public String getCreateDatetime() {
+        return createDatetime;
     }
 
-    public void setCreatedatetime(String createdatetime) {
-        this.createdatetime = createdatetime;
+    public void setCreateDatetime(String createDatetime) {
+        this.createDatetime = createDatetime;
     }
 
     public String getLinkman() {
@@ -176,36 +171,36 @@ public class UserRealm extends RealmObject {
         this.linkman = linkman;
     }
 
-    public String getSjid() {
-        return sjid;
+    public String getSjId() {
+        return sjId;
     }
 
-    public void setSjid(String sjid) {
-        this.sjid = sjid;
+    public void setSjId(String sjId) {
+        this.sjId = sjId;
     }
 
-    public String getUsedtotal() {
-        return usedtotal;
+    public String getUsedTotal() {
+        return usedTotal;
     }
 
-    public void setUsedtotal(String usedtotal) {
-        this.usedtotal = usedtotal;
+    public void setUsedTotal(String usedTotal) {
+        this.usedTotal = usedTotal;
     }
 
-    public String getPurchasetotal() {
-        return purchasetotal;
+    public String getPurchaseTotal() {
+        return purchaseTotal;
     }
 
-    public void setPurchasetotal(String purchasetotal) {
-        this.purchasetotal = purchasetotal;
+    public void setPurchaseTotal(String purchaseTotal) {
+        this.purchaseTotal = purchaseTotal;
     }
 
-    public String getPurchasetotalthisyear() {
-        return purchasetotalthisyear;
+    public String getPurchaseTotalThisYear() {
+        return purchaseTotalThisYear;
     }
 
-    public void setPurchasetotalthisyear(String purchasetotalthisyear) {
-        this.purchasetotalthisyear = purchasetotalthisyear;
+    public void setPurchaseTotalThisYear(String purchaseTotalThisYear) {
+        this.purchaseTotalThisYear = purchaseTotalThisYear;
     }
 
     public String getOverdraft() {
@@ -216,36 +211,36 @@ public class UserRealm extends RealmObject {
         this.overdraft = overdraft;
     }
 
-    public String getAlarmvalue() {
-        return alarmvalue;
+    public String getAlarmValue() {
+        return alarmValue;
     }
 
-    public void setAlarmvalue(String alarmvalue) {
-        this.alarmvalue = alarmvalue;
+    public void setAlarmValue(String alarmValue) {
+        this.alarmValue = alarmValue;
     }
 
-    public String getCredentialno() {
-        return credentialno;
+    public String getCredentialNo() {
+        return credentialNo;
     }
 
-    public void setCredentialno(String credentialno) {
-        this.credentialno = credentialno;
+    public void setCredentialNo(String credentialNo) {
+        this.credentialNo = credentialNo;
     }
 
-    public String getLimitsj1() {
-        return limitsj1;
+    public String getLimitSj1() {
+        return limitSj1;
     }
 
-    public void setLimitsj1(String limitsj1) {
-        this.limitsj1 = limitsj1;
+    public void setLimitSj1(String limitSj1) {
+        this.limitSj1 = limitSj1;
     }
 
-    public String getLimitsj2() {
-        return limitsj2;
+    public String getLimitSj2() {
+        return limitSj2;
     }
 
-    public void setLimitsj2(String limitsj2) {
-        this.limitsj2 = limitsj2;
+    public void setLimitSj2(String limitSj2) {
+        this.limitSj2 = limitSj2;
     }
 
     public String getComment() {
@@ -256,36 +251,36 @@ public class UserRealm extends RealmObject {
         this.comment = comment;
     }
 
-    public String getAdministratorname() {
-        return administratorname;
+    public String getAdministratorName() {
+        return administratorName;
     }
 
-    public void setAdministratorname(String administratorname) {
-        this.administratorname = administratorname;
+    public void setAdministratorName(String administratorName) {
+        this.administratorName = administratorName;
     }
 
-    public String getStopflag() {
-        return stopflag;
+    public String getStopFlag() {
+        return stopFlag;
     }
 
-    public void setStopflag(String stopflag) {
-        this.stopflag = stopflag;
+    public void setStopFlag(String stopFlag) {
+        this.stopFlag = stopFlag;
     }
 
-    public String getCardno() {
-        return cardno;
+    public String getCardNo() {
+        return cardNo;
     }
 
-    public void setCardno(String cardno) {
-        this.cardno = cardno;
+    public void setCardNo(String cardNo) {
+        this.cardNo = cardNo;
     }
 
-    public String getCreditcardtimes() {
-        return creditcardtimes;
+    public String getCreditcardTimes() {
+        return creditcardTimes;
     }
 
-    public void setCreditcardtimes(String creditcardtimes) {
-        this.creditcardtimes = creditcardtimes;
+    public void setCreditcardTimes(String creditcardTimes) {
+        this.creditcardTimes = creditcardTimes;
     }
 
 //    public String getTimespan() {
@@ -296,12 +291,12 @@ public class UserRealm extends RealmObject {
 //        this.timespan = timespan;
 //    }
 
-    public String getLastdatetime() {
-        return lastdatetime;
+    public String getLastDatetime() {
+        return lastDatetime;
     }
 
-    public void setLastdatetime(String lastdatetime) {
-        this.lastdatetime = lastdatetime;
+    public void setLastDatetime(String lastDatetime) {
+        this.lastDatetime = lastDatetime;
     }
 
 //    public String getVersion() {

@@ -1,7 +1,5 @@
 package com.changtai.RFID;
 
-import java.io.UnsupportedEncodingException;
-
 import com.android.RfidControll;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
@@ -153,15 +151,15 @@ public class demo1443A extends Activity implements OnClickListener {
 				}
 
 				PurchaseRecordRealm purchaseRecordRealm =
-						Entity.realm.where(PurchaseRecordRealm.class).equalTo("userno", result.substring(0,10)).findFirst();
+						Entity.realm.where(PurchaseRecordRealm.class).equalTo("userNo", result.substring(0,10)).findFirst();
 				if (purchaseRecordRealm != null)
 				{
-					if (Long.parseLong(purchaseRecordRealm.getPurchasetotal()) > Long.parseLong(result.substring(12, 20)))
+					if (Long.parseLong(purchaseRecordRealm.getPurchaseTotal()) > Long.parseLong(result.substring(12, 20)))
 					{
 						Entity.toastMsg(this, "该用户已补卡，本卡是丢失的原用户卡，不允许继续使用");
 						return;
 					}
-					else if (Long.parseLong(purchaseRecordRealm.getPurchasetotal()) < Long.parseLong(result.substring(12, 20)))
+					else if (Long.parseLong(purchaseRecordRealm.getPurchaseTotal()) < Long.parseLong(result.substring(12, 20)))
 					{
 						Entity.toastMsg(this, "本卡数据缺失， 请同步数据后再操作");
 						return;

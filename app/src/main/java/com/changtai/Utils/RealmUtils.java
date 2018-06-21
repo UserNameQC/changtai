@@ -46,7 +46,7 @@ public class RealmUtils <T extends RealmObject> {
             final JSONObject json = new JSONObject();
             for (int i = 0; i < edMap.size(); i++) {
                 EditText et = edMap.get(i);
-                json.put("serverversion", Entity.time);
+                json.put("serverVersion", Entity.time);
                 json.put("key", key);
                 json.put(et.getTag().toString(), et.getText().toString());
             }
@@ -95,15 +95,15 @@ public class RealmUtils <T extends RealmObject> {
     public int a;
     public Map<String,String> getDataFromService(final Handler handler, final String type, final int page , final Class clss)
     {
-        ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("Id", 10010).findFirst();
+        ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("id", 10010).findFirst();
         final String baseId = configRealm.getValue();
         RealmResults<T> realmResults = Entity.realm.where(clss).equalTo("key", 2).findAll();
         if (!realmResults.isEmpty())
         {
-            realmResults = realmResults.sort("serverversion", Sort.DESCENDING);
+            realmResults = realmResults.sort("serverVersion", Sort.DESCENDING);
             try {
                 JSONObject object = new JSONObject(new Gson().toJson(Entity.realm.copyFromRealm(realmResults.get(0))));
-                sync_time = object.getLong("serverversion");
+                sync_time = object.getLong("serverVersion");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -298,7 +298,7 @@ public class RealmUtils <T extends RealmObject> {
 
     public static void setTimeUpdateToServer(Class c, final String type){
         final RealmResults realmUtils = Entity.realm.where(c).equalTo("key", 0).findAll();
-        ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("Id", 10010).findFirst();
+        ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("id", 10010).findFirst();
         final String baseId = configRealm.getValue();
         final Map<String, Object> map = new HashMap<>();
         final Map<String, String> headMap = new HashMap<>();

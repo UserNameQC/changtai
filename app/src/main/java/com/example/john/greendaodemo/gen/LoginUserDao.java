@@ -24,7 +24,7 @@ public class LoginUserDao extends AbstractDao<LoginUser, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property LoginId = new Property(1, Long.class, "loginId", false, "LOGIN_ID");
         public final static Property UserName = new Property(2, String.class, "UserName", false, "USER_NAME");
         public final static Property UserPwd = new Property(3, String.class, "UserPwd", false, "USER_PWD");
@@ -44,7 +44,7 @@ public class LoginUserDao extends AbstractDao<LoginUser, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"LOGIN_USER\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"LOGIN_ID\" INTEGER," + // 1: loginId
                 "\"USER_NAME\" TEXT," + // 2: UserName
                 "\"USER_PWD\" TEXT," + // 3: UserPwd
@@ -125,7 +125,7 @@ public class LoginUserDao extends AbstractDao<LoginUser, Long> {
     @Override
     public LoginUser readEntity(Cursor cursor, int offset) {
         LoginUser entity = new LoginUser( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // loginId
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // UserName
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // UserPwd

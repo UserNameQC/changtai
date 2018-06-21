@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,7 +15,6 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
-import com.changtai.activites.BaseActivity;
 import com.changtai.realm.PurchaseRecordRealm;
 import com.google.gson.Gson;
 
@@ -211,7 +209,7 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
         LinkedList<String> list = new LinkedList<>();
         for (int i =0; i < realms.size(); i++)
         {
-            list.add(realms.get(i).getPurchaserecordid());
+            list.add(realms.get(i).getPurchaseRecordId());
         }
         return list;
     }

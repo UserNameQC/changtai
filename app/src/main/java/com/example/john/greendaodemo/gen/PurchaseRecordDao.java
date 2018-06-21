@@ -24,7 +24,7 @@ public class PurchaseRecordDao extends AbstractDao<PurchaseRecord, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property PurchaseRecordId = new Property(1, Long.class, "PurchaseRecordId", false, "PURCHASE_RECORD_ID");
         public final static Property BureauNo = new Property(2, String.class, "BureauNo", false, "BUREAU_NO");
         public final static Property DeviceNo = new Property(3, String.class, "DeviceNo", false, "DEVICE_NO");
@@ -64,7 +64,7 @@ public class PurchaseRecordDao extends AbstractDao<PurchaseRecord, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PURCHASE_RECORD\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"PURCHASE_RECORD_ID\" INTEGER," + // 1: PurchaseRecordId
                 "\"BUREAU_NO\" TEXT," + // 2: BureauNo
                 "\"DEVICE_NO\" TEXT," + // 3: DeviceNo
@@ -365,7 +365,7 @@ public class PurchaseRecordDao extends AbstractDao<PurchaseRecord, Long> {
     @Override
     public PurchaseRecord readEntity(Cursor cursor, int offset) {
         PurchaseRecord entity = new PurchaseRecord( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // PurchaseRecordId
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // BureauNo
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // DeviceNo

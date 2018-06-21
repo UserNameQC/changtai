@@ -1,8 +1,5 @@
 package com.changtai.realm;
 
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Property;
-
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -15,13 +12,13 @@ import io.realm.annotations.Required;
 public class DeviceRealm extends RealmObject {
 
     @PrimaryKey
-    public Long deviceno;//机井编号
+    public Long deviceNo;//机井编号
     @Required
-    public Long stationno;//售水站号
+    public Long stationNo;//售水站号
     @Required
-    public String gprsno;//GPS模块编号
+    public String gprsNo;//GPS模块编号
     @Required
-    public String devicename;//机井名称
+    public String deviceName;//机井名称
     public int index;//索引
     @Required
     public String linkman;//联系人
@@ -30,7 +27,7 @@ public class DeviceRealm extends RealmObject {
     @Required
     public String location;//安装位置
     @Required
-    public String createdatetime;//登记时间
+    public String createDatetime;//登记时间
     @Required
     public String longitude;//经度
     @Required
@@ -38,12 +35,12 @@ public class DeviceRealm extends RealmObject {
     @Required
     public String comment;//备注
     @Required
-    public String administratorname;//操作员
+    public String administratorName;//操作员
     @Required
-    public String stopflag;//停用标志
+    public String stopFlag;//停用标志
 
-    public long serverversion;//服务器端数据编号
-    public long clientversion;//pc端数据版本
+    public long serverVersion;//服务器端数据编号
+    public long clientVersion;//pc端数据版本
 
     public boolean DelFlag;//删除标志
 
@@ -65,12 +62,12 @@ public class DeviceRealm extends RealmObject {
         DelFlag = delFlag;
     }
 
-    public Long getDeviceno() {
-        return deviceno;
+    public Long getDeviceNo() {
+        return deviceNo;
     }
 
-    public void setDeviceno(Long deviceno) {
-        this.deviceno = deviceno;
+    public void setDeviceNo(Long deviceNo) {
+        this.deviceNo = deviceNo;
     }
 
 //    public Long getBureauno() {
@@ -81,28 +78,28 @@ public class DeviceRealm extends RealmObject {
 //        this.bureauno = bureauno;
 //    }
 
-    public Long getStationno() {
-        return stationno;
+    public Long getStationNo() {
+        return stationNo;
     }
 
-    public void setStationno(Long stationno) {
-        this.stationno = stationno;
+    public void setStationNo(Long stationNo) {
+        this.stationNo = stationNo;
     }
 
-    public String getGprsno() {
-        return gprsno;
+    public String getGprsNo() {
+        return gprsNo;
     }
 
-    public void setGprsno(String gprsno) {
-        this.gprsno = gprsno;
+    public void setGprsNo(String gprsNo) {
+        this.gprsNo = gprsNo;
     }
 
-    public String getDevicename() {
-        return devicename;
+    public String getDeviceName() {
+        return deviceName;
     }
 
-    public void setDevicename(String devicename) {
-        this.devicename = devicename;
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
     public int getIndex() {
@@ -137,12 +134,12 @@ public class DeviceRealm extends RealmObject {
         this.location = location;
     }
 
-    public String getCreatedatetime() {
-        return createdatetime;
+    public String getCreateDatetime() {
+        return createDatetime;
     }
 
-    public void setCreatedatetime(String createdatetime) {
-        this.createdatetime = createdatetime;
+    public void setCreateDatetime(String createDatetime) {
+        this.createDatetime = createDatetime;
     }
 
     public String getLongitude() {
@@ -169,12 +166,12 @@ public class DeviceRealm extends RealmObject {
         this.comment = comment;
     }
 
-    public String getAdministratorname() {
-        return administratorname;
+    public String getAdministratorName() {
+        return administratorName;
     }
 
-    public void setAdministratorname(String administratorname) {
-        this.administratorname = administratorname;
+    public void setAdministratorName(String administratorName) {
+        this.administratorName = administratorName;
     }
 
 //    public String getTimeSpan() {
@@ -185,12 +182,12 @@ public class DeviceRealm extends RealmObject {
 //        this.timeSpan = timeSpan;
 //    }
 
-    public String getStopflag() {
-        return stopflag;
+    public String getStopFlag() {
+        return stopFlag;
     }
 
-    public void setStopflag(String stopflag) {
-        this.stopflag = stopflag;
+    public void setStopFlag(String stopFlag) {
+        this.stopFlag = stopFlag;
     }
 
 //    public long getVersion() {
@@ -201,19 +198,19 @@ public class DeviceRealm extends RealmObject {
 //        this.version = version;
 //    }
 
-    public long getServerversion() {
-        return serverversion;
+    public long getServerVersion() {
+        return serverVersion;
     }
 
-    public void setServerversion(long serverversion) {
-        this.serverversion = serverversion;
+    public void setServerVersion(long serverVersion) {
+        this.serverVersion = serverVersion;
     }
 
-    public long getClientversion() {
-        return clientversion;
+    public long getClientVersion() {
+        return clientVersion;
     }
 
-    public void setClientversion(long clientversion) {
-        this.clientversion = clientversion;
+    public void setClientVersion(long clientVersion) {
+        this.clientVersion = clientVersion;
     }
 }

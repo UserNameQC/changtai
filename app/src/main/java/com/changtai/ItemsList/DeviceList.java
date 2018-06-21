@@ -178,8 +178,8 @@ public class DeviceList extends Activity implements View.OnClickListener{
         LinkedList<String> list = new LinkedList<>();
         for (DeviceRealm deviceRealm : realms)
         {
-            list.add(deviceRealm.getDeviceno() + "");
-            Log.e("devicename", deviceRealm.getDevicename());
+            list.add(deviceRealm.getDeviceNo() + "");
+            Log.e("deviceName", deviceRealm.getDeviceName());
         }
         return list;
     }

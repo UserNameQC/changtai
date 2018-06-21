@@ -96,7 +96,7 @@
                         android:id="@+id/user_wstation_nm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="stationno"
+                        android:tag="stationNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -124,7 +124,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="@dimen/text_size_default"
-                        android:tag="deviceno"/>
+                        android:tag="deviceNo"/>
 
                 </LinearLayout>
                 <View
@@ -151,7 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="@dimen/text_size_default"
-                        android:tag="userno"/>
+                        android:tag="userNo"/>
 
                 </LinearLayout>
 
@@ -181,7 +181,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:textSize="16sp"
-                        android:tag="username"/>
+                        android:tag="userName"/>
 
                 </LinearLayout>
                 <View
@@ -290,7 +290,7 @@
                         android:id="@+id/user_build_time"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:tag="createdatetime"
+                        android:tag="createDatetime"
                         android:textSize="16sp"/>
 
                 </LinearLayout>
@@ -317,7 +317,7 @@
                         android:id="@+id/user_wp_price_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="sjid"
+                        android:tag="sjId"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -344,7 +344,7 @@
                         android:id="@+id/user_water_consumption"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="usedtotal"
+                        android:tag="usedTotal"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -371,7 +371,7 @@
                         android:id="@+id/user_purchase_water"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchasetotal"
+                        android:tag="purchaseTotal"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -398,7 +398,7 @@
                         android:id="@+id/user_purchase_water_year"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchasetotalthisyear"
+                        android:tag="purchaseTotalThisYear"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -452,7 +452,7 @@
                         android:id="@+id/user_alarm_water"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="alarmvalue"
+                        android:tag="alarmValue"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -479,7 +479,7 @@
                         android:id="@+id/user_idcard"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="credentialno"
+                        android:tag="credentialNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -506,7 +506,7 @@
                         android:id="@+id/user_first_max"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="limitsj1"
+                        android:tag="limitSj1"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -533,7 +533,7 @@
                         android:id="@+id/user_second_max"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="limitsj2"
+                        android:tag="limitSj2"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -587,7 +587,7 @@
                         android:id="@+id/user_operator"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="administratorname"
+                        android:tag="administratorName"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -616,7 +616,7 @@
                         android:id="@+id/user_last_water_time"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:tag="lastdatetime"
+                        android:tag="lastDatetime"
                         android:textSize="16sp"/>
 
                 </LinearLayout>
@@ -643,7 +643,7 @@
                         android:id="@+id/user_card_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="cardno"
+                        android:tag="cardNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -670,7 +670,7 @@
                         android:id="@+id/user_issued_times"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="creditcardtimes"
+                        android:tag="creditcardTimes"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -724,7 +724,7 @@
                         android:id="@+id/user_stop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="stopflag"
+                        android:tag="stopFlag"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>

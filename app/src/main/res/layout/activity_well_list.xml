@@ -93,7 +93,7 @@
                     <EditText
                         android:background="@null"
                         android:id="@+id/well_wstation_nm"
-                        android:tag="stationno"
+                        android:tag="stationNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="@dimen/text_size_default"/>
@@ -121,7 +121,7 @@
                     <EditText
                         android:background="@null"
                         android:id="@+id/well_list_nm"
-                        android:tag="deviceno"
+                        android:tag="deviceNo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:textSize="@dimen/text_size_default"/>
@@ -150,7 +150,7 @@
                         android:id="@+id/well_gprs_nm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="gprsno"
+                        android:tag="gprsNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -177,7 +177,7 @@
                         android:id="@+id/well_list_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="devicename"
+                        android:tag="deviceName"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -316,7 +316,7 @@
                         android:id="@+id/well_login_time"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:tag="createdatetime"
+                        android:tag="createDatetime"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -424,7 +424,7 @@
                         android:id="@+id/well_operator"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="administratorname"
+                        android:tag="administratorName"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -478,7 +478,7 @@
                         android:id="@+id/well_stop"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="stopflag"
+                        android:tag="stopFlag"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>

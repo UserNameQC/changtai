@@ -24,7 +24,7 @@ public class UserDao extends AbstractDao<User, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property BureauNo = new Property(1, Long.class, "BureauNo", false, "BUREAU_NO");
         public final static Property StationNo = new Property(2, Long.class, "StationNo", false, "STATION_NO");
         public final static Property DeviceNo = new Property(3, Long.class, "DeviceNo", false, "DEVICE_NO");
@@ -43,7 +43,7 @@ public class UserDao extends AbstractDao<User, Long> {
         public final static Property CredentialNo = new Property(16, String.class, "CredentialNo", false, "CREDENTIAL_NO");
         public final static Property LimitSj1 = new Property(17, String.class, "LimitSj1", false, "LIMIT_SJ1");
         public final static Property LimitSj2 = new Property(18, String.class, "LimitSj2", false, "LIMIT_SJ2");
-        public final static Property Comment = new Property(19, String.class, "Comment", false, "COMMENT");
+        public final static Property Comment = new Property(19, String.class, "comment", false, "COMMENT");
         public final static Property AdministratorName = new Property(20, String.class, "AdministratorName", false, "ADMINISTRATOR_NAME");
         public final static Property StopFlag = new Property(21, String.class, "StopFlag", false, "STOP_FLAG");
         public final static Property CardNo = new Property(22, String.class, "CardNo", false, "CARD_NO");
@@ -66,7 +66,7 @@ public class UserDao extends AbstractDao<User, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"BUREAU_NO\" INTEGER," + // 1: BureauNo
                 "\"STATION_NO\" INTEGER," + // 2: StationNo
                 "\"DEVICE_NO\" INTEGER," + // 3: DeviceNo
@@ -85,7 +85,7 @@ public class UserDao extends AbstractDao<User, Long> {
                 "\"CREDENTIAL_NO\" TEXT," + // 16: CredentialNo
                 "\"LIMIT_SJ1\" TEXT," + // 17: LimitSj1
                 "\"LIMIT_SJ2\" TEXT," + // 18: LimitSj2
-                "\"COMMENT\" TEXT," + // 19: Comment
+                "\"COMMENT\" TEXT," + // 19: comment
                 "\"ADMINISTRATOR_NAME\" TEXT," + // 20: AdministratorName
                 "\"STOP_FLAG\" TEXT," + // 21: StopFlag
                 "\"CARD_NO\" TEXT," + // 22: CardNo
@@ -389,7 +389,7 @@ public class UserDao extends AbstractDao<User, Long> {
     @Override
     public User readEntity(Cursor cursor, int offset) {
         User entity = new User( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // BureauNo
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // StationNo
             cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // DeviceNo
@@ -408,7 +408,7 @@ public class UserDao extends AbstractDao<User, Long> {
             cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // CredentialNo
             cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // LimitSj1
             cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // LimitSj2
-            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // Comment
+            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // comment
             cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20), // AdministratorName
             cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // StopFlag
             cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22), // CardNo

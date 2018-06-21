@@ -16,7 +16,7 @@ import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
 import com.changtai.activites.BaseActivity;
-import com.changtai.realm.WaterBeUsedDateRealm;
+
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -43,7 +43,6 @@ public class UserTakeWater extends Activity implements View.OnClickListener{
     public ArrayAdapter adapter;
     public ScrollView waterScroll;
     public String resultFromServer;
-    public WaterBeUsedDateRealm waterBeUsedDateRealm;
     public boolean etIsChangedTake = true;
 
     @Override
@@ -88,11 +87,11 @@ public class UserTakeWater extends Activity implements View.OnClickListener{
             public void onClick(View v) {
                 if (etIsChangedTake) {
                     if (!Entity.editTextIsNull(etMap)) {
-                        RealmUtils.createData(etMap, waterBeUsedDateRealm.getClass(), 0);
+//                        RealmUtils.createData(etMap, waterBeUsedDateRealm.getClass(), 0);
                         etListView.setVisibility(View.VISIBLE);
                         waterScroll.setVisibility(View.GONE);
                         RealmUtils.setEditEnable(etMap, false);
-                        RealmUtils.setTimeUpdateToServer(waterBeUsedDateRealm.getClass(), "02");
+//                        RealmUtils.setTimeUpdateToServer(waterBeUsedDateRealm.getClass(), "02");
                     } else {
                         Entity.toastMsg(UserTakeWater.this, "输入不能空");
                     }
@@ -113,23 +112,23 @@ public class UserTakeWater extends Activity implements View.OnClickListener{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 etListView.setVisibility(View.GONE);
                 waterScroll.setVisibility(View.VISIBLE);
-                waterBeUsedDateRealm = Entity.realm.where(WaterBeUsedDateRealm.class).findAll().get(position);
-                if (waterBeUsedDateRealm != null)
-                {
-                    waterBeUsedDateRealm = Entity.realm.copyFromRealm(waterBeUsedDateRealm);
-                    String json = new Gson().toJson(waterBeUsedDateRealm);
-                    try{
-                        JSONObject jsonObject = new JSONObject(json);
-                        for (int i = 0; i < etMap.size(); i++)
-                        {
-                            EditText et = etMap.get(i);
-                            et.setText(jsonObject.get(et.getTag().toString()).toString());
-                        }
-                    }catch (JSONException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
+//                waterBeUsedDateRealm = Entity.realm.where(WaterBeUsedDateRealm.class).findAll().get(position);
+//                if (waterBeUsedDateRealm != null)
+//                {
+//                    waterBeUsedDateRealm = Entity.realm.copyFromRealm(waterBeUsedDateRealm);
+//                    String json = new Gson().toJson(waterBeUsedDateRealm);
+//                    try{
+//                        JSONObject jsonObject = new JSONObject(json);
+//                        for (int i = 0; i < etMap.size(); i++)
+//                        {
+//                            EditText et = etMap.get(i);
+//                            et.setText(jsonObject.get(et.getTag().toString()).toString());
+//                        }
+//                    }catch (JSONException e)
+//                    {
+//                        e.printStackTrace();
+//                    }
+//                }
             }
         });
     }
@@ -162,10 +161,10 @@ public class UserTakeWater extends Activity implements View.OnClickListener{
             case R.id.utw_ok:
             if (!etIsChangedTake) {
                 if (!Entity.editTextIsNull(etMap)) {
-                    RealmUtils.createData(etMap, waterBeUsedDateRealm.getClass(), 0);
-                    etListView.setVisibility(View.VISIBLE);
-                    waterScroll.setVisibility(View.GONE);
-                    RealmUtils.setTimeUpdateToServer(waterBeUsedDateRealm.getClass(), "02");
+//                    RealmUtils.createData(etMap, waterBeUsedDateRealm.getClass(), 0);
+//                    etListView.setVisibility(View.VISIBLE);
+//                    waterScroll.setVisibility(View.GONE);
+//                    RealmUtils.setTimeUpdateToServer(waterBeUsedDateRealm.getClass(), "02");
                 } else {
                     Entity.toastMsg(this, "输入不能空");
                 }
@@ -178,13 +177,14 @@ public class UserTakeWater extends Activity implements View.OnClickListener{
     }
 
     public LinkedList<String> getDeviceNum(){
-        RealmResults<WaterBeUsedDateRealm> realmList = Entity.realm.where(WaterBeUsedDateRealm.class).findAll();
-        LinkedList<String> list = new LinkedList<>();
-        for (int i = 0; i < realmList.size(); i++)
-        {
-            list.add(realmList.get(i).getId());
-        }
-        return list;
+//        RealmResults<WaterBeUsedDateRealm> realmList = Entity.realm.where(WaterBeUsedDateRealm.class).findAll();
+//        LinkedList<String> list = new LinkedList<>();
+//        for (int i = 0; i < realmList.size(); i++)
+//        {
+//            list.add(realmList.get(i).getId());
+//        }
+//        return list;
+        return null;
     }
 
     @Override

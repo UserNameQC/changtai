@@ -72,7 +72,7 @@
                         android:id="@+id/bw_details_index"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:tag="purchaserecordid"
+                        android:tag="purchaseRecordId"
                         android:textSize="16sp"/>
 
                 </LinearLayout>
@@ -129,7 +129,7 @@
                         android:id="@+id/bw_wstation_nm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="stationno"
+                        android:tag="stationNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -156,7 +156,7 @@
                         android:id="@+id/bw_list_nm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="deviceno"
+                        android:tag="deviceNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -183,7 +183,7 @@
                         android:id="@+id/bw_nm"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="userno"
+                        android:tag="userNo"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -212,7 +212,7 @@
                         android:id="@+id/bw_name"
                         android:layout_width="match_parent"
                         android:layout_height="43dp"
-                        android:tag="username"
+                        android:tag="userName"
                         android:textSize="16sp"/>
 
                 </LinearLayout>
@@ -239,7 +239,7 @@
                         android:id="@+id/bw_this_buy_water"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchasetotalthistime"
+                        android:tag="purchaseTotalThisTime"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -266,7 +266,7 @@
                         android:id="@+id/bw_buy_water_amount"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchaseamountthistime"
+                        android:tag="purchaseaMountThisTime"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -296,7 +296,7 @@
                         android:id="@+id/bw_time"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:tag="purchasedatetimethistime"
+                        android:tag="purchaseDatetimeThisTime"
                         android:textSize="16sp"/>
 
                 </LinearLayout>
@@ -324,7 +324,7 @@
                         android:id="@+id/bw_year"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchaseyear"
+                        android:tag="purchaseYear"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -351,7 +351,7 @@
                         android:id="@+id/bw_tyear_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchasetotalthisyear"
+                        android:tag="purchaseTotalThisYear"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -378,7 +378,7 @@
                         android:id="@+id/bw_purchase_water"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="purchasetotal"
+                        android:tag="purchaseTotal"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -405,7 +405,7 @@
                         android:id="@+id/bw_first_wprice"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="pricesj1"
+                        android:tag="priceSj1"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -432,7 +432,7 @@
                         android:id="@+id/bw_first_water_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="totalsj1"
+                        android:tag="totalSj1"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -459,7 +459,7 @@
                         android:id="@+id/bw_first_water_fee"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="amountsj1"
+                        android:tag="amountSj1"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -486,7 +486,7 @@
                         android:id="@+id/bw_second_wprice"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="pricesj2"
+                        android:tag="priceSj2"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -513,7 +513,7 @@
                         android:id="@+id/bw_second_water_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="totalsj2"
+                        android:tag="totalSj2"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -540,7 +540,7 @@
                         android:id="@+id/bw_second_water_fee"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="amountsj2"
+                        android:tag="amountSj2"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -567,7 +567,7 @@
                         android:id="@+id/bw_third_wprice"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="pricesj3"
+                        android:tag="priceSj3"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -594,7 +594,7 @@
                         android:id="@+id/bw_third_water_num"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="totalsj3"
+                        android:tag="totalSj3"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -621,7 +621,7 @@
                         android:id="@+id/bw_third_water_fee"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="amountsj3"
+                        android:tag="amountSj3"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>
@@ -675,7 +675,7 @@
                         android:id="@+id/bw_operator"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:tag="administratorname"
+                        android:tag="administratorName"
                         android:textSize="@dimen/text_size_default"/>
 
                 </LinearLayout>

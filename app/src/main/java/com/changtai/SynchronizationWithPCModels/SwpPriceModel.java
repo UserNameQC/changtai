@@ -28,7 +28,7 @@ public class SwpPriceModel {
     //操作员
     public String AdministratorName;
 
-//    public Long Id;
+//    public Long id;
 //    public String BureauNo;
 //    public String TimeSpan;
 //    public String Version;

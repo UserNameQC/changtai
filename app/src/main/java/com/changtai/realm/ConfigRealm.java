@@ -12,43 +12,43 @@ import io.realm.annotations.Required;
 
 public class ConfigRealm extends RealmObject {
     @PrimaryKey
-    public Long Id;
+    public Long id;
     @Required
-    public String Name;
+    public String name;
     @Required
-    public String Value;
+    public String value;
     @Required
-    public String Comment;
+    public String comment;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getValue() {
-        return Value;
+        return value;
     }
 
     public void setValue(String value) {
-        Value = value;
+        this.value = value;
     }
 
     public String getComment() {
-        return Comment;
+        return comment;
     }
 
     public void setComment(String comment) {
-        Comment = comment;
+        this.comment = comment;
     }
 }

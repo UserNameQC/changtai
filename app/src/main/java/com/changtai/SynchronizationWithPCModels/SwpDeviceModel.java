@@ -45,7 +45,7 @@ public class SwpDeviceModel {
     //删除标志
     public boolean DelFlag;
 
-//    public Long Id;
+//    public Long id;
 //    public Long BureauNo;
 //    public String TimeSpan;
 //    public long Version;

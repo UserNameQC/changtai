@@ -18,7 +18,7 @@ import com.changtai.application.MyApplication;
 import com.changtai.realm.DeviceRealm;
 import com.changtai.realm.PurchaseRecordRealm;
 import com.changtai.realm.UserRealm;
-import com.changtai.realm.WaterBeUsedDateRealm;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,19 +58,19 @@ public class BaseActivity extends Activity {
 
                     realmUtils.saveInRealm(UserRealm.class, getMap(msg.obj.toString()));
                     break;
-                case 2:
-                    realmUtils.saveInRealm(WaterBeUsedDateRealm.class, getMap(msg.obj.toString()));
-                    break;
+//                case 2:
+//                    realmUtils.saveInRealm(WaterBeUsedDateRealm.class, getMap(msg.obj.toString()));
+//                    break;
                 case 1:
                     realmUtils.saveInRealm(PurchaseRecordRealm.class, getMap(msg.obj.toString()));
                     break;
-                case 11:
-                    if (dialog!=null)
-                    {
-                        dialog.setMessage("同步用户取水信息...");
-                    }
-                    realmUtils.getDataFromService(handler,"02", 1,WaterBeUsedDateRealm.class);
-                    break;
+//                case 11:
+//                    if (dialog!=null)
+//                    {
+//                        dialog.setMessage("同步用户取水信息...");
+//                    }
+//                    realmUtils.getDataFromService(handler,"02", 1,WaterBeUsedDateRealm.class);
+//                    break;
                 case 12:
                     if (dialog!=null)
                     {
