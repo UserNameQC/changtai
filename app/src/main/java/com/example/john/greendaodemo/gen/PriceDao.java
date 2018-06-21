@@ -24,7 +24,7 @@ public class PriceDao extends AbstractDao<Price, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property StationNo = new Property(1, long.class, "StationNo", false, "STATION_NO");
         public final static Property SjId = new Property(2, Long.class, "SjId", false, "SJ_ID");
         public final static Property BureauNo = new Property(3, String.class, "BureauNo", false, "BUREAU_NO");
@@ -50,7 +50,7 @@ public class PriceDao extends AbstractDao<Price, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PRICE\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
                 "\"STATION_NO\" INTEGER NOT NULL ," + // 1: StationNo
                 "\"SJ_ID\" INTEGER," + // 2: SjId
                 "\"BUREAU_NO\" TEXT," + // 3: BureauNo
@@ -189,7 +189,7 @@ public class PriceDao extends AbstractDao<Price, Long> {
     @Override
     public Price readEntity(Cursor cursor, int offset) {
         Price entity = new Price( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
             cursor.getLong(offset + 1), // StationNo
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // SjId
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // BureauNo

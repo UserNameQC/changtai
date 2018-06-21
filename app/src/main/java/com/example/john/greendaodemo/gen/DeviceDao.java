@@ -24,7 +24,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property BureauNo = new Property(1, Long.class, "BureauNo", false, "BUREAU_NO");
         public final static Property StationNo = new Property(2, Long.class, "StationNo", false, "STATION_NO");
         public final static Property DeviceNo = new Property(3, Long.class, "DeviceNo", false, "DEVICE_NO");
@@ -37,7 +37,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
         public final static Property CreateDateTime = new Property(10, String.class, "CreateDateTime", false, "CREATE_DATE_TIME");
         public final static Property Longitude = new Property(11, String.class, "Longitude", false, "LONGITUDE");
         public final static Property Latitude = new Property(12, String.class, "Latitude", false, "LATITUDE");
-        public final static Property Comment = new Property(13, String.class, "comment", false, "COMMENT");
+        public final static Property Comment = new Property(13, String.class, "Comment", false, "COMMENT");
         public final static Property AdministratorName = new Property(14, String.class, "AdministratorName", false, "ADMINISTRATOR_NAME");
         public final static Property TimeSpan = new Property(15, String.class, "TimeSpan", false, "TIME_SPAN");
         public final static Property StopFlag = new Property(16, String.class, "StopFlag", false, "STOP_FLAG");
@@ -57,7 +57,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"DEVICE\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
                 "\"BUREAU_NO\" INTEGER," + // 1: BureauNo
                 "\"STATION_NO\" INTEGER," + // 2: StationNo
                 "\"DEVICE_NO\" INTEGER," + // 3: DeviceNo
@@ -70,7 +70,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
                 "\"CREATE_DATE_TIME\" TEXT," + // 10: CreateDateTime
                 "\"LONGITUDE\" TEXT," + // 11: Longitude
                 "\"LATITUDE\" TEXT," + // 12: Latitude
-                "\"COMMENT\" TEXT," + // 13: comment
+                "\"COMMENT\" TEXT," + // 13: Comment
                 "\"ADMINISTRATOR_NAME\" TEXT," + // 14: AdministratorName
                 "\"TIME_SPAN\" TEXT," + // 15: TimeSpan
                 "\"STOP_FLAG\" TEXT," + // 16: StopFlag
@@ -265,7 +265,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
     @Override
     public Device readEntity(Cursor cursor, int offset) {
         Device entity = new Device( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // BureauNo
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // StationNo
             cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // DeviceNo
@@ -278,7 +278,7 @@ public class DeviceDao extends AbstractDao<Device, Long> {
             cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // CreateDateTime
             cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // Longitude
             cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // Latitude
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // comment
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // Comment
             cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // AdministratorName
             cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // TimeSpan
             cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // StopFlag

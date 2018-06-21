@@ -24,7 +24,7 @@ public class DBEntityDao extends AbstractDao<DBEntity, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property USER_NAME = new Property(1, String.class, "USER_NAME", false, "USER__NAME");
         public final static Property PASS_WORD = new Property(2, String.class, "PASS_WORD", false, "PASS__WORD");
         public final static Property ADDRESS_ID = new Property(3, int.class, "ADDRESS_ID", false, "ADDRESS__ID");
@@ -44,7 +44,7 @@ public class DBEntityDao extends AbstractDao<DBEntity, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"DBENTITY\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
                 "\"USER__NAME\" TEXT," + // 1: USER_NAME
                 "\"PASS__WORD\" TEXT," + // 2: PASS_WORD
                 "\"ADDRESS__ID\" INTEGER NOT NULL ," + // 3: ADDRESS_ID
@@ -109,7 +109,7 @@ public class DBEntityDao extends AbstractDao<DBEntity, Long> {
     @Override
     public DBEntity readEntity(Cursor cursor, int offset) {
         DBEntity entity = new DBEntity( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // USER_NAME
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // PASS_WORD
             cursor.getInt(offset + 3), // ADDRESS_ID

@@ -1,5 +1,7 @@
 package com.changtai.realm;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -12,9 +14,9 @@ import io.realm.annotations.Required;
 public class DeviceRealm extends RealmObject {
 
     @PrimaryKey
-    public Long deviceNo;//机井编号
+    public String deviceNo;//机井编号
     @Required
-    public Long stationNo;//售水站号
+    public String stationNo;//售水站号
     @Required
     public String gprsNo;//GPS模块编号
     @Required
@@ -27,7 +29,7 @@ public class DeviceRealm extends RealmObject {
     @Required
     public String location;//安装位置
     @Required
-    public String createDatetime;//登记时间
+    public Date createDatetime;//登记时间
     @Required
     public String longitude;//经度
     @Required
@@ -36,10 +38,11 @@ public class DeviceRealm extends RealmObject {
     public String comment;//备注
     @Required
     public String administratorName;//操作员
-    @Required
-    public String stopFlag;//停用标志
+
+    public boolean stopFlag;//停用标志
 
     public long serverVersion;//服务器端数据编号
+
     public long clientVersion;//pc端数据版本
 
     public boolean DelFlag;//删除标志
@@ -62,19 +65,19 @@ public class DeviceRealm extends RealmObject {
         DelFlag = delFlag;
     }
 
-    public Long getDeviceNo() {
+    public String getDeviceNo() {
         return deviceNo;
     }
 
-    public void setDeviceNo(Long deviceNo) {
+    public void setDeviceNo(String deviceNo) {
         this.deviceNo = deviceNo;
     }
 
-    public Long getStationNo() {
+    public String getStationNo() {
         return stationNo;
     }
 
-    public void setStationNo(Long stationNo) {
+    public void setStationNo(String stationNo) {
         this.stationNo = stationNo;
     }
 
@@ -126,11 +129,11 @@ public class DeviceRealm extends RealmObject {
         this.location = location;
     }
 
-    public String getCreateDatetime() {
+    public Date getCreateDatetime() {
         return createDatetime;
     }
 
-    public void setCreateDatetime(String createDatetime) {
+    public void setCreateDatetime(Date createDatetime) {
         this.createDatetime = createDatetime;
     }
 
@@ -166,11 +169,11 @@ public class DeviceRealm extends RealmObject {
         this.administratorName = administratorName;
     }
 
-    public String getStopFlag() {
+    public boolean getStopFlag() {
         return stopFlag;
     }
 
-    public void setStopFlag(String stopFlag) {
+    public void setStopFlag(boolean stopFlag) {
         this.stopFlag = stopFlag;
     }
 

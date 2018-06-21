@@ -24,10 +24,10 @@ public class ConfigDao extends AbstractDao<Config, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
-        public final static Property Value = new Property(2, String.class, "value", false, "VALUE");
-        public final static Property Comment = new Property(3, String.class, "comment", false, "COMMENT");
+        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
+        public final static Property Name = new Property(1, String.class, "Name", false, "NAME");
+        public final static Property Value = new Property(2, String.class, "Value", false, "VALUE");
+        public final static Property Comment = new Property(3, String.class, "Comment", false, "COMMENT");
     };
 
 
@@ -43,10 +43,10 @@ public class ConfigDao extends AbstractDao<Config, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"CONFIG\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
-                "\"NAME\" TEXT," + // 1: name
-                "\"VALUE\" TEXT," + // 2: value
-                "\"COMMENT\" TEXT);"); // 3: comment
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
+                "\"NAME\" TEXT," + // 1: Name
+                "\"VALUE\" TEXT," + // 2: Value
+                "\"COMMENT\" TEXT);"); // 3: Comment
     }
 
     /** Drops the underlying database table. */
@@ -113,10 +113,10 @@ public class ConfigDao extends AbstractDao<Config, Long> {
     @Override
     public Config readEntity(Cursor cursor, int offset) {
         Config entity = new Config( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // name
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // value
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // comment
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // Name
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // Value
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // Comment
         );
         return entity;
     }

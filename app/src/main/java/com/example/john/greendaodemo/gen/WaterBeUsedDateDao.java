@@ -24,7 +24,7 @@ public class WaterBeUsedDateDao extends AbstractDao<WaterBeUsedDate, Long> {
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property BureauNo = new Property(1, String.class, "BureauNo", false, "BUREAU_NO");
         public final static Property StationNo = new Property(2, String.class, "StationNo", false, "STATION_NO");
         public final static Property DeviceNo = new Property(3, String.class, "DeviceNo", false, "DEVICE_NO");
@@ -51,7 +51,7 @@ public class WaterBeUsedDateDao extends AbstractDao<WaterBeUsedDate, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"WATER_BE_USED_DATE\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
                 "\"BUREAU_NO\" TEXT," + // 1: BureauNo
                 "\"STATION_NO\" TEXT," + // 2: StationNo
                 "\"DEVICE_NO\" TEXT," + // 3: DeviceNo
@@ -209,7 +209,7 @@ public class WaterBeUsedDateDao extends AbstractDao<WaterBeUsedDate, Long> {
     @Override
     public WaterBeUsedDate readEntity(Cursor cursor, int offset) {
         WaterBeUsedDate entity = new WaterBeUsedDate( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // BureauNo
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // StationNo
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // DeviceNo
