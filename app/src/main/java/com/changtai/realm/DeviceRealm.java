@@ -21,6 +21,7 @@ public class DeviceRealm extends RealmObject {
     public String gprsNo;//GPS模块编号
     @Required
     public String deviceName;//机井名称
+
     public int index;//索引
     @Required
     public String linkman;//联系人
