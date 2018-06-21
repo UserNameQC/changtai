@@ -1,5 +1,7 @@
 package com.changtai.realm;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -18,17 +20,17 @@ public class UserRealm extends RealmObject {
     @Required
     public String deviceNo;
     @Required
-    public String index;
+    public Integer index;
     @Required
     public String userName;
     @Required
     public String phone;
     @Required
-    public String createDatetime;
+    public Date createDatetime;
     @Required
     public String linkman;
     @Required
-    public String sjId;
+    public Integer sjId;
     @Required
     public String usedTotal;
     @Required
@@ -49,14 +51,14 @@ public class UserRealm extends RealmObject {
     public String comment;
     @Required
     public String administratorName;
-    @Required
-    public String stopFlag;
+
+    public boolean stopFlag;
     @Required
     public String cardNo;
     @Required
-    public String creditcardTimes;
+    public Integer creditcardTimes;
     @Required
-    public String lastDatetime;
+    public Date lastDatetime;
     //删除标志
     public boolean DelFlag;//新增加
     public int key;
@@ -123,11 +125,11 @@ public class UserRealm extends RealmObject {
         this.userNo = userNo;
     }
 
-    public String getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
-    public void setIndex(String index) {
+    public void setIndex(Integer index) {
         this.index = index;
     }
 
@@ -147,11 +149,11 @@ public class UserRealm extends RealmObject {
         this.phone = phone;
     }
 
-    public String getCreateDatetime() {
+    public Date getCreateDatetime() {
         return createDatetime;
     }
 
-    public void setCreateDatetime(String createDatetime) {
+    public void setCreateDatetime(Date createDatetime) {
         this.createDatetime = createDatetime;
     }
 
@@ -163,11 +165,11 @@ public class UserRealm extends RealmObject {
         this.linkman = linkman;
     }
 
-    public String getSjId() {
+    public Integer getSjId() {
         return sjId;
     }
 
-    public void setSjId(String sjId) {
+    public void setSjId(Integer sjId) {
         this.sjId = sjId;
     }
 
@@ -251,11 +253,11 @@ public class UserRealm extends RealmObject {
         this.administratorName = administratorName;
     }
 
-    public String getStopFlag() {
+    public boolean getStopFlag() {
         return stopFlag;
     }
 
-    public void setStopFlag(String stopFlag) {
+    public void setStopFlag(boolean stopFlag) {
         this.stopFlag = stopFlag;
     }
 
@@ -267,19 +269,19 @@ public class UserRealm extends RealmObject {
         this.cardNo = cardNo;
     }
 
-    public String getCreditcardTimes() {
+    public Integer getCreditcardTimes() {
         return creditcardTimes;
     }
 
-    public void setCreditcardTimes(String creditcardTimes) {
+    public void setCreditcardTimes(Integer creditcardTimes) {
         this.creditcardTimes = creditcardTimes;
     }
 
-    public String getLastDatetime() {
+    public Date getLastDatetime() {
         return lastDatetime;
     }
 
-    public void setLastDatetime(String lastDatetime) {
+    public void setLastDatetime(Date lastDatetime) {
         this.lastDatetime = lastDatetime;
     }
 

@@ -28,7 +28,7 @@ public class PurchaseRecordRealm extends RealmObject {
     @Required
     public String purchaseDatetimeThisTime;
     @Required
-    public String purchaseYear;
+    public Integer purchaseYear;
     @Required
     public String purchaseTotalThisYear;
     @Required
@@ -159,11 +159,11 @@ public class PurchaseRecordRealm extends RealmObject {
         this.purchaseDatetimeThisTime = purchaseDatetimeThisTime;
     }
 
-    public String getPurchaseYear() {
+    public Integer getPurchaseYear() {
         return purchaseYear;
     }
 
-    public void setPurchaseYear(String purchaseYear) {
+    public void setPurchaseYear(Integer purchaseYear) {
         this.purchaseYear = purchaseYear;
     }
 

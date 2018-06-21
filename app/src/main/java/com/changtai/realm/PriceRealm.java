@@ -15,7 +15,7 @@ public class PriceRealm extends RealmObject {
     @PrimaryKey
     public Long sjId;
     @Required
-    public Long stationNo;
+    public String stationNo;
     @Required
     public String mc;
     @Required
@@ -47,11 +47,11 @@ public class PriceRealm extends RealmObject {
         this.clientVersion = clientVersion;
     }
 
-    public Long getStationNo() {
+    public String getStationNo() {
         return stationNo;
     }
 
-    public void setStationNo(Long stationNo) {
+    public void setStationNo(String stationNo) {
         this.stationNo = stationNo;
     }
 
