@@ -16,12 +16,6 @@ public class PriceRealm extends RealmObject {
     public Long sjId;
     @Required
     public Long stationNo;
-//    @Required
-//    public String BureauNo;
-//    @Required
-//    public String TimeSpan;
-//    @Required
-//    public String Version;
     @Required
     public String mc;
     @Required

@@ -99,14 +99,6 @@ public class UserRealm extends RealmObject {
         id = id;
     }
 
-//    public String getBureauNo() {
-//        return bureauno;
-//    }
-//
-//    public void setBureauNo(String bureauNo) {
-//        this.bureauno = bureauNo;
-//    }
-
     public String getStationNo() {
         return stationNo;
     }
@@ -283,14 +275,6 @@ public class UserRealm extends RealmObject {
         this.creditcardTimes = creditcardTimes;
     }
 
-//    public String getTimespan() {
-//        return timespan;
-//    }
-//
-//    public void setTimespan(String timespan) {
-//        this.timespan = timespan;
-//    }
-
     public String getLastDatetime() {
         return lastDatetime;
     }
@@ -299,11 +283,4 @@ public class UserRealm extends RealmObject {
         this.lastDatetime = lastDatetime;
     }
 
-//    public String getVersion() {
-//        return version;
-//    }
-//
-//    public void setVersion(String version) {
-//        this.version = version;
-//    }
 }

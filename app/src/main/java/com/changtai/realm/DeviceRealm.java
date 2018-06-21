@@ -70,14 +70,6 @@ public class DeviceRealm extends RealmObject {
         this.deviceNo = deviceNo;
     }
 
-//    public Long getBureauno() {
-//        return bureauno;
-//    }
-//
-//    public void setBureauno(Long bureauno) {
-//        this.bureauno = bureauno;
-//    }
-
     public Long getStationNo() {
         return stationNo;
     }
@@ -174,14 +166,6 @@ public class DeviceRealm extends RealmObject {
         this.administratorName = administratorName;
     }
 
-//    public String getTimeSpan() {
-//        return timeSpan;
-//    }
-//
-//    public void setTimeSpan(String timeSpan) {
-//        this.timeSpan = timeSpan;
-//    }
-
     public String getStopFlag() {
         return stopFlag;
     }
@@ -189,14 +173,6 @@ public class DeviceRealm extends RealmObject {
     public void setStopFlag(String stopFlag) {
         this.stopFlag = stopFlag;
     }
-
-//    public long getVersion() {
-//        return version;
-//    }
-//
-//    public void setVersion(long version) {
-//        this.version = version;
-//    }
 
     public long getServerVersion() {
         return serverVersion;

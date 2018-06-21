@@ -13,8 +13,6 @@ import io.realm.annotations.Required;
 
 public class LoginMesRealm extends RealmObject {
 
-//    @PrimaryKey
-//    public Long id;
     @PrimaryKey
     public Long loginId;
     @Required
@@ -23,14 +21,6 @@ public class LoginMesRealm extends RealmObject {
     public String UserPwd;
     @Required
     public String toke;
-
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        id = id;
-//    }
 
     public Long getLoginId() {
         return loginId;

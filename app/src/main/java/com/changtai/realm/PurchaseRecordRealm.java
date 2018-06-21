@@ -13,8 +13,6 @@ public class PurchaseRecordRealm extends RealmObject {
 
     @PrimaryKey
     public String purchaseRecordId;
-//    @Required
-//    public String bureauno;
     @Required
     public String deviceNo;
     @Required
@@ -58,10 +56,7 @@ public class PurchaseRecordRealm extends RealmObject {
     public String comment;
     @Required
     public String administratorName;
-//    @Required
-//    public String timespan;
-//    @Required
-//    public String version;
+
     public long serverVersion;
 
     public long clientVersion;
@@ -107,14 +102,6 @@ public class PurchaseRecordRealm extends RealmObject {
     public void setPurchaseRecordId(String purchaseRecordId) {
         this.purchaseRecordId = purchaseRecordId;
     }
-
-//    public String getBureauno() {
-//        return bureauno;
-//    }
-//
-//    public void setBureauno(String bureauno) {
-//        this.bureauno = bureauno;
-//    }
 
     public String getDeviceNo() {
         return deviceNo;
@@ -275,20 +262,4 @@ public class PurchaseRecordRealm extends RealmObject {
     public void setAdministratorName(String administratorName) {
         this.administratorName = administratorName;
     }
-
-//    public String getTimespan() {
-//        return timespan;
-//    }
-//
-//    public void setTimespan(String timespan) {
-//        this.timespan = timespan;
-//    }
-//
-//    public String getVersion() {
-//        return version;
-//    }
-//
-//    public void setVersion(String version) {
-//        this.version = version;
-//    }
 }
