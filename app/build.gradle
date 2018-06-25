@@ -4,7 +4,6 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.changtai"
@@ -15,7 +14,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi', 'x86'/*, 'armeabi-v7a', 'x86_64', 'arm64-v8a'*/
+            abiFilters 'armeabi'/*, 'x86'*/, 'armeabi-v7a'/*, 'x86_64', 'arm64-v8a'*/
         }
     }
 
@@ -57,14 +56,14 @@ dependencies {
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    })
     //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     implementation 'org.greenrobot:greendao:3.0.1'
     implementation 'org.greenrobot:greendao-generator:3.0.0'
     implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/RFIDScan.jar')
-    implementation 'com.squareup.okhttp3:okhttp:3.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation files('libs/gson-2.8.2.jar')
     implementation files('libs/fastjson-1.2.28.jar')
     implementation files('libs/BASE64Encoder.jar')
