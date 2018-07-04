@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
+import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
@@ -53,7 +54,7 @@ public class DownloadFromWebActivity extends Activity {
     }
 
     public void onClick(View view) {
-        new DownloadFromWebTask().execute("http://192.168.9.192/PdaDownLoadFromWeb","010101","100","200");
+        new DownloadFromWebTask().execute("http://192.168.1.104:8000/PdaDownLoadFromWeb","010101","100","200");
 
     }
 
@@ -99,9 +100,12 @@ public class DownloadFromWebActivity extends Activity {
                 String value = stringBuilder.toString();
 
                 DownLoadFromPcModel downLoadFromPcModel = gson.fromJson(value, DownLoadFromPcModel.class);
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
+                //SwpDeviceModel downLoadFromPcModel = gson.fromJson(value, SwpDeviceModel.class);
+//                Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
+//                Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
+//                Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
+//                Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
+//                Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
 
                 return value;
             } catch (Exception e) {
@@ -184,6 +188,7 @@ public class DownloadFromWebActivity extends Activity {
          * @throws Exception
          */
         private void DownLoadDeletePackage(String path,String packageId) throws Exception {
+            path = String.format("%s/DownLoadDeletePackage",path) ;
             Map<String, String> params = new HashMap<String, String>();
             params.put("packageId", packageId);
             getStringByWebMethodPost(path, params);
