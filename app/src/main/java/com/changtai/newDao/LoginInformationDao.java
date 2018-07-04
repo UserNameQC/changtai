@@ -1,18 +1,20 @@
-package com.changtai.db;
+package com.changtai.newDao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Property;
 
-/**
- * Created by Qiao on 2018/1/28.
- */
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
+import org.greenrobot.greendao.annotation.Generated;
 
+/**
+ * Created by qjcjob on 2018/7/4.
+ */
 @Entity
-public class LoginUser {
+public class LoginInformationDao {
     @Id
-    public Long Id;
+    public int Id;
     @Property
     public Long loginId;
     @Property
@@ -45,22 +47,22 @@ public class LoginUser {
     public void setLoginId(Long loginId) {
         this.loginId = loginId;
     }
-    public Long getId() {
+    public int getId() {
         return this.Id;
     }
-    public void setId(Long Id) {
+    public void setId(int Id) {
         this.Id = Id;
     }
-    @Generated(hash = 304148405)
-    public LoginUser(Long Id, Long loginId, String UserName, String UserPwd,
-            String toke) {
+    @Generated(hash = 658609937)
+    public LoginInformationDao(int Id, Long loginId, String UserName,
+            String UserPwd, String toke) {
         this.Id = Id;
         this.loginId = loginId;
         this.UserName = UserName;
         this.UserPwd = UserPwd;
         this.toke = toke;
     }
-    @Generated(hash = 1159929338)
-    public LoginUser() {
+    @Generated(hash = 1650611060)
+    public LoginInformationDao() {
     }
 }

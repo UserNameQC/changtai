@@ -13,9 +13,7 @@ import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.SaveDataToFile;
 import com.changtai.application.MyApplication;
-import com.changtai.db.Config;
 import com.changtai.realm.ConfigRealm;
-import com.example.john.greendaodemo.gen.ConfigDao;
 
 import java.util.List;
 

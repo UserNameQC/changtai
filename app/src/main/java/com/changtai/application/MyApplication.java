@@ -39,7 +39,7 @@ public class MyApplication extends Application {
        // SDKInitializer.initialize(getApplicationContext());
         myApplication = this;
         context = getApplicationContext();
-        //setDatabase();
+        setDatabase();
         initView();
         Realm.init(myApplication);
         //Entity.realm = Realm.getDefaultInstance();
@@ -87,11 +87,6 @@ public class MyApplication extends Application {
          */
         Entity.paramUrl(Entity.mainUrl);
         Entity.spres = context.getSharedPreferences("MyShare", MODE_PRIVATE);
-//        Entity.isFirst = Entity.spres.getBoolean(Entity.isFirstUseApp, true);
-//        if (Entity.isFirst)
-//        {
-//            Entity.spres.edit().putBoolean(Entity.isFirstUseApp, false).apply();
-//        }
     }
 
     /**

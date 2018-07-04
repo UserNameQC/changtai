@@ -1,15 +1,18 @@
-package com.changtai.db;
+package com.changtai.newDao;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Property;
 
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
+import org.greenrobot.greendao.annotation.Generated;
+
 /**
- * Created by Qiao on 2018/1/28.
+ * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class DBEntity {
+public class DBEntityDao {
     @Id
     public Long Id;
     @Property
@@ -50,8 +53,8 @@ public class DBEntity {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 394280219)
-    public DBEntity(Long Id, String USER_NAME, String PASS_WORD, int ADDRESS_ID,
+    @Generated(hash = 1369926054)
+    public DBEntityDao(Long Id, String USER_NAME, String PASS_WORD, int ADDRESS_ID,
             int DEFAULT_NUM) {
         this.Id = Id;
         this.USER_NAME = USER_NAME;
@@ -59,7 +62,7 @@ public class DBEntity {
         this.ADDRESS_ID = ADDRESS_ID;
         this.DEFAULT_NUM = DEFAULT_NUM;
     }
-    @Generated(hash = 52451580)
-    public DBEntity() {
+    @Generated(hash = 846738141)
+    public DBEntityDao() {
     }
 }

@@ -22,11 +22,9 @@ import com.changtai.Utils.AESUtil;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.HttpBaseTest;
 import com.changtai.application.MyApplication;
-import com.changtai.db.Config;
 import com.changtai.realm.ConfigRealm;
 import com.changtai.realm.LoginMesRealm;
 import com.changtai.realm.LoginRealm;
-import com.example.john.greendaodemo.gen.ConfigDao;
 
 import org.json.JSONArray;
 import org.json.JSONException;

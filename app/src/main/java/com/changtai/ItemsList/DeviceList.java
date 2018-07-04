@@ -16,8 +16,12 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
+import com.changtai.application.MyApplication;
+import com.changtai.newDao.ConfigDao;
 import com.changtai.realm.DeviceRealm;
+import com.example.john.greendaodemo.gen.ConfigDaoDao;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,16 +50,18 @@ public class DeviceList extends Activity implements View.OnClickListener{
     public String resultFromServer = "";
     public boolean etIsChanged = true;
     public RealmUtils<DeviceRealm> realmUtils = new RealmUtils<>();
+    public MyApplication application;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_well_list);
         initView();
-       // this.registerReceiver(receiver, intentFilter);
-        //realmUtils.getDataFromService("04", 1, DeviceRealm.class, Entity.Well_list);
     }
 
     public void initView() {
+
+        application = (MyApplication) getApplication();
+
         et1 = (EditText) findViewById(R.id.well_wcb_nm);
         etWellList.add(et1);
         et2 = (EditText) findViewById(R.id.well_wstation_nm);
@@ -195,5 +201,22 @@ public class DeviceList extends Activity implements View.OnClickListener{
         else {
             super.onBackPressed();
         }
+    }
+
+    /**
+     * 示例
+     * @param json json数据
+     */
+    public void test(String json){
+
+        ConfigDaoDao configDao = application.mDaoSession.getConfigDaoDao();
+        Gson gson = new Gson();
+        ConfigDao config = gson.fromJson(json, new TypeToken<ConfigDao>(){}.getType());
+        configDao.insert(config);//插入
+        configDao.delete(config);//删
+        configDao.deleteAll();//删除全部
+        config.setComment("00000");
+        configDao.update(config);//改
+        configDao.load(config.getId());//根据id查询
     }
 }
