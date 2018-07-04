@@ -23,7 +23,7 @@ import com.changtai.fragment.FragmentMine;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private RadioButton home, mine;
-    private TextView bt_rfid, bt_map, bt_well, item_user, item_wPrice, item_operator, item_tWater, item_bWater;
+    private TextView bt_rfid, bt_map, bt_well, item_user, item_wPrice, item_operator, item_admin, item_bWater;
     private TextView t_username, tt_rePword;
     private LinearLayout sync_ll;
     @Override
@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         item_user = (TextView) layoutMain.findViewById(R.id.item_user);
         item_wPrice = (TextView) layoutMain.findViewById(R.id.item_water_price);
         item_operator = (TextView) layoutMain.findViewById(R.id.item_operator);
-        item_tWater = (TextView) layoutMain.findViewById(R.id.item_user_take_water);
+        item_admin = (TextView) layoutMain.findViewById(R.id.item_admin);
         item_bWater = (TextView) layoutMain.findViewById(R.id.item_user_buy_water);
 
         t_username = (TextView) layoutMine.findViewById(R.id.index_my_username);
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         item_user.setOnClickListener(this);
         item_wPrice.setOnClickListener(this);
         item_operator.setOnClickListener(this);
-        item_tWater.setOnClickListener(this);
+        item_admin.setOnClickListener(this);
         item_bWater.setOnClickListener(this);
 
         t_username.setOnClickListener(this);
@@ -119,8 +119,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.item_operator:
                 startActivity(new Intent(MainActivity.this, MainUser.class));
                 break;
-            case R.id.item_user_take_water:
-                startActivity(new Intent(MainActivity.this, UserTakeWater.class));
+            case R.id.item_admin:
+                startActivity(new Intent(MainActivity.this, MainUser.class));
                 break;
             case R.id.item_user_buy_water:
                 startActivity(new Intent(MainActivity.this, UserBuyWater.class));

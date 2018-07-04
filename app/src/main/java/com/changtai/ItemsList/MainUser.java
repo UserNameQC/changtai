@@ -1,6 +1,7 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.SaveDataToFile;
+import com.changtai.databinding.ActivityMainUserBinding;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,16 +37,18 @@ public class MainUser extends Activity implements View.OnClickListener{
     private Map<String, String> etMap = new HashMap<>();
     public Map<Integer, EditText> editMap = new HashMap<>();
     public String[] key = {AdministratorId, SysAdmin,Name,Accounts,PassWord,ReWritePassWord,Phone,RoleId};
+    public ActivityMainUserBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_user);
+        //setContentView(R.layout.activity_main_user);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main_user_lv);
         initView();
     }
 
     public void initView()
     {
-        etMain = (EditText) findViewById(R.id.mu_logo);
+        //etMain = (EditText) findViewById(R.id.mu_logo);
         etIsMain = (EditText) findViewById(R.id.mu_system_admin);
         etContact = (EditText) findViewById(R.id.mu_contact);//联系人
         etUserName = (EditText) findViewById(R.id.mu_user_name);
