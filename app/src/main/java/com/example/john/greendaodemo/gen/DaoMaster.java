@@ -21,26 +21,26 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        ConfigDao.createTable(db, ifNotExists);
-        DBEntityDao.createTable(db, ifNotExists);
-        DeviceDao.createTable(db, ifNotExists);
-        LoginUserDao.createTable(db, ifNotExists);
-        PriceDao.createTable(db, ifNotExists);
-        PurchaseRecordDao.createTable(db, ifNotExists);
-        UserDao.createTable(db, ifNotExists);
-        WaterBeUsedDateDao.createTable(db, ifNotExists);
+        ConfigDaoDao.createTable(db, ifNotExists);
+        DBEntityDaoDao.createTable(db, ifNotExists);
+        DeviceDaoDao.createTable(db, ifNotExists);
+        LoginDaoDao.createTable(db, ifNotExists);
+        LoginInformationDaoDao.createTable(db, ifNotExists);
+        PriceDaoDao.createTable(db, ifNotExists);
+        PurchaseRecordDaoDao.createTable(db, ifNotExists);
+        UserDaoDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        ConfigDao.dropTable(db, ifExists);
-        DBEntityDao.dropTable(db, ifExists);
-        DeviceDao.dropTable(db, ifExists);
-        LoginUserDao.dropTable(db, ifExists);
-        PriceDao.dropTable(db, ifExists);
-        PurchaseRecordDao.dropTable(db, ifExists);
-        UserDao.dropTable(db, ifExists);
-        WaterBeUsedDateDao.dropTable(db, ifExists);
+        ConfigDaoDao.dropTable(db, ifExists);
+        DBEntityDaoDao.dropTable(db, ifExists);
+        DeviceDaoDao.dropTable(db, ifExists);
+        LoginDaoDao.dropTable(db, ifExists);
+        LoginInformationDaoDao.dropTable(db, ifExists);
+        PriceDaoDao.dropTable(db, ifExists);
+        PurchaseRecordDaoDao.dropTable(db, ifExists);
+        UserDaoDao.dropTable(db, ifExists);
     }
 
     /**
@@ -59,14 +59,14 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(ConfigDao.class);
-        registerDaoClass(DBEntityDao.class);
-        registerDaoClass(DeviceDao.class);
-        registerDaoClass(LoginUserDao.class);
-        registerDaoClass(PriceDao.class);
-        registerDaoClass(PurchaseRecordDao.class);
-        registerDaoClass(UserDao.class);
-        registerDaoClass(WaterBeUsedDateDao.class);
+        registerDaoClass(ConfigDaoDao.class);
+        registerDaoClass(DBEntityDaoDao.class);
+        registerDaoClass(DeviceDaoDao.class);
+        registerDaoClass(LoginDaoDao.class);
+        registerDaoClass(LoginInformationDaoDao.class);
+        registerDaoClass(PriceDaoDao.class);
+        registerDaoClass(PurchaseRecordDaoDao.class);
+        registerDaoClass(UserDaoDao.class);
     }
 
     public DaoSession newSession() {
