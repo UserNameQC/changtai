@@ -53,7 +53,7 @@ public class DownloadFromWebActivity extends Activity {
     }
 
     public void onClick(View view) {
-        new DownloadFromWebTask().execute("http://192.168.9.192:4000/PdaDownLoadFromWeb","010101","100","200");
+        new DownloadFromWebTask().execute("http://192.168.9.192/PdaDownLoadFromWeb","010101","100","200");
 
     }
 
@@ -84,9 +84,9 @@ public class DownloadFromWebActivity extends Activity {
             Integer endVersion = Integer.parseInt(strings[3]);
 
             StringBuilder stringBuilder= new StringBuilder();
-            try {
-                final DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackageOut = downLoadCreatePackage(path, stationNo, startVersion, endVersion);
 
+            try {
+                DownLoadCreatePackageOut downLoadCreatePackageOut = downLoadCreatePackage(path, stationNo, startVersion, endVersion);
                 for (int i=0;i<downLoadCreatePackageOut.count;i++){
                     String s = DownLoadPackageValue(path, downLoadCreatePackageOut.packageId, i);
                     stringBuilder.append(s);
@@ -104,13 +104,11 @@ public class DownloadFromWebActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
 
                 return value;
-                //转换成实体对像然后保存
-
             } catch (Exception e) {
-                Toast.makeText(DownloadFromWebActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
-                //e.printStackTrace();
+                e.printStackTrace();
             }
             return null;
+            //转换成实体对像然后保存
         }
 
         //线程执行进度，该方法在主线程执行
@@ -130,7 +128,7 @@ public class DownloadFromWebActivity extends Activity {
             Toast.makeText(DownloadFromWebActivity.this,"结束",Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
             //
-            new UploadToWebTask().execute("http://192.168.9.192:4000/PdaUploadToWeb");
+            //new UploadToWebTask().execute("http://192.168.9.192/PdaUploadToWeb");
         }
 
         class DownLoadCreatePackageOut{
@@ -152,8 +150,12 @@ public class DownloadFromWebActivity extends Activity {
          * @throws Exception
          */
         private DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackage(String path, String stationNo, long startVersion, long endVersion) throws Exception {
-            path = String.format("%s/DownLoadCreatePackage/%s/%d/%d",path,stationNo,startVersion,endVersion) ;
-            String value = getStringByWebMethodGet(path);
+            path = String.format("%s/DownLoadCreatePackage", path);
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("stationNo", stationNo);
+            params.put("startVersion", String.format("%d", startVersion));
+            params.put("endVersion", String.format("%d", endVersion));
+            String value = getStringByWebMethodPost(path, params);
             DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackageOut = gson.fromJson(value, DownloadFromWebTask.DownLoadCreatePackageOut.class);
             return downLoadCreatePackageOut;
         }
@@ -167,8 +169,11 @@ public class DownloadFromWebActivity extends Activity {
          * @throws Exception
          */
         private String DownLoadPackageValue(String path,String packageId, int index) throws Exception {
-            path = String.format("%s/DownLoadPackageValue/%s/%d",path,packageId,index) ;
-            String value = getStringByWebMethodGet(path);
+            path = String.format("%s/DownLoadPackageValue",path) ;
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("packageId", String.format("%s", packageId));
+            params.put("index", String.format("%d", index));
+            String value = getStringByWebMethodPost(path, params);
             return value;
         }
 
@@ -179,8 +184,9 @@ public class DownloadFromWebActivity extends Activity {
          * @throws Exception
          */
         private void DownLoadDeletePackage(String path,String packageId) throws Exception {
-            path = String.format("%s/DownLoadDeletePackage/%s",path,packageId) ;
-            getStringByWebMethodGet(path);
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("packageId", packageId);
+            getStringByWebMethodPost(path, params);
         }
 
 
