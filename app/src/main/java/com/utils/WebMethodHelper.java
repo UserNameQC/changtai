@@ -35,16 +35,6 @@ public class WebMethodHelper {
             //得到响应代码
             int responseCode = connection.getResponseCode();
             if (responseCode == 200) {
-//                InputStream inputStream = connection.getInputStream();
-//                byte[] bytes = new byte[10000];
-//                int length = inputStream.read(bytes);
-//                inputStream.close();
-//                if (length == -1) {
-//                    return "";
-//                }
-//                String s = new String(bytes, 0, length);
-//                return s;
-
                 BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
                 String line;
                 StringBuilder sb = new StringBuilder();
