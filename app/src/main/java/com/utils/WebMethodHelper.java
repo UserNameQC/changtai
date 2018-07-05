@@ -1,7 +1,9 @@
 package com.utils;
 
+import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
@@ -16,6 +18,8 @@ public class WebMethodHelper {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         try {
             connection.setRequestMethod("POST");
+            connection.setRequestProperty("Accept-Charset", "utf-8");
+            connection.setRequestProperty("contentType", "utf-8");
             connection.setConnectTimeout(5000);
             connection.setDoInput(true);
             connection.setDoOutput(true);
@@ -31,15 +35,24 @@ public class WebMethodHelper {
             //得到响应代码
             int responseCode = connection.getResponseCode();
             if (responseCode == 200) {
-                InputStream inputStream = connection.getInputStream();
-                byte[] bytes = new byte[10000];
-                int length = inputStream.read(bytes);
-                inputStream.close();
-                if (length == -1) {
-                    return "";
+//                InputStream inputStream = connection.getInputStream();
+//                byte[] bytes = new byte[10000];
+//                int length = inputStream.read(bytes);
+//                inputStream.close();
+//                if (length == -1) {
+//                    return "";
+//                }
+//                String s = new String(bytes, 0, length);
+//                return s;
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line;
+                StringBuilder sb = new StringBuilder();
+                while ((line = reader.readLine()) != null)
+                {
+                    sb.append(line);
                 }
-                String s = new String(bytes, 0, length);
-                return s;
+                return sb.toString();
             }
             throw new Exception(String.format("%s,服务器返回错误代码",path));
         } finally {

@@ -61,14 +61,16 @@
         <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity">
         </activity>
         <activity android:name=".activites.SynchronizationMain" >
+
+        </activity>
+        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity"></activity>
     </application>
 
 </manifest>

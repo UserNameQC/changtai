@@ -54,7 +54,7 @@ public class DownloadFromWebActivity extends Activity {
     }
 
     public void onClick(View view) {
-        new DownloadFromWebTask().execute("http://192.168.1.104:8000/PdaDownLoadFromWeb","010101","100","200");
+        new DownloadFromWebTask().execute("http://192.168.9.192/PdaDownLoadFromWeb","010101","100","200");
 
     }
 
@@ -90,7 +90,13 @@ public class DownloadFromWebActivity extends Activity {
                 DownLoadCreatePackageOut downLoadCreatePackageOut = downLoadCreatePackage(path, stationNo, startVersion, endVersion);
                 for (int i=0;i<downLoadCreatePackageOut.count;i++){
                     String s = DownLoadPackageValue(path, downLoadCreatePackageOut.packageId, i);
-                    stringBuilder.append(s);
+                    Log.i("TEST",String.format("s的长度是%d",s.length()));
+                    Log.i("TEST",String.format("s是%s",s));
+                    String s2 = gson.fromJson(s,String.class);
+                    stringBuilder.append(s2);
+
+                    Log.i("TEST",String.format("s2的长度是%d",s2.length()));
+                    Log.i("TEST",String.format("s2是%s",s2));
                     int progress = i * 100 /downLoadCreatePackageOut.count;
                     publishProgress(i,downLoadCreatePackageOut.count);
                 }
@@ -99,13 +105,17 @@ public class DownloadFromWebActivity extends Activity {
 
                 String value = stringBuilder.toString();
 
+                if(downLoadCreatePackageOut.jsonLength!=value.length()){
+                    //throw new Exception("接收的数据长度与服务器不一致");
+                }
+
                 DownLoadFromPcModel downLoadFromPcModel = gson.fromJson(value, DownLoadFromPcModel.class);
                 //SwpDeviceModel downLoadFromPcModel = gson.fromJson(value, SwpDeviceModel.class);
-//                Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
-//                Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
-//                Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
-//                Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
-//                Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
+                Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
 
                 return value;
             } catch (Exception e) {
@@ -142,6 +152,9 @@ public class DownloadFromWebActivity extends Activity {
             //包长度
             @SerializedName("Count")
             private Integer count;
+            //所有了包拼接后字符串的长度
+            @SerializedName("JsonLength")
+            private long jsonLength;
         }
 
         /**
