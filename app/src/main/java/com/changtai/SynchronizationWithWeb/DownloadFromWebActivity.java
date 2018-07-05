@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,7 +55,7 @@ public class DownloadFromWebActivity extends Activity {
     }
 
     public void onClick(View view) {
-        new DownloadFromWebTask().execute("http://192.168.9.192/PdaDownLoadFromWeb","010101","100","200");
+        new DownloadFromWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaDownLoadFromWeb","010101","100","200");
 
     }
 
@@ -72,6 +73,8 @@ public class DownloadFromWebActivity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog.setMessage("正在下载数据，请稍后......");
+            progressDialog.setProgress(0);
+            progressDialog.setMax(100);
             //在onPreExecute()中我们让ProgressDialog显示出来
             progressDialog.show();
         }
@@ -97,8 +100,7 @@ public class DownloadFromWebActivity extends Activity {
 
                     Log.i("TEST",String.format("s2的长度是%d",s2.length()));
                     Log.i("TEST",String.format("s2是%s",s2));
-                    int progress = i * 100 /downLoadCreatePackageOut.count;
-                    publishProgress(i,downLoadCreatePackageOut.count);
+                    publishProgress(i+1,downLoadCreatePackageOut.count);
                 }
 
                 DownLoadDeletePackage(path,downLoadCreatePackageOut.packageId);
@@ -116,6 +118,11 @@ public class DownloadFromWebActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
+                for(SwpDeviceModel model:downLoadFromPcModel.Device){
+                    SwpDeviceModel model1= MappingObject(model,SwpDeviceModel.class);
+                    SwpDeviceModel model2= MappingObject(model,SwpDeviceModel.class);
+
+                }
 
                 return value;
             } catch (Exception e) {
@@ -123,6 +130,33 @@ public class DownloadFromWebActivity extends Activity {
             }
             return null;
             //转换成实体对像然后保存
+        }
+
+        /**
+         * 把一个对像的值复制到另一个对象
+         * @param object 原对象
+         * @param classOfT 生成的对象类名
+         * @param <T> 生成的对象类名
+         * @return
+         * @throws IllegalAccessException
+         * @throws InstantiationException
+         */
+
+        private <T> T MappingObject(Object object, Class<T> classOfT) throws IllegalAccessException, InstantiationException {
+            T newObject = classOfT.newInstance();
+            Field[] fields = object.getClass().getDeclaredFields();
+            for(Field field : fields){
+                String fieldName = field.getName();
+                Field[] newFields = classOfT.getDeclaredFields();
+                for(Field newField :newFields){
+                    String newFieldName = newField.getName();
+                    if(fieldName.toLowerCase().equals(newFieldName.toLowerCase())){
+                        newField.set(newObject,field.get(object));
+                        break;
+                    }
+                }
+            }
+            return newObject;
         }
 
         //线程执行进度，该方法在主线程执行
