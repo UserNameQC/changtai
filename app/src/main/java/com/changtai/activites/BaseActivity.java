@@ -108,7 +108,7 @@ public class BaseActivity extends Activity {
         //RealmUtils realmUtils = new RealmUtils();
         boolean isFirst = MyApplication.myApplication.getIsFirst();
         if (isFirst) {
-            startSyncData(true);
+            //startSyncData(true);
             Entity.spres.edit().putBoolean(Entity.isFirstUseApp, false).apply();
             syncDataTime(10, 10);
         }

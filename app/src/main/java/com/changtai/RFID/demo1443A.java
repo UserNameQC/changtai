@@ -51,6 +51,7 @@ public class demo1443A extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rfid_1443a);
 		rfid.OpenComm();
+		initView();
 	}
 
 	public void initView(){

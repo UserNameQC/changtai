@@ -11,6 +11,7 @@ import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
 import com.example.john.greendaodemo.gen.DaoMaster;
 import com.example.john.greendaodemo.gen.DaoSession;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
@@ -46,6 +47,7 @@ public class MyApplication extends Application {
         initRealm();
         getTime();
         getIsFirst();
+        CrashReport.initCrashReport(getApplicationContext(), "692d620efe", true);
     }
 
     /**
