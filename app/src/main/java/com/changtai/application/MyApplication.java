@@ -2,18 +2,14 @@ package com.changtai.application;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.baidu.mapapi.SDKInitializer;
 import com.changtai.Utils.Entity;
-import com.changtai.Utils.RealmUtils;
 import com.example.john.greendaodemo.gen.DaoMaster;
 import com.example.john.greendaodemo.gen.DaoSession;
 import com.tencent.bugly.crashreport.CrashReport;
 
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

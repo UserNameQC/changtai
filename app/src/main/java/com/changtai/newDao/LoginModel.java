@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class LoginDao {
+public class LoginModel {
 
     //标识
     @Id
@@ -59,8 +59,8 @@ public class LoginDao {
     public void setId(Long id) {
         this.id = id;
     }
-    @Generated(hash = 1000235547)
-    public LoginDao(Long id, String loginName, String userName, String password,
+    @Generated(hash = 546688879)
+    public LoginModel(Long id, String loginName, String userName, String password,
             String qxString) {
         this.id = id;
         this.loginName = loginName;
@@ -68,7 +68,7 @@ public class LoginDao {
         this.password = password;
         this.qxString = qxString;
     }
-    @Generated(hash = 1277520868)
-    public LoginDao() {
+    @Generated(hash = 333234990)
+    public LoginModel() {
     }
 }

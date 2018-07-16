@@ -11,7 +11,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class PurchaseRecordDao {
+public class PurchaseRecordModel {
     @Id
     public Long Id;
     @Property
@@ -221,8 +221,8 @@ public class PurchaseRecordDao {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 1807107313)
-    public PurchaseRecordDao(Long Id, String purchaseRecordId, String deviceNo,
+    @Generated(hash = 1179667208)
+    public PurchaseRecordModel(Long Id, String purchaseRecordId, String deviceNo,
             String stationNo, String userName, String userNo,
             String purchaseTotalThisTime, String purchaseaMountThisTime,
             String purchaseDatetimeThisTime, Integer purchaseYear,
@@ -258,7 +258,7 @@ public class PurchaseRecordDao {
         this.clientVersion = clientVersion;
         this.key = key;
     }
-    @Generated(hash = 326374686)
-    public PurchaseRecordDao() {
+    @Generated(hash = 88488600)
+    public PurchaseRecordModel() {
     }
 }

@@ -10,7 +10,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class PriceDao {
+public class PriceModel {
     @Id
     public Long Id;
     @Property
@@ -93,8 +93,8 @@ public class PriceDao {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 1835387055)
-    public PriceDao(Long Id, Long sjId, String stationNo, String mc, String sj1,
+    @Generated(hash = 446222481)
+    public PriceModel(Long Id, Long sjId, String stationNo, String mc, String sj1,
             String sj2, String sj3, String administratorName, Long serverVersion,
             long clientVersion) {
         this.Id = Id;
@@ -108,7 +108,7 @@ public class PriceDao {
         this.serverVersion = serverVersion;
         this.clientVersion = clientVersion;
     }
-    @Generated(hash = 943336286)
-    public PriceDao() {
+    @Generated(hash = 1120898458)
+    public PriceModel() {
     }
 }

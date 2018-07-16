@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class UserDao {
+public class UserModel {
     @Id
     public Long Id;
     @Property
@@ -238,8 +238,8 @@ public class UserDao {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 1107060793)
-    public UserDao(Long Id, String userNo, String stationNo, String deviceNo,
+    @Generated(hash = 1559398575)
+    public UserModel(Long Id, String userNo, String stationNo, String deviceNo,
             Integer index, String userName, String phone, Date createDatetime,
             String linkman, Integer sjId, String usedTotal, String purchaseTotal,
             String purchaseTotalThisYear, String overdraft, String alarmValue,
@@ -276,7 +276,7 @@ public class UserDao {
         this.serverVersion = serverVersion;
         this.clientVersion = clientVersion;
     }
-    @Generated(hash = 917059161)
-    public UserDao() {
+    @Generated(hash = 782181818)
+    public UserModel() {
     }
 }

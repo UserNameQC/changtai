@@ -13,7 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class DeviceDao {
+public class DeviceModel {
     @Id
     public Long DeviceId;
     @Property
@@ -166,8 +166,8 @@ public class DeviceDao {
     public void setDeviceId(Long DeviceId) {
         this.DeviceId = DeviceId;
     }
-    @Generated(hash = 373801541)
-    public DeviceDao(Long DeviceId, String deviceNo, String stationNo,
+    @Generated(hash = 684830812)
+    public DeviceModel(Long DeviceId, String deviceNo, String stationNo,
             String gprsNo, String deviceName, int index, String linkman,
             String phone, String location, Date createDatetime, String longitude,
             String latitude, String comment, String administratorName,
@@ -193,7 +193,7 @@ public class DeviceDao {
         this.DelFlag = DelFlag;
         this.key = key;
     }
-    @Generated(hash = 1468206029)
-    public DeviceDao() {
+    @Generated(hash = 210163102)
+    public DeviceModel() {
     }
 }

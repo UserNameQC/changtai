@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 
 @Entity
-public class ConfigDao {
+public class ConfigModel {
 
     @Id
     public Long id;
@@ -46,14 +46,14 @@ public class ConfigDao {
     public void setId(Long id) {
         this.id = id;
     }
-    @Generated(hash = 1930795323)
-    public ConfigDao(Long id, String name, String value, String comment) {
+    @Generated(hash = 1101971209)
+    public ConfigModel(Long id, String name, String value, String comment) {
         this.id = id;
         this.name = name;
         this.value = value;
         this.comment = comment;
     }
-    @Generated(hash = 825028503)
-    public ConfigDao() {
+    @Generated(hash = 341491210)
+    public ConfigModel() {
     }
 }

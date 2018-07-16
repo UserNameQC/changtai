@@ -21,26 +21,26 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        ConfigDaoDao.createTable(db, ifNotExists);
-        DBEntityDaoDao.createTable(db, ifNotExists);
-        DeviceDaoDao.createTable(db, ifNotExists);
-        LoginDaoDao.createTable(db, ifNotExists);
-        LoginInformationDaoDao.createTable(db, ifNotExists);
-        PriceDaoDao.createTable(db, ifNotExists);
-        PurchaseRecordDaoDao.createTable(db, ifNotExists);
-        UserDaoDao.createTable(db, ifNotExists);
+        ConfigModelDao.createTable(db, ifNotExists);
+        DBEntityModelDao.createTable(db, ifNotExists);
+        DeviceModelDao.createTable(db, ifNotExists);
+        LoginInformationModelDao.createTable(db, ifNotExists);
+        LoginModelDao.createTable(db, ifNotExists);
+        PriceModelDao.createTable(db, ifNotExists);
+        PurchaseRecordModelDao.createTable(db, ifNotExists);
+        UserModelDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        ConfigDaoDao.dropTable(db, ifExists);
-        DBEntityDaoDao.dropTable(db, ifExists);
-        DeviceDaoDao.dropTable(db, ifExists);
-        LoginDaoDao.dropTable(db, ifExists);
-        LoginInformationDaoDao.dropTable(db, ifExists);
-        PriceDaoDao.dropTable(db, ifExists);
-        PurchaseRecordDaoDao.dropTable(db, ifExists);
-        UserDaoDao.dropTable(db, ifExists);
+        ConfigModelDao.dropTable(db, ifExists);
+        DBEntityModelDao.dropTable(db, ifExists);
+        DeviceModelDao.dropTable(db, ifExists);
+        LoginInformationModelDao.dropTable(db, ifExists);
+        LoginModelDao.dropTable(db, ifExists);
+        PriceModelDao.dropTable(db, ifExists);
+        PurchaseRecordModelDao.dropTable(db, ifExists);
+        UserModelDao.dropTable(db, ifExists);
     }
 
     /**
@@ -59,14 +59,14 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(ConfigDaoDao.class);
-        registerDaoClass(DBEntityDaoDao.class);
-        registerDaoClass(DeviceDaoDao.class);
-        registerDaoClass(LoginDaoDao.class);
-        registerDaoClass(LoginInformationDaoDao.class);
-        registerDaoClass(PriceDaoDao.class);
-        registerDaoClass(PurchaseRecordDaoDao.class);
-        registerDaoClass(UserDaoDao.class);
+        registerDaoClass(ConfigModelDao.class);
+        registerDaoClass(DBEntityModelDao.class);
+        registerDaoClass(DeviceModelDao.class);
+        registerDaoClass(LoginInformationModelDao.class);
+        registerDaoClass(LoginModelDao.class);
+        registerDaoClass(PriceModelDao.class);
+        registerDaoClass(PurchaseRecordModelDao.class);
+        registerDaoClass(UserModelDao.class);
     }
 
     public DaoSession newSession() {

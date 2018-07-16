@@ -17,9 +17,9 @@ import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
 import com.changtai.application.MyApplication;
-import com.changtai.newDao.ConfigDao;
+import com.changtai.newDao.ConfigModel;
 import com.changtai.realm.DeviceRealm;
-import com.example.john.greendaodemo.gen.ConfigDaoDao;
+import com.example.john.greendaodemo.gen.ConfigModelDao;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -203,20 +203,5 @@ public class DeviceList extends Activity implements View.OnClickListener{
         }
     }
 
-    /**
-     * 示例
-     * @param json json数据
-     */
-    public void test(String json){
 
-        ConfigDaoDao configDao = application.mDaoSession.getConfigDaoDao();
-        Gson gson = new Gson();
-        ConfigDao config = gson.fromJson(json, new TypeToken<ConfigDao>(){}.getType());
-        configDao.insert(config);//插入
-        configDao.delete(config);//删
-        configDao.deleteAll();//删除全部
-        config.setComment("00000");
-        configDao.update(config);//改
-        configDao.load(config.getId());//根据id查询
-    }
 }

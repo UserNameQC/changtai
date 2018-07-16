@@ -13,7 +13,7 @@ import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
 import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
 import com.changtai.application.MyApplication;
-import com.changtai.newDao.DeviceDao;
+import com.changtai.newDao.DeviceModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
@@ -121,9 +121,9 @@ public class DownloadFromWebActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
                 for(SwpDeviceModel model:downLoadFromPcModel.Device){
-                    DeviceDao model1= MappingObject(model,DeviceDao.class);
+                    DeviceModel model1= MappingObject(model,DeviceModel.class);
                     model1.DeviceId= Long.parseLong(model.DeviceNo);
-                    MyApplication.myApplication.getDaoSession().getDeviceDaoDao().insertOrReplace(model1);
+                    MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
 
                 }
 

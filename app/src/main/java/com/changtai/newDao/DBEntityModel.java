@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
-public class DBEntityDao {
+public class DBEntityModel {
     @Id
     public Long Id;
     @Property
@@ -53,16 +53,16 @@ public class DBEntityDao {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 1369926054)
-    public DBEntityDao(Long Id, String USER_NAME, String PASS_WORD, int ADDRESS_ID,
-            int DEFAULT_NUM) {
+    @Generated(hash = 1831595890)
+    public DBEntityModel(Long Id, String USER_NAME, String PASS_WORD,
+            int ADDRESS_ID, int DEFAULT_NUM) {
         this.Id = Id;
         this.USER_NAME = USER_NAME;
         this.PASS_WORD = PASS_WORD;
         this.ADDRESS_ID = ADDRESS_ID;
         this.DEFAULT_NUM = DEFAULT_NUM;
     }
-    @Generated(hash = 846738141)
-    public DBEntityDao() {
+    @Generated(hash = 714593783)
+    public DBEntityModel() {
     }
 }
