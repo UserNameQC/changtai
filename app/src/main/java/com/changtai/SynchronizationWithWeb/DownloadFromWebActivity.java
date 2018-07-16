@@ -122,7 +122,7 @@ public class DownloadFromWebActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
                 for(SwpDeviceModel model:downLoadFromPcModel.Device){
                     DeviceDao model1= MappingObject(model,DeviceDao.class);
-                    model1.Id=Integer.parseInt(model.DeviceNo);
+                    model1.DeviceId= Long.parseLong(model.DeviceNo);
                     MyApplication.myApplication.getDaoSession().getDeviceDaoDao().insertOrReplace(model1);
 
                 }

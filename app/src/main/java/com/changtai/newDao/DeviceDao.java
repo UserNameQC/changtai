@@ -15,7 +15,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class DeviceDao {
     @Id
-    public int Id;
+    public Long DeviceId;
     @Property
     public String deviceNo;//机井编号
     @Property
@@ -160,20 +160,20 @@ public class DeviceDao {
     public void setDeviceNo(String deviceNo) {
         this.deviceNo = deviceNo;
     }
-    public int getId() {
-        return this.Id;
+    public Long getDeviceId() {
+        return this.DeviceId;
     }
-    public void setId(int Id) {
-        this.Id = Id;
+    public void setDeviceId(Long DeviceId) {
+        this.DeviceId = DeviceId;
     }
-    @Generated(hash = 796415932)
-    public DeviceDao(int Id, String deviceNo, String stationNo, String gprsNo,
-            String deviceName, int index, String linkman, String phone,
-            String location, Date createDatetime, String longitude,
+    @Generated(hash = 373801541)
+    public DeviceDao(Long DeviceId, String deviceNo, String stationNo,
+            String gprsNo, String deviceName, int index, String linkman,
+            String phone, String location, Date createDatetime, String longitude,
             String latitude, String comment, String administratorName,
             boolean stopFlag, long serverVersion, long clientVersion,
             boolean DelFlag, int key) {
-        this.Id = Id;
+        this.DeviceId = DeviceId;
         this.deviceNo = deviceNo;
         this.stationNo = stationNo;
         this.gprsNo = gprsNo;
