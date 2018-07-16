@@ -14,7 +14,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class UserDao {
     @Id
-    public int Id;
+    public Long Id;
     @Property
     public String userNo;
     @Property
@@ -232,14 +232,14 @@ public class UserDao {
     public void setUserNo(String userNo) {
         this.userNo = userNo;
     }
-    public int getId() {
+    public Long getId() {
         return this.Id;
     }
-    public void setId(int Id) {
+    public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 154877072)
-    public UserDao(int Id, String userNo, String stationNo, String deviceNo,
+    @Generated(hash = 1107060793)
+    public UserDao(Long Id, String userNo, String stationNo, String deviceNo,
             Integer index, String userName, String phone, Date createDatetime,
             String linkman, Integer sjId, String usedTotal, String purchaseTotal,
             String purchaseTotalThisYear, String overdraft, String alarmValue,

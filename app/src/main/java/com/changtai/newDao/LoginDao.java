@@ -16,7 +16,7 @@ public class LoginDao {
 
     //标识
     @Id
-    public long id;
+    public Long id;
     //登录名
     @Property
     public String loginName;
@@ -53,14 +53,14 @@ public class LoginDao {
     public void setLoginName(String loginName) {
         this.loginName = loginName;
     }
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    @Generated(hash = 1404598250)
-    public LoginDao(long id, String loginName, String userName, String password,
+    @Generated(hash = 1000235547)
+    public LoginDao(Long id, String loginName, String userName, String password,
             String qxString) {
         this.id = id;
         this.loginName = loginName;

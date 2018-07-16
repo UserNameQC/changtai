@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class PriceDao {
     @Id
-    public int Id;
+    public Long Id;
     @Property
     public Long sjId;
     @Property
@@ -87,14 +87,14 @@ public class PriceDao {
     public void setSjId(Long sjId) {
         this.sjId = sjId;
     }
-    public int getId() {
+    public Long getId() {
         return this.Id;
     }
-    public void setId(int Id) {
+    public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 1716026631)
-    public PriceDao(int Id, Long sjId, String stationNo, String mc, String sj1,
+    @Generated(hash = 1835387055)
+    public PriceDao(Long Id, Long sjId, String stationNo, String mc, String sj1,
             String sj2, String sj3, String administratorName, Long serverVersion,
             long clientVersion) {
         this.Id = Id;

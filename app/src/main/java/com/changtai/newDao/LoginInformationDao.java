@@ -14,7 +14,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class LoginInformationDao {
     @Id
-    public int Id;
+    public Long Id;
     @Property
     public Long loginId;
     @Property
@@ -47,14 +47,14 @@ public class LoginInformationDao {
     public void setLoginId(Long loginId) {
         this.loginId = loginId;
     }
-    public int getId() {
+    public Long getId() {
         return this.Id;
     }
-    public void setId(int Id) {
+    public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 658609937)
-    public LoginInformationDao(int Id, Long loginId, String UserName,
+    @Generated(hash = 682910342)
+    public LoginInformationDao(Long Id, Long loginId, String UserName,
             String UserPwd, String toke) {
         this.Id = Id;
         this.loginId = loginId;
