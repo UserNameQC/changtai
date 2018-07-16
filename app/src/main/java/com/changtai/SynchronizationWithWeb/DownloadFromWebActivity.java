@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
 import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
+import com.changtai.application.MyApplication;
+import com.changtai.newDao.DeviceDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
@@ -119,8 +121,9 @@ public class DownloadFromWebActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
                 for(SwpDeviceModel model:downLoadFromPcModel.Device){
-                    SwpDeviceModel model1= MappingObject(model,SwpDeviceModel.class);
-                    SwpDeviceModel model2= MappingObject(model,SwpDeviceModel.class);
+                    DeviceDao model1= MappingObject(model,DeviceDao.class);
+                    model1.Id=Integer.parseInt(model.DeviceNo);
+                    MyApplication.myApplication.getDaoSession().getDeviceDaoDao().insertOrReplace(model1);
 
                 }
 

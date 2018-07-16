@@ -29,9 +29,9 @@ public class SwpDeviceModel {
     //登记时间
     public Date CreateDateTime;
     //经度
-    public BigDecimal Longitude;
+    public String Longitude;
     //纬度
-    public BigDecimal Latitude;
+    public String Latitude;
     //备注
     public String Comment;
     //操作员
