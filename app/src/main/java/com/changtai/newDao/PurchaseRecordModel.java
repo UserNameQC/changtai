@@ -7,12 +7,14 @@ import org.greenrobot.greendao.annotation.Property;
 import io.realm.annotations.PrimaryKey;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.util.Date;
+
 /**
  * Created by qjcjob on 2018/7/4.
  */
 @Entity
 public class PurchaseRecordModel {
-    @Id
+    @Id(autoincrement = true)
     public Long Id;
     @Property
     public String purchaseRecordId;
@@ -29,7 +31,7 @@ public class PurchaseRecordModel {
     @Property
     public String purchaseaMountThisTime;
     @Property
-    public String purchaseDatetimeThisTime;
+    public Date purchaseDatetimeThisTime;
     @Property
     public Integer purchaseYear;
     @Property
@@ -167,10 +169,10 @@ public class PurchaseRecordModel {
     public void setPurchaseYear(Integer purchaseYear) {
         this.purchaseYear = purchaseYear;
     }
-    public String getPurchaseDatetimeThisTime() {
+    public Date getPurchaseDatetimeThisTime() {
         return this.purchaseDatetimeThisTime;
     }
-    public void setPurchaseDatetimeThisTime(String purchaseDatetimeThisTime) {
+    public void setPurchaseDatetimeThisTime(Date purchaseDatetimeThisTime) {
         this.purchaseDatetimeThisTime = purchaseDatetimeThisTime;
     }
     public String getPurchaseaMountThisTime() {
@@ -221,11 +223,11 @@ public class PurchaseRecordModel {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 1179667208)
+    @Generated(hash = 1503905516)
     public PurchaseRecordModel(Long Id, String purchaseRecordId, String deviceNo,
             String stationNo, String userName, String userNo,
             String purchaseTotalThisTime, String purchaseaMountThisTime,
-            String purchaseDatetimeThisTime, Integer purchaseYear,
+            Date purchaseDatetimeThisTime, Integer purchaseYear,
             String purchaseTotalThisYear, String purchaseTotal, String priceSj1,
             String totalSj1, String amountSj1, String priceSj2, String totalSj2,
             String amountSj2, String priceSj3, String totalSj3, String amountSj3,

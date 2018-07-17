@@ -29,21 +29,21 @@ public class SwpUserModel {
     //某售水站内的水价序号，设置多个售水站号时，该字段值可能重复,一个PDA只有一个售水站号,该编号不可能重复,
     public Integer SjId;
     //累计用水量
-    public BigDecimal UsedTotal;
+    public String UsedTotal;
     //累计购水量
-    public BigDecimal PurchaseTotal;
+    public String PurchaseTotal;
     //年度累计购水量
-    public BigDecimal PurchaseTotalThisYear;
+    public String PurchaseTotalThisYear;
     //透支限量
-    public BigDecimal Overdraft;
+    public String Overdraft;
     //报警水量
-    public BigDecimal AlarmValue;
+    public String AlarmValue;
     //证件号
     public String CredentialNo;
     //一级水价上限
-    public BigDecimal LimitSj1;
+    public String LimitSj1;
     //二级水价上限
-    public BigDecimal LimitSj2;
+    public String LimitSj2;
     //备注
     public String Comment;
     //操作员

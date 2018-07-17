@@ -14,7 +14,7 @@ public class PriceModel {
     @Id
     public Long Id;
     @Property
-    public Long sjId;
+    public Integer sjId;
     @Property
     public String stationNo;
     @Property
@@ -81,10 +81,10 @@ public class PriceModel {
     public void setStationNo(String stationNo) {
         this.stationNo = stationNo;
     }
-    public Long getSjId() {
+    public Integer getSjId() {
         return this.sjId;
     }
-    public void setSjId(Long sjId) {
+    public void setSjId(Integer sjId) {
         this.sjId = sjId;
     }
     public Long getId() {
@@ -93,10 +93,10 @@ public class PriceModel {
     public void setId(Long Id) {
         this.Id = Id;
     }
-    @Generated(hash = 446222481)
-    public PriceModel(Long Id, Long sjId, String stationNo, String mc, String sj1,
-            String sj2, String sj3, String administratorName, Long serverVersion,
-            long clientVersion) {
+    @Generated(hash = 1554164879)
+    public PriceModel(Long Id, Integer sjId, String stationNo, String mc,
+            String sj1, String sj2, String sj3, String administratorName,
+            Long serverVersion, long clientVersion) {
         this.Id = Id;
         this.sjId = sjId;
         this.stationNo = stationNo;

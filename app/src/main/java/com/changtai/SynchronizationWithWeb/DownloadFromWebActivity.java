@@ -11,15 +11,26 @@ import android.widget.Toast;
 
 import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
+import com.changtai.SynchronizationWithPCModels.SwpCardReplacementModel;
 import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
+import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
+import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
+import com.changtai.SynchronizationWithPCModels.SwpUserModel;
 import com.changtai.application.MyApplication;
 import com.changtai.newDao.DeviceModel;
+import com.changtai.newDao.PriceModel;
+import com.changtai.newDao.PurchaseRecordModel;
+import com.changtai.newDao.UserModel;
+import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
+import org.greenrobot.greendao.query.QueryBuilder;
+
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.utils.WebMethodHelper.getStringByWebMethodGet;
@@ -114,7 +125,6 @@ public class DownloadFromWebActivity extends Activity {
                 }
 
                 DownLoadFromPcModel downLoadFromPcModel = gson.fromJson(value, DownLoadFromPcModel.class);
-                //SwpDeviceModel downLoadFromPcModel = gson.fromJson(value, SwpDeviceModel.class);
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
@@ -124,8 +134,28 @@ public class DownloadFromWebActivity extends Activity {
                     DeviceModel model1= MappingObject(model,DeviceModel.class);
                     model1.DeviceId= Long.parseLong(model.DeviceNo);
                     MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
-
                 }
+                for(SwpUserModel model:downLoadFromPcModel.User){
+                    UserModel model1= MappingObject(model,UserModel.class);
+                    model1.Id= Long.parseLong(model.UserNo);
+                    MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model1);
+                }
+                for(SwpPriceModel model:downLoadFromPcModel.Price){
+                    PriceModel model1= MappingObject(model,PriceModel.class);
+                    model1.Id= Long.parseLong(String.format("%s%03d",model1.stationNo,model1.sjId));
+                    MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
+                }
+                for(SwpPurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
+                    PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
+                    QueryBuilder<PurchaseRecordModel> qb =MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().queryBuilder();
+                    qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.purchaseRecordId));
+                    List<PurchaseRecordModel> list = qb.list();
+                    if(list.size()>0){
+                        model1.Id=list.get(0).Id;
+                    }
+                    MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model1);
+                }
+
 
                 return value;
             } catch (Exception e) {
@@ -160,7 +190,7 @@ public class DownloadFromWebActivity extends Activity {
                         }
                     }
                 }catch (Exception e){
-                    throw new Exception(String.format("%s,%s",fieldName,e.getMessage()));
+                    throw new Exception(String.format("%s实体,%s属性,%s",classOfT.getName(),fieldName,e.getMessage()));
                 }
             }
             return newObject;

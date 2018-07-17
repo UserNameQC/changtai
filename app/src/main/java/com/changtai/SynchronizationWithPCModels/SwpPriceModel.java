@@ -16,11 +16,11 @@ public class SwpPriceModel {
     //水价类型名称
     public String Mc;
     //一级水价
-    public BigDecimal Sj1;
+    public String Sj1;
     //二级水价
-    public BigDecimal Sj2;
+    public String Sj2;
     //三级水价
-    public BigDecimal Sj3;
+    public String Sj3;
     //服务器端数据版本
     public Long ServerVersion;//新增加
     //电脑版售水软件数据版本

@@ -21,35 +21,35 @@ public class SwpPurchaseRecordModel {
     //用户号
     public String UserNo;
     //本次购水量
-    public BigDecimal PurchaseTotalThisTime;
+    public String PurchaseTotalThisTime;
     //本次购水金额
-    public BigDecimal PurchaseAmountThisTime;
+    public String PurchaseAmountThisTime;
     //本次购水时间
     public Date PurchaseDateTimeThisTime;
     //购水年份
     public Integer PurchaseYear;
     //当年购水量
-    public BigDecimal PurchaseTotalThisYear;
+    public String PurchaseTotalThisYear;
     //累计购水量
-    public BigDecimal PurchaseTotal;
+    public String PurchaseTotal;
     //一级水价
-    public BigDecimal PriceSj1;
+    public String PriceSj1;
     //一级水量
-    public BigDecimal TotalSj1;
+    public String TotalSj1;
     //一级水费
-    public BigDecimal AmountSj1;
+    public String AmountSj1;
     //二级水价
-    public BigDecimal PriceSj2;
+    public String PriceSj2;
     //二级水量
-    public BigDecimal TotalSj2;
+    public String TotalSj2;
     //二级水费
-    public BigDecimal AmountSj2;
+    public String AmountSj2;
     //三级水价
-    public BigDecimal PriceSj3;
+    public String PriceSj3;
     //三级水量
-    public BigDecimal TotalSj3;
+    public String TotalSj3;
     //三级水费
-    public BigDecimal AmountSj3;
+    public String AmountSj3;
     //备注
     public String Comment;
     //操作员
