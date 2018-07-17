@@ -145,18 +145,22 @@ public class DownloadFromWebActivity extends Activity {
          * @throws InstantiationException
          */
 
-        private <T> T MappingObject(Object object, Class<T> classOfT) throws IllegalAccessException, InstantiationException {
+        private <T> T MappingObject(Object object, Class<T> classOfT) throws Exception {
             T newObject = classOfT.newInstance();
             Field[] fields = object.getClass().getDeclaredFields();
             for(Field field : fields){
                 String fieldName = field.getName();
-                Field[] newFields = classOfT.getDeclaredFields();
-                for(Field newField :newFields){
-                    String newFieldName = newField.getName();
-                    if(fieldName.toLowerCase().equals(newFieldName.toLowerCase())){
-                        newField.set(newObject,field.get(object));
-                        break;
+                try {
+                    Field[] newFields = classOfT.getDeclaredFields();
+                    for (Field newField : newFields) {
+                        String newFieldName = newField.getName();
+                        if (fieldName.toLowerCase().equals(newFieldName.toLowerCase())) {
+                            newField.set(newObject, field.get(object));
+                            break;
+                        }
                     }
+                }catch (Exception e){
+                    throw new Exception(String.format("%s,%s",fieldName,e.getMessage()));
                 }
             }
             return newObject;
