@@ -17,11 +17,8 @@ import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
 import com.changtai.application.MyApplication;
-import com.changtai.newDao.ConfigModel;
 import com.changtai.realm.DeviceRealm;
-import com.example.john.greendaodemo.gen.ConfigModelDao;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;

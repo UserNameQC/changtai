@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
-import com.changtai.SynchronizationWithPCModels.SwpCardReplacementModel;
 import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
