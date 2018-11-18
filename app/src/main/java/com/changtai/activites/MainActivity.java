@@ -12,7 +12,6 @@ import com.changtai.ItemsList.DeviceList;
 import com.changtai.ItemsList.MainUser;
 import com.changtai.ItemsList.User;
 import com.changtai.ItemsList.UserBuyWater;
-import com.changtai.ItemsList.UserTakeWater;
 import com.changtai.ItemsList.WaterPice;
 import com.changtai.R;
 import com.changtai.RFID.demo1443A;

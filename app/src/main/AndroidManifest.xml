@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.changtai">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -41,7 +42,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity" >
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="Ihh1rUMb0IwdO2TvkV41u0df4jr43Oic" />
+
+
+        <activity android:name=".activites.MainActivity" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,13 +57,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activites.LoginActivity" />
-        <activity android:name=".RFID.demo1443A" />
+        <activity android:name=".RFID.demo1443A"
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".BaiduMap.BaiduMapActivity" />
         <activity android:name=".RFID.NfcDemoActivity" />
-
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="id9vKpUlndlmYWSuacLwygGYeC10PiqW" />
 
         <activity android:name=".activites.SettingActivity" />
         <activity android:name=".activites.ItemsActivity" />
@@ -72,16 +76,15 @@
         <activity android:name=".activites.SynchronizationMain" >
 
         </activity>
-        <activity android:name=".activites.MainActivity">
+        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity">
         </activity>
+        <intent-filter>
+            <action android:name="android.nfc.action.TECH_DISCOVERED" />
+        </intent-filter>
 
-        <!--<intent-filter>-->
-            <!--<action android:name="android.nfc.action.TECH_DISCOVERED" />-->
-        <!--</intent-filter>-->
-
-        <!--<meta-data-->
-            <!--android:name="android.nfc.action.TECH_DISCOVERED"-->
-            <!--android:resource="@xml/filter_nfc" />-->
+        <meta-data
+            android:name="android.nfc.action.TECH_DISCOVERED"
+            android:resource="@xml/filter_nfc" />
     </application>
 
 </manifest>

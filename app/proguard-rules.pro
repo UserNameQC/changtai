@@ -16,7 +16,7 @@
 #   public *;
 #}
 -keep class com.baidu.** {*;}
--keep class vi.com.** {*;}
+-keep class mapsdkvi.com.** {*;}
 -dontwarn com.baidu.**
 
 -dontwarn com.tencent.bugly.**

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">changtai</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="setup">"串口设置"</string>
+    <string name="nfc_test">"NFC_Test"</string>
+    <string name="about">about</string>
+    <string name="quit">"exit"</string>
+    <string name="about_msg">"这是NFC模块测试程序，版本号V1.0 2014/07/16"</string>
 </resources>

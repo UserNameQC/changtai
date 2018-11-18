@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.content.LocalBroadcastManager;
 
+import com.baidu.mapapi.CoordType;
+import com.baidu.mapapi.SDKInitializer;
 import com.changtai.Utils.Entity;
 import com.example.john.greendaodemo.gen.DaoMaster;
 import com.example.john.greendaodemo.gen.DaoSession;
@@ -33,14 +35,16 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-       // SDKInitializer.initialize(getApplicationContext());
+
+        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
+        SDKInitializer.initialize(getApplicationContext());
+        //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
+        //包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
+        SDKInitializer.setCoordType(CoordType.GCJ02);
         myApplication = this;
         context = getApplicationContext();
         setDatabase();
         initView();
-        Realm.init(myApplication);
-        //Entity.realm = Realm.getDefaultInstance();
-        initRealm();
         getTime();
         getIsFirst();
         CrashReport.initCrashReport(getApplicationContext(), "692d620efe", true);

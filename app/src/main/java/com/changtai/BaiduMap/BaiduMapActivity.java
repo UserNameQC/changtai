@@ -1,11 +1,16 @@
 package com.changtai.BaiduMap;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +19,7 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -43,6 +49,11 @@ public class BaiduMapActivity extends Activity {
     private Button bt_getPostion;
     private final static IntentFilter intentFilter = new IntentFilter();
 
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            "android.permission.READ_EXTERNAL_STORAGE",
+            "android.permission.WRITE_EXTERNAL_STORAGE" };
+
     private boolean isFirstLoc = true;
     static{
         intentFilter.addAction(Entity.LATLNG_INFOMATION);
@@ -61,27 +72,31 @@ public class BaiduMapActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_baidu_map);
+
+        verifyStoragePermissions(this);
         mMapView = (MapView) findViewById(R.id.mMapView);
-        //bt_getPostion = (Button) findViewById(R.id.bt_get_position);
-//        bt_getPostion.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //locationClient.start();
-//            }
-//        });
 
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMyLocationEnabled(true);
-//        MKOfflineMap offlineMap = new MKOfflineMap();
-//        ArrayList<MKOLSearchRecord> list =  offlineMap.getHotCityList();
-//        MKOLSearchRecord record = new MKOLSearchRecord();
         locationClient = new LocationClient(getApplicationContext());
         locationClient.registerLocationListener(listener);
 
         initLociton();
         registerReceiver(receiver, intentFilter);
+    }
+
+    public static void verifyStoragePermissions(Activity activity) {
+
+
+        //判断是否6.0以上的手机   不是就不用
+        if(Build.VERSION.SDK_INT>=23){
+            //判断是否有这个权限
+            if(ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+                //2、申请权限: 参数二：权限的数组；参数三：请求码
+                ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
+            }
+        }
     }
 
     public void initLociton(){
@@ -101,7 +116,7 @@ public class BaiduMapActivity extends Activity {
      */
     public void initPosition(){
         BitmapDescriptor descriptor =  BitmapDescriptorFactory
-                .fromResource(R.drawable.login_name);
+                .fromResource(R.drawable.location);
         OverlayOptions position = new MarkerOptions().position(Entity.latLng).icon(descriptor);
         mBaiduMap.addOverlay(position);
     }
