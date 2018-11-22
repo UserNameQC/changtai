@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_settting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置售水站号："
+            android:textSize="20sp"/>-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/timg" />
+
+        <EditText
+            android:id="@+id/buy_water_id"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@null"
+            android:hint="请输入水站号"
+            android:inputType="number"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="250dp"
+            android:layout_height="2dp"
+            android:background="#009858" />
+
+        <Button
+            android:id="@+id/bt_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/transparent"
+            android:onClick="onButtonClick"
+            android:text="确定"
+            android:textSize="20sp" />
+    </LinearLayout>
+</layout>

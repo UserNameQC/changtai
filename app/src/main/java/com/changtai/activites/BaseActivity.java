@@ -15,9 +15,6 @@ import android.widget.Toast;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
 import com.changtai.application.MyApplication;
-import com.changtai.realm.DeviceRealm;
-import com.changtai.realm.PurchaseRecordRealm;
-import com.changtai.realm.UserRealm;
 
 
 import org.json.JSONException;
@@ -52,17 +49,17 @@ public class BaseActivity extends Activity {
             switch (msg.what)
             {
                 case 4:
-                    realmUtils.saveInRealm(DeviceRealm.class, getMap(msg.obj.toString()));
+                    //realmUtils.saveInRealm(DeviceRealm.class, getMap(msg.obj.toString()));
                     break;
                 case 3:
 
-                    realmUtils.saveInRealm(UserRealm.class, getMap(msg.obj.toString()));
+                    //realmUtils.saveInRealm(UserRealm.class, getMap(msg.obj.toString()));
                     break;
 //                case 2:
 //                    realmUtils.saveInRealm(WaterBeUsedDateRealm.class, getMap(msg.obj.toString()));
 //                    break;
                 case 1:
-                    realmUtils.saveInRealm(PurchaseRecordRealm.class, getMap(msg.obj.toString()));
+                    //realmUtils.saveInRealm(PurchaseRecordRealm.class, getMap(msg.obj.toString()));
                     break;
 //                case 11:
 //                    if (dialog!=null)
@@ -76,14 +73,14 @@ public class BaseActivity extends Activity {
                     {
                         dialog.setMessage("同步用户信息...");
                     }
-                    realmUtils.getDataFromService(handler, "03", 1, UserRealm.class);
+                    //realmUtils.getDataFromService(handler, "03", 1, UserRealm.class);
                     break;
                 case 13:
                     if (dialog!=null)
                     {
                         dialog.setMessage("同步机井信息...");
                     }
-                    realmUtils.getDataFromService(handler, "04", 1, DeviceRealm.class);
+                    //realmUtils.getDataFromService(handler, "04", 1, DeviceRealm.class);
                     break;
                 case 14:
                     if (dialog!=null)
@@ -129,8 +126,8 @@ public class BaseActivity extends Activity {
     }
 
     public void startSyncData(boolean flag){
-        realmUtils.getDataFromService(handler, "01", 1, PurchaseRecordRealm.class);
-        progressDialog("同步用户购水信息...", flag);
+//        realmUtils.getDataFromService(handler, "01", 1, PurchaseRecordRealm.class);
+//        progressDialog("同步用户购水信息...", flag);
     }
 
     public void progressDialog(String msg, boolean flag){

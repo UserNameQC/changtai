@@ -2,6 +2,7 @@ package com.changtai.activites;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.HttpBaseTest;
+import com.changtai.databinding.ActivityResetPasswordBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,10 +34,12 @@ public class ResetPassWord extends Activity{
     public Map<Integer, EditText> editTextMap = new HashMap<>();
     public LinkedList<EditText> editTexts = new LinkedList<>();
     public Button button;
+
+    public ActivityResetPasswordBinding passwordBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reset_password);
+        passwordBinding = DataBindingUtil.setContentView(this, R.layout.activity_reset_password);
         initView();
     }
 

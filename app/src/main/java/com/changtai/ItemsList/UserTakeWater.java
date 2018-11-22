@@ -1,6 +1,7 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,23 +16,16 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
-import com.changtai.activites.BaseActivity;
 
-import com.google.gson.Gson;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.changtai.databinding.ActivityUserTakeWaterBinding;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
-import io.realm.RealmResults;
 
 public class UserTakeWater extends Activity implements View.OnClickListener{
 
-    public EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12;
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public String[] key = {Entity.Id,Entity.BureauNo,Entity.StationNo,Entity.DeviceNo,Entity.UserNo,
             Entity.UsedAmount1,Entity.UsedAmount2,
@@ -44,52 +38,42 @@ public class UserTakeWater extends Activity implements View.OnClickListener{
     public ScrollView waterScroll;
     public String resultFromServer;
     public boolean etIsChangedTake = true;
+    public ActivityUserTakeWaterBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_take_water);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_user_take_water);
         initView();
     }
 
     public void initView(){
 
-        et1 = (EditText) findViewById(R.id.utw_logo);
-        linkedList.add(et1);
-        et2 = (EditText) findViewById(R.id.utw_wcb_nm);
-        linkedList.add(et2);
-        et3 = (EditText) findViewById(R.id.utw_wstation_nm);
-        linkedList.add(et3);
-        et4 = (EditText) findViewById(R.id.utw_list_nm);
-        linkedList.add(et4);
-        et5 = (EditText) findViewById(R.id.utw_user_num);
-        linkedList.add(et5);
-        et6 = (EditText) findViewById(R.id.utw_start);
-        linkedList.add(et6);
-        et7 = (EditText) findViewById(R.id.utw_ends);
-        linkedList.add(et7);
-        et8 = (EditText) findViewById(R.id.utw_and);
-        linkedList.add(et8);
-        et9 = (EditText) findViewById(R.id.utw_business_labels);
-        linkedList.add(et9);
-        et10 = (EditText) findViewById(R.id.utw_install_loc);
-        linkedList.add(et10);
-        et11 = findViewById(R.id.utw_install_time);
-        linkedList.add(et11);
-        et12 = findViewById(R.id.utw_create_time);
-        linkedList.add(et12);
+        linkedList.add(binding.utwLogo);
+        linkedList.add(binding.utwWcbNm);
+        linkedList.add(binding.utwWstationNm);
+        linkedList.add(binding.utwListNm);
+        linkedList.add(binding.utwUserNum);
+        linkedList.add(binding.utwStart);
+        linkedList.add(binding.utwEnds);
+        linkedList.add(binding.utwAnd);
+        linkedList.add(binding.utwBusinessLabels);
+        linkedList.add(binding.utwInstallLoc);
+        linkedList.add(binding.utwInstallTime);
+        linkedList.add(binding.utwCreateTime);
+
         etMap = Entity.saveInMap(linkedList);
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
-        button = (Button) findViewById(R.id.utw_ok);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        binding.utwOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (etIsChangedTake) {
                     if (!Entity.editTextIsNull(etMap)) {
 //                        RealmUtils.createData(etMap, waterBeUsedDateRealm.getClass(), 0);
-                        etListView.setVisibility(View.VISIBLE);
-                        waterScroll.setVisibility(View.GONE);
+                        binding.takeWaterListview.setVisibility(View.VISIBLE);
+                        binding.takeWaterScroll.setVisibility(View.GONE);
                         RealmUtils.setEditEnable(etMap, false);
 //                        RealmUtils.setTimeUpdateToServer(waterBeUsedDateRealm.getClass(), "02");
                     } else {

@@ -15,9 +15,6 @@ import com.tencent.bugly.crashreport.CrashReport;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-
 /**
  * Created by Qiao on 2018/1/28.
  */
@@ -50,17 +47,21 @@ public class MyApplication extends Application {
         CrashReport.initCrashReport(getApplicationContext(), "692d620efe", true);
     }
 
+    public static MyApplication getInstance(){
+        return myApplication;
+    }
+
     /**
      * 当前使用的缓存数据库
      */
-    public void initRealm(){
-        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().
-                name("CtaiRealm.realm")
-                .schemaVersion(1)
-                .build();
-        Entity.realm = Realm.getInstance(realmConfiguration);
-        //Realm.setDefaultConfiguration(realmConfiguration);
-    }
+//    public void initRealm(){
+//        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().
+//                name("CtaiRealm.realm")
+//                .schemaVersion(1)
+//                .build();
+//        Entity.realm = Realm.getInstance(realmConfiguration);
+//        //Realm.setDefaultConfiguration(realmConfiguration);
+//    }
 
 
 
@@ -100,7 +101,7 @@ public class MyApplication extends Application {
         // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。
         // 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
         // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
-        mHelper = new DaoMaster.DevOpenHelper(context, "changtai4.db", null);
+        mHelper = new DaoMaster.DevOpenHelper(context, "changtai5.db", null);
         db = mHelper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         mDaoSession = daoMaster.newSession();

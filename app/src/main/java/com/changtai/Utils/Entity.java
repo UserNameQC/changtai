@@ -1,31 +1,20 @@
 package com.changtai.Utils;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.content.SharedPreferencesCompat;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
-import com.changtai.realm.LoginRealm;
 
-import org.greenrobot.greendao.annotation.Property;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.realm.Realm;
-import io.realm.RealmResults;
 
 /**
  * Created by Qiao on 2018/2/6.
@@ -34,7 +23,6 @@ import io.realm.RealmResults;
 public class Entity {
 
     //当前登录的用户，admin用户不保存在数据中，如果是admin用户，在用户登录时手动创建一个model赋值到这里，如果是其它用户则到数据库里查找然后赋值到这里
-    public static LoginRealm loginRealm;
     public static ExecutorService executorService = Executors.newCachedThreadPool();
     public static final String mainUrl = "http://tzctdz.51mypc.cn:8081/changtai";
     //public static final String mainUrl = "http://192.168.1.101/changtai";
@@ -160,11 +148,6 @@ public class Entity {
 
     public static final String MID = "=";
     public static final String END = "\n";
-
-    /**
-     * 数据库操作对象
-     */
-    public static Realm realm;
 
 
     public static boolean editIsNull(EditText editText){

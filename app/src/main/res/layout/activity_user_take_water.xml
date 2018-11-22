@@ -1,400 +1,419 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <ListView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/take_water_listview"
-        android:visibility="visible"/>
+        android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/take_water_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone">
-        <LinearLayout
+        <ListView
+            android:id="@+id/take_water_listview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:visibility="visible" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:text="取水信息"/>
-
-                <Button
-                    android:id="@+id/utw_ok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="编辑"
-                    android:background="@null"
-                    android:textColor="#030303" />
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="15dp" />
+        <ScrollView
+            android:id="@+id/take_water_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="标        识："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_logo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="idwatertake"
-                        android:textSize="@dimen/text_size_default"/>
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="取水信息"
+                        android:textSize="20sp" />
 
-                </LinearLayout>
+                    <Button
+                        android:id="@+id/utw_ok"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@null"
+                        android:text="编辑"
+                        android:textColor="#030303" />
+                </RelativeLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-
+                    android:layout_height="15dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="水利局编号："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_wcb_nm"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="bureauno"
-                        android:textSize="@dimen/text_size_default"/>
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="标        识："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_logo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="idwatertake"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="水利局编号："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_wcb_nm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="bureauno"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="水管站编号："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_wstation_nm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="stationNo"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="机 井 编 号："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_list_nm"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="deviceNo"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="用   户   号："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_user_num"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="userNo"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="流量值："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_start"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="flow"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="累计用水量："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_ends"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="usedTotal"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="累计购水量："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_and"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="purchaseTotal"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="透支限量："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_business_labels"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="overdraft"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:padding="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="报警水量："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_install_loc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@null"
+                            android:tag="alarmValue"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="购水日期："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_install_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@null"
+                            android:tag="purchasedate"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingEnd="15dp"
+                        android:paddingStart="15dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="生成时间："
+                            android:textSize="@dimen/text_size_default" />
+
+                        <EditText
+                            android:id="@+id/utw_create_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@null"
+                            android:tag="createDatetime"
+                            android:textSize="@dimen/text_size_default" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_marginLeft="12dp"
+                        android:background="@color/silverGray" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="水管站编号："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_wstation_nm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="stationNo"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="机 井 编 号："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_list_nm"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="deviceNo"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="用   户   号："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_user_num"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="userNo"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="流量值："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_start"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="flow"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="累计用水量："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_ends"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="usedTotal"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="累计购水量："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_and"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="purchaseTotal"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="透支限量："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_business_labels"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="overdraft"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="报警水量："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_install_loc"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:tag="alarmValue"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="购水日期："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_install_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:tag="purchasedate"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="15dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="生成时间："
-                        android:textSize="@dimen/text_size_default" />
-                    <EditText
-                        android:background="@null"
-                        android:id="@+id/utw_create_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:tag="createDatetime"
-                        android:textSize="@dimen/text_size_default"/>
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:layout_marginLeft="12dp"
-                    android:background="@color/silverGray" />
+                    android:layout_height="10dp" />
             </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
-
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

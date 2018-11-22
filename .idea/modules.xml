@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/changtai.iml" filepath="$PROJECT_DIR$/changtai.iml" />
-      <module fileurl="file://$PROJECT_DIR$/changtai2.iml" filepath="$PROJECT_DIR$/changtai2.iml" />
+      <module fileurl="file://G:\MyWork\changtai\changtai2.iml" filepath="G:\MyWork\changtai\changtai2.iml" />
     </modules>
   </component>
 </project>

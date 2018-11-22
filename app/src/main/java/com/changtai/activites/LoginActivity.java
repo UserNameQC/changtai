@@ -2,140 +2,98 @@ package com.changtai.activites;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.changtai.Dal.LoginDal;
-import com.changtai.ItemsList.User;
 import com.changtai.R;
 import com.changtai.Utils.AESOperator;
-import com.changtai.Utils.AESUtil;
 import com.changtai.Utils.Entity;
+import com.changtai.Utils.GreenDaoUtil;
 import com.changtai.Utils.HttpBaseTest;
 import com.changtai.application.MyApplication;
-import com.changtai.realm.ConfigRealm;
-import com.changtai.realm.LoginMesRealm;
-import com.changtai.realm.LoginRealm;
+import com.changtai.databinding.ActivityLoginBinding;
+import com.changtai.sqlModel.ConfigModel;
+import com.changtai.sqlModel.DBEntityModel;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.IllegalFormatCodePointException;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Handler;
 
-import io.realm.RealmResults;
-import okhttp3.Call;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+public class LoginActivity extends Activity implements View.OnClickListener {
 
-public class LoginActivity extends Activity implements View.OnClickListener{
+    public ActivityLoginBinding binding;
+    public GreenDaoUtil greenDaoUtil;
 
-    private EditText userName;
-    private EditText passWord;
-    private TextView login_bt;
-    private String User_Name, Pass_Word;
-    private OkHttpClient okHttpClient;
-    private MyApplication application;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         initView();
         //checkToken();
         //sendPost();
     }
-    public void initView(){
-        application =(MyApplication) getApplication();
-        userName = (EditText) findViewById(R.id.et_login_username);
-        passWord = (EditText) findViewById(R.id.et_login_password);
-        login_bt = (TextView) findViewById(R.id.login_btn);
-        login_bt.setOnClickListener(this);
+
+    public void initView() {
+        binding.loginBtn.setOnClickListener(this);
+        greenDaoUtil = new GreenDaoUtil();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-//        if (application.getIsFirst())
-//        {
-//            Entity.toastMsg(this, "检测到您是第一次登陆，请设置水站号！");
-//        }
-        ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).findFirst();
-        if (configRealm == null)
-        {
+        ConfigModel configModel = MyApplication.getInstance().getDaoSession().load(ConfigModel.class, 0);
+        if (configModel == null) {
             Entity.toastMsg(this, "请设置水站号！");
         }
     }
 
     @SuppressLint("HandlerLeak")
-    public android.os.Handler  mHandler = new android.os.Handler()
-    {
+    public android.os.Handler mHandler = new android.os.Handler() {
         @Override
         public void handleMessage(Message msg) {
-            switch (msg.what)
-            {
+            switch (msg.what) {
                 case 0:
-                    if (dialog != null)
-                    {
+                    if (dialog != null) {
                         dialog.dismiss();
                         dialog = null;
                     }
                     boolean isHave = false;
-                    RealmResults<LoginMesRealm> mesList = Entity.realm.where(LoginMesRealm.class).findAll();
-                    if (mesList.size() > 0)
-                    {
-                        for (int i = 0; i < mesList.size(); i++){
-                            LoginMesRealm loginMesRealm = mesList.get(i);
-                            if (userName.getText().toString().equals(loginMesRealm.getUserName()))
-                            {
+
+                    List<DBEntityModel> dbEntityModels = greenDaoUtil.getSession().getDBEntityModelDao().loadAll();
+                    if (dbEntityModels.size() > 0) {
+                        for (int i = 0; i < dbEntityModels.size(); i++) {
+                            DBEntityModel loginMesRealm = dbEntityModels.get(i);
+                            if (binding.etLoginUsername.getText().toString().equals(loginMesRealm.getUSER_NAME())) {
                                 isHave = true;
                                 break;
                             }
-                            Log.e("name", loginMesRealm.getUserName());
-                            Log.e("pass", loginMesRealm.getUserPwd());
-                            Log.e("token", loginMesRealm.getToke());
                         }
-                    }
-                    else
-                    {
-                        Entity.realm.beginTransaction();
-                        LoginMesRealm mesRealm = Entity.realm.createObject(LoginMesRealm.class, System.currentTimeMillis());
-                        //mesRealm.setLoginId(System.currentTimeMillis());
-                        mesRealm.setToke(Entity.token);
-                        mesRealm.setUserName(userName.getText().toString());
-                        mesRealm.setUserPwd(passWord.getText().toString());
-                        Entity.realm.commitTransaction();
-                    }
-                    if (isHave)
-                    {
-                        Entity.realm.beginTransaction();
-                        LoginMesRealm mesRealm = Entity.realm.createObject(LoginMesRealm.class, System.currentTimeMillis());
-                        //mesRealm.setLoginId(System.currentTimeMillis());
-                        mesRealm.setToke(Entity.token);
-                        mesRealm.setUserName(userName.getText().toString());
-                        mesRealm.setUserPwd(passWord.getText().toString());
-                        Entity.realm.commitTransaction();
+                        if (!isHave){
+                            DBEntityModel entityModel = new DBEntityModel();
+                            entityModel.setUSER_NAME(binding.etLoginUsername.getText().toString());
+                            entityModel.setPASS_WORD(binding.etLoginPassword.getText().toString());
+                            entityModel.setToken(Entity.token);
+                            MyApplication.getInstance().getDaoSession().getDBEntityModelDao().insert(entityModel);
+                        }
+                    } else {
+                        DBEntityModel entityModel = new DBEntityModel();
+                        entityModel.setUSER_NAME(binding.etLoginUsername.getText().toString());
+                        entityModel.setPASS_WORD(binding.etLoginPassword.getText().toString());
+                        entityModel.setToken(Entity.token);
+                        MyApplication.getInstance().getDaoSession().getDBEntityModelDao().insert(entityModel);
                     }
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     break;
                 case 1:
-                    if (dialog!=null){
+                    if (dialog != null) {
                         dialog.dismiss();
                         dialog = null;
                     }
@@ -150,69 +108,49 @@ public class LoginActivity extends Activity implements View.OnClickListener{
      * 默认为缓存中的用户名密码为目前操作人员的账号密码
      */
 
-    public void checkToken(){
-        String UserName = Entity.spres.getString("USERNAME", "");
-        if (!TextUtils.isEmpty(UserName)) {
-            LoginMesRealm loginMesRealm = Entity.realm.where(LoginMesRealm.class)
-                    .equalTo("UserName", UserName).findFirst();
-            if (loginMesRealm != null) {
-                String token = loginMesRealm.getToke();
-                if (!TextUtils.isEmpty(token)) {
-                    Entity.token = token;
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    this.finish();
-                }
-            }
-        }
+    public void checkToken() {
+//        String UserName = Entity.spres.getString("USERNAME", "");
+//        if (!TextUtils.isEmpty(UserName)) {
+//            LoginMesRealm loginMesRealm = Entity.realm.where(LoginMesRealm.class)
+//                    .equalTo("UserName", UserName).findFirst();
+//            if (loginMesRealm != null) {
+//                String token = loginMesRealm.getToke();
+//                if (!TextUtils.isEmpty(token)) {
+//                    Entity.token = token;
+//                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+//                    this.finish();
+//                }
+//            }
+//        }
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId())
-        {
+        switch (view.getId()) {
             case R.id.login_btn:
-                final String name = userName.getText().toString();
-                final String pass = passWord.getText().toString();
+                final String name = binding.etLoginUsername.getText().toString();
+                final String pass = binding.etLoginPassword.getText().toString();
 
-                if(name.length()<=0){
+                if (name.length() <= 0) {
                     Entity.toastMsg(this, "账户名不能为空");
                     return;
                 }
-                if(pass.length()<=0){
+                if (pass.length() <= 0) {
                     Entity.toastMsg(this, "密码不能为空");
                     return;
                 }
 
-                LoginDal loginDal = new LoginDal();
-                try {
-                    LoginRealm singleByLoginName = loginDal.findSingleByLoginName(name);
-                    Entity.toastMsg(this, singleByLoginName.toString());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
-                    loginDal.Add(name,pass,"操作员");
-                } catch (Exception e) {
-                    Entity.toastMsg(this, e.toString());
-                    return;
-                }
+                final ConfigModel configModel = MyApplication.getInstance().getDaoSession().load(ConfigModel.class, 0);
+                ;
 
-
-                final ConfigRealm configRealm = Entity.realm.where(ConfigRealm.class).equalTo("id", 10010).findFirst();
-
-                if (userName.getText().toString().equals("admin") && passWord.getText().toString().equals("admin"))
-                {
+                if (name.equals("admin") && pass.equals("admin")) {
                     startActivity(new Intent(this, SettingActivity.class));
-                }
-                else if (configRealm == null)
-                {
+                } else if (configModel == null) {
                     Entity.toastMsg(LoginActivity.this, "请设置水站号");
-                }
-                else
-                {
+                } else {
                     try {
                         progress();
-                        final String baseId = configRealm.getValue();
+                        final String baseId = configModel.getValue();
 
                         Entity.spres.edit().putString("USERNAME", name).apply();
                         Entity.spres.edit().putString("PASSWORD", pass).apply();
@@ -226,7 +164,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                                 Map<String, Object> map = new HashMap<String, Object>();
                                 //JSONObject obj = new JSONObject();
 
-                                map.put("AREA_CODE",baseId);
+                                map.put("AREA_CODE", baseId);
                                 map.put("USER_ACCOUNT", name);
                                 map.put("USER_PWD", base64Pass);
                                 map.put("USE_TYPE", "1");
@@ -243,8 +181,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                                         if (code.equals("0000")) {
                                             Entity.token = object.getJSONObject("data").getString("token");
                                             mHandler.sendEmptyMessage(0);
-                                        }else if (code.equals("9999"))
-                                        {
+                                        } else if (code.equals("9999")) {
                                             mHandler.sendEmptyMessage(1);
                                         }
                                     } catch (JSONException e) {
@@ -263,7 +200,8 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     }
 
     public ProgressDialog dialog;
-    public void progress(){
+
+    public void progress() {
         dialog = new ProgressDialog(this);
         dialog.setCanceledOnTouchOutside(false);
         dialog.setTitle("正在登录...");

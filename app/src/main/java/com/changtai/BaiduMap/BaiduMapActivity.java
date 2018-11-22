@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -36,6 +37,7 @@ import com.baidu.mapapi.map.offline.MKOfflineMap;
 import com.baidu.mapapi.model.LatLng;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
+import com.changtai.databinding.ActivityBaiduMapBinding;
 
 import java.util.ArrayList;
 import java.util.zip.Inflater;
@@ -69,10 +71,13 @@ public class BaiduMapActivity extends Activity {
             }
         }
     };
+
+    public ActivityBaiduMapBinding mapBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_baidu_map);
+        mapBinding = DataBindingUtil.setContentView(this, R.layout.activity_baidu_map);
 
         verifyStoragePermissions(this);
         mMapView = (MapView) findViewById(R.id.mMapView);

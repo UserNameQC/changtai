@@ -8,14 +8,14 @@ import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.identityscope.IdentityScopeType;
 import org.greenrobot.greendao.internal.DaoConfig;
 
-import com.changtai.newDao.ConfigModel;
-import com.changtai.newDao.DBEntityModel;
-import com.changtai.newDao.DeviceModel;
-import com.changtai.newDao.LoginInformationModel;
-import com.changtai.newDao.LoginModel;
-import com.changtai.newDao.PriceModel;
-import com.changtai.newDao.PurchaseRecordModel;
-import com.changtai.newDao.UserModel;
+import com.changtai.sqlModel.ConfigModel;
+import com.changtai.sqlModel.DBEntityModel;
+import com.changtai.sqlModel.DeviceModel;
+import com.changtai.sqlModel.LoginInformationModel;
+import com.changtai.sqlModel.LoginModel;
+import com.changtai.sqlModel.PriceModel;
+import com.changtai.sqlModel.PurchaseRecordModel;
+import com.changtai.sqlModel.UserModel;
 
 import com.example.john.greendaodemo.gen.ConfigModelDao;
 import com.example.john.greendaodemo.gen.DBEntityModelDao;

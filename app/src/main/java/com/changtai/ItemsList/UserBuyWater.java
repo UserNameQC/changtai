@@ -1,6 +1,7 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +16,9 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
-import com.changtai.realm.PurchaseRecordRealm;
+import com.changtai.application.MyApplication;
+import com.changtai.databinding.ActivityUserBuyWaterBinding;
+import com.changtai.sqlModel.PurchaseRecordModel;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -26,7 +29,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import io.realm.RealmResults;
 
 public class UserBuyWater extends Activity implements View.OnClickListener{
 
@@ -47,80 +49,61 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
     public ListView etListView;
     public ScrollView etScroll;
     public String resultFromServer;
-    public PurchaseRecordRealm purchaseRecordRealm;
+    public PurchaseRecordModel purchaseRecordRealm;
     public boolean etIsChangedBuy = true;
 
+    public RealmUtils<PurchaseRecordModel> realmUtils;
+
+    public ActivityUserBuyWaterBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_buy_water);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_user_buy_water);
+        realmUtils = new RealmUtils<>();
         initView();
     }
 
     public void initView(){
 
-        et1 = (EditText) findViewById(R.id.bw_details_index);
-        linkedList.add(et1);
-        et2 = (EditText) findViewById(R.id.bw_wcb_nm);
-        linkedList.add(et2);
-        et3 = (EditText) findViewById(R.id.bw_wstation_nm);
-        linkedList.add(et3);
-        et4 = (EditText) findViewById(R.id.bw_list_nm);
-        linkedList.add(et4);
-        et5 = (EditText) findViewById(R.id.bw_nm);
-        linkedList.add(et5);
-        et6 = (EditText) findViewById(R.id.bw_name);
-        linkedList.add(et6);
-        et7 = (EditText) findViewById(R.id.bw_this_buy_water);
-        linkedList.add(et7);
-        et8 = (EditText) findViewById(R.id.bw_buy_water_amount);
-        linkedList.add(et8);
-        et9 = (EditText) findViewById(R.id.bw_time);
-        linkedList.add(et9);
-        et10 = (EditText) findViewById(R.id.bw_year);
-        linkedList.add(et10);
-        et11 = (EditText) findViewById(R.id.bw_tyear_num);
-        linkedList.add(et11);
-        et12 = (EditText) findViewById(R.id.bw_purchase_water);
-        linkedList.add(et12);
-        et13 = (EditText) findViewById(R.id.bw_first_wprice);
-        linkedList.add(et13);
-        et14 = (EditText) findViewById(R.id.bw_first_water_num);
-        linkedList.add(et14);
-        et15 = (EditText) findViewById(R.id.bw_first_water_fee);
-        linkedList.add(et15);
-        et16 = (EditText) findViewById(R.id.bw_second_wprice);
-        linkedList.add(et16);
-        et17 = (EditText) findViewById(R.id.bw_second_water_num);
-        linkedList.add(et17);
-        et18 = (EditText) findViewById(R.id.bw_second_water_fee);
-        linkedList.add(et18);
-        et19 = (EditText) findViewById(R.id.bw_third_wprice);
-        linkedList.add(et19);
-        et20 = (EditText) findViewById(R.id.bw_third_water_num);
-        linkedList.add(et20);
-        et21 = (EditText) findViewById(R.id.bw_third_water_fee);
-        linkedList.add(et21);
-        et22 = (EditText) findViewById(R.id.bw_note);
-        linkedList.add(et22);
-        et23 = (EditText) findViewById(R.id.bw_operator);
-        linkedList.add(et23);
-        et24 = (EditText) findViewById(R.id.bw_data_update);
-        linkedList.add(et24);
-        et25 = (EditText) findViewById(R.id.bw_version);
-        linkedList.add(et25);
+        linkedList.add(binding.bwDetailsIndex);
+        linkedList.add(binding.bwWcbNm);
+        linkedList.add(binding.bwWstationNm);
+        linkedList.add(binding.bwListNm);
+        linkedList.add(binding.bwNm);
+        linkedList.add(binding.bwName);
+        linkedList.add(binding.bwThisBuyWater);
+        linkedList.add(binding.bwBuyWaterAmount);
+        linkedList.add(binding.bwTime);
+        linkedList.add(binding.bwYear);
+        linkedList.add(binding.bwTyearNum);
+        linkedList.add(binding.bwPurchaseWater);
+        linkedList.add(binding.bwFirstWprice);
+        linkedList.add(binding.bwFirstWaterNum);
+        linkedList.add(binding.bwFirstWaterFee);
+        linkedList.add(binding.bwSecondWprice);
+        linkedList.add(binding.bwSecondWaterNum);
+        linkedList.add(binding.bwSecondWaterFee);
+        linkedList.add(binding.bwThirdWprice);
+        linkedList.add(binding.bwThirdWaterNum);
+        linkedList.add(binding.bwThirdWaterFee);
+        linkedList.add(binding.bwNote);
+        linkedList.add(binding.bwOperator);
+        linkedList.add(binding.bwDataUpdate);
+        linkedList.add(binding.bwVersion);
         etMap = Entity.saveInMap(linkedList);
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
-        button = (Button) findViewById(R.id.bw_ok);
-        button.setOnClickListener(new View.OnClickListener() {
+        binding.bwOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (etIsChangedBuy) {
                     if (!Entity.editTextIsNull(etMap)) {
-                        RealmUtils.createData(etMap, purchaseRecordRealm.getClass(), 0);
+                        PurchaseRecordModel purModel = realmUtils.createData(etMap, 0);
                         etListView.setVisibility(View.VISIBLE);
                         etScroll.setVisibility(View.GONE);
+                        /**
+                         * 更新数据
+                         */
                         RealmUtils.setTimeUpdateToServer(purchaseRecordRealm.getClass(), "01");
                     } else {
                         Entity.toastMsg(UserBuyWater.this, "输入不能空");
@@ -136,16 +119,16 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
         etListView = findViewById(R.id.buy_listview);
         etScroll = findViewById(R.id.buy_scroll);
         adapter = new ArrayAdapter(this, R.layout.list_view_layout, R.id.text_list_item, getUserNum());
-        etListView.setAdapter(adapter);
-        etListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.buyListview.setAdapter(adapter);
+
+        binding.buyListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                etListView.setVisibility(View.GONE);
-                etScroll.setVisibility(View.VISIBLE);
-                purchaseRecordRealm = Entity.realm.where(PurchaseRecordRealm.class).findAll().get(position);
+                binding.buyListview.setVisibility(View.GONE);
+                binding.buyScroll.setVisibility(View.VISIBLE);
+                purchaseRecordRealm = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao().loadAll().get(position);
                 if (purchaseRecordRealm != null)
                 {
-                    purchaseRecordRealm = Entity.realm.copyFromRealm(purchaseRecordRealm);
                     String json = new Gson().toJson(purchaseRecordRealm);
                     try{
                         JSONObject object = new JSONObject(json);
@@ -185,27 +168,14 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bw_ok:
-            if (!etIsChangedBuy) {
-                if (!Entity.editTextIsNull(etMap)) {
-                    RealmUtils.createData(etMap, purchaseRecordRealm.getClass(), 0);
-                    etListView.setVisibility(View.VISIBLE);
-                    etScroll.setVisibility(View.GONE);
-                    RealmUtils.setEditEnable(etMap, false);
-                    RealmUtils.setTimeUpdateToServer(purchaseRecordRealm.getClass(), "01");
-                } else {
-                    Entity.toastMsg(this, "输入不能空");
-                }
-            } else {
-                button.setText("保存");
-                RealmUtils.setEditEnable(etMap, true);
-            }
+
             break;
         }
     }
 
     public List<String> getUserNum(){
 
-        RealmResults<PurchaseRecordRealm> realms = Entity.realm.where(PurchaseRecordRealm.class).findAll();
+        List<PurchaseRecordModel> realms = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao().loadAll();
         LinkedList<String> list = new LinkedList<>();
         for (int i =0; i < realms.size(); i++)
         {
@@ -217,10 +187,10 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
     @Override
     public void onBackPressed() {
 
-        if (etScroll.getVisibility() == View.VISIBLE)
+        if (binding.buyScroll.getVisibility() == View.VISIBLE)
         {
-            etScroll.setVisibility(View.GONE);
-            etListView.setVisibility(View.VISIBLE);
+            binding.buyScroll.setVisibility(View.GONE);
+            binding.buyListview.setVisibility(View.VISIBLE);
         }
         else {
             super.onBackPressed();

@@ -39,7 +39,6 @@ public class MainUser extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main_user);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_user_lv);
         initView();
     }

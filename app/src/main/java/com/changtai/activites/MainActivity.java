@@ -1,6 +1,7 @@
 package com.changtai.activites;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -16,6 +17,7 @@ import com.changtai.ItemsList.WaterPice;
 import com.changtai.R;
 import com.changtai.RFID.demo1443A;
 import com.changtai.Utils.Entity;
+import com.changtai.databinding.ActivityMainBinding;
 import com.changtai.fragment.FragmentMain;
 import com.changtai.fragment.FragmentMine;
 
@@ -25,10 +27,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private TextView bt_rfid, bt_map, bt_well, item_user, item_wPrice, item_operator, item_admin, item_bWater;
     private TextView t_username, tt_rePword;
     private LinearLayout sync_ll;
+    public ActivityMainBinding mainBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        mainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
         initView();
     }
 

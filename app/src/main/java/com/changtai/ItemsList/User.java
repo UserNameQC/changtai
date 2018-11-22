@@ -1,6 +1,7 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,12 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ScrollView;
 
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
-import com.changtai.realm.UserRealm;
+import com.changtai.application.MyApplication;
+import com.changtai.databinding.ActivityUserBinding;
+import com.changtai.sqlModel.UserModel;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -28,13 +30,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import io.realm.RealmResults;
-
 public class User extends Activity implements View.OnClickListener{
     /**
      * 用户表
      */
-    public EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14, et15, et16, et17,et18, et19, et20, et21, et22,et23, et24, et25, et26;
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;
     public String[] key = {Entity.BureauNo,Entity.StationNo,Entity.DeviceNo,Entity.UserNo,Entity.Index,Entity.UserName,Entity.Phone,
@@ -45,88 +44,66 @@ public class User extends Activity implements View.OnClickListener{
 
     public ListView useRListView;
     public ArrayAdapter<String> adapter;
-    public UserRealm userRealm;
-    public RealmResults<UserRealm> realmResultList;
-    public ScrollView scrollView;
     public LinkedList<EditText> etLinkList = new LinkedList<>();
     public boolean etIsChangedUser = true;
 
-
+    public RealmUtils<UserModel> realmUtils;
+    public UserModel userModel;
+    public List<UserModel> userModels = new ArrayList<>();
+    public ActivityUserBinding userBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        userBinding = DataBindingUtil.setContentView(this, R.layout.activity_user);
+        realmUtils = new RealmUtils<>();
         initView();
+
     }
 
     public void initView(){
-        scrollView = (ScrollView) findViewById(R.id.user_scrollview);
-        et1 = (EditText) findViewById(R.id.user_wcb_nm);
-        etLinkList.add(et1);
-        et2 = (EditText) findViewById(R.id.user_wstation_nm);
-        etLinkList.add(et2);
-        et3 = (EditText) findViewById(R.id.user_list_nm);
-        etLinkList.add(et3);
-        et4 = (EditText) findViewById(R.id.user_nm);
-        etLinkList.add(et4);
-        et5 = (EditText) findViewById(R.id.user_name);
-        etLinkList.add(et5);
-        et6 = (EditText) findViewById(R.id.user_index);
-        etLinkList.add(et6);
-        et7 = (EditText) findViewById(R.id.user_contact);
-        etLinkList.add(et7);
-        et8 = (EditText) findViewById(R.id.user_iphone);
-        etLinkList.add(et8);
-        et9 = (EditText) findViewById(R.id.user_build_time);
-        etLinkList.add(et9);
-        et10 = (EditText) findViewById(R.id.user_wp_price_num);
-        etLinkList.add(et10);
-        et11 = (EditText) findViewById(R.id.user_water_consumption);
-        etLinkList.add(et11);
-        et12 = (EditText) findViewById(R.id.user_purchase_water);
-        etLinkList.add(et12);
-        et13 = (EditText) findViewById(R.id.user_purchase_water_year);
-        etLinkList.add(et13);
-        et14 = (EditText) findViewById(R.id.user_overdraft_limit);
-        etLinkList.add(et14);
-        et15 = (EditText) findViewById(R.id.user_alarm_water);
-        etLinkList.add(et15);
-        et16 = (EditText) findViewById(R.id.user_idcard);
-        etLinkList.add(et16);
-        et17 = (EditText) findViewById(R.id.user_first_max);
-        etLinkList.add(et17);
-        et18 = (EditText) findViewById(R.id.user_second_max);
-        etLinkList.add(et18);
-        et19 = (EditText) findViewById(R.id.user_note);
-        etLinkList.add(et19);
-        et20 = (EditText) findViewById(R.id.user_operator);
-        etLinkList.add(et20);
-        et21 = (EditText) findViewById(R.id.user_last_water_time);
-        etLinkList.add(et21);
-        et22 = (EditText) findViewById(R.id.user_card_num);
-        etLinkList.add(et22);
-        et23 = (EditText) findViewById(R.id.user_issued_times);
-        etLinkList.add(et23);
-        et24 = (EditText) findViewById(R.id.user_data_update);
-        etLinkList.add(et24);
-        et25 = (EditText) findViewById(R.id.user_stop);
-        etLinkList.add(et25);
-        et26 = (EditText) findViewById(R.id.user_version);
-        etLinkList.add(et26);
+        etLinkList.add(userBinding.userWcbNm);
+        etLinkList.add(userBinding.userWstationNm);
+        etLinkList.add(userBinding.userListNm);
+        etLinkList.add(userBinding.userNm);
+        etLinkList.add(userBinding.userName);
+        etLinkList.add(userBinding.userIndex);
+        etLinkList.add(userBinding.userContact);
+        etLinkList.add(userBinding.userIphone);
+        etLinkList.add(userBinding.userBuildTime);
+        etLinkList.add(userBinding.userWpPriceNum);
+        etLinkList.add(userBinding.userWaterConsumption);
+        etLinkList.add(userBinding.userPurchaseWater);
+        etLinkList.add(userBinding.userPurchaseWaterYear);
+        etLinkList.add(userBinding.userOverdraftLimit);
+        etLinkList.add(userBinding.userAlarmWater);
+        etLinkList.add(userBinding.userIdcard);
+        etLinkList.add(userBinding.userFirstMax);
+        etLinkList.add(userBinding.userSecondMax);
+        etLinkList.add(userBinding.userNote);
+        etLinkList.add(userBinding.userOperator);
+        etLinkList.add(userBinding.userLastWaterTime);
+        etLinkList.add(userBinding.userCardNum);
+        etLinkList.add(userBinding.userIssuedTimes);
+        etLinkList.add(userBinding.userDataUpdate);
+        etLinkList.add(userBinding.userStop);
+        etLinkList.add(userBinding.userVersion);
         etMap = Entity.saveInMap(etLinkList);
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
-        button = (Button) findViewById(R.id.user_ok);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        userBinding.userOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (etIsChangedUser) {
                     if (!Entity.editTextIsNull(etMap)) {
-                        RealmUtils.createData(etMap, userRealm.getClass(), 0);
+                        UserModel userModel = realmUtils.createData(etMap, 0);
                         useRListView.setVisibility(View.VISIBLE);
-                        scrollView.setVisibility(View.GONE);
+                        userBinding.userScrollview.setVisibility(View.GONE);
                         RealmUtils.setEditEnable(etMap, false);
-                        RealmUtils.setTimeUpdateToServer(userRealm.getClass(), "03");
+                        /**
+                         * 更新数据
+                         */
+                        //RealmUtils.setTimeUpdateToServer(userRealm.getClass(), "03");
                     }
                     else
                     {
@@ -139,20 +116,17 @@ public class User extends Activity implements View.OnClickListener{
                 }
             }
         });
-        useRListView = (ListView)findViewById(R.id.user_list);
         adapter = new ArrayAdapter<>(this,R.layout.list_view_layout, R.id.text_list_item, getUserNum());
-        useRListView.setAdapter(adapter);
-        useRListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        userBinding.userList.setAdapter(adapter);
+
+        userBinding.userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                userRealm = Entity.realm.where(UserRealm.class).findAll().get(position);
-                userRealm = Entity.realm.copyFromRealm(userRealm);
-                //Log.e("administratorName", userRealm.getAdministratorName());
-                useRListView.setVisibility(View.GONE);
-                scrollView.setVisibility(View.VISIBLE);
+                userModel = MyApplication.getInstance().getDaoSession().getUserModelDao().loadAll().get(position);
+                userBinding.userList.setVisibility(View.GONE);
+                userBinding.userScrollview.setVisibility(View.VISIBLE);
                 Gson gson = new Gson();
-                //TypeAdapter<UserRealm> userTypeAdapter = gson.getAdapter(UserRealm.class);
-                String json = gson.toJson(userRealm);
+                String json = gson.toJson(userModel);
                 try {
                     JSONObject jsonObject = new JSONObject(json);
                     for (int i = 0; i < etMap.size(); i++)
@@ -190,32 +164,17 @@ public class User extends Activity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.user_ok:
-                if (!etIsChangedUser) {
-                    if (!Entity.editTextIsNull(etMap)) {
-                        RealmUtils.createData(etMap, userRealm.getClass(), 0);
-                        useRListView.setVisibility(View.VISIBLE);
-                        scrollView.setVisibility(View.GONE);
-                        RealmUtils.setTimeUpdateToServer(userRealm.getClass(), "03");
-                    }
-                    else
-                    {
-                        Entity.toastMsg(User.this, "输入不能为空");
-                    }
-                } else {
-                    button.setText("保存");
-                    etIsChangedUser = true;
-                    RealmUtils.setEditEnable(etMap, true);
-                }
+
             break;
         }
     }
 
     public List<String> getUserNum(){
-        realmResultList = Entity.realm.where(UserRealm.class).findAll();
+        userModels = MyApplication.getInstance().getDaoSession().getUserModelDao().loadAll();
         List<String> userNumList = new ArrayList<>();
-        for (int i = 0; i < realmResultList.size(); i++)
+        for (int i = 0; i < userModels.size(); i++)
         {
-            UserRealm userRealm = realmResultList.get(i);
+            UserModel userRealm = userModels.get(i);
             userNumList.add(userRealm.getUserNo());
         }
         return userNumList;
@@ -224,10 +183,10 @@ public class User extends Activity implements View.OnClickListener{
     @Override
     public void onBackPressed() {
 
-        if (scrollView.getVisibility() == View.VISIBLE)
+        if (userBinding.userScrollview.getVisibility() == View.VISIBLE)
         {
-            scrollView.setVisibility(View.GONE);
-            useRListView.setVisibility(View.VISIBLE);
+            userBinding.userScrollview.setVisibility(View.GONE);
+            userBinding.userList.setVisibility(View.VISIBLE);
         }
         else {
             super.onBackPressed();

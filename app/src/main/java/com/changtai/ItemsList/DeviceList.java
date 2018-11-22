@@ -1,6 +1,7 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,21 +18,22 @@ import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
 import com.changtai.application.MyApplication;
-import com.changtai.realm.DeviceRealm;
+import com.changtai.databinding.ActivityWellListBinding;
+import com.changtai.sqlModel.DeviceModel;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
-import io.realm.RealmResults;
 
 public class DeviceList extends Activity implements View.OnClickListener{
 
-    public EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14, et15, et16, et17;
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;
     public String[] key = {Entity.BureauNo,Entity.StationNo,Entity.DeviceNo,Entity.GprsNo,Entity.DeviceName,Entity.Index,
@@ -43,15 +45,18 @@ public class DeviceList extends Activity implements View.OnClickListener{
     public ListView deviceListView;
     public ScrollView etDeviceScroll;
     public ArrayAdapter<String> adapter;
-    public DeviceRealm deviceRealm;
     public String resultFromServer = "";
     public boolean etIsChanged = true;
-    public RealmUtils<DeviceRealm> realmUtils = new RealmUtils<>();
     public MyApplication application;
+    public DeviceModel deviceModel;
+    public ActivityWellListBinding binding;
+    public RealmUtils<DeviceModel> realmUtils;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_well_list);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_well_list);
+        realmUtils = new RealmUtils<>();
         initView();
     }
 
@@ -59,59 +64,39 @@ public class DeviceList extends Activity implements View.OnClickListener{
 
         application = (MyApplication) getApplication();
 
-        et1 = (EditText) findViewById(R.id.well_wcb_nm);
-        etWellList.add(et1);
-        et2 = (EditText) findViewById(R.id.well_wstation_nm);
-        etWellList.add(et2);
-        et3 = (EditText) findViewById(R.id.well_list_nm);
-        etWellList.add(et3);
-        et4 = (EditText) findViewById(R.id.well_gprs_nm);
-        etWellList.add(et4);
-        et5 = (EditText) findViewById(R.id.well_list_name);
-        etWellList.add(et5);
-        et6 = (EditText) findViewById(R.id.well_index);
-        etWellList.add(et6);
-        et7 = (EditText) findViewById(R.id.well_contact);
-        etWellList.add(et7);
-        et8 = (EditText) findViewById(R.id.well_iphone);
-        etWellList.add(et8);
-        et9 = (EditText) findViewById(R.id.well_install_loc);
-        etWellList.add(et9);
-        et10 = (EditText) findViewById(R.id.well_login_time);
-        etWellList.add(et10);
-        et11 = (EditText) findViewById(R.id.well_la);
-        etWellList.add(et11);
-        et12 = (EditText) findViewById(R.id.well_lo);
-        etWellList.add(et12);
-        et13 = (EditText) findViewById(R.id.well_note);
-        etWellList.add(et13);
-        et14 = (EditText) findViewById(R.id.well_operator);
-        etWellList.add(et14);
-        et15 = (EditText) findViewById(R.id.well_data_update);
-        etWellList.add(et15);
-        et16 = (EditText) findViewById(R.id.well_stop);
-        etWellList.add(et16);
-        et17 = (EditText) findViewById(R.id.well_version);
-        etWellList.add(et17);
+        etWellList.add(binding.wellWcbNm);
+        etWellList.add(binding.wellWstationNm);
+        etWellList.add(binding.wellListNm);
+        etWellList.add(binding.wellGprsNm);
+        etWellList.add(binding.wellListName);
+        etWellList.add(binding.wellIndex);
+        etWellList.add(binding.wellContact);
+        etWellList.add(binding.wellIphone);
+        etWellList.add(binding.wellInstallLoc);
+        etWellList.add(binding.wellLoginTime);
+        etWellList.add(binding.wellLa);
+        etWellList.add(binding.wellLo);
+        etWellList.add(binding.wellNote);
+        etWellList.add(binding.wellOperator);
+        etWellList.add(binding.wellDataUpdate);
+        etWellList.add(binding.wellStop);
+        etWellList.add(binding.wellVersion);
         etMap = Entity.saveInMap(etWellList);
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
-        deviceListView = findViewById(R.id.well_list_view);
-        etDeviceScroll = findViewById(R.id.well_scrollview);
         adapter = new ArrayAdapter<>(this,R.layout.list_view_layout, R.id.text_list_item, getDeviceName());
-        deviceListView.setAdapter(adapter);
-        button = (Button) findViewById(R.id.well_ok);
-        button.setOnClickListener(this);
+        binding.wellListView.setAdapter(adapter);
+        binding.wellOk.setOnClickListener(this);
 
-        deviceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        binding.wellListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                deviceRealm = Entity.realm.where(DeviceRealm.class).findAll().get(position);
-                if (deviceRealm != null) {
-                    deviceRealm = Entity.realm.copyFromRealm(deviceRealm);
-                    etDeviceScroll.setVisibility(View.VISIBLE);
-                    deviceListView.setVisibility(View.GONE);
-                    String dRealmJson = new Gson().toJson(deviceRealm);
+                deviceModel = MyApplication.getInstance().getDaoSession().getDeviceModelDao().loadAll().get(position);
+
+                if (deviceModel != null) {
+                    binding.wellScrollview.setVisibility(View.VISIBLE);
+                    binding.wellListView.setVisibility(View.GONE);
+                    String dRealmJson = new Gson().toJson(deviceModel);
                     try{
                         JSONObject jsonObject = new JSONObject(dRealmJson);
                         for (int i = 0; i < etMap.size(); i++)
@@ -158,11 +143,16 @@ public class DeviceList extends Activity implements View.OnClickListener{
             case R.id.well_ok:
                 if (etIsChanged) {
                     if (!Entity.editTextIsNull(etMap)) {
-                        RealmUtils.createData(etMap, deviceRealm.getClass(), 0);
+                        DeviceModel deviceModel = realmUtils.createData(etMap, 0);
+                        if (deviceModel != null){
+                            MyApplication.getInstance().getDaoSession().getDeviceModelDao().insert(deviceModel);
+                        }
                         etDeviceScroll.setVisibility(View.GONE);
                         deviceListView.setVisibility(View.VISIBLE);
                         RealmUtils.setEditEnable(etMap, false);
-                        RealmUtils.setTimeUpdateToServer(deviceRealm.getClass(), "04");
+                        /**
+                         * 更新数据接口调试（遗留）
+                         */
                     } else {
                         Entity.toastMsg(DeviceList.this, "输入不能空");
                     }
@@ -177,23 +167,23 @@ public class DeviceList extends Activity implements View.OnClickListener{
     }
 
     public LinkedList<String> getDeviceName(){
-        RealmResults<DeviceRealm> realms = Entity.realm.where(DeviceRealm.class).findAll();
-        LinkedList<String> list = new LinkedList<>();
-        for (DeviceRealm deviceRealm : realms)
+        List<DeviceModel> deviceModelList = MyApplication.getInstance().getDaoSession().getDeviceModelDao().loadAll();
+        LinkedList<String> deviceName = new LinkedList<>();
+        for (DeviceModel deviceRealm : deviceModelList)
         {
-            list.add(deviceRealm.getDeviceNo() + "");
+            deviceName.add(deviceRealm.getDeviceName() + ":" + deviceRealm.getDeviceNo());
             Log.e("deviceName", deviceRealm.getDeviceName());
         }
-        return list;
+        return deviceName;
     }
 
     @Override
     public void onBackPressed() {
 
-        if (etDeviceScroll.getVisibility() == View.VISIBLE)
+        if (binding.wellScrollview.getVisibility() == View.VISIBLE)
         {
-            etDeviceScroll.setVisibility(View.GONE);
-            deviceListView.setVisibility(View.VISIBLE);
+            binding.wellScrollview.setVisibility(View.GONE);
+            binding.wellListView.setVisibility(View.VISIBLE);
         }
         else {
             super.onBackPressed();

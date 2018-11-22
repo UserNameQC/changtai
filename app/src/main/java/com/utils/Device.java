@@ -5,41 +5,41 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class Device implements Serializable {
-    private String bureauno;
+    public String bureauno;
 
-    private String stationno;
+    public String stationno;
 
-    private String deviceno;
+    public String deviceno;
 
-    private String gprsno;
+    public String gprsno;
 
-    private String devicename;
+    public String devicename;
 
-    private Integer index;
+    public Integer index;
 
-    private String linkman;
+    public String linkman;
 
-    private String phone;
+    public String phone;
 
-    private String location;
+    public String location;
 
-    private Date createdatetime;
+    public Date createdatetime;
 
-    private BigDecimal longitude;
+    public BigDecimal longitude;
 
-    private BigDecimal latitude;
+    public BigDecimal latitude;
 
-    private String comment;
+    public String comment;
 
-    private String administratorname;
+    public String administratorname;
 
-    private Long timespan;
+    public Long timespan;
 
-    private Boolean stopflag;
+    public Boolean stopflag;
 
-    private Long version;
+    public Long version;
 
-    private static final long serialVersionUID = 1L;
+    public static final long serialVersionUID = 1L;
 
     public String getBureauno() {
         return bureauno;
