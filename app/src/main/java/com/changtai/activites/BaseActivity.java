@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.util.TimeUtils;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ import okio.Timeout;
  * Created by SAMSUNG on 2018/5/22.
  */
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends FragmentActivity {
 
     public RealmUtils realmUtils = new RealmUtils();
     //public AlertDialog.Builder dialog;

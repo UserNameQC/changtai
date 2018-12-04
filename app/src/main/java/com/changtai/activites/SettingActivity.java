@@ -57,5 +57,6 @@ public class SettingActivity extends Activity {
             MyApplication.getInstance().getDaoSession().getConfigModelDao().insert(model);
         }
         startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+        this.finish();
     }
 }

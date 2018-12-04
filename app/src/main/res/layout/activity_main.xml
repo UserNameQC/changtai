@@ -1,79 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/normal_bg_color"
         android:orientation="vertical">
+        <!-- 将该FrameLayout作为Fragment的容器 -->
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/main_view_pager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom_menu"/>
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
+            android:id="@+id/bottom_menu"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <!-- 将该FrameLayout作为Fragment的容器 -->
-            <FrameLayout
-                android:id="@+id/fl_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <include
-                android:id="@+id/main_layout"
-                layout="@layout/activity_items"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1" />
-
-            <include
-                android:id="@+id/main_index_my"
-                layout="@layout/index_my"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true">
+            <LinearLayout
+                android:id="@+id/main_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:visibility="gone" />
-
-
-            <RadioGroup
-                android:id="@+id/main_bottom_tabs"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-
-                <RadioButton
-                    android:id="@+id/main_home"
-                    android:layout_width="0dp"
+                android:background="#fff">
+                <ImageView
+                    android:id="@+id/main_bottom_image"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawablePadding="@dimen/little_sapce"
-                    android:gravity="center"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:text="首页"
-                    android:textColor="@drawable/main_text_color_selector"
-                    android:textSize="20sp" />
-
-
-                <RadioButton
-                    android:id="@+id/main_my"
-                    android:layout_width="0dp"
+                    android:src="@drawable/main_bottom_select"/>
+                <TextView
+                    android:id="@+id/main_bottom_tv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:button="@null"
-                    android:drawablePadding="@dimen/little_sapce"
-                    android:gravity="center"
-                    android:paddingLeft="0dp"
-                    android:scaleX="0.8"
-                    android:scaleY="0.8"
-                    android:text="我的"
-                    android:textColor="@drawable/main_text_color_selector"
-                    android:textSize="20sp" />
-            </RadioGroup>
+                    android:text="首页"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mine_fragment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="#fff">
+                <ImageView
+                    android:id="@+id/mine_bottom_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/mine_bottom_select"/>
+                <TextView
+                    android:id="@+id/mine_bottom_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="我的"/>
+            </LinearLayout>
 
         </LinearLayout>
-    </FrameLayout>
+
+    </RelativeLayout>
 </layout>

@@ -55,6 +55,14 @@ public class DownloadFromWebActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_from_web);
 
+    }
+
+    public void onClick(View view) {
+
+
+    }
+    public void downLoadFromWeb(){
+
         //弹出要给ProgressDialog
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("提示信息");
@@ -64,11 +72,7 @@ public class DownloadFromWebActivity extends Activity {
         //设置ProgressDialog样式为水平的样式
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 
-    }
-
-    public void onClick(View view) {
         new DownloadFromWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaDownLoadFromWeb","010101","100","200");
-
     }
 
     public void onBackPressed(View view) {
@@ -212,7 +216,7 @@ public class DownloadFromWebActivity extends Activity {
             Toast.makeText(DownloadFromWebActivity.this,"结束",Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
             //
-            //new UploadToWebTask().execute("http://192.168.9.192/PdaUploadToWeb");
+            new UploadToWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaUploadToWeb");
         }
 
         class DownLoadCreatePackageOut{
