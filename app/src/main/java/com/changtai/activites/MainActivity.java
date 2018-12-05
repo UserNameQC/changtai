@@ -1,7 +1,6 @@
 package com.changtai.activites;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,26 +13,15 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.changtai.BaiduMap.BaiduMapActivity;
-import com.changtai.ItemsList.DeviceList;
-import com.changtai.ItemsList.MainUser;
-import com.changtai.ItemsList.User;
-import com.changtai.ItemsList.UserBuyWater;
-import com.changtai.ItemsList.WaterPice;
 import com.changtai.R;
-import com.changtai.RFID.demo1443A;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
 import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
 import com.changtai.SynchronizationWithPCModels.SwpUserModel;
-import com.changtai.SynchronizationWithWeb.DownloadFromWebActivity;
-import com.changtai.Utils.Entity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMainBinding;
 import com.changtai.fragment.FragmentAdapter;
@@ -46,7 +34,6 @@ import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
 import com.example.john.greendaodemo.gen.ConfigModelDao;
 import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
-import com.example.john.greendaodemo.gen.UserModelDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
@@ -62,12 +49,9 @@ import java.util.Map;
 import static com.utils.WebMethodHelper.getStringByWebMethodGet;
 import static com.utils.WebMethodHelper.getStringByWebMethodPost;
 
+@SuppressWarnings("all")
 public class MainActivity extends BaseActivity {
 
-    private RadioButton home, mine;
-    private TextView bt_rfid, bt_map, bt_well, item_user, item_wPrice, item_operator, item_admin, item_bWater;
-    private TextView t_username, tt_rePword;
-    private LinearLayout sync_ll;
     public ActivityMainBinding mainBinding;
     public List<ImageView> imageViews;
     public List<TextView> textViews;

@@ -132,6 +132,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 final ConfigModel configModel = MyApplication.getInstance().getDaoSession().load(ConfigModel.class, 0);
 
                 if (name.equals("admin") && pass.equals("admin")) {
+                    Entity.loginModel.setQxString("管理员");
+                    Entity.loginModel.setLoginName("admin");
+                    Entity.loginModel.setUserName("admin");
+                    Entity.loginModel.setPassword("admin");
                     startActivity(new Intent(this, MainActivity.class));
                 } else {
                     try {

@@ -3,42 +3,21 @@ package com.changtai.fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.changtai.R;
-import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
-import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
-import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
-import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
-import com.changtai.SynchronizationWithPCModels.SwpUserModel;
+import com.changtai.Utils.Entity;
+import com.changtai.activites.AddUserActivity;
 import com.changtai.activites.MainActivity;
 import com.changtai.activites.ResetPassWord;
-import com.changtai.application.MyApplication;
+import com.changtai.activites.SettingActivity;
 import com.changtai.databinding.IndexMyBinding;
-import com.changtai.sqlModel.DeviceModel;
-import com.changtai.sqlModel.PriceModel;
-import com.changtai.sqlModel.PurchaseRecordModel;
-import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
-import com.google.gson.annotations.SerializedName;
-
-import org.greenrobot.greendao.query.QueryBuilder;
-
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static com.utils.WebMethodHelper.getStringByWebMethodGet;
-import static com.utils.WebMethodHelper.getStringByWebMethodPost;
 
 /**
  * Created by qjcjo on 2018/3/13.
@@ -53,8 +32,31 @@ public class FragmentMine extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.index_my, container, false);
+        initView();
         initEvent();
         return binding.getRoot();
+    }
+
+    public void initView(){
+        if (Entity.loginModel != null){
+            try {
+                if (Entity.loginModel.getLoginName().equals("admin") && Entity.loginModel.getUserName().equals("admin")) {
+                    hideView(true);
+                } else {
+                    hideView(false);
+                }
+            }catch (NullPointerException e){
+                e.printStackTrace();
+                hideView(false);
+            }
+        }else {
+            hideView(false);
+        }
+    }
+
+    public void hideView(boolean flag){
+        binding.addUserLayout.setVisibility(flag?View.VISIBLE:View.GONE);
+        binding.addBaseLayout.setVisibility(flag?View.VISIBLE:View.GONE);
     }
 
     public void initEvent(){
@@ -68,14 +70,14 @@ public class FragmentMine extends Fragment {
         binding.addBaseLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getActivity(), SettingActivity.class));
             }
         });
 
         binding.addUserLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getActivity(), AddUserActivity.class));
             }
         });
 

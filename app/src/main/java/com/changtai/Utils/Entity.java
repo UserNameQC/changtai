@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.baidu.mapapi.model.LatLng;
+import com.changtai.sqlModel.LoginModel;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -148,6 +149,8 @@ public class Entity {
 
     public static final String MID = "=";
     public static final String END = "\n";
+
+    public static LoginModel loginModel = new LoginModel();
 
 
     public static boolean editIsNull(EditText editText){
