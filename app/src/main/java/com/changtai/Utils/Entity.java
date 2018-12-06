@@ -151,6 +151,8 @@ public class Entity {
     public static final String END = "\n";
 
     public static LoginModel loginModel = new LoginModel();
+    public static String LOGIN_NAME = "LOGIN_NAME";
+    public static String QX_STRING = "QX_STRING";
 
 
     public static boolean editIsNull(EditText editText){

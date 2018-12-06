@@ -1,15 +1,9 @@
 package com.changtai.activites;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 
@@ -24,11 +18,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddUserActivity extends Activity {
+public class AddUserActivity extends BaseActivity {
 
     public ActivityAddUserBinding binding;
     public LoginModelDao loginModelDao;
-    public LoginModel loginModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,20 +38,22 @@ public class AddUserActivity extends Activity {
                 checkIsEmpty();
            }
        });
-       binding.addQx.setOnTouchListener(new View.OnTouchListener() {
+
+       binding.addQx.setOnClickListener(new View.OnClickListener() {
            @Override
-           public boolean onTouch(View v, MotionEvent event) {
+           public void onClick(View v) {
                final String[] qx = new String[]{"管理员", "操作员"};
                AlertDialog.Builder builder = new AlertDialog.Builder(AddUserActivity.this);
                builder.setTitle("选择权限");
                builder.setItems(qx, new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialog, int which) {
-                        binding.addQx.setText(qx[which]);
-                        dialog.dismiss();
+                       binding.addQx.setText(qx[which]);
+                       dialog.dismiss();
                    }
                });
-               return true;
+               //builder.setCancelable(false);
+               builder.show();
            }
        });
     }
@@ -89,6 +85,8 @@ public class AddUserActivity extends Activity {
                 loginModelDao.insert(loginModel);
                 createDialog();
             }
+        } else{
+            Entity.toastMsg(this, "请完善信息");
         }
     }
 

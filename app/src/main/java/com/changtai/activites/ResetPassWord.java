@@ -28,7 +28,7 @@ import java.util.Map;
  * Created by qjcjo on 2018/3/30.
  */
 
-public class ResetPassWord extends Activity{
+public class ResetPassWord extends BaseActivity{
 
     public EditText userName, passWord, newPassword;
     public Map<Integer, EditText> editTextMap = new HashMap<>();

@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.changtai.R;
 
-public class ItemsActivity extends Activity implements View.OnClickListener{
+public class ItemsActivity extends BaseActivity implements View.OnClickListener{
 
     public Button item_well, item_take_water, item_buy_water, item_address_wellType, item_water_price, item_operator;
     public Button item_rfid, item_map;

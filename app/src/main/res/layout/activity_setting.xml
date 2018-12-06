@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/activity_settting"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="设置售水站号："
-            android:textSize="20sp"/>-->
+        android:gravity="center_horizontal">
+
         <ImageView
+            android:id="@+id/setting_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/timg" />
 
         <EditText
@@ -24,24 +20,28 @@
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
-            android:background="@null"
+            android:background="@drawable/backgroud_edit_text"
             android:hint="请输入水站号"
             android:inputType="number"
+            android:paddingLeft="5dp"
+            android:paddingStart="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/setting_logo"
             android:textSize="20sp" />
 
-        <View
-            android:layout_width="250dp"
-            android:layout_height="2dp"
-            android:background="#009858" />
 
         <Button
             android:id="@+id/bt_ok"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@android:color/transparent"
+            android:background="@drawable/background_button"
             android:onClick="onButtonClick"
             android:text="确定"
+            android:layout_alignLeft="@+id/buy_water_id"
+            android:layout_alignRight="@+id/buy_water_id"
+            android:layout_below="@+id/buy_water_id"
+            android:textColor="#ffffff"
             android:textSize="20sp" />
-    </LinearLayout>
+    </RelativeLayout>
 </layout>

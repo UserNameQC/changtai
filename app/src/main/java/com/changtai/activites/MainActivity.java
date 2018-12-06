@@ -1,12 +1,15 @@
 package com.changtai.activites;
 
+import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -22,6 +25,7 @@ import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
 import com.changtai.SynchronizationWithPCModels.SwpUserModel;
+import com.changtai.Utils.Entity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMainBinding;
 import com.changtai.fragment.FragmentAdapter;
@@ -175,120 +179,6 @@ public class MainActivity extends BaseActivity {
         }
     }
 
-    /*public void initView(){
-        home = (RadioButton) findViewById(R.id.main_home);
-        mine = (RadioButton) findViewById(R.id.main_my);
-
-        final View layoutMain = findViewById(R.id.main_layout);
-        final View layoutMine = findViewById(R.id.main_index_my);
-        *//**
-         * itmes 控件初始化
-         *//*
-        bt_rfid = (TextView) layoutMain.findViewById(R.id.bt_rfid);
-        bt_map = (TextView) layoutMain.findViewById(R.id.bt_bd_map);
-        bt_well = (TextView) layoutMain.findViewById(R.id.item_well_list);
-        item_user = (TextView) layoutMain.findViewById(R.id.item_user);
-        item_wPrice = (TextView) layoutMain.findViewById(R.id.item_water_price);
-        item_operator = (TextView) layoutMain.findViewById(R.id.item_operator);
-        item_admin = (TextView) layoutMain.findViewById(R.id.item_admin);
-        item_bWater = (TextView) layoutMain.findViewById(R.id.item_user_buy_water);
-
-        t_username = (TextView) layoutMine.findViewById(R.id.index_my_username);
-        tt_rePword = (TextView) layoutMine.findViewById(R.id.index_reset_pw);
-        sync_ll = layoutMine.findViewById(R.id.index_layout_sync);
-        t_username.setText(Entity.spres.getString("USERNAME", " "));
-
-        bt_rfid.setOnClickListener(this);
-        bt_map.setOnClickListener(this);
-        bt_well.setOnClickListener(this);
-        item_user.setOnClickListener(this);
-        item_wPrice.setOnClickListener(this);
-        item_operator.setOnClickListener(this);
-        item_admin.setOnClickListener(this);
-        item_bWater.setOnClickListener(this);
-
-        t_username.setOnClickListener(this);
-        tt_rePword.setOnClickListener(this);
-
-        *//**
-         * 同步数据
-         *//*
-        sync_ll.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //startSyncData(false);
-                downLoadFromWeb();
-            }
-        });
-
-        final FragmentMain fragmentMain = new FragmentMain();
-        final FragmentMine  fragmentMine = new FragmentMine();
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (layoutMine.getVisibility() == View.VISIBLE) {
-                    layoutMine.setVisibility(View.GONE);
-                    layoutMain.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        mine.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (layoutMain.getVisibility() == View.VISIBLE) {
-                    layoutMain.setVisibility(View.GONE);
-                    layoutMine.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-
-        selectUserModel();
-
-
-    }
-
-    public void selectUserModel(){
-        List<UserModel> users =  MyApplication.getInstance().getDaoSession().getUserModelDao().loadAll();
-        for (UserModel userModel : users){
-            Log.e("UserModel", userModel.getAdministratorName());
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId())
-        {
-            case R.id.bt_rfid:
-                startActivity(new Intent(MainActivity.this, demo1443A.class));
-                break;
-            case R.id.bt_bd_map:
-                startActivity(new Intent(MainActivity.this, BaiduMapActivity.class));
-                break;
-            case R.id.item_well_list:
-                startActivity(new Intent(MainActivity.this, DeviceList.class));
-                break;
-            case R.id.item_user:
-                startActivity(new Intent(MainActivity.this, User.class));
-                break;
-            case R.id.item_water_price:
-                startActivity(new Intent(MainActivity.this, WaterPice.class));
-                break;
-            case R.id.item_operator:
-                startActivity(new Intent(MainActivity.this, MainUser.class));
-                break;
-            case R.id.item_admin:
-                startActivity(new Intent(MainActivity.this, MainUser.class));
-                break;
-            case R.id.item_user_buy_water:
-                startActivity(new Intent(MainActivity.this, UserBuyWater.class));
-                break;
-            case R.id.index_reset_pw:
-                startActivity(new Intent(MainActivity.this, ResetPassWord.class));
-                break;
-        }
-    }*/
 
     public void downLoadFromWeb(){
 
@@ -631,5 +521,33 @@ public class MainActivity extends BaseActivity {
             path = String.format("%s/UpLoadSavePackage/%s", path, packageId);
             getStringByWebMethodGet(path);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("是否退出应用？");
+        builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (Entity.loginModel != null){
+                    Entity.loginModel.setPassword("");
+                    Entity.loginModel.setUserName("");
+                    Entity.loginModel.setLoginName("");
+                    Entity.loginModel.setQxString("");
+                    dialog.dismiss();
+                    MyApplication.getInstance().exit();
+                }
+            }
+        });
+
+        builder.setNeutralButton("否", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.show();
     }
 }

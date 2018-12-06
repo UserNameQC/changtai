@@ -1,5 +1,6 @@
 package com.changtai.application;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,6 +15,8 @@ import com.tencent.bugly.crashreport.CrashReport;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Qiao on 2018/1/28.
@@ -27,8 +30,8 @@ public class MyApplication extends Application {
     public DaoSession mDaoSession;
     public static MyApplication myApplication;
     public Context context;
-    public boolean isFirst;
 
+    private List<Activity> activityList = new LinkedList<Activity>();
     @Override
     public void onCreate() {
         super.onCreate();
@@ -43,7 +46,6 @@ public class MyApplication extends Application {
         setDatabase();
         initView();
         getTime();
-        getIsFirst();
         CrashReport.initCrashReport(getApplicationContext(), "692d620efe", true);
     }
 
@@ -51,19 +53,18 @@ public class MyApplication extends Application {
         return myApplication;
     }
 
-    /**
-     * 当前使用的缓存数据库
-     */
-//    public void initRealm(){
-//        RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().
-//                name("CtaiRealm.realm")
-//                .schemaVersion(1)
-//                .build();
-//        Entity.realm = Realm.getInstance(realmConfiguration);
-//        //Realm.setDefaultConfiguration(realmConfiguration);
-//    }
+    //添加Activity到容器中
+    public void addActivity(Activity activity)  {
+        activityList.add(activity);
+    }
 
-
+    //遍历所有Activity并finish
+    public void exit() {
+        for(Activity activity:activityList) {
+            activity.finish();
+        }
+        activityList.clear();
+    }
 
     /**
      * 获取当前时间
@@ -74,14 +75,7 @@ public class MyApplication extends Application {
         Entity.time =Long.valueOf(sdf.format(d));
     }
 
-    public boolean getIsFirst(){
-        Entity.isFirst = Entity.spres.getBoolean(Entity.isFirstUseApp, true);
-//        if (isFirst)
-//        {
-//            Entity.spres.edit().putBoolean(Entity.isFirstUseApp, false).apply();
-//        }
-        return Entity.isFirst;
-    }
+
 
     public void initView(){
         /**
@@ -116,6 +110,5 @@ public class MyApplication extends Application {
     public SQLiteDatabase getDb() {
         return db;
     }
-
 
 }

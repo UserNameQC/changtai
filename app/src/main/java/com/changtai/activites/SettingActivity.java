@@ -18,7 +18,7 @@ import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.List;
 
-public class SettingActivity extends Activity {
+public class SettingActivity extends BaseActivity {
 
     private String baseId;
     private MyApplication application;
@@ -32,6 +32,15 @@ public class SettingActivity extends Activity {
     }
 
     public void onButtonClick(View view) {
+        if (Entity.loginModel != null){
+            if (!Entity.loginModel.getLoginName().equals("admin")){
+                Entity.toastMsg(this, "请联系管理员更改");
+                return;
+            }
+        }else{
+            Entity.toastMsg(this, "请联系管理员更改");
+            return;
+        }
         final EditText editText = (EditText) findViewById(R.id.buy_water_id);
         if (editText.length() <= 0) {
             Entity.toastMsg(this, "售水站号不能为空");
@@ -54,9 +63,9 @@ public class SettingActivity extends Activity {
             model.setName("APP_BASEID");
             model.setValue(baseId);
             model.setComment("水站号");
-            MyApplication.getInstance().getDaoSession().getConfigModelDao().insert(model);
+            MyApplication.getInstance().getDaoSession().getConfigModelDao().insertOrReplace(model);
         }
-        startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+        //startActivity(new Intent(SettingActivity.this, LoginActivity.class));
         this.finish();
     }
 }

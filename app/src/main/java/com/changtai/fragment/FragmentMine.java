@@ -1,6 +1,8 @@
 package com.changtai.fragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.activites.AddUserActivity;
+import com.changtai.activites.LoginActivity;
 import com.changtai.activites.MainActivity;
 import com.changtai.activites.ResetPassWord;
 import com.changtai.activites.SettingActivity;
@@ -42,8 +45,12 @@ public class FragmentMine extends Fragment {
             try {
                 if (Entity.loginModel.getLoginName().equals("admin") && Entity.loginModel.getUserName().equals("admin")) {
                     hideView(true);
+                    binding.indexMyUsername.setText(Entity.loginModel.getUserName());
+                    binding.indexQx.setText(Entity.loginModel.getQxString());
                 } else {
                     hideView(false);
+                    binding.indexQx.setText(Entity.spres.getString(Entity.QX_STRING, ""));
+                    binding.indexMyUsername.setText(Entity.spres.getString(Entity.LOGIN_NAME, ""));
                 }
             }catch (NullPointerException e){
                 e.printStackTrace();
@@ -51,6 +58,8 @@ public class FragmentMine extends Fragment {
             }
         }else {
             hideView(false);
+            binding.indexQx.setText(Entity.spres.getString(Entity.QX_STRING, ""));
+            binding.indexMyUsername.setText(Entity.spres.getString(Entity.LOGIN_NAME, ""));
         }
     }
 
@@ -91,349 +100,36 @@ public class FragmentMine extends Fragment {
                 mainActivity.downLoadFromWeb();
             }
         });
-    }
 
-
-    /*public void downLoadFromWeb(){
-
-        //弹出要给ProgressDialog
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("提示信息");
-        progressDialog.setMessage("工作中，请稍后......");
-        //设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
-        progressDialog.setCancelable(false);
-        //设置ProgressDialog样式为水平的样式
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-
-        new MainActivity.DownloadFromWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaDownLoadFromWeb","010101","100","200");
-    }
-
-    public void onBackPressed(View view) {
-        super.onBackPressed();
-    }
-
-    *//**
-     * 下载线程
-     *//*
-    class DownloadFromWebTask extends AsyncTask<String,Integer,String> {
-
-        //线程运行前执行，该方法在主线程执行
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog.setMessage("正在下载数据，请稍后......");
-            progressDialog.setProgress(0);
-            progressDialog.setMax(100);
-            //在onPreExecute()中我们让ProgressDialog显示出来
-            progressDialog.show();
-        }
-
-        //线程体，该方法在子线程执行
-        @Override
-        protected String doInBackground(String... strings) {
-            String path = strings[0];
-            String stationNo = strings[1];
-            Integer startVersion = Integer.parseInt(strings[2]);
-            Integer endVersion = Integer.parseInt(strings[3]);
-
-            StringBuilder stringBuilder= new StringBuilder();
-
-            try {
-                FragmentMine.DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackageOut = downLoadCreatePackage(path, stationNo, startVersion, endVersion);
-                for (int i=0;i<downLoadCreatePackageOut.count;i++){
-                    String s = DownLoadPackageValue(path, downLoadCreatePackageOut.packageId, i);
-                    Log.i("TEST",String.format("s的长度是%d",s.length()));
-                    Log.i("TEST",String.format("s是%s",s));
-                    String s2 = gson.fromJson(s,String.class);
-                    stringBuilder.append(s2);
-
-                    Log.i("TEST",String.format("s2的长度是%d",s2.length()));
-                    Log.i("TEST",String.format("s2是%s",s2));
-                    publishProgress(i+1,downLoadCreatePackageOut.count);
-                }
-
-                DownLoadDeletePackage(path,downLoadCreatePackageOut.packageId);
-
-                String value = stringBuilder.toString();
-
-                if(downLoadCreatePackageOut.jsonLength!=value.length()){
-                    //throw new Exception("接收的数据长度与服务器不一致");
-                }
-
-                DownLoadFromPcModel downLoadFromPcModel = gson.fromJson(value, DownLoadFromPcModel.class);
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.Device.size()));
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
-                Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
-                for(SwpDeviceModel model:downLoadFromPcModel.Device){
-                    DeviceModel model1= MappingObject(model,DeviceModel.class);
-                    model1.DeviceId= Long.parseLong(model.DeviceNo);
-                    MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
-                }
-                for(SwpUserModel model:downLoadFromPcModel.User){
-                    UserModel model1= MappingObject(model,UserModel.class);
-                    model1.Id= Long.parseLong(model.UserNo);
-                    MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model1);
-                }
-                for(SwpPriceModel model:downLoadFromPcModel.Price){
-                    PriceModel model1= MappingObject(model,PriceModel.class);
-                    model1.Id= Long.parseLong(String.format("%s%03d",model1.stationNo,model1.sjId));
-                    MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
-                }
-                for(SwpPurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
-                    PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
-                    QueryBuilder<PurchaseRecordModel> qb =MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().queryBuilder();
-                    qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.purchaseRecordId));
-                    List<PurchaseRecordModel> list = qb.list();
-                    if(list.size()>0){
-                        model1.Id=list.get(0).Id;
-                    }
-                    MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model1);
-                }
-
-
-                return value;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-            //转换成实体对像然后保存
-        }
-
-        *//**
-         * 把一个对像的值复制到另一个对象
-         * @param object 原对象
-         * @param classOfT 生成的对象类名
-         * @param <T> 生成的对象类名
-         * @return
-         * @throws IllegalAccessException
-         * @throws java.lang.InstantiationException
-         *//*
-
-        private <T> T MappingObject(Object object, Class<T> classOfT) throws Exception {
-            T newObject = classOfT.newInstance();
-            Field[] fields = object.getClass().getDeclaredFields();
-            for(Field field : fields){
-                String fieldName = field.getName();
-                try {
-                    Field[] newFields = classOfT.getDeclaredFields();
-                    for (Field newField : newFields) {
-                        String newFieldName = newField.getName();
-                        if (fieldName.toLowerCase().equals(newFieldName.toLowerCase())) {
-                            newField.set(newObject, field.get(object));
-                            break;
+        binding.personalCenterLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("是否退出登录？");
+                builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (Entity.loginModel != null){
+                            Entity.loginModel.setQxString("");
+                            Entity.loginModel.setLoginName("");
+                            Entity.loginModel.setUserName("");
+                            Entity.loginModel.setPassword("");
                         }
+                        dialog.dismiss();
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                        getActivity().finish();
                     }
-                }catch (Exception e){
-                    throw new Exception(String.format("%s实体,%s属性,%s",classOfT.getName(),fieldName,e.getMessage()));
-                }
+                });
+
+                builder.setNeutralButton("否", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                builder.show();
             }
-            return newObject;
-        }
-
-        //线程执行进度，该方法在主线程执行
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            progressDialog.setProgress(values[0]);
-            progressDialog.setMax(values[1]);
-            super.onProgressUpdate(values);
-        }
-
-        //线程执行结束后运行，该方法在主线程执行
-        @Override
-        protected void onPostExecute(String s) {
-            //使ProgressDialog框消失
-            progressDialog.dismiss();
-            //textView.setText(s);
-            Toast.makeText(MainActivity.this,"结束",Toast.LENGTH_LONG).show();
-            super.onPostExecute(s);
-            //
-            new  MainActivity.UploadToWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaUploadToWeb");
-        }
-
-        class DownLoadCreatePackageOut{
-            //包ID
-            @SerializedName("PackageId")
-            private String packageId;
-            //包长度
-            @SerializedName("Count")
-            private Integer count;
-            //所有了包拼接后字符串的长度
-            @SerializedName("JsonLength")
-            private long jsonLength;
-        }
-
-        *//**
-         * 下载数据,在服务器端生成下载包
-         * @param path uri
-         * @param stationNo 售水站号
-         * @param startVersion 起始版本号
-         * @param endVersion 结束版本号
-         * @return 返回包ID，包长度
-         * @throws Exception
-         *//*
-        private MainActivity.DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackage(String path, String stationNo, long startVersion, long endVersion) throws Exception {
-            path = String.format("%s/DownLoadCreatePackage", path);
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("stationNo", stationNo);
-            params.put("startVersion", String.format("%d", startVersion));
-            params.put("endVersion", String.format("%d", endVersion));
-            String value = getStringByWebMethodPost(path, params);
-            MainActivity.DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackageOut = gson.fromJson(value, MainActivity.DownloadFromWebTask.DownLoadCreatePackageOut.class);
-            return downLoadCreatePackageOut;
-        }
-
-        *//**
-         * 下载子包
-         * @param path uri
-         * @param packageId 包ID
-         * @param index 子包序号
-         * @return 子包内容
-         * @throws Exception
-         *//*
-        private String DownLoadPackageValue(String path,String packageId, int index) throws Exception {
-            path = String.format("%s/DownLoadPackageValue",path) ;
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("packageId", String.format("%s", packageId));
-            params.put("index", String.format("%d", index));
-            String value = getStringByWebMethodPost(path, params);
-            return value;
-        }
-
-        *//**
-         * 删除在服务器端生成的下载包
-         * @param path uri
-         * @param packageId 包ID
-         * @throws Exception
-         *//*
-        private void DownLoadDeletePackage(String path,String packageId) throws Exception {
-            path = String.format("%s/DownLoadDeletePackage",path) ;
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("packageId", packageId);
-            getStringByWebMethodPost(path, params);
-        }
-
-
+        });
     }
-
-
-    *//**
-     * 上传线程
-     *//*
-    class UploadToWebTask extends AsyncTask<String,Integer,String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            //在onPreExecute()中我们让ProgressDialog显示出来
-            progressDialog.setMessage("正在上传数据，请稍后......");
-            progressDialog.show();
-        }
-
-        //线程
-        @Override
-        protected String doInBackground(String... strings) {
-            String path = strings[0];
-            String value = "qwertyuiop[]asdfghjkl;'zxcvbnm,./" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "";
-            Integer stepLength = 1;
-            Integer stepCount = value.length() / stepLength + 1;
-
-            try {
-                String packageId = UpLoadCreatePackage(path);
-                for (int i = 0; i < stepCount; i++) {
-                    Integer beginIndex = i * stepLength;
-                    if (beginIndex >= value.length()) {
-                        //已经结束了
-                        break;
-                    }
-                    Integer endIndex = beginIndex + stepLength;
-                    if (endIndex < value.length()) {
-                        String subString = value.substring(beginIndex, endIndex);
-                        UpLoadPackage(path, packageId, i, subString);
-                    } else {
-                        String subString = value.substring(beginIndex, value.length() - 1);
-                        UpLoadPackage(path, packageId, i, subString);
-                    }
-
-                    int progress = i * 100 / stepCount;
-                    publishProgress(i,stepCount);
-                }
-                UpLoadSavePackage(path, packageId);
-            } catch (Exception e) {
-                //Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        //线程执行进度，该方法在主线程执行
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            progressDialog.setProgress(values[0]);
-            progressDialog.setMax(values[1]);
-            super.onProgressUpdate(values);
-        }
-
-
-        //线程执行结束后运行，该方法在主线程执行
-        @Override
-        protected void onPostExecute(String s) {
-            //使ProgressDialog框消失
-            progressDialog.dismiss();
-            Toast.makeText(MainActivity.this, "结束", Toast.LENGTH_LONG).show();
-            super.onPostExecute(s);
-        }
-
-        *//**
-         * 在服务器创建空包
-         *
-         * @param path
-         * @return
-         * @throws Exception
-         *//*
-        private String UpLoadCreatePackage(String path) throws Exception {
-            path = String.format("%s/UpLoadCreatePackage", path);
-            String value = getStringByWebMethodGet(path);
-            return value;
-        }
-
-        *//**
-         * 把本地数据上传到服务器空包中
-         *
-         * @param packageId
-         * @param index
-         * @param value
-         *//*
-        private void UpLoadPackage(String path, String packageId, int index, String value) throws Exception {
-            path = String.format("%s/UpLoadPackage", path);
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("packageId", packageId);
-            params.put("index", String.format("%d", index));
-            params.put("value", value);
-            getStringByWebMethodPost(path, params);
-        }
-
-        *//**
-         * 通知服务器保存数据并删除包
-         *
-         * @param path
-         * @param packageId
-         * @throws Exception
-         *//*
-        private void UpLoadSavePackage(String path, String packageId) throws Exception {
-            path = String.format("%s/UpLoadSavePackage/%s", path, packageId);
-            getStringByWebMethodGet(path);
-        }
-    }*/
 }

@@ -33,13 +33,13 @@
                 android:id="@+id/et_login_username"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:background="@null"
                 android:hint="用户名"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="yumen" />
+                android:text="admin" />
 
             <View
                 android:layout_width="wrap_content"
@@ -64,15 +64,15 @@
                 android:id="@+id/et_login_password"
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:background="@null"
                 android:hint="密码"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="123456" />
+                android:text="admin" />
 
             <View
                 android:layout_width="wrap_content"

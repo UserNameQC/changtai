@@ -2,7 +2,9 @@ package com.changtai.activites;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Message;
@@ -30,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LoginActivity extends Activity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     public ActivityLoginBinding binding;
     public GreenDaoUtil greenDaoUtil;
@@ -52,8 +54,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        ConfigModel configModel = MyApplication.getInstance().getDaoSession().load(ConfigModel.class, 0);
-        if (configModel == null) {
+        List<ConfigModel> configModels = MyApplication.getInstance().getDaoSession().getConfigModelDao().queryBuilder()
+                .list();
+        if (configModels == null) {
             Entity.toastMsg(this, "请设置水站号！");
         }
     }
@@ -129,8 +132,9 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     return;
                 }
 
-                final ConfigModel configModel = MyApplication.getInstance().getDaoSession().load(ConfigModel.class, 0);
-
+                //final ConfigModel configModel = MyApplication.getInstance().getDaoSession().load(ConfigModel.class, 0);
+                final List<ConfigModel> configModels = MyApplication.getInstance().getDaoSession().getConfigModelDao()
+                        .queryBuilder().list();
                 if (name.equals("admin") && pass.equals("admin")) {
                     Entity.loginModel.setQxString("管理员");
                     Entity.loginModel.setLoginName("admin");
@@ -140,7 +144,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 } else {
                     try {
                         progress();
-                        final String baseId = configModel.getValue();
+                        String baseId;
+                        if (configModels != null && !configModels.isEmpty()){
+                            baseId = configModels.get(0).getValue();
+                        }
 
                         LoginModelDao loginModelDao = MyApplication.getInstance().getDaoSession().getLoginModelDao();
                         List<LoginModel> loginModels = loginModelDao.queryBuilder()
@@ -150,6 +157,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                             String passWord = model.getPassword();
                             disMissDialog();
                             if (pass.equals(passWord)) {
+                                Entity.spres.edit().putString(Entity.LOGIN_NAME, model.getLoginName()).apply();
+                                Entity.spres.edit().putString(Entity.QX_STRING, model.getQxString()).apply();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                             } else {
                                 Entity.toastMsg(LoginActivity.this, "用户名或密码错误");
@@ -184,4 +193,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+        MyApplication.getInstance().exit();
+        super.onBackPressed();
+    }
 }

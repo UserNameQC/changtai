@@ -30,6 +30,8 @@
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.READ_LOGS" />
 
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+
     <uses-feature
         android:name="android.hardware.nfc"
         android:required="true" />
@@ -44,14 +46,14 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="Ihh1rUMb0IwdO2TvkV41u0df4jr43Oic" />
 
-        <activity android:name=".activites.MainActivity">
+        <activity android:name=".activites.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activites.LoginActivity" />
+        <activity android:name=".activites.MainActivity" />
         <activity
             android:name=".RFID.demo1443A"
             tools:ignore="InnerclassSeparator" />
@@ -59,16 +61,17 @@
         <activity android:name=".RFID.NfcDemoActivity" />
         <activity android:name=".activites.SettingActivity" />
         <activity android:name=".activites.ItemsActivity" />
-        <activity android:name=".ItemsList.DeviceList" />
+        <activity android:name=".ItemsList.DeviceList"
+            tools:ignore="InnerclassSeparator" />
         <activity android:name=".ItemsList.WaterPice" />
         <activity android:name=".ItemsList.User" />
         <activity android:name=".ItemsList.UserBuyWater" />
         <activity android:name=".ItemsList.UserTakeWater" />
         <activity android:name=".ItemsList.MainUser" />
         <activity android:name=".activites.ResetPassWord" />
-        <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity"></activity>
-        <activity android:name=".activites.SynchronizationMain"></activity>
-        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity"></activity>
+        <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity"/>
+        <activity android:name=".activites.SynchronizationMain"/>
+        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity"/>
 
         <intent-filter>
             <action android:name="android.nfc.action.TECH_DISCOVERED" />
