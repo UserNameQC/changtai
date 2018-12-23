@@ -62,12 +62,12 @@ public class SettingActivity extends BaseActivity {
         baseId = editText.getText().toString();
 
         QueryBuilder<ConfigModel> queryBuilder = MyApplication.getInstance().getDaoSession().getConfigModelDao().queryBuilder();
-        List<ConfigModel> configModelList = queryBuilder.where(ConfigModelDao.Properties.Value.eq(baseId)).list();
+        List<ConfigModel> configModelList = queryBuilder.where(ConfigModelDao.Properties.Id.eq(0L)).list();
         if (configModelList != null && configModelList.size() > 0) {
-            Entity.toastMsg(SettingActivity.this, "售水站号已存在");
-            return;
-        } else {
-            ConfigModel model = new ConfigModel();
+//            Entity.toastMsg(SettingActivity.this, "售水站号已存在");
+//            return;
+//        } else {
+            ConfigModel model = configModelList.get(0);
             model.setName("APP_BASEID");
             model.setValue(baseId);
             model.setComment("水站号");
