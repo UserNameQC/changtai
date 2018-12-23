@@ -78,8 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="13dp"
-            android:paddingTop="8dp"
-            android:visibility="gone">
+            android:paddingTop="8dp">
 
             <TextView
                 android:id="@+id/item_water_price"

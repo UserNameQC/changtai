@@ -13,6 +13,8 @@ import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityAddUserBinding;
 import com.changtai.sqlModel.LoginModel;
 import com.example.john.greendaodemo.gen.LoginModelDao;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,15 @@ public class AddUserActivity extends BaseActivity {
     }
 
     public void initView(){
+        String result = getIntent().getExtras().getString("result", null);
+        if (result != null){
+            LoginModel loginModel = new Gson().fromJson(result, new TypeToken<LoginModel>(){}.getType());
+            binding.addQx.setText(loginModel.getQxString());
+            binding.addLoginName.setText(loginModel.getLoginName());
+            binding.addUserName.setText(loginModel.getUserName());
+            binding.addPassWord.setText(loginModel.getPassword());
+        }
+
        binding.addRegister.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

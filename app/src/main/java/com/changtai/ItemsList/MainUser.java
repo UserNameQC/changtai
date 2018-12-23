@@ -1,18 +1,29 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.changtai.MainUserAdapter;
 import com.changtai.R;
+import com.changtai.activites.AddUserActivity;
+import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMainUserLvBinding;
+import com.changtai.sqlModel.LoginModel;
+import com.example.john.greendaodemo.gen.LoginModelDao;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.changtai.Utils.Entity.Accounts;
@@ -36,6 +47,9 @@ public class MainUser extends Activity{
     public Map<Integer, EditText> editMap = new HashMap<>();
     public String[] key = {AdministratorId, SysAdmin,Name,Accounts,PassWord,ReWritePassWord,Phone,RoleId};
     public ActivityMainUserLvBinding binding;
+    public LoginModelDao loginModelDao;
+    public LoginModel loginModel;
+    public MainUserAdapter arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +61,38 @@ public class MainUser extends Activity{
     {
         //不需要初始化信息
         //直接使用 如下
+        loginModelDao = MyApplication.getInstance().getDaoSession().getLoginModelDao();
+        List<LoginModel> loginModels = loginModelDao.loadAll();
+        if (loginModels != null && loginModels.size() > 0){
+            arrayAdapter = new MainUserAdapter(this,loginModels, R.layout.main_user_item_layout);
+            binding.activityMainUserLv.setAdapter(arrayAdapter);
+            arrayAdapter.setItemClick(new MainUserAdapter.setOnItemClickListenr() {
+                @Override
+                public void onItemClick(View v, int position, final LoginModel loginModel) {
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainUser.this);
+                    alertDialog.setItems(new String[]{"修改信息", "删除操作员"}, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            if (which == 0){
+                                Intent intent = new Intent(MainUser.this, AddUserActivity.class);
+                                String json = new Gson().toJson(loginModel);
+                                intent.putExtra("result", json);
+                                startActivity(intent);
+                                dialog.dismiss();
+                            } else {
+                                loginModelDao.delete(loginModel);
+                                arrayAdapter.notifyDataSetChanged();
+                                dialog.dismiss();
+                            }
+                        }
+                    });
+                    alertDialog.show();
+                }
+            });
+        }
+
+
+
         binding.activityCreateAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
