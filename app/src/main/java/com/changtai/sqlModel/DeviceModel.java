@@ -16,8 +16,6 @@ public class DeviceModel {
     @Id
     public Long DeviceId;
     @Property
-    public String bureauNo;
-    @Property
     public String deviceNo;//机井编号
     @Property
     public String stationNo;//售水站号
@@ -167,21 +165,14 @@ public class DeviceModel {
     public void setDeviceId(Long DeviceId) {
         this.DeviceId = DeviceId;
     }
-    public String getBureauNo() {
-        return this.bureauNo;
-    }
-    public void setBureauNo(String bureauNo) {
-        this.bureauNo = bureauNo;
-    }
-    @Generated(hash = 1432304436)
-    public DeviceModel(Long DeviceId, String bureauNo, String deviceNo,
-            String stationNo, String gprsNo, String deviceName, int index,
-            String linkman, String phone, String location, Date createDatetime,
-            String longitude, String latitude, String comment,
-            String administratorName, boolean stopFlag, long serverVersion,
-            long clientVersion, boolean DelFlag, int key) {
+    @Generated(hash = 684830812)
+    public DeviceModel(Long DeviceId, String deviceNo, String stationNo,
+            String gprsNo, String deviceName, int index, String linkman,
+            String phone, String location, Date createDatetime, String longitude,
+            String latitude, String comment, String administratorName,
+            boolean stopFlag, long serverVersion, long clientVersion,
+            boolean DelFlag, int key) {
         this.DeviceId = DeviceId;
-        this.bureauNo = bureauNo;
         this.deviceNo = deviceNo;
         this.stationNo = stationNo;
         this.gprsNo = gprsNo;

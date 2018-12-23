@@ -25,25 +25,24 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
     */
     public static class Properties {
         public final static Property DeviceId = new Property(0, Long.class, "DeviceId", true, "_id");
-        public final static Property BureauNo = new Property(1, String.class, "bureauNo", false, "BUREAU_NO");
-        public final static Property DeviceNo = new Property(2, String.class, "deviceNo", false, "DEVICE_NO");
-        public final static Property StationNo = new Property(3, String.class, "stationNo", false, "STATION_NO");
-        public final static Property GprsNo = new Property(4, String.class, "gprsNo", false, "GPRS_NO");
-        public final static Property DeviceName = new Property(5, String.class, "deviceName", false, "DEVICE_NAME");
-        public final static Property Index = new Property(6, int.class, "index", false, "INDEX");
-        public final static Property Linkman = new Property(7, String.class, "linkman", false, "LINKMAN");
-        public final static Property Phone = new Property(8, String.class, "phone", false, "PHONE");
-        public final static Property Location = new Property(9, String.class, "location", false, "LOCATION");
-        public final static Property CreateDatetime = new Property(10, java.util.Date.class, "createDatetime", false, "CREATE_DATETIME");
-        public final static Property Longitude = new Property(11, String.class, "longitude", false, "LONGITUDE");
-        public final static Property Latitude = new Property(12, String.class, "latitude", false, "LATITUDE");
-        public final static Property Comment = new Property(13, String.class, "comment", false, "COMMENT");
-        public final static Property AdministratorName = new Property(14, String.class, "administratorName", false, "ADMINISTRATOR_NAME");
-        public final static Property StopFlag = new Property(15, boolean.class, "stopFlag", false, "STOP_FLAG");
-        public final static Property ServerVersion = new Property(16, long.class, "serverVersion", false, "SERVER_VERSION");
-        public final static Property ClientVersion = new Property(17, long.class, "clientVersion", false, "CLIENT_VERSION");
-        public final static Property DelFlag = new Property(18, boolean.class, "DelFlag", false, "DEL_FLAG");
-        public final static Property Key = new Property(19, int.class, "key", false, "KEY");
+        public final static Property DeviceNo = new Property(1, String.class, "deviceNo", false, "DEVICE_NO");
+        public final static Property StationNo = new Property(2, String.class, "stationNo", false, "STATION_NO");
+        public final static Property GprsNo = new Property(3, String.class, "gprsNo", false, "GPRS_NO");
+        public final static Property DeviceName = new Property(4, String.class, "deviceName", false, "DEVICE_NAME");
+        public final static Property Index = new Property(5, int.class, "index", false, "INDEX");
+        public final static Property Linkman = new Property(6, String.class, "linkman", false, "LINKMAN");
+        public final static Property Phone = new Property(7, String.class, "phone", false, "PHONE");
+        public final static Property Location = new Property(8, String.class, "location", false, "LOCATION");
+        public final static Property CreateDatetime = new Property(9, java.util.Date.class, "createDatetime", false, "CREATE_DATETIME");
+        public final static Property Longitude = new Property(10, String.class, "longitude", false, "LONGITUDE");
+        public final static Property Latitude = new Property(11, String.class, "latitude", false, "LATITUDE");
+        public final static Property Comment = new Property(12, String.class, "comment", false, "COMMENT");
+        public final static Property AdministratorName = new Property(13, String.class, "administratorName", false, "ADMINISTRATOR_NAME");
+        public final static Property StopFlag = new Property(14, boolean.class, "stopFlag", false, "STOP_FLAG");
+        public final static Property ServerVersion = new Property(15, long.class, "serverVersion", false, "SERVER_VERSION");
+        public final static Property ClientVersion = new Property(16, long.class, "clientVersion", false, "CLIENT_VERSION");
+        public final static Property DelFlag = new Property(17, boolean.class, "DelFlag", false, "DEL_FLAG");
+        public final static Property Key = new Property(18, int.class, "key", false, "KEY");
     };
 
 
@@ -60,25 +59,24 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"DEVICE_MODEL\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: DeviceId
-                "\"BUREAU_NO\" TEXT," + // 1: bureauNo
-                "\"DEVICE_NO\" TEXT," + // 2: deviceNo
-                "\"STATION_NO\" TEXT," + // 3: stationNo
-                "\"GPRS_NO\" TEXT," + // 4: gprsNo
-                "\"DEVICE_NAME\" TEXT," + // 5: deviceName
-                "\"INDEX\" INTEGER NOT NULL ," + // 6: index
-                "\"LINKMAN\" TEXT," + // 7: linkman
-                "\"PHONE\" TEXT," + // 8: phone
-                "\"LOCATION\" TEXT," + // 9: location
-                "\"CREATE_DATETIME\" INTEGER," + // 10: createDatetime
-                "\"LONGITUDE\" TEXT," + // 11: longitude
-                "\"LATITUDE\" TEXT," + // 12: latitude
-                "\"COMMENT\" TEXT," + // 13: comment
-                "\"ADMINISTRATOR_NAME\" TEXT," + // 14: administratorName
-                "\"STOP_FLAG\" INTEGER NOT NULL ," + // 15: stopFlag
-                "\"SERVER_VERSION\" INTEGER NOT NULL ," + // 16: serverVersion
-                "\"CLIENT_VERSION\" INTEGER NOT NULL ," + // 17: clientVersion
-                "\"DEL_FLAG\" INTEGER NOT NULL ," + // 18: DelFlag
-                "\"KEY\" INTEGER NOT NULL );"); // 19: key
+                "\"DEVICE_NO\" TEXT," + // 1: deviceNo
+                "\"STATION_NO\" TEXT," + // 2: stationNo
+                "\"GPRS_NO\" TEXT," + // 3: gprsNo
+                "\"DEVICE_NAME\" TEXT," + // 4: deviceName
+                "\"INDEX\" INTEGER NOT NULL ," + // 5: index
+                "\"LINKMAN\" TEXT," + // 6: linkman
+                "\"PHONE\" TEXT," + // 7: phone
+                "\"LOCATION\" TEXT," + // 8: location
+                "\"CREATE_DATETIME\" INTEGER," + // 9: createDatetime
+                "\"LONGITUDE\" TEXT," + // 10: longitude
+                "\"LATITUDE\" TEXT," + // 11: latitude
+                "\"COMMENT\" TEXT," + // 12: comment
+                "\"ADMINISTRATOR_NAME\" TEXT," + // 13: administratorName
+                "\"STOP_FLAG\" INTEGER NOT NULL ," + // 14: stopFlag
+                "\"SERVER_VERSION\" INTEGER NOT NULL ," + // 15: serverVersion
+                "\"CLIENT_VERSION\" INTEGER NOT NULL ," + // 16: clientVersion
+                "\"DEL_FLAG\" INTEGER NOT NULL ," + // 17: DelFlag
+                "\"KEY\" INTEGER NOT NULL );"); // 18: key
     }
 
     /** Drops the underlying database table. */
@@ -96,76 +94,71 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
             stmt.bindLong(1, DeviceId);
         }
  
-        String bureauNo = entity.getBureauNo();
-        if (bureauNo != null) {
-            stmt.bindString(2, bureauNo);
-        }
- 
         String deviceNo = entity.getDeviceNo();
         if (deviceNo != null) {
-            stmt.bindString(3, deviceNo);
+            stmt.bindString(2, deviceNo);
         }
  
         String stationNo = entity.getStationNo();
         if (stationNo != null) {
-            stmt.bindString(4, stationNo);
+            stmt.bindString(3, stationNo);
         }
  
         String gprsNo = entity.getGprsNo();
         if (gprsNo != null) {
-            stmt.bindString(5, gprsNo);
+            stmt.bindString(4, gprsNo);
         }
  
         String deviceName = entity.getDeviceName();
         if (deviceName != null) {
-            stmt.bindString(6, deviceName);
+            stmt.bindString(5, deviceName);
         }
-        stmt.bindLong(7, entity.getIndex());
+        stmt.bindLong(6, entity.getIndex());
  
         String linkman = entity.getLinkman();
         if (linkman != null) {
-            stmt.bindString(8, linkman);
+            stmt.bindString(7, linkman);
         }
  
         String phone = entity.getPhone();
         if (phone != null) {
-            stmt.bindString(9, phone);
+            stmt.bindString(8, phone);
         }
  
         String location = entity.getLocation();
         if (location != null) {
-            stmt.bindString(10, location);
+            stmt.bindString(9, location);
         }
  
         java.util.Date createDatetime = entity.getCreateDatetime();
         if (createDatetime != null) {
-            stmt.bindLong(11, createDatetime.getTime());
+            stmt.bindLong(10, createDatetime.getTime());
         }
  
         String longitude = entity.getLongitude();
         if (longitude != null) {
-            stmt.bindString(12, longitude);
+            stmt.bindString(11, longitude);
         }
  
         String latitude = entity.getLatitude();
         if (latitude != null) {
-            stmt.bindString(13, latitude);
+            stmt.bindString(12, latitude);
         }
  
         String comment = entity.getComment();
         if (comment != null) {
-            stmt.bindString(14, comment);
+            stmt.bindString(13, comment);
         }
  
         String administratorName = entity.getAdministratorName();
         if (administratorName != null) {
-            stmt.bindString(15, administratorName);
+            stmt.bindString(14, administratorName);
         }
-        stmt.bindLong(16, entity.getStopFlag() ? 1L: 0L);
-        stmt.bindLong(17, entity.getServerVersion());
-        stmt.bindLong(18, entity.getClientVersion());
-        stmt.bindLong(19, entity.getDelFlag() ? 1L: 0L);
-        stmt.bindLong(20, entity.getKey());
+        stmt.bindLong(15, entity.getStopFlag() ? 1L: 0L);
+        stmt.bindLong(16, entity.getServerVersion());
+        stmt.bindLong(17, entity.getClientVersion());
+        stmt.bindLong(18, entity.getDelFlag() ? 1L: 0L);
+        stmt.bindLong(19, entity.getKey());
     }
 
     @Override
@@ -177,76 +170,71 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
             stmt.bindLong(1, DeviceId);
         }
  
-        String bureauNo = entity.getBureauNo();
-        if (bureauNo != null) {
-            stmt.bindString(2, bureauNo);
-        }
- 
         String deviceNo = entity.getDeviceNo();
         if (deviceNo != null) {
-            stmt.bindString(3, deviceNo);
+            stmt.bindString(2, deviceNo);
         }
  
         String stationNo = entity.getStationNo();
         if (stationNo != null) {
-            stmt.bindString(4, stationNo);
+            stmt.bindString(3, stationNo);
         }
  
         String gprsNo = entity.getGprsNo();
         if (gprsNo != null) {
-            stmt.bindString(5, gprsNo);
+            stmt.bindString(4, gprsNo);
         }
  
         String deviceName = entity.getDeviceName();
         if (deviceName != null) {
-            stmt.bindString(6, deviceName);
+            stmt.bindString(5, deviceName);
         }
-        stmt.bindLong(7, entity.getIndex());
+        stmt.bindLong(6, entity.getIndex());
  
         String linkman = entity.getLinkman();
         if (linkman != null) {
-            stmt.bindString(8, linkman);
+            stmt.bindString(7, linkman);
         }
  
         String phone = entity.getPhone();
         if (phone != null) {
-            stmt.bindString(9, phone);
+            stmt.bindString(8, phone);
         }
  
         String location = entity.getLocation();
         if (location != null) {
-            stmt.bindString(10, location);
+            stmt.bindString(9, location);
         }
  
         java.util.Date createDatetime = entity.getCreateDatetime();
         if (createDatetime != null) {
-            stmt.bindLong(11, createDatetime.getTime());
+            stmt.bindLong(10, createDatetime.getTime());
         }
  
         String longitude = entity.getLongitude();
         if (longitude != null) {
-            stmt.bindString(12, longitude);
+            stmt.bindString(11, longitude);
         }
  
         String latitude = entity.getLatitude();
         if (latitude != null) {
-            stmt.bindString(13, latitude);
+            stmt.bindString(12, latitude);
         }
  
         String comment = entity.getComment();
         if (comment != null) {
-            stmt.bindString(14, comment);
+            stmt.bindString(13, comment);
         }
  
         String administratorName = entity.getAdministratorName();
         if (administratorName != null) {
-            stmt.bindString(15, administratorName);
+            stmt.bindString(14, administratorName);
         }
-        stmt.bindLong(16, entity.getStopFlag() ? 1L: 0L);
-        stmt.bindLong(17, entity.getServerVersion());
-        stmt.bindLong(18, entity.getClientVersion());
-        stmt.bindLong(19, entity.getDelFlag() ? 1L: 0L);
-        stmt.bindLong(20, entity.getKey());
+        stmt.bindLong(15, entity.getStopFlag() ? 1L: 0L);
+        stmt.bindLong(16, entity.getServerVersion());
+        stmt.bindLong(17, entity.getClientVersion());
+        stmt.bindLong(18, entity.getDelFlag() ? 1L: 0L);
+        stmt.bindLong(19, entity.getKey());
     }
 
     @Override
@@ -258,25 +246,24 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
     public DeviceModel readEntity(Cursor cursor, int offset) {
         DeviceModel entity = new DeviceModel( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // DeviceId
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // bureauNo
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // deviceNo
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // stationNo
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // gprsNo
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // deviceName
-            cursor.getInt(offset + 6), // index
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // linkman
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // phone
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // location
-            cursor.isNull(offset + 10) ? null : new java.util.Date(cursor.getLong(offset + 10)), // createDatetime
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // longitude
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // latitude
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // comment
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // administratorName
-            cursor.getShort(offset + 15) != 0, // stopFlag
-            cursor.getLong(offset + 16), // serverVersion
-            cursor.getLong(offset + 17), // clientVersion
-            cursor.getShort(offset + 18) != 0, // DelFlag
-            cursor.getInt(offset + 19) // key
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // deviceNo
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // stationNo
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // gprsNo
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // deviceName
+            cursor.getInt(offset + 5), // index
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // linkman
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // phone
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // location
+            cursor.isNull(offset + 9) ? null : new java.util.Date(cursor.getLong(offset + 9)), // createDatetime
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // longitude
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // latitude
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // comment
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // administratorName
+            cursor.getShort(offset + 14) != 0, // stopFlag
+            cursor.getLong(offset + 15), // serverVersion
+            cursor.getLong(offset + 16), // clientVersion
+            cursor.getShort(offset + 17) != 0, // DelFlag
+            cursor.getInt(offset + 18) // key
         );
         return entity;
     }
@@ -284,25 +271,24 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
     @Override
     public void readEntity(Cursor cursor, DeviceModel entity, int offset) {
         entity.setDeviceId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setBureauNo(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setDeviceNo(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setStationNo(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setGprsNo(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setDeviceName(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setIndex(cursor.getInt(offset + 6));
-        entity.setLinkman(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setPhone(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setLocation(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setCreateDatetime(cursor.isNull(offset + 10) ? null : new java.util.Date(cursor.getLong(offset + 10)));
-        entity.setLongitude(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setLatitude(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setComment(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-        entity.setAdministratorName(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
-        entity.setStopFlag(cursor.getShort(offset + 15) != 0);
-        entity.setServerVersion(cursor.getLong(offset + 16));
-        entity.setClientVersion(cursor.getLong(offset + 17));
-        entity.setDelFlag(cursor.getShort(offset + 18) != 0);
-        entity.setKey(cursor.getInt(offset + 19));
+        entity.setDeviceNo(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setStationNo(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setGprsNo(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setDeviceName(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setIndex(cursor.getInt(offset + 5));
+        entity.setLinkman(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setPhone(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setLocation(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setCreateDatetime(cursor.isNull(offset + 9) ? null : new java.util.Date(cursor.getLong(offset + 9)));
+        entity.setLongitude(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setLatitude(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setComment(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setAdministratorName(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setStopFlag(cursor.getShort(offset + 14) != 0);
+        entity.setServerVersion(cursor.getLong(offset + 15));
+        entity.setClientVersion(cursor.getLong(offset + 16));
+        entity.setDelFlag(cursor.getShort(offset + 17) != 0);
+        entity.setKey(cursor.getInt(offset + 18));
      }
     
     @Override

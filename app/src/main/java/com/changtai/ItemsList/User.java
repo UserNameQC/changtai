@@ -16,9 +16,11 @@ import android.widget.ListView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
+import com.changtai.adapter.UserAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityUserBinding;
 import com.changtai.sqlModel.UserModel;
+import com.example.john.greendaodemo.gen.UserModelDao;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -43,11 +45,12 @@ public class User extends Activity implements View.OnClickListener{
             Entity.StopFlag,Entity.LastDateTime,Entity.CardNo,Entity.CreditCardTimes,Entity.TimeSpan,Entity.Version};
 
     public ListView useRListView;
-    public ArrayAdapter<String> adapter;
+    public UserAdapter adapter;
     public LinkedList<EditText> etLinkList = new LinkedList<>();
     public boolean etIsChangedUser = true;
 
     public RealmUtils<UserModel> realmUtils;
+    public UserModelDao userModelDao;
     public UserModel userModel;
     public List<UserModel> userModels = new ArrayList<>();
     public ActivityUserBinding userBinding;
@@ -56,6 +59,7 @@ public class User extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         userBinding = DataBindingUtil.setContentView(this, R.layout.activity_user);
         realmUtils = new RealmUtils<>();
+        userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
         initView();
 
     }
@@ -116,13 +120,14 @@ public class User extends Activity implements View.OnClickListener{
                 }
             }
         });
-        adapter = new ArrayAdapter<>(this,R.layout.list_view_layout, R.id.text_list_item, getUserNum());
+        final List<UserModel> userModels = userModelDao.loadAll();
+        adapter = new UserAdapter(this,userModels, R.layout.user_item_layout);
         userBinding.userList.setAdapter(adapter);
 
         userBinding.userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                userModel = MyApplication.getInstance().getDaoSession().getUserModelDao().loadAll().get(position);
+                userModel =userModels.get(position);
                 userBinding.userList.setVisibility(View.GONE);
                 userBinding.userScrollview.setVisibility(View.VISIBLE);
                 Gson gson = new Gson();
@@ -132,7 +137,7 @@ public class User extends Activity implements View.OnClickListener{
                     for (int i = 0; i < etMap.size(); i++)
                     {
                         EditText et = etMap.get(i);
-                        et.setText(jsonObject.get(et.getTag().toString()).toString());
+                        et.setText(jsonObject.getString(et.getTag().toString()));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

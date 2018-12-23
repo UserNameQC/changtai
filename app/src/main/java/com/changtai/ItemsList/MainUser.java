@@ -9,11 +9,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.changtai.MainUserAdapter;
+import com.changtai.adapter.MainUserAdapter;
 import com.changtai.R;
 import com.changtai.activites.AddUserActivity;
 import com.changtai.application.MyApplication;
@@ -34,7 +33,6 @@ import static com.changtai.Utils.Entity.Phone;
 import static com.changtai.Utils.Entity.ReWritePassWord;
 import static com.changtai.Utils.Entity.RoleId;
 import static com.changtai.Utils.Entity.SysAdmin;
-import static com.changtai.Utils.Entity.editIsNull;
 
 public class MainUser extends Activity{
 

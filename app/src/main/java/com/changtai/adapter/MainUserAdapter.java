@@ -1,4 +1,4 @@
-package com.changtai;
+package com.changtai.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.changtai.R;
 import com.changtai.activites.MainActivity;
 import com.changtai.sqlModel.LoginModel;
 
