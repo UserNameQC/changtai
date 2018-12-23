@@ -29,6 +29,17 @@ public class SettingActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         settingBinding = DataBindingUtil.setContentView(this, R.layout.activity_setting);
         application = (MyApplication) this.getApplication();
+        initBaseId();
+    }
+
+    public void initBaseId(){
+        ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
+        List<ConfigModel> configModels = configModelDao.loadAll();
+        if (configModels != null && configModels.size() > 0){
+            ConfigModel configModel = configModels.get(0);
+            String baseId = configModel.getValue();
+            settingBinding.buyWaterId.setText(baseId);
+        }
     }
 
     public void onButtonClick(View view) {
