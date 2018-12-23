@@ -71,6 +71,7 @@ public class SettingActivity extends BaseActivity {
             model.setName("APP_BASEID");
             model.setValue(baseId);
             model.setComment("水站号");
+            model.setId(0L);
             MyApplication.getInstance().getDaoSession().getConfigModelDao().insertOrReplace(model);
         }
         //startActivity(new Intent(SettingActivity.this, LoginActivity.class));
