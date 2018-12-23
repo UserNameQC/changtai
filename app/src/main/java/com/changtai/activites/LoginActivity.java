@@ -80,7 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         entityModel.setLoginName(binding.etLoginUsername.getText().toString());
                         entityModel.setPassword(binding.etLoginPassword.getText().toString());
                         entityModel.setQxString("操作员");
-                        MyApplication.getInstance().getDaoSession().getLoginModelDao().insert(entityModel);
+                        MyApplication.getInstance().getDaoSession().getLoginModelDao().insertOrReplace(entityModel);
                     }
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     break;

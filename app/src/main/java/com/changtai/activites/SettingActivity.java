@@ -1,7 +1,5 @@
 package com.changtai.activites;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +19,6 @@ import java.util.List;
 public class SettingActivity extends BaseActivity {
 
     private String baseId;
-    private MyApplication application;
     public ActivitySettingBinding settingBinding;
 
     @Override

@@ -1,18 +1,27 @@
 package com.changtai.RFID;
 
 import com.android.RfidControll;
+import com.changtai.ItemsList.User;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.HelloWorldController;
+import com.changtai.activites.MainActivity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.Rfid1443aBinding;
+import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
+import com.changtai.sqlModel.UserModel;
+import com.example.john.greendaodemo.gen.PriceModelDao;
 import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
+import com.example.john.greendaodemo.gen.UserModelDao;
 
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +38,8 @@ public class demo1443A extends Activity implements OnClickListener {
     RfidControll rfid = new RfidControll();
     private ArrayAdapter<String> adapter;
     private static final String[] mBLOCK = new String[64 * 4];
+    public UserModelDao userModelDao;
+    public UserModel userModel;
 
     public int res = -1;
 
@@ -39,6 +50,7 @@ public class demo1443A extends Activity implements OnClickListener {
         binding = DataBindingUtil.setContentView(demo1443A.this, R.layout.rfid_1443a);
         rfid.OpenComm();
         initView();
+        initData();
     }
 
     public void initView() {
@@ -56,8 +68,61 @@ public class demo1443A extends Activity implements OnClickListener {
     }
 
     public void initData() {
-
+        PriceModelDao priceModelDao = MyApplication.getInstance().getDaoSession().getPriceModelDao();
+        List<PriceModel> priceModels = priceModelDao.loadAll();
+        if (priceModels != null && priceModels.size() > 0) {
+            PriceModel priceModel = priceModels.get(0);
+            binding.rfidFirstPrice.setText(priceModel.getSj1());
+            binding.rfidSecondPrice.setText(priceModel.getSj2());
+            binding.rfidThirdPrice.setText(priceModel.getSj3());
+        }
     }
+
+    public Handler handler = new Handler(Looper.getMainLooper()) {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 200) {
+                userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
+                QueryBuilder queryBuilder = userModelDao.queryBuilder();
+                List<UserModel> userModels = queryBuilder.where(UserModelDao.Properties.UserNo.eq(binding.rfidUserNo)).list();
+                if (userModels != null && userModels.size() > 0) {
+                    userModel = userModels.get(0);
+                    binding.rfidBuyYearAmount.setText(userModel.getPurchaseTotalThisYear());
+                    binding.rfidFirst.setText(userModel.getLimitSj1());
+                    binding.rfidSecond.setText(userModel.getLimitSj2());
+
+                    //判断累计购水量是否相同
+                    String purchaseTotal = userModel.getPurchaseTotal();
+                    String card_purchaseTotal = binding.rfidPurchaseTotal.getText().toString();
+                    if (!TextUtils.isEmpty(card_purchaseTotal) && !TextUtils.isEmpty(purchaseTotal)) {
+                        if (!purchaseTotal.equals(card_purchaseTotal)) {
+                            Entity.toastMsg(demo1443A.this, "数据不一致，请重新同步数据");
+                            return;
+                        }
+                    }
+                    int sl1 = Integer.parseInt(userModel.getLimitSj1());
+                    int sl2 = Integer.parseInt(userModel.getLimitSj2());
+                    int yearTotal = Integer.parseInt(binding.rfidBuyYearAmount.getText().toString());
+                    binding.rfidFirstAmount.setText(yearTotal > sl1 ? String.valueOf(sl1) : String.valueOf(yearTotal));
+                }
+            }
+
+            if (msg.what == 300) {
+                int thisPurchase = Integer.parseInt(binding.rfidBuyPurchase.getText().toString());//本次购水量
+                String year = binding.rfidBuyYearAmount.getText().toString();//原年度购水量
+                String total = binding.rfidPurchaseTotal.getText().toString();//原累计购水量
+                int resultYear = Integer.parseInt(year) + thisPurchase;
+                int resultTotal = Integer.parseInt(total) + thisPurchase;
+                binding.rfidBuyYearAmount.setText(String.valueOf(resultYear));
+                binding.rfidPurchaseTotal.setText(String.valueOf(resultTotal));
+                //更新数据库
+                userModel.setPurchaseTotalThisYear(String.valueOf(resultYear));
+                userModel.setPurchaseTotal(String.valueOf(resultTotal));
+                userModel.setAdministratorName(Entity.spres.getString(Entity.LOGIN_NAME, ""));
+                userModelDao.insertOrReplace(userModel);
+            }
+        }
+    };
 
 
     public void onClick(View v) {
@@ -76,10 +141,10 @@ public class demo1443A extends Activity implements OnClickListener {
                         return;
                     }
 
-                    QueryBuilder<PurchaseRecordModel> queryBuilder =  MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao().queryBuilder();
+                    QueryBuilder<PurchaseRecordModel> queryBuilder = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao().queryBuilder();
                     List<PurchaseRecordModel> purModels =
                             queryBuilder.where(PurchaseRecordModelDao.Properties.Id.eq(result.substring(0, 10))).list();
-                    if (purModels != null && purModels.size() > 0){
+                    if (purModels != null && purModels.size() > 0) {
                         PurchaseRecordModel purchaseRecordModel = purModels.get(0);
                         if (Long.parseLong(purchaseRecordModel.getPurchaseTotal()) > Long.parseLong(result.substring(12, 20))) {
                             Entity.toastMsg(this, "该用户已补卡，本卡是丢失的原用户卡，不允许继续使用");
@@ -97,6 +162,7 @@ public class demo1443A extends Activity implements OnClickListener {
                     binding.rfidAlarmValue.setText(result.substring(22, 24));//报警水量
                     binding.rfidBuyDate.setText(result.substring(24));//购水日期
                     Log.d("012", toHexString(buffer1, 1 * 16));
+                    handler.sendEmptyMessage(200);
                 }
                 break;
             case R.id.btn_writestring:
@@ -120,15 +186,15 @@ public class demo1443A extends Activity implements OnClickListener {
                 byte snr1[] = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF,
                         (byte) 0xFF, (byte) 0xFF};
                 Log.e("write", "XXXXX" + snr1);
-                if (buffer2.length <= 32) {
+                if (buffer2.length >= 32) {
 
                     System.arraycopy(buffer2, 0, buffer3, 0, buffer2.length);
                     res = rfid.API_MF_Write(0x00, 0x01, 57, 2, getPassWord(), buffer3);
                     Toast.makeText(this, "" + res, Toast.LENGTH_SHORT).show();
                     if (res == 0) {
                         //msendtext.setText(toHexString(buffer3, 4));
-
                         Toast.makeText(this, "写卡成功", Toast.LENGTH_SHORT).show();
+                        handler.sendEmptyMessage(300);
                     }
 
                 } else {
@@ -138,6 +204,7 @@ public class demo1443A extends Activity implements OnClickListener {
                     if (res == 0) {
                         //msendtext.setText(toHexString(buffer2, 4));
                         Toast.makeText(this, "写卡成功--1", Toast.LENGTH_SHORT).show();
+                        handler.sendEmptyMessage(300);
                     }
                 }
                 break;

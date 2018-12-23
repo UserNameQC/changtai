@@ -170,7 +170,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:enabled="false"
                         android:textSize="@dimen/text_size_default" />
                 </LinearLayout>
 
@@ -444,7 +443,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:textSize="@dimen/text_size_default" />
+                            android:textSize="@dimen/text_size_default"
+                            android:enabled="false"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -465,7 +465,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:textSize="@dimen/text_size_default" />
+                            android:textSize="@dimen/text_size_default"
+                            android:focusable="false"
+                            android:enabled="false"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -486,7 +488,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:textSize="@dimen/text_size_default" />
+                            android:textSize="@dimen/text_size_default"
+                            android:enabled="false"
+                            android:focusable="false"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -571,6 +575,7 @@
                 android:layout_weight="0.01"
                 android:background="@drawable/btn_login_selector"
                 android:text="读卡"
+                android:textColor="#fff"
                 android:textSize="18sp" />
 
             <View
@@ -587,6 +592,7 @@
                 android:layout_weight="0.01"
                 android:background="@drawable/btn_login_selector"
                 android:text="写卡"
+                android:textColor="#fff"
                 android:textSize="18sp" />
         </LinearLayout>
     </RelativeLayout>
