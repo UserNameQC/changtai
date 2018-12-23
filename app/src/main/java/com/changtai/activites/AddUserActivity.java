@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.changtai.R;
 import com.changtai.Utils.Entity;
@@ -24,6 +26,7 @@ public class AddUserActivity extends BaseActivity {
 
     public ActivityAddUserBinding binding;
     public LoginModelDao loginModelDao;
+    public LoginModel loginModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +37,18 @@ public class AddUserActivity extends BaseActivity {
     }
 
     public void initView(){
-        String result = getIntent().getExtras().getString("result", null);
-        if (result != null){
-            LoginModel loginModel = new Gson().fromJson(result, new TypeToken<LoginModel>(){}.getType());
-            binding.addQx.setText(loginModel.getQxString());
-            binding.addLoginName.setText(loginModel.getLoginName());
-            binding.addUserName.setText(loginModel.getUserName());
-            binding.addPassWord.setText(loginModel.getPassword());
+        String result = "";
+        try {
+            result = getIntent().getExtras().getString("result", null);
+            if (!TextUtils.isEmpty(result)){
+                loginModel = new Gson().fromJson(result, new TypeToken<LoginModel>(){}.getType());
+                binding.addQx.setText(loginModel.getQxString());
+                binding.addLoginName.setText(loginModel.getLoginName());
+                binding.addUserName.setText(loginModel.getUserName());
+                binding.addPassWord.setText(loginModel.getPassword());
+            }
+        } catch (NullPointerException e){
+            e.printStackTrace();
         }
 
        binding.addRegister.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +96,7 @@ public class AddUserActivity extends BaseActivity {
             }else if (userLoginModel != null && userLoginModel.size() > 0){
                 Entity.toastMsg(this, "用户名已存在");
             }else{
-                LoginModel loginModel = new LoginModel();
+                if (loginModel == null) loginModel = new LoginModel();
                 loginModel.setLoginName(binding.addLoginName.getText().toString());
                 loginModel.setUserName(binding.addUserName.getText().toString());
                 loginModel.setPassword(binding.addPassWord.getText().toString());
