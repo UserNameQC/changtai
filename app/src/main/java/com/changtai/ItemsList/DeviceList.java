@@ -17,9 +17,11 @@ import android.widget.ScrollView;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
+import com.changtai.adapter.DeviceAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityWellListBinding;
 import com.changtai.sqlModel.DeviceModel;
+import com.example.john.greendaodemo.gen.DeviceModelDao;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -44,18 +46,21 @@ public class DeviceList extends Activity implements View.OnClickListener{
     public LinkedList<EditText> etWellList = new LinkedList<>();
     public ListView deviceListView;
     public ScrollView etDeviceScroll;
-    public ArrayAdapter<String> adapter;
+    public DeviceAdapter adapter;
     public String resultFromServer = "";
     public boolean etIsChanged = true;
     public MyApplication application;
     public DeviceModel deviceModel;
     public ActivityWellListBinding binding;
     public RealmUtils<DeviceModel> realmUtils;
+    public List<DeviceModel> deviceModels = new ArrayList<>();
+    public DeviceModelDao deviceModelDao;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_well_list);
+        deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
         realmUtils = new RealmUtils<>();
         initView();
     }
@@ -64,7 +69,7 @@ public class DeviceList extends Activity implements View.OnClickListener{
 
         application = (MyApplication) getApplication();
 
-        etWellList.add(binding.wellWcbNm);
+        //etWellList.add(binding.wellWcbNm);
         etWellList.add(binding.wellWstationNm);
         etWellList.add(binding.wellListNm);
         etWellList.add(binding.wellGprsNm);
@@ -84,9 +89,11 @@ public class DeviceList extends Activity implements View.OnClickListener{
         etMap = Entity.saveInMap(etWellList);
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
-        adapter = new ArrayAdapter<>(this,R.layout.list_view_layout, R.id.text_list_item, getDeviceName());
+
+        deviceModels = deviceModelDao.loadAll();
+        adapter = new DeviceAdapter(this, deviceModels, R.layout.user_item_layout);
         binding.wellListView.setAdapter(adapter);
-        binding.wellOk.setOnClickListener(this);
+        //binding.wellOk.setOnClickListener(this);
 
         binding.wellListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,7 +102,7 @@ public class DeviceList extends Activity implements View.OnClickListener{
 
                 if (deviceModel != null) {
                     binding.wellScrollview.setVisibility(View.VISIBLE);
-                    binding.wellListView.setVisibility(View.GONE);
+                    binding.titleLayout.setVisibility(View.GONE);
                     String dRealmJson = new Gson().toJson(deviceModel);
                     try{
                         JSONObject jsonObject = new JSONObject(dRealmJson);
@@ -139,31 +146,7 @@ public class DeviceList extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.well_ok:
-                if (etIsChanged) {
-                    if (!Entity.editTextIsNull(etMap)) {
-                        DeviceModel deviceModel = realmUtils.createData(etMap, 0);
-                        if (deviceModel != null){
-                            MyApplication.getInstance().getDaoSession().getDeviceModelDao().insert(deviceModel);
-                        }
-                        etDeviceScroll.setVisibility(View.GONE);
-                        deviceListView.setVisibility(View.VISIBLE);
-                        RealmUtils.setEditEnable(etMap, false);
-                        /**
-                         * 更新数据接口调试（遗留）
-                         */
-                    } else {
-                        Entity.toastMsg(DeviceList.this, "输入不能空");
-                    }
-                }else{
-                    button.setText("保存");
-                    etIsChanged = true;
-                    RealmUtils.setEditEnable(etMap, true);
-                }
 
-                break;
-        }
     }
 
     public LinkedList<String> getDeviceName(){
@@ -183,7 +166,7 @@ public class DeviceList extends Activity implements View.OnClickListener{
         if (binding.wellScrollview.getVisibility() == View.VISIBLE)
         {
             binding.wellScrollview.setVisibility(View.GONE);
-            binding.wellListView.setVisibility(View.VISIBLE);
+            binding.titleLayout.setVisibility(View.VISIBLE);
         }
         else {
             super.onBackPressed();

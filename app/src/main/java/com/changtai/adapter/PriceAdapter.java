@@ -8,9 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.changtai.R;
-import com.changtai.sqlModel.UserModel;
-
-import org.w3c.dom.Text;
+import com.changtai.sqlModel.PriceModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,25 +17,26 @@ import java.util.List;
  * Created by qjcjob on 2018/12/23.
  */
 
-public class UserAdapter extends BaseAdapter {
+public class PriceAdapter extends BaseAdapter {
 
-    public List<UserModel> userModels = new ArrayList<>();
+    public List<PriceModel> priceModels = new ArrayList<>();
     public Context context;
     public int layoutId;
-    public UserAdapter(Context context, List<UserModel> list, int layoutId){
-        this.userModels = list;
-        this.context = context;
+
+    public PriceAdapter(Context context, List<PriceModel> priceModels, int layoutId){
+        this.priceModels = priceModels;
+        this.context =context;
         this.layoutId = layoutId;
     }
 
     @Override
     public int getCount() {
-        return userModels.size();
+        return priceModels.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return userModels.get(position);
+        return priceModels.get(position);
     }
 
     @Override
@@ -60,10 +59,11 @@ public class UserAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        UserModel userModel = userModels.get(position);
-        viewHolder.userNo.setText(userModel.getUserNo());
-        viewHolder.userName.setText(userModel.getUserName());
-        viewHolder.stationNo.setText(userModel.getStationNo());
+        PriceModel priceModel = priceModels.get(position);
+        viewHolder.stationNo.setText(priceModel.getStationNo());
+        viewHolder.userNo.setText(priceModel.getMc());
+        viewHolder.userName.setText(priceModel.getSj1());
+
         return convertView;
     }
 

@@ -35,8 +35,6 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
     /**
      * 用户购水明细表
      */
-    private Button button;
-    public EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11, et12, et13, et14, et15, et16, et17,et18, et19, et20, et21, et22,et23, et24, et25, et26;
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public String[]key = {Entity.PurchaseRecordId,Entity.BureauNo,Entity.DeviceNo,Entity.StationNo,Entity.UserName,
             Entity.UserNo,Entity.PurchaseTotalThisTime,Entity.PurchaseAmountThisTime,Entity.PurchaseDateTimeThisTime,
@@ -66,7 +64,6 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
     public void initView(){
 
         linkedList.add(binding.bwDetailsIndex);
-        linkedList.add(binding.bwWcbNm);
         linkedList.add(binding.bwWstationNm);
         linkedList.add(binding.bwListNm);
         linkedList.add(binding.bwNm);
@@ -93,28 +90,7 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
         etMap = Entity.saveInMap(linkedList);
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
-        binding.bwOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (etIsChangedBuy) {
-                    if (!Entity.editTextIsNull(etMap)) {
-                        PurchaseRecordModel purModel = realmUtils.createData(etMap, 0);
-                        etListView.setVisibility(View.VISIBLE);
-                        etScroll.setVisibility(View.GONE);
-                        /**
-                         * 更新数据
-                         */
-                        RealmUtils.setTimeUpdateToServer(purchaseRecordRealm.getClass(), "01");
-                    } else {
-                        Entity.toastMsg(UserBuyWater.this, "输入不能空");
-                    }
-                } else {
-                    button.setText("保存");
-                    etIsChangedBuy = true;
-                    RealmUtils.setEditEnable(etMap, true);
-                }
-            }
-        });
+
 
         etListView = findViewById(R.id.buy_listview);
         etScroll = findViewById(R.id.buy_scroll);
@@ -166,11 +142,7 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bw_ok:
 
-            break;
-        }
     }
 
     public List<String> getUserNum(){

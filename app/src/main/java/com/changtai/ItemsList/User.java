@@ -65,7 +65,7 @@ public class User extends Activity implements View.OnClickListener{
     }
 
     public void initView(){
-        etLinkList.add(userBinding.userWcbNm);
+        //etLinkList.add(userBinding.userWcbNm);
         etLinkList.add(userBinding.userWstationNm);
         etLinkList.add(userBinding.userListNm);
         etLinkList.add(userBinding.userNm);
@@ -95,31 +95,7 @@ public class User extends Activity implements View.OnClickListener{
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
 
-        userBinding.userOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (etIsChangedUser) {
-                    if (!Entity.editTextIsNull(etMap)) {
-                        UserModel userModel = realmUtils.createData(etMap, 0);
-                        useRListView.setVisibility(View.VISIBLE);
-                        userBinding.userScrollview.setVisibility(View.GONE);
-                        RealmUtils.setEditEnable(etMap, false);
-                        /**
-                         * 更新数据
-                         */
-                        //RealmUtils.setTimeUpdateToServer(userRealm.getClass(), "03");
-                    }
-                    else
-                    {
-                        Entity.toastMsg(User.this, "输入不能为空");
-                    }
-                } else {
-                    button.setText("保存");
-                    etIsChangedUser = true;
-                    RealmUtils.setEditEnable(etMap, true);
-                }
-            }
-        });
+
         final List<UserModel> userModels = userModelDao.loadAll();
         adapter = new UserAdapter(this,userModels, R.layout.user_item_layout);
         userBinding.userList.setAdapter(adapter);
@@ -128,7 +104,7 @@ public class User extends Activity implements View.OnClickListener{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 userModel =userModels.get(position);
-                userBinding.userList.setVisibility(View.GONE);
+                userBinding.titleLayout.setVisibility(View.GONE);
                 userBinding.userScrollview.setVisibility(View.VISIBLE);
                 Gson gson = new Gson();
                 String json = gson.toJson(userModel);
@@ -167,11 +143,7 @@ public class User extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.user_ok:
 
-            break;
-        }
     }
 
     public List<String> getUserNum(){
@@ -191,7 +163,7 @@ public class User extends Activity implements View.OnClickListener{
         if (userBinding.userScrollview.getVisibility() == View.VISIBLE)
         {
             userBinding.userScrollview.setVisibility(View.GONE);
-            userBinding.userList.setVisibility(View.VISIBLE);
+            userBinding.titleLayout.setVisibility(View.VISIBLE);
         }
         else {
             super.onBackPressed();

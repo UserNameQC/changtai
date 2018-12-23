@@ -39,7 +39,6 @@ public class MainUser extends Activity{
     /**
      * 管理员
      */
-    private EditText etMain, etIsMain, etContact, etUserName, etPassWord, etResetPword, etPhoneNum, etIdent;
     private Button ok;
     private Map<String, String> etMap = new HashMap<>();
     public Map<Integer, EditText> editMap = new HashMap<>();
@@ -89,14 +88,6 @@ public class MainUser extends Activity{
             });
         }
 
-
-
-        binding.activityCreateAdmin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 

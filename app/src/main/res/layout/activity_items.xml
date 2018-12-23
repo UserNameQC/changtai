@@ -100,7 +100,18 @@
                 android:drawablePadding="2dp"
                 android:gravity="center"
                 android:textSize="18sp"
-                android:text="操作员表" />
+                android:text="操作员表"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/item_user_buy_water"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="2dp"
+                android:gravity="center"
+                android:text="用户购水明细"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -125,17 +136,6 @@
                 android:text="操作员信息"
                 android:textSize="18sp"
                 android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/item_user_buy_water"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawablePadding="2dp"
-                android:gravity="center"
-                android:text="用户购水明细"
-                android:textSize="18sp" />
-
 
         </LinearLayout>
     </LinearLayout>

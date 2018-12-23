@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.changtai.ItemsList.MainUser;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.activites.AddUserActivity;
@@ -66,6 +67,7 @@ public class FragmentMine extends Fragment {
     public void hideView(boolean flag){
         binding.addUserLayout.setVisibility(flag?View.VISIBLE:View.GONE);
         binding.addBaseLayout.setVisibility(flag?View.VISIBLE:View.GONE);
+        binding.mainUserInformation.setVisibility(flag?View.VISIBLE:View.GONE);
     }
 
     public void initEvent(){
@@ -87,6 +89,13 @@ public class FragmentMine extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), AddUserActivity.class));
+            }
+        });
+
+        binding.mainUserInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MainUser.class));
             }
         });
 

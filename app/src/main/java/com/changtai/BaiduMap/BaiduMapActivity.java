@@ -37,9 +37,13 @@ import com.baidu.mapapi.map.offline.MKOfflineMap;
 import com.baidu.mapapi.model.LatLng;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
+import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityBaiduMapBinding;
+import com.changtai.sqlModel.DeviceModel;
+import com.example.john.greendaodemo.gen.DeviceModelDao;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 public class BaiduMapActivity extends Activity {
@@ -67,7 +71,7 @@ public class BaiduMapActivity extends Activity {
             String action = intent.getAction();
             if (action.equals(Entity.LATLNG_INFOMATION))
             {
-                initPosition();
+                initPosition(Entity.latLng);
             }
         }
     };
@@ -86,8 +90,8 @@ public class BaiduMapActivity extends Activity {
         mBaiduMap.setMyLocationEnabled(true);
         locationClient = new LocationClient(getApplicationContext());
         locationClient.registerLocationListener(listener);
-
         initLociton();
+        initDeviceLocation();
         registerReceiver(receiver, intentFilter);
     }
 
@@ -104,11 +108,25 @@ public class BaiduMapActivity extends Activity {
         }
     }
 
+    public void initDeviceLocation(){
+        DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
+        List<DeviceModel> deviceModels = deviceModelDao.loadAll();
+        if (deviceModels != null && deviceModels.size() > 0){
+            for (int i = 0; i < deviceModels.size(); i++) {
+                DeviceModel deviceModel = deviceModels.get(i);
+                double la =Double.parseDouble(deviceModel.getLatitude());
+                double lo = Double.parseDouble(deviceModel.getLongitude());
+                LatLng latLng = new LatLng(la, lo);
+               initPosition(latLng);
+            }
+        }
+    }
+
     public void initLociton(){
         locationClientOption = new LocationClientOption();
         locationClientOption.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
         locationClientOption.setCoorType("bd0911");
-        locationClientOption.setScanSpan(1000);
+        locationClientOption.setScanSpan(10000);
         locationClientOption.setOpenGps(true);
         locationClientOption.setLocationNotify(true);
         locationClientOption.setWifiCacheTimeOut(5*60*1000);
@@ -119,11 +137,12 @@ public class BaiduMapActivity extends Activity {
     /**
      * 显示当前位置
      */
-    public void initPosition(){
+    public void initPosition(LatLng latLng){
         BitmapDescriptor descriptor =  BitmapDescriptorFactory
-                .fromResource(R.drawable.location);
-        OverlayOptions position = new MarkerOptions().position(Entity.latLng).icon(descriptor);
+                .fromResource(R.mipmap.location);
+        OverlayOptions position = new MarkerOptions().position(latLng).icon(descriptor).zIndex(9);
         mBaiduMap.addOverlay(position);
+        //initDeviceLocation();
     }
 
     public class MyLocationListener extends BDAbstractLocationListener {
@@ -150,7 +169,7 @@ public class BaiduMapActivity extends Activity {
                 builder.target(ll).zoom(18.0f);
                 mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
             }
-            initPosition();
+            initPosition(Entity.latLng);
         }
     }
 

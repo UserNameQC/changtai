@@ -1,50 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout>
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/title_layout"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
-            <TextView
-                android:id="@+id/user_station_title"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:layout_toStartOf="@+id/user_no_title"
-                android:gravity="center"
-                android:text="水管站号"
-                android:layout_toLeftOf="@+id/user_no_title" />
+                android:layout_height="40dp">
 
-            <TextView
-                android:id="@+id/user_no_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textSize="18sp"
-                android:text="用户编号"/>
+                <TextView
+                    android:id="@+id/user_station_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/user_no_title"
+                    android:layout_toStartOf="@+id/user_no_title"
+                    android:gravity="center"
+                    android:text="水管站号"
+                    android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/user_name_title"
+                <TextView
+                    android:id="@+id/user_no_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="用户编号"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/user_name_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_toEndOf="@+id/user_no_title"
+                    android:layout_toRightOf="@+id/user_no_title"
+                    android:gravity="center"
+                    android:text="用户名称"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:gravity="center"
-                android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/user_no_title"
-                android:text="用户名称"
-                android:layout_toRightOf="@+id/user_no_title"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
+                android:layout_height="1dp"
+                android:background="#999999" />
 
-        <ListView
-            android:id="@+id/user_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="visible" />
+            <ListView
+                android:id="@+id/user_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+        </LinearLayout>
 
         <ScrollView
             android:id="@+id/user_scrollview"
@@ -77,47 +90,8 @@
                             android:layout_centerVertical="true"
                             android:text="用水用户"
                             android:textSize="20sp" />
-
-                        <Button
-                            android:id="@+id/user_ok"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:background="@null"
-                            android:text="编辑"
-                            android:textColor="#030303" />
                     </RelativeLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="水利局编号："
-                            android:textSize="@dimen/text_size_default" />
-
-                        <EditText
-                            android:id="@+id/user_wcb_nm"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:tag="bureauno"
-                            android:textSize="@dimen/text_size_default" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
-                        android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

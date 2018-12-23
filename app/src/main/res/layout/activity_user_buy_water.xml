@@ -44,16 +44,6 @@
                             android:text="购水明细"
                             android:textSize="20sp" />
 
-                        <Button
-                            android:id="@+id/bw_ok"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:background="@null"
-                            android:text="编辑"
-                            android:textColor="#030303" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -87,35 +77,6 @@
                         android:layout_marginLeft="12dp"
                         android:background="@color/silverGray" />
 
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="水利局编号："
-                            android:textSize="@dimen/text_size_default" />
-
-                        <EditText
-                            android:id="@+id/bw_wcb_nm"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:tag="bureauno"
-                            android:textSize="@dimen/text_size_default" />
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
-                        android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

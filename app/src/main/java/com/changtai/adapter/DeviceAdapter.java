@@ -8,9 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.changtai.R;
-import com.changtai.sqlModel.UserModel;
-
-import org.w3c.dom.Text;
+import com.changtai.sqlModel.DeviceModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,25 +17,26 @@ import java.util.List;
  * Created by qjcjob on 2018/12/23.
  */
 
-public class UserAdapter extends BaseAdapter {
+public class DeviceAdapter extends BaseAdapter {
 
-    public List<UserModel> userModels = new ArrayList<>();
+    public List<DeviceModel> deviceModels = new ArrayList<>();
     public Context context;
     public int layoutId;
-    public UserAdapter(Context context, List<UserModel> list, int layoutId){
-        this.userModels = list;
+
+    public DeviceAdapter(Context context, List<DeviceModel> deviceModels, int layoutId){
+        this.deviceModels = deviceModels;
         this.context = context;
         this.layoutId = layoutId;
     }
 
     @Override
     public int getCount() {
-        return userModels.size();
+        return deviceModels.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return userModels.get(position);
+        return deviceModels.get(position);
     }
 
     @Override
@@ -60,10 +59,10 @@ public class UserAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        UserModel userModel = userModels.get(position);
-        viewHolder.userNo.setText(userModel.getUserNo());
-        viewHolder.userName.setText(userModel.getUserName());
-        viewHolder.stationNo.setText(userModel.getStationNo());
+        DeviceModel deviceModel = deviceModels.get(position);
+        viewHolder.stationNo.setText(deviceModel.getStationNo());
+        viewHolder.userNo.setText(deviceModel.getDeviceNo());
+        viewHolder.userName.setText(deviceModel.getLocation());
         return convertView;
     }
 

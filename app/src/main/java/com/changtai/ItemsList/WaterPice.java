@@ -4,20 +4,33 @@ import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.changtai.R;
 import com.changtai.Utils.Entity;
+import com.changtai.Utils.RealmUtils;
 import com.changtai.Utils.SaveDataToFile;
+import com.changtai.adapter.PriceAdapter;
+import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityWaterPiceBinding;
+import com.changtai.sqlModel.PriceModel;
+import com.example.john.greendaodemo.gen.DeviceModelDao;
+import com.example.john.greendaodemo.gen.PriceModelDao;
+import com.google.gson.Gson;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class WaterPice extends Activity implements View.OnClickListener{
 
-    public EditText et1, et2, et3, et4, et5, et6, et7, et8, et9, et10, et11,et12;
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;
     public String[] key = {Entity.StationNo,Entity.SjId,Entity.BureauNo,Entity.TimeSpan,Entity.Version,
@@ -25,44 +38,59 @@ public class WaterPice extends Activity implements View.OnClickListener{
             Entity.Sj1,Entity.Sj2,Entity.Sj3,Entity.AdministratorName,Entity.createTime,Entity.updateTime};
 
     public ActivityWaterPiceBinding binding;
+    public LinkedList<EditText> list = new LinkedList<>();
+    public PriceAdapter priceAdapter;
+    public PriceModelDao priceModelDao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_water_pice);
-
+        priceModelDao = MyApplication.getInstance().getDaoSession().getPriceModelDao();
         initView();
     }
     public void initView(){
 
-        et1 = (EditText) findViewById(R.id.wp_wcb_nm);
-        et2 = (EditText) findViewById(R.id.wp_wstation_nm);
-        et3 = (EditText) findViewById(R.id.wp_list_nm);
-        et4 = (EditText) findViewById(R.id.wp_type);
-        et5 = (EditText) findViewById(R.id.wp_first);
-        et6 = (EditText) findViewById(R.id.wp_second);
-        et7 = (EditText) findViewById(R.id.wp_third);
-        et8 = (EditText) findViewById(R.id.wp_buid_time);
-        et9 = (EditText) findViewById(R.id.wp_update_time);
-        et10 = (EditText) findViewById(R.id.wp_operator);
-        et11 = (EditText) findViewById(R.id.wp_data_update);
-        et12 = (EditText) findViewById(R.id.wp_version);
+        list.add(binding.wpWstationNm);
+        list.add(binding.wpListNm);
+        list.add(binding.wpType);
+        list.add(binding.wpFirst);
+        list.add(binding.wpSecond);
+        list.add(binding.wpThird);
+        list.add(binding.wpBuidTime);
+        list.add(binding.wpUpdateTime);
+        list.add(binding.wpOperator);
+        list.add(binding.wpDataUpdate);
+        list.add(binding.wpVersion);
+        binding.wpOk.setOnClickListener(this);
 
-        button = (Button) findViewById(R.id.wp_ok);
-        button.setOnClickListener(this);
+        etMap = Entity.saveInMap(list);
+        RealmUtils.setEditEnable(etMap, false);
 
-        int a = 0;
-        etMap.put(a++, et1);
-        etMap.put(a++, et2);
-        etMap.put(a++, et3);
-        etMap.put(a++, et4);
-        etMap.put(a++, et5);
-        etMap.put(a++, et6);
-        etMap.put(a++, et7);
-        etMap.put(a++, et8);
-        etMap.put(a++, et9);
-        etMap.put(a++, et10);
-        etMap.put(a++, et11);
-        etMap.put(a++, et12);
+        final List<PriceModel> priceModels = priceModelDao.loadAll();
+
+        priceAdapter = new PriceAdapter(this, priceModels, R.layout.user_item_layout);
+        binding.priceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                binding.titleLayout.setVisibility(View.GONE);
+                binding.priceScroll.setVisibility(View.VISIBLE);
+                PriceModel priceModel = priceModels.get(position);
+                String json = new Gson().toJson(priceModel);
+                try{
+                    JSONObject jsonObject = new JSONObject(json);
+                    for (int i = 0; i < etMap.size(); i++)
+                    {
+                        EditText et = etMap.get(i);
+                        et.setText(String.valueOf(jsonObject.get(et.getTag().toString())));
+                    }
+                }
+                catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     @Override
