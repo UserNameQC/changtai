@@ -37,7 +37,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingStart="5dp"
                 android:paddingLeft="5dp"
-                android:background="@drawable/backgroud_edit_text" />
+                android:background="@drawable/background_edit_text" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:background="@drawable/backgroud_edit_text" />
+                android:background="@drawable/background_edit_text" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="4dp"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
-                android:background="@drawable/backgroud_edit_text" />
+                android:background="@drawable/background_edit_text" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
                 android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:focusable="false"
-                android:background="@drawable/backgroud_edit_text" />
+                android:background="@drawable/background_edit_text" />
 
             <TextView
                 android:id="@+id/add_register"

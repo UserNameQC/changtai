@@ -1,6 +1,7 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
@@ -93,7 +94,7 @@ public class User extends Activity implements View.OnClickListener{
         etLinkList.add(userBinding.userVersion);
         etMap = Entity.saveInMap(etLinkList);
         RealmUtils.setEditEnable(etMap, false);
-        RealmUtils.setEditWatch(etMap, textWatcher);
+        //RealmUtils.setEditWatch(etMap, textWatcher);
 
 
         final List<UserModel> userModels = userModelDao.loadAll();
@@ -122,6 +123,18 @@ public class User extends Activity implements View.OnClickListener{
                 Log.e("json", json);
             }
         });
+
+        if (Entity.loginModel.getLoginName().equals("admin")){
+            userBinding.userWaterSetting.setVisibility(View.VISIBLE);
+            userBinding.userWaterSetting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(User.this,WaterSettings.class));
+                }
+            });
+        } else{
+            userBinding.userWaterSetting.setVisibility(View.GONE);
+        }
     }
 
     public TextWatcher textWatcher = new TextWatcher() {

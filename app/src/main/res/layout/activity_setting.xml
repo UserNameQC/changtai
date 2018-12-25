@@ -20,7 +20,7 @@
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
-            android:background="@drawable/backgroud_edit_text"
+            android:background="@drawable/background_edit_text"
             android:hint="请输入水站号"
             android:inputType="number"
             android:paddingLeft="5dp"

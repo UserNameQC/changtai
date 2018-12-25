@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#3ae"
+            android:gravity="center"
+            android:text="水量设置卡"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/write_to_card"
+            android:layout_below="@+id/title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="水管站号：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_station"
+                        style="@style/text_view_666" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="机井编号：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_device"
+                        style="@style/text_view_666" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="用户编号：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_userNo"
+                        style="@style/text_view_666" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="用户名称：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_name"
+                        style="@style/text_view_666" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="最后购水时间：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_time"
+                        style="@style/text_view_666" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="累计购水量：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_total"
+                        style="@style/text_view_666" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:text="㎡" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="年度购水量：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_year"
+                        style="@style/text_view_666" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:text="㎡" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="剩余水量：" />
+
+                    <TextView
+                        android:id="@+id/user_setting_sy"
+                        style="@style/text_view_666" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:text="㎡" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayout">
+
+                    <TextView
+                        style="@style/text_view_style"
+                        android:text="累计用水量：" />
+
+                    <EditText
+                        android:id="@+id/user_setting_use"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/background_edit_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="㎡ (0~14750)" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/click_more"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/background_edit_text"
+                    android:gravity="center"
+                    android:text="点击查看更多"
+                    android:textSize="16sp" />
+
+                <LinearLayout
+                    android:id="@+id/more_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="机井安装地点：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_location"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="用户状态：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_status"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="证件号：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_card"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="联系人：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_contact_name"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="联系方式：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_contact"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="用户备注：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_notes"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="透支限量：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_tz"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="㎡" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="报警水量：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_bj"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="㎡" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="一级水量上限：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_top1"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="㎡" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="二级水量上限：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_top2"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="㎡" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="水价类型：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_type"
+                            style="@style/text_view_666" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="一级水价：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_sj1"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="元/㎡" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="二级水价：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_sj2"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="元/㎡" />
+                    </LinearLayout>
+
+                    <LinearLayout style="@style/LinearLayout">
+
+                        <TextView
+                            style="@style/text_view_style"
+                            android:text="三级水价：" />
+
+                        <TextView
+                            android:id="@+id/user_setting_sj3"
+                            style="@style/text_view_666" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
+                            android:text="元/㎡" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+
+                    android:text="水量设置卡说明：" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="(1) 更换控制器时，首选通过转移卡到原控制器插卡导出用户水量数据，再到新控制器插卡导入数据。如控制器主板损坏，则可通过本功能写卡设置用户水量数据。
+
+(2) 写卡前需输入累计用水量。累计用水量可通过网络（如近期有数据上传）或者从控制器显示屏获取，也可结合实际情况估算。
+
+(3) 水量设置卡不允许直接购水，必须先到控制器插卡，转变为用户卡后，才允许购水。未插卡前购水，读卡时会提示。"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/write_to_card"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="#3ae"
+            android:gravity="center"
+            android:text="写卡"
+            android:textColor="#ffff"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+</layout>

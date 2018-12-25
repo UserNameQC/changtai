@@ -10,7 +10,8 @@
             android:id="@+id/title_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -70,9 +71,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,7 +79,8 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="40dp"
+                        android:background="#3ae">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -89,7 +88,21 @@
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:text="用水用户"
+                            android:textColor="#fff"
                             android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/user_water_setting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:text="水量设置"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"/>
                     </RelativeLayout>
 
 
