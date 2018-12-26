@@ -147,13 +147,15 @@
                         android:id="@+id/user_setting_use"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
+                        android:inputType="number"
                         android:background="@drawable/background_edit_text" />
 
                     <TextView
+                        android:id="@+id/user_settings_limit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="㎡ (0~14750)" />
+                        android:text="㎡ (0~99999999)" />
                 </LinearLayout>
 
                 <TextView

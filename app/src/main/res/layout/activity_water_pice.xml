@@ -100,6 +100,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="stationNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -128,6 +129,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="sjId"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -156,6 +158,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="mc"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -184,6 +187,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="sj1"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -212,6 +216,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="sj2"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -240,6 +245,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="sj3"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -250,7 +256,7 @@
                         android:layout_marginLeft="12dp"
                         android:background="@color/silverGray" />
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -276,9 +282,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="2px"
                         android:layout_marginLeft="12dp"
-                        android:background="@color/silverGray" />
+                        android:background="@color/silverGray" />-->
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -304,7 +310,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="2px"
                         android:layout_marginLeft="12dp"
-                        android:background="@color/silverGray" />
+                        android:background="@color/silverGray" />-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -324,6 +330,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
+                            android:tag="administratorName"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -334,7 +341,7 @@
                         android:layout_marginLeft="12dp"
                         android:background="@color/silverGray" />
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -360,9 +367,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="2px"
                         android:layout_marginLeft="12dp"
-                        android:background="@color/silverGray" />
+                        android:background="@color/silverGray" />-->
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -388,7 +395,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="2px"
                         android:layout_marginLeft="12dp"
-                        android:background="@color/silverGray" />
+                        android:background="@color/silverGray" />-->
                 </LinearLayout>
 
                 <View
@@ -403,6 +410,7 @@
                     android:layout_marginRight="15dp"
                     android:background="@drawable/btn_login_selector"
                     android:text="确定"
+                    android:visibility="gone"
                     android:textColor="@color/white" />
 
             </LinearLayout>

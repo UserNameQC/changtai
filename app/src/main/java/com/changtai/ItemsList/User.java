@@ -129,7 +129,8 @@ public class User extends Activity implements View.OnClickListener{
             userBinding.userWaterSetting.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(User.this,WaterSettings.class));
+                    String data = new Gson().toJson(userModel);
+                    startActivity(new Intent(User.this,WaterSettings.class).putExtra("data", data));
                 }
             });
         } else{

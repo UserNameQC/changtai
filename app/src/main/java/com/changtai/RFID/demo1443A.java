@@ -182,10 +182,10 @@ public class demo1443A extends Activity implements OnClickListener {
                 //buffer2 = toByteArray(msendtext.getText().toString());
 
 
-                Log.e("write", "XXXXX" + buffer2);
-                byte snr1[] = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF,
-                        (byte) 0xFF, (byte) 0xFF};
-                Log.e("write", "XXXXX" + snr1);
+//                Log.e("write", "XXXXX" + buffer2);
+//                byte snr1[] = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF,
+//                        (byte) 0xFF, (byte) 0xFF};
+//                Log.e("write", "XXXXX" + snr1);
                 if (buffer2.length >= 32) {
 
                     System.arraycopy(buffer2, 0, buffer3, 0, buffer2.length);

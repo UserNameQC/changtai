@@ -56,11 +56,11 @@ public class WaterPice extends Activity implements View.OnClickListener{
         list.add(binding.wpFirst);
         list.add(binding.wpSecond);
         list.add(binding.wpThird);
-        list.add(binding.wpBuidTime);
-        list.add(binding.wpUpdateTime);
+        //list.add(binding.wpBuidTime);
+        //list.add(binding.wpUpdateTime);
         list.add(binding.wpOperator);
-        list.add(binding.wpDataUpdate);
-        list.add(binding.wpVersion);
+        //list.add(binding.wpDataUpdate);
+        //list.add(binding.wpVersion);
         binding.wpOk.setOnClickListener(this);
 
         etMap = Entity.saveInMap(list);
@@ -69,6 +69,7 @@ public class WaterPice extends Activity implements View.OnClickListener{
         final List<PriceModel> priceModels = priceModelDao.loadAll();
 
         priceAdapter = new PriceAdapter(this, priceModels, R.layout.user_item_layout);
+        binding.priceListView.setAdapter(priceAdapter);
         binding.priceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
