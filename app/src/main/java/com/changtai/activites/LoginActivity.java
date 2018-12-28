@@ -57,7 +57,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         List<ConfigModel> configModels = MyApplication.getInstance().getDaoSession().getConfigModelDao().queryBuilder()
                 .list();
         if (configModels == null) {
-            Entity.toastMsg(this, "请设置水站号！");
+            Entity.toastMsg(this, "请设置水地区号！");
         }
     }
 

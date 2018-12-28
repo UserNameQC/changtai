@@ -51,7 +51,7 @@ public class DeviceAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = layoutInflater.inflate(layoutId, null);
             viewHolder = new ViewHolder();
-            viewHolder.stationNo = convertView.findViewById(R.id.user_station_no);
+            //viewHolder.stationNo = convertView.findViewById(R.id.user_station_no);
             viewHolder.userName = convertView.findViewById(R.id.user_name);
             viewHolder.userNo = convertView.findViewById(R.id.user_no);
             convertView.setTag(viewHolder);
@@ -60,14 +60,14 @@ public class DeviceAdapter extends BaseAdapter {
         }
 
         DeviceModel deviceModel = deviceModels.get(position);
-        viewHolder.stationNo.setText(deviceModel.getStationNo());
+        //viewHolder.stationNo.setText(deviceModel.getStationNo());
         viewHolder.userNo.setText(deviceModel.getDeviceNo());
         viewHolder.userName.setText(deviceModel.getLocation());
         return convertView;
     }
 
     public class ViewHolder{
-        TextView stationNo;
+        //TextView stationNo;
         TextView userNo;
         TextView userName;
     }

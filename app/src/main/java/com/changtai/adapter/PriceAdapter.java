@@ -51,7 +51,7 @@ public class PriceAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = layoutInflater.inflate(layoutId, null);
             viewHolder = new ViewHolder();
-            viewHolder.stationNo = convertView.findViewById(R.id.user_station_no);
+            //viewHolder.stationNo = convertView.findViewById(R.id.user_station_no);
             viewHolder.userName = convertView.findViewById(R.id.user_name);
             viewHolder.userNo = convertView.findViewById(R.id.user_no);
             convertView.setTag(viewHolder);
@@ -60,7 +60,7 @@ public class PriceAdapter extends BaseAdapter {
         }
 
         PriceModel priceModel = priceModels.get(position);
-        viewHolder.stationNo.setText(priceModel.getStationNo());
+        //viewHolder.stationNo.setText(priceModel.getStationNo());
         viewHolder.userNo.setText(priceModel.getMc());
         viewHolder.userName.setText(priceModel.getSj1());
 
@@ -68,7 +68,7 @@ public class PriceAdapter extends BaseAdapter {
     }
 
     public class ViewHolder{
-        TextView stationNo;
+        //TextView stationNo;
         TextView userNo;
         TextView userName;
     }

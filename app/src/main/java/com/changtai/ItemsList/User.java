@@ -39,13 +39,7 @@ public class User extends Activity implements View.OnClickListener{
      */
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;
-    public String[] key = {Entity.BureauNo,Entity.StationNo,Entity.DeviceNo,Entity.UserNo,Entity.Index,Entity.UserName,Entity.Phone,
-            Entity.CreateDateTime,Entity.Linkman,Entity.SjId,Entity.UsedTotal,
-            Entity.PurchaseTotal,Entity.PurchaseTotalThisYear,Entity.Overdraft,Entity.AlarmValue,Entity.CredentialNo,Entity.LimitSj1,
-            Entity.LimitSj2,Entity.Comment,Entity.AdministratorName,
-            Entity.StopFlag,Entity.LastDateTime,Entity.CardNo,Entity.CreditCardTimes,Entity.TimeSpan,Entity.Version};
 
-    public ListView useRListView;
     public UserAdapter adapter;
     public LinkedList<EditText> etLinkList = new LinkedList<>();
     public boolean etIsChangedUser = true;
@@ -100,6 +94,8 @@ public class User extends Activity implements View.OnClickListener{
         final List<UserModel> userModels = userModelDao.loadAll();
         adapter = new UserAdapter(this,userModels, R.layout.user_item_layout);
         userBinding.userList.setAdapter(adapter);
+
+        userBinding.userStationNo.setText(userModels.get(0).getStationNo());
 
         userBinding.userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

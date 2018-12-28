@@ -14,7 +14,7 @@
             android:gravity="center"
             android:text="水量设置卡"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -32,7 +32,7 @@
 
                     <TextView
                         style="@style/text_view_style"
-                        android:text="水管站号：" />
+                        android:text="地区号：" />
 
                     <TextView
                         android:id="@+id/user_setting_station"
@@ -98,7 +98,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginStart="10dp"
-                        android:text="㎡" />
+                        android:text="m³" />
                 </LinearLayout>
 
                 <LinearLayout style="@style/LinearLayout">
@@ -116,7 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginStart="10dp"
-                        android:text="㎡" />
+                        android:text="m³" />
                 </LinearLayout>
 
                 <LinearLayout style="@style/LinearLayout">
@@ -134,7 +134,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginStart="10dp"
-                        android:text="㎡" />
+                        android:text="m³" />
                 </LinearLayout>
 
                 <LinearLayout style="@style/LinearLayout">
@@ -155,7 +155,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:text="㎡ (0~99999999)" />
+                        android:text="m³ (0~99999999)" />
                 </LinearLayout>
 
                 <TextView
@@ -311,7 +311,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginStart="10dp"
-                            android:text="㎡" />
+                            android:text="m³" />
                     </LinearLayout>
 
                     <LinearLayout style="@style/LinearLayout">
@@ -340,7 +340,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginStart="10dp"
-                            android:text="元/㎡" />
+                            android:text="元/m³" />
                     </LinearLayout>
 
                     <LinearLayout style="@style/LinearLayout">
@@ -358,7 +358,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginStart="10dp"
-                            android:text="元/㎡" />
+                            android:text="元/m³" />
                     </LinearLayout>
 
                     <LinearLayout style="@style/LinearLayout">
@@ -376,7 +376,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginStart="10dp"
-                            android:text="元/㎡" />
+                            android:text="元/m³" />
 
                     </LinearLayout>
 

@@ -70,6 +70,8 @@ public class WaterPice extends Activity implements View.OnClickListener{
 
         priceAdapter = new PriceAdapter(this, priceModels, R.layout.user_item_layout);
         binding.priceListView.setAdapter(priceAdapter);
+
+        binding.userStationNo.setText(priceModels.get(0).getStationNo());
         binding.priceListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

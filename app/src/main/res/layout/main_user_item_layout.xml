@@ -9,6 +9,8 @@
         android:id="@+id/main_user_login_name"
         android:layout_weight="1"
         android:textSize="16sp"
+        android:textColor="#555555"
+        android:textStyle="bold"
         android:gravity="center"/>
 
     <TextView

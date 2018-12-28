@@ -52,7 +52,7 @@ public class UserAdapter extends BaseAdapter {
         if (convertView == null){
             convertView = layoutInflater.inflate(layoutId, null);
             viewHolder = new ViewHolder();
-            viewHolder.stationNo = convertView.findViewById(R.id.user_station_no);
+            //viewHolder.stationNo = convertView.findViewById(R.id.user_station_no);
             viewHolder.userName = convertView.findViewById(R.id.user_name);
             viewHolder.userNo = convertView.findViewById(R.id.user_no);
             convertView.setTag(viewHolder);
@@ -63,12 +63,12 @@ public class UserAdapter extends BaseAdapter {
         UserModel userModel = userModels.get(position);
         viewHolder.userNo.setText(userModel.getUserNo());
         viewHolder.userName.setText(userModel.getUserName());
-        viewHolder.stationNo.setText(userModel.getStationNo());
+        //viewHolder.stationNo.setText(userModel.getStationNo());
         return convertView;
     }
 
     public class ViewHolder{
-        TextView stationNo;
+        //TextView stationNo;
         TextView userNo;
         TextView userName;
     }

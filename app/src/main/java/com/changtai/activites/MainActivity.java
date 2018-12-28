@@ -160,7 +160,7 @@ public class MainActivity extends BaseActivity {
         List<ConfigModel> configModels = configModelDao.queryBuilder().list();
         if (configModels == null || configModels.size() == 0){
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setMessage("未检测到水站号，请设置水站号");
+            builder.setMessage("未检测到地区号，请设置地区号");
             builder.setTitle("提示");
             builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 @Override

@@ -95,6 +95,8 @@ public class DeviceList extends Activity implements View.OnClickListener{
         binding.wellListView.setAdapter(adapter);
         //binding.wellOk.setOnClickListener(this);
 
+        binding.userStationNum.setText(deviceModels.get(0).getStationNo());
+
         binding.wellListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -51,12 +51,12 @@ public class SettingActivity extends BaseActivity {
         }
         final EditText editText = (EditText) findViewById(R.id.buy_water_id);
         if (editText.length() <= 0) {
-            Entity.toastMsg(this, "售水站号不能为空");
+            Entity.toastMsg(this, "地区号不能为空");
             return;
         }
 
         if (editText.length() != 5) {
-            Entity.toastMsg(this, "售水站号必须是5位数字");
+            Entity.toastMsg(this, "地区号必须是5位数字");
             return;
         }
         baseId = editText.getText().toString();
@@ -72,7 +72,7 @@ public class SettingActivity extends BaseActivity {
             }
             model.setName("APP_BASEID");
             model.setValue(baseId);
-            model.setComment("水站号");
+            model.setComment("地区号");
             model.setId(0L);
             MyApplication.getInstance().getDaoSession().getConfigModelDao().insertOrReplace(model);
         }
