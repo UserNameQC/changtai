@@ -29,8 +29,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.READ_LOGS" />
-
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <uses-feature
         android:name="android.hardware.nfc"
@@ -61,7 +60,8 @@
         <activity android:name=".RFID.NfcDemoActivity" />
         <activity android:name=".activites.SettingActivity" />
         <activity android:name=".activites.ItemsActivity" />
-        <activity android:name=".ItemsList.DeviceList"
+        <activity
+            android:name=".ItemsList.DeviceList"
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".ItemsList.WaterPice" />
         <activity android:name=".ItemsList.User" />
@@ -69,10 +69,10 @@
         <activity android:name=".ItemsList.UserTakeWater" />
         <activity android:name=".ItemsList.MainUser" />
         <activity android:name=".activites.ResetPassWord" />
-        <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity"/>
-        <activity android:name=".activites.SynchronizationMain"/>
-        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity"/>
-        <activity android:name=".ItemsList.WaterSettings"/>
+        <activity android:name=".SynchronizationWithPC.DownloadFromPcActivity" />
+        <activity android:name=".activites.SynchronizationMain" />
+        <activity android:name=".SynchronizationWithWeb.DownloadFromWebActivity" />
+        <activity android:name=".ItemsList.WaterSettings" />
 
         <intent-filter>
             <action android:name="android.nfc.action.TECH_DISCOVERED" />
@@ -82,7 +82,8 @@
             android:name="android.nfc.action.TECH_DISCOVERED"
             android:resource="@xml/filter_nfc" />
 
-        <activity android:name=".activites.AddUserActivity"></activity>
+        <activity android:name=".activites.AddUserActivity" />
+        <activity android:name=".activites.MadeCardActivity"></activity>
     </application>
 
 </manifest>
