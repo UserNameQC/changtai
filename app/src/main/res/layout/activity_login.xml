@@ -12,10 +12,20 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="120dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/timg" />
+            android:background="@drawable/china_water_conservancy" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="中国水利"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:textColor="#009fc6"/>
 
         <LinearLayout
             android:id="@+id/name_linearlayout"
@@ -66,7 +76,7 @@
                 android:layout_height="41dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginStart="5dp"
-                android:background="@null"
+                android:background="@drawable/background_edit_text"
                 android:hint="密码"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
