@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.changtai.activites.MadeCardActivity">
+        android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/made_card_title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="#3ae"
-            android:gravity="center"
             android:text="制作工具卡"
+            android:gravity="center"
             android:textColor="#fff"
+            android:layout_centerHorizontal="true"
             android:textSize="20sp" />
 
         <ScrollView
+            android:id="@+id/made_card_scroll"
+            android:layout_below="@+id/made_card_title"
+            android:layout_above="@+id/write_to_card"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="5dp">
 
             <LinearLayout
@@ -533,6 +535,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -546,7 +549,9 @@
                     <Spinner
                         android:id="@+id/made_device_no"
                         android:layout_width="120dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textAlignment="center"/>
 
                 </LinearLayout>
 
@@ -556,6 +561,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -568,9 +574,10 @@
 
                     <TextView
                         android:id="@+id/made_device_location"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#333333"
+                        android:background="@drawable/background_edit_text"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -582,6 +589,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -595,7 +603,8 @@
                     <Spinner
                         android:id="@+id/made_user_no"
                         android:layout_width="120dp"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:gravity="center"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -604,7 +613,8 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -616,15 +626,27 @@
 
                     <TextView
                         android:id="@+id/made_user_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#333333"
-                        android:textSize="18sp" />
+                        android:singleLine="true"
+                        android:textSize="18sp"
+                        android:background="@drawable/background_edit_text"/>
 
                 </LinearLayout>
-
             </LinearLayout>
         </ScrollView>
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="写卡"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:id="@+id/write_to_card"
+            android:background="#3ae"/>
+
+    </RelativeLayout>
 </layout>

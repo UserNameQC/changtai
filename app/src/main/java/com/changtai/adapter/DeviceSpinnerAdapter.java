@@ -36,7 +36,7 @@ public class DeviceSpinnerAdapter extends SpinnerAdapter<DeviceModel> {
         void setOnSelected(DeviceModel model, int position);
     }
 
-    public void setOnSelecteLinstener(onItemSelected onItemSelected){
+    public void setOnSelectedListener(onItemSelected onItemSelected){
         this.onItemSelected = onItemSelected;
     }
 }

@@ -2,16 +2,12 @@ package com.changtai.activites;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
-import android.widget.TextView;
 
 import com.changtai.R;
 import com.changtai.adapter.DeviceSpinnerAdapter;
-import com.changtai.adapter.SpinnerAdapter;
 import com.changtai.adapter.UserSpinnerAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMadeCardBinding;
@@ -19,7 +15,6 @@ import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.UserModel;
 import com.example.john.greendaodemo.gen.DeviceModelDao;
 import com.example.john.greendaodemo.gen.UserModelDao;
-import com.utils.Device;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +59,40 @@ public class MadeCardActivity extends BaseActivity {
             radioButton.setOnClickListener(onClickListener);
         }
 
-
         initData();
+
+        binding.writeToCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String databuff32 = "";
+                String station = binding.madeBaseId.getSelectedItem().toString();
+                if (binding.madeDeviceTestCard.isChecked())
+                    databuff32 = "F55592" + "0000000000000000" + station + "00000";    //机井测试卡
+                if (binding.madeDeviceCheckCard.isChecked())
+                    databuff32 = "F55594" + "0000000000000000" + station + "00000";    //机井检查卡
+                if (binding.madeDeviceClearCard.isChecked())
+                    databuff32 = "F55593" + "0000000000000000" + station + "00000";    //机井清零卡
+                if (binding.channelSetCard.isChecked()){
+                    if (binding.channelSetEdit.length() > 0){
+                        databuff32 = "F55596" + String.format("{0:D4}", binding.channelSetEdit.getText().toString()) + "000000000000" + station + "00000";    //流量设定卡
+                    }
+                }
+                if (binding.criticalSetCard.isChecked()){
+                    if (binding.criticalSetEdit.length() > 0) {
+                        databuff32 = "F55595" + String.format("{0:D2}", binding.criticalSetEdit.getText().toString()) + "00000000000000" + station + "00000";  //临界频率卡
+                    }
+                }
+                if (binding.userCheckCard.isChecked())
+                    databuff32 = "F55594" + "0000000000000000" + binding.madeUserNo.getSelectedItem().toString();  //用户检查卡
+                if (binding.userClearCard.isChecked())
+                    databuff32 = "F55593" + "0000000000000000" + binding.madeUserNo.getSelectedItem().toString();  //用户清零卡
+                if (binding.userRemoveCard.isChecked())
+                    databuff32 = "F55590" + "0000000000000000" + binding.madeUserNo.getSelectedItem().toString();  //用户转移卡
+                if (binding.meterFactorSetCard.isChecked())
+                    if (binding.meterFactorSetEdit.length() > 0)
+                    databuff32 = "F55597" + String.format("{0:D5}", binding.meterFactorSetEdit.getText().toString()) + "0000000000" + station + "00000";      //仪表系数设定卡
+            }
+        });
     }
 
     /**
@@ -76,8 +103,9 @@ public class MadeCardActivity extends BaseActivity {
         DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
         List<DeviceModel> deviceModels = deviceModelDao.loadAll();
         DeviceSpinnerAdapter deviceNoAdapter = new DeviceSpinnerAdapter(this, deviceModels);
+
         binding.madeDeviceNo.setAdapter(deviceNoAdapter);
-        deviceNoAdapter.setOnSelecteLinstener(new DeviceSpinnerAdapter.onItemSelected() {
+        deviceNoAdapter.setOnSelectedListener(new DeviceSpinnerAdapter.onItemSelected() {
             @Override
             public void setOnSelected(DeviceModel model, int position) {
                 binding.madeDeviceLocation.setText(model.getLocation());
@@ -125,7 +153,8 @@ public class MadeCardActivity extends BaseActivity {
         public void onClick(View v) {
             LinearLayout linearLayout = layoutList.get(list.indexOf(v));
             hidCheckStatus((RadioButton) v, linearLayout);
-
         }
     };
+
+
 }
