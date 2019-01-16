@@ -7,6 +7,8 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
 import com.changtai.R;
+import com.changtai.RFID.RfidUtils;
+import com.changtai.Utils.Entity;
 import com.changtai.adapter.DeviceSpinnerAdapter;
 import com.changtai.adapter.UserSpinnerAdapter;
 import com.changtai.application.MyApplication;
@@ -18,6 +20,10 @@ import com.example.john.greendaodemo.gen.UserModelDao;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 工具卡制作
+ */
+
 public class MadeCardActivity extends BaseActivity {
 
     public ActivityMadeCardBinding binding;
@@ -25,12 +31,14 @@ public class MadeCardActivity extends BaseActivity {
     public List<String> baseId = new ArrayList<>();
     public List<DeviceModel> deviceNo = new ArrayList<>();
     public List<UserModel> userNo = new ArrayList<>();
+    public RfidUtils rfidUtils;
 
     public List<LinearLayout> layoutList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_made_card);
+        rfidUtils = new RfidUtils();
         initView();
     }
 
@@ -91,6 +99,9 @@ public class MadeCardActivity extends BaseActivity {
                 if (binding.meterFactorSetCard.isChecked())
                     if (binding.meterFactorSetEdit.length() > 0)
                     databuff32 = "F55597" + String.format("{0:D5}", binding.meterFactorSetEdit.getText().toString()) + "0000000000" + station + "00000";      //仪表系数设定卡
+                if (rfidUtils.writeToCard(databuff32)){
+                    Entity.toastMsg(MadeCardActivity.this, "写卡成功！");
+                }
             }
         });
     }

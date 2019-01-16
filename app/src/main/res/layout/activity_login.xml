@@ -20,75 +20,43 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="中国水利"
-            android:gravity="center"
             android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="中国水利"
+            android:textColor="#009fc6"
             android:textSize="34sp"
-            android:textStyle="bold"
-            android:textColor="#009fc6"/>
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/name_linearlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <EditText
+            android:id="@+id/et_login_username"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/background_edit_text"
+            android:hint="用户名"
+            android:maxLines="1"
+            android:singleLine="true"
             android:layout_marginTop="40dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingEnd="2dp"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-            android:paddingStart="2dp">
-
-            <EditText
-                android:id="@+id/et_login_username"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:background="@null"
-                android:hint="用户名"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="admin" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:background="#009858" />
-        </LinearLayout>
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:text="admin" />
 
 
-        <LinearLayout
-            android:id="@+id/password_linearlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingEnd="2dp"
-            android:paddingLeft="2dp"
-            android:paddingRight="2dp"
-            android:paddingStart="2dp">
+        <EditText
+            android:id="@+id/et_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:background="@drawable/background_edit_text"
+            android:hint="密码"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:layout_marginTop="15dp"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:text="admin" />
 
-            <EditText
-                android:id="@+id/et_login_password"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginStart="5dp"
-                android:background="@drawable/background_edit_text"
-                android:hint="密码"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="admin" />
-
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:background="#009858" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/login_btn"
