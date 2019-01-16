@@ -121,8 +121,8 @@ public class User extends Activity implements View.OnClickListener{
         });
 
         if (Entity.loginModel.getLoginName().equals("admin")){
-            userBinding.userWaterSetting.setVisibility(View.VISIBLE);
-            userBinding.userWaterSetting.setOnClickListener(new View.OnClickListener() {
+            userBinding.userImageMenu.setVisibility(View.VISIBLE);
+            userBinding.userImageMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     String data = new Gson().toJson(userModel);
@@ -130,7 +130,7 @@ public class User extends Activity implements View.OnClickListener{
                 }
             });
         } else{
-            userBinding.userWaterSetting.setVisibility(View.GONE);
+            userBinding.userImageMenu.setVisibility(View.GONE);
         }
     }
 
