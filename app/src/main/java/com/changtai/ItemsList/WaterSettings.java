@@ -1,5 +1,6 @@
 package com.changtai.ItemsList;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Entity;
 import android.databinding.DataBindingUtil;
@@ -40,11 +41,14 @@ public class WaterSettings extends BaseActivity  {
     public UserModel userModel;
     public String TAG = "WaterSettings";
     public RfidUtils rfidUtils;
+    public String type;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.water_setting_layout);
+        type = getIntent().getExtras().getString("type");
+        binding.title.setText(type.equals("setting") ? "水量设置卡" : "用户补卡");
         rfidUtils = new RfidUtils();
         initViews();
         initClick();
@@ -62,9 +66,11 @@ public class WaterSettings extends BaseActivity  {
         binding.writeToCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(binding.userSettingUse.getText().toString())){
-                    com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "累计用水量不能为空");
-                    return;
+                if (type.equals("setting")) {
+                    if (TextUtils.isEmpty(binding.userSettingUse.getText().toString())) {
+                        com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "累计用水量不能为空");
+                        return;
+                    }
                 }
                 if (rfidUtils.isnNewCard()){
                     com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "此卡为新卡，请初始化以后再操作");
@@ -82,7 +88,9 @@ public class WaterSettings extends BaseActivity  {
                 stringBuffer.append((int) Double.parseDouble(userModel.purchaseTotal));
                 stringBuffer.append((int) (Double.parseDouble(userModel.getOverdraft())/100));
                 stringBuffer.append((int) (Double.parseDouble(userModel.getAlarmValue())/100));
-                stringBuffer.append(Integer.parseInt(binding.userSettingUse.getText().toString()));
+                if (type.equals("setting")) {
+                    stringBuffer.append(Integer.parseInt(binding.userSettingUse.getText().toString()));
+                }
 
                 if (rfidUtils.writeToCard(stringBuffer.toString())){
                     com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "写卡成功");
@@ -92,6 +100,7 @@ public class WaterSettings extends BaseActivity  {
     }
 
 
+    @SuppressLint("SetTextI18n")
     public void initViews(){
         try {
             String data = getIntent().getExtras().getString("data", null);
@@ -117,13 +126,34 @@ public class WaterSettings extends BaseActivity  {
             binding.userSettingTotal.setText(userModel.getPurchaseTotal());
             binding.userSettingYear.setText(userModel.getPurchaseTotalThisYear());
 
-            //累计上用水量的上限 不能超过累计购水量 + 透支限量的总和 最多八位数字（最大为99999999）
-            int topLimit = (int) Double.parseDouble(userModel.getPurchaseTotal()) + ((int) Double.parseDouble(userModel.getOverdraft()));
-            int bottomLimit = com.changtai.Utils.Entity.loginModel.getQxString().equals("管理员") ? 0 : (int) Double.parseDouble(userModel.getUsedTotal());
-            binding.userSettingsLimit.setText("(" + bottomLimit + "~" + topLimit + ")");
-            //剩余水量 = 年度购水量 - 累计用水量的上限
-            binding.userSettingSy.setText(String.valueOf((int) Double.parseDouble(userModel.getPurchaseTotal()) - topLimit));
-
+            if (type.equals("setting")) {
+                binding.userLimitLayout.setVisibility(View.VISIBLE);
+                binding.userSyLayout.setVisibility(View.VISIBLE);
+                //累计上用水量的上限 不能超过累计购水量 + 透支限量的总和 最多八位数字（最大为99999999）
+                int topLimit = (int) Double.parseDouble(userModel.getPurchaseTotal()) + ((int) Double.parseDouble(userModel.getOverdraft()));
+                int bottomLimit = com.changtai.Utils.Entity.loginModel.getQxString().equals("管理员") ? 0 : (int) Double.parseDouble(userModel.getUsedTotal());
+                binding.userSettingsLimit.setText("(" + bottomLimit + "~" + topLimit + ")");
+                //剩余水量 = 年度购水量 - 累计用水量的上限
+                binding.userSettingSy.setText(String.valueOf((int) Double.parseDouble(userModel.getPurchaseTotal()) - topLimit));
+                binding.settingDetailsTitle.setText("水量设置卡说明：");
+                binding.settingDetails.setText(
+                        "(1) 更换控制器时，首选通过转移卡到原控制器插卡导出用户水量数据，再到新控制器插卡导入数据。如控制器主板损坏，则可通过本功能写卡设置用户水量数据。\n" +
+                        "\n" +
+                        "(2) 写卡前需输入累计用水量。累计用水量可通过网络（如近期有数据上传）或者从控制器显示屏获取，也可结合实际情况估算。\n" +
+                        "\n" +
+                        "(3) 水量设置卡不允许直接购水，必须先到控制器插卡，转变为用户卡后，才允许购水。未插卡前购水，读卡时会提示。");
+            } else {
+                binding.userSyLayout.setVisibility(View.GONE);
+                binding.userLimitLayout.setVisibility(View.GONE);
+                binding.settingDetailsTitle.setText("补卡说明：");
+                binding.settingDetails.setText(
+                        "(1) 用户卡丢失后，可使用本功能给用户补卡。补写的用户卡与该用户最后一次购水后(尚未到控制器插卡时)的状态完全一致。\n" +
+                        "\n" +
+                        "(2) 补卡后可以直接到控制器上插卡使用，也可以继续购水再插卡使用。此时购水读卡会提示上次购水未插卡，点”是“继续购水即可。\n" +
+                        "\n" +
+                        "(3) 补写的用户卡再次购水(≥1m³)，并到控制器插卡后，原用户卡即使找回也无法插卡使用，并且在购水读卡时会提示。"
+                );
+            }
             /**
              * 查询机井位置
              */

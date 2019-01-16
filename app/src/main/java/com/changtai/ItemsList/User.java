@@ -1,6 +1,8 @@
 package com.changtai.ItemsList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -120,13 +122,29 @@ public class User extends Activity implements View.OnClickListener{
             }
         });
 
+        final String[] items = new String[]{"水量设置", "用户补卡"};
         if (Entity.loginModel.getLoginName().equals("admin")){
             userBinding.userImageMenu.setVisibility(View.VISIBLE);
             userBinding.userImageMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String data = new Gson().toJson(userModel);
-                    startActivity(new Intent(User.this,WaterSettings.class).putExtra("data", data));
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(User.this);
+                    dialog.setItems(items, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String data = new Gson().toJson(userModel);
+                            Intent intent = new Intent(User.this, WaterSettings.class);
+                            intent.putExtra("data", data);
+                            if (which == 0){
+                                intent.putExtra("type", "setting");
+
+                            } else {
+                                intent.putExtra("type", "user");
+                            }
+                            startActivity(intent);
+                        }
+                    });
+                    dialog.show();
                 }
             });
         } else{

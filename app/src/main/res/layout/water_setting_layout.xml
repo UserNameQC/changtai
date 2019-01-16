@@ -119,7 +119,9 @@
                         android:text="m³" />
                 </LinearLayout>
 
-                <LinearLayout style="@style/LinearLayout">
+                <LinearLayout
+                    android:id="@+id/user_sy_layout"
+                    style="@style/LinearLayout">
 
                     <TextView
                         style="@style/text_view_style"
@@ -137,7 +139,9 @@
                         android:text="m³" />
                 </LinearLayout>
 
-                <LinearLayout style="@style/LinearLayout">
+                <LinearLayout
+                    android:id="@+id/user_limit_layout"
+                    style="@style/LinearLayout">
 
                     <TextView
                         style="@style/text_view_style"
@@ -383,25 +387,22 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/setting_details_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp"
-
                     android:text="水量设置卡说明：" />
 
                 <TextView
+                    android:id="@+id/setting_details"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginStart="20dp"
-                    android:text="(1) 更换控制器时，首选通过转移卡到原控制器插卡导出用户水量数据，再到新控制器插卡导入数据。如控制器主板损坏，则可通过本功能写卡设置用户水量数据。
-
-(2) 写卡前需输入累计用水量。累计用水量可通过网络（如近期有数据上传）或者从控制器显示屏获取，也可结合实际情况估算。
-
-(3) 水量设置卡不允许直接购水，必须先到控制器插卡，转变为用户卡后，才允许购水。未插卡前购水，读卡时会提示。"
+                    android:text=""
                     android:textSize="14sp" />
             </LinearLayout>
         </ScrollView>
