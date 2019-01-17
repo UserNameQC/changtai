@@ -22,7 +22,7 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
     /**
      * Properties of entity UserModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property UserNo = new Property(1, String.class, "userNo", false, "USER_NO");
@@ -52,7 +52,7 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
         public final static Property Key = new Property(25, int.class, "key", false, "KEY");
         public final static Property ServerVersion = new Property(26, long.class, "serverVersion", false, "SERVER_VERSION");
         public final static Property ClientVersion = new Property(27, long.class, "clientVersion", false, "CLIENT_VERSION");
-    };
+    }
 
 
     public UserModelDao(DaoConfig config) {
@@ -438,6 +438,11 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(UserModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

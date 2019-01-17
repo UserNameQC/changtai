@@ -11,10 +11,8 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import com.changtai.R;
 import com.changtai.Utils.Entity;
@@ -35,7 +33,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class User extends Activity implements View.OnClickListener{
+public class UserModelActivity extends Activity implements View.OnClickListener{
     /**
      * 用户表
      */
@@ -128,12 +126,12 @@ public class User extends Activity implements View.OnClickListener{
             userBinding.userImageMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(User.this);
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(UserModelActivity.this);
                     dialog.setItems(items, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             String data = new Gson().toJson(userModel);
-                            Intent intent = new Intent(User.this, WaterSettings.class);
+                            Intent intent = new Intent(UserModelActivity.this, UserActionActivity.class);
                             intent.putExtra("data", data);
                             if (which == 0){
                                 intent.putExtra("type", "setting");

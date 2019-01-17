@@ -22,13 +22,13 @@ public class ConfigModelDao extends AbstractDao<ConfigModel, Long> {
     /**
      * Properties of entity ConfigModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Name = new Property(1, String.class, "name", false, "NAME");
         public final static Property Value = new Property(2, String.class, "value", false, "VALUE");
         public final static Property Comment = new Property(3, String.class, "comment", false, "COMMENT");
-    };
+    }
 
 
     public ConfigModelDao(DaoConfig config) {
@@ -142,6 +142,11 @@ public class ConfigModelDao extends AbstractDao<ConfigModel, Long> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(ConfigModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

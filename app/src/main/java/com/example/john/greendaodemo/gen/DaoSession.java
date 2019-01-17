@@ -101,14 +101,14 @@ public class DaoSession extends AbstractDaoSession {
     }
     
     public void clear() {
-        configModelDaoConfig.getIdentityScope().clear();
-        dBEntityModelDaoConfig.getIdentityScope().clear();
-        deviceModelDaoConfig.getIdentityScope().clear();
-        loginInformationModelDaoConfig.getIdentityScope().clear();
-        loginModelDaoConfig.getIdentityScope().clear();
-        priceModelDaoConfig.getIdentityScope().clear();
-        purchaseRecordModelDaoConfig.getIdentityScope().clear();
-        userModelDaoConfig.getIdentityScope().clear();
+        configModelDaoConfig.clearIdentityScope();
+        dBEntityModelDaoConfig.clearIdentityScope();
+        deviceModelDaoConfig.clearIdentityScope();
+        loginInformationModelDaoConfig.clearIdentityScope();
+        loginModelDaoConfig.clearIdentityScope();
+        priceModelDaoConfig.clearIdentityScope();
+        purchaseRecordModelDaoConfig.clearIdentityScope();
+        userModelDaoConfig.clearIdentityScope();
     }
 
     public ConfigModelDao getConfigModelDao() {

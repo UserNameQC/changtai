@@ -22,7 +22,7 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
     /**
      * Properties of entity PurchaseRecordModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property PurchaseRecordId = new Property(1, String.class, "purchaseRecordId", false, "PURCHASE_RECORD_ID");
@@ -50,7 +50,7 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
         public final static Property ServerVersion = new Property(23, long.class, "serverVersion", false, "SERVER_VERSION");
         public final static Property ClientVersion = new Property(24, long.class, "clientVersion", false, "CLIENT_VERSION");
         public final static Property Key = new Property(25, int.class, "key", false, "KEY");
-    };
+    }
 
 
     public PurchaseRecordModelDao(DaoConfig config) {
@@ -426,6 +426,11 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(PurchaseRecordModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

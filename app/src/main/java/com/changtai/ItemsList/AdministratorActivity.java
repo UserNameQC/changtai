@@ -34,7 +34,7 @@ import static com.changtai.Utils.Entity.ReWritePassWord;
 import static com.changtai.Utils.Entity.RoleId;
 import static com.changtai.Utils.Entity.SysAdmin;
 
-public class MainUser extends Activity{
+public class AdministratorActivity extends Activity{
 
     /**
      * 管理员
@@ -66,12 +66,12 @@ public class MainUser extends Activity{
             arrayAdapter.setItemClick(new MainUserAdapter.setOnItemClickListenr() {
                 @Override
                 public void onItemClick(View v, int position, final LoginModel loginModel) {
-                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainUser.this);
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(AdministratorActivity.this);
                     alertDialog.setItems(new String[]{"修改信息", "删除操作员"}, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (which == 0){
-                                Intent intent = new Intent(MainUser.this, AddUserActivity.class);
+                                Intent intent = new Intent(AdministratorActivity.this, AddUserActivity.class);
                                 String json = new Gson().toJson(loginModel);
                                 intent.putExtra("result", json);
                                 startActivity(intent);

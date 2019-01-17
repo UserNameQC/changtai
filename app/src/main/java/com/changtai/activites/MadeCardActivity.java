@@ -2,7 +2,9 @@ package com.changtai.activites;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
@@ -13,11 +15,14 @@ import com.changtai.adapter.DeviceSpinnerAdapter;
 import com.changtai.adapter.UserSpinnerAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMadeCardBinding;
+import com.changtai.sqlModel.ConfigModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.UserModel;
+import com.example.john.greendaodemo.gen.ConfigModelDao;
 import com.example.john.greendaodemo.gen.DeviceModelDao;
 import com.example.john.greendaodemo.gen.UserModelDao;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -32,6 +37,9 @@ public class MadeCardActivity extends BaseActivity {
     public List<DeviceModel> deviceNo = new ArrayList<>();
     public List<UserModel> userNo = new ArrayList<>();
     public RfidUtils rfidUtils;
+    public String station;
+    public List<String> deviceNos = new LinkedList<>();
+    public List<String> userNos = new LinkedList<>();
 
     public List<LinearLayout> layoutList = new ArrayList<>();
     @Override
@@ -73,7 +81,7 @@ public class MadeCardActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 String databuff32 = "";
-                String station = binding.madeBaseId.getSelectedItem().toString();
+                if (TextUtils.isEmpty(station)) return;
                 if (binding.madeDeviceTestCard.isChecked())
                     databuff32 = "F55592" + "0000000000000000" + station + "00000";    //机井测试卡
                 if (binding.madeDeviceCheckCard.isChecked())
@@ -90,12 +98,13 @@ public class MadeCardActivity extends BaseActivity {
                         databuff32 = "F55595" + String.format("{0:D2}", binding.criticalSetEdit.getText().toString()) + "00000000000000" + station + "00000";  //临界频率卡
                     }
                 }
+                if (userNos.isEmpty() || deviceNos.isEmpty()) return;
                 if (binding.userCheckCard.isChecked())
-                    databuff32 = "F55594" + "0000000000000000" + binding.madeUserNo.getSelectedItem().toString();  //用户检查卡
+                    databuff32 = "F55594" + "0000000000000000" + userNos.get(binding.madeUserNo.getSelectedIndex());  //用户检查卡
                 if (binding.userClearCard.isChecked())
-                    databuff32 = "F55593" + "0000000000000000" + binding.madeUserNo.getSelectedItem().toString();  //用户清零卡
+                    databuff32 = "F55593" + "0000000000000000" + userNos.get(binding.madeUserNo.getSelectedIndex());  //用户清零卡
                 if (binding.userRemoveCard.isChecked())
-                    databuff32 = "F55590" + "0000000000000000" + binding.madeUserNo.getSelectedItem().toString();  //用户转移卡
+                    databuff32 = "F55590" + "0000000000000000" + userNos.get(binding.madeUserNo.getSelectedIndex());  //用户转移卡
                 if (binding.meterFactorSetCard.isChecked())
                     if (binding.meterFactorSetEdit.length() > 0)
                     databuff32 = "F55597" + String.format("{0:D5}", binding.meterFactorSetEdit.getText().toString()) + "0000000000" + station + "00000";      //仪表系数设定卡
@@ -111,30 +120,43 @@ public class MadeCardActivity extends BaseActivity {
      */
     public void initData(){
 
-        DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
-        List<DeviceModel> deviceModels = deviceModelDao.loadAll();
-        DeviceSpinnerAdapter deviceNoAdapter = new DeviceSpinnerAdapter(this, deviceModels);
+        ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
+        List<ConfigModel> configModels = configModelDao.queryBuilder().where(ConfigModelDao.Properties.Id.eq(0L)).list();
+        if (!configModels.isEmpty()){
+            ConfigModel configModel = configModels.get(0);
+            List<String> configNo = new LinkedList<>();
+            station = configModel.getValue();
+            configNo.add(configModel.getValue());
+            binding.madeBaseId.attachDataSource(configNo);
+        }
 
-        binding.madeDeviceNo.setAdapter(deviceNoAdapter);
-        deviceNoAdapter.setOnSelectedListener(new DeviceSpinnerAdapter.onItemSelected() {
+        DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
+        final List<DeviceModel> deviceModels = deviceModelDao.loadAll();
+        //DeviceSpinnerAdapter deviceNoAdapter = new DeviceSpinnerAdapter(this, deviceModels);
+        for (DeviceModel deviceModel : deviceModels){
+            deviceNos.add(deviceModel.getDeviceNo());
+        }
+        binding.madeDeviceNo.attachDataSource(deviceNos);
+        binding.madeDeviceNo.addOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void setOnSelected(DeviceModel model, int position) {
-                binding.madeDeviceLocation.setText(model.getLocation());
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                binding.madeDeviceLocation.setText(deviceModels.get(position).getLocation());
             }
         });
-
 
         UserModelDao userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
-        List<UserModel> userModels = userModelDao.loadAll();
-        UserSpinnerAdapter userNoAdapter = new UserSpinnerAdapter(this, userModels);
-        binding.madeUserNo.setAdapter(userNoAdapter);
-        userNoAdapter.setOnSelecteLinstener(new UserSpinnerAdapter.onItemSelected() {
+        final List<UserModel> userModels = userModelDao.loadAll();
+        for (UserModel userModel : userModels) {
+            userNos.add(userModel.getUserNo());
+        }
+        //UserSpinnerAdapter userNoAdapter = new UserSpinnerAdapter(this, userModels);
+        binding.madeUserNo.attachDataSource(userNos);
+        binding.madeUserNo.addOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void setOnSelected(UserModel model, int position) {
-                binding.madeUserName.setText(model.getUserName());
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                binding.madeUserName.setText(userModels.get(position).getUserName());
             }
         });
-
     }
 
     public void hidCheckStatus(RadioButton radioButton, LinearLayout linearLayout){

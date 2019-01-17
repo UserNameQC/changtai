@@ -22,14 +22,14 @@ public class LoginInformationModelDao extends AbstractDao<LoginInformationModel,
     /**
      * Properties of entity LoginInformationModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property LoginId = new Property(1, Long.class, "loginId", false, "LOGIN_ID");
         public final static Property UserName = new Property(2, String.class, "UserName", false, "USER_NAME");
         public final static Property UserPwd = new Property(3, String.class, "UserPwd", false, "USER_PWD");
         public final static Property Toke = new Property(4, String.class, "toke", false, "TOKE");
-    };
+    }
 
 
     public LoginInformationModelDao(DaoConfig config) {
@@ -156,6 +156,11 @@ public class LoginInformationModelDao extends AbstractDao<LoginInformationModel,
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(LoginInformationModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

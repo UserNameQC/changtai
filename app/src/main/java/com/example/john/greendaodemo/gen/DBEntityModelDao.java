@@ -22,7 +22,7 @@ public class DBEntityModelDao extends AbstractDao<DBEntityModel, Long> {
     /**
      * Properties of entity DBEntityModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property USER_NAME = new Property(1, String.class, "USER_NAME", false, "USER__NAME");
@@ -30,7 +30,7 @@ public class DBEntityModelDao extends AbstractDao<DBEntityModel, Long> {
         public final static Property ADDRESS_ID = new Property(3, int.class, "ADDRESS_ID", false, "ADDRESS__ID");
         public final static Property DEFAULT_NUM = new Property(4, int.class, "DEFAULT_NUM", false, "DEFAULT__NUM");
         public final static Property Token = new Property(5, String.class, "token", false, "TOKEN");
-    };
+    }
 
 
     public DBEntityModelDao(DaoConfig config) {
@@ -154,6 +154,11 @@ public class DBEntityModelDao extends AbstractDao<DBEntityModel, Long> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(DBEntityModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

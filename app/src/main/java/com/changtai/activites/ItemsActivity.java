@@ -39,7 +39,7 @@ public class ItemsActivity extends BaseActivity implements View.OnClickListener{
         switch (view.getId())
         {
 //            case R.id.item_well_list:
-//                startActivity(new Intent(ItemsActivity.this, DeviceList.class));
+//                startActivity(new Intent(ItemsActivity.this, DeviceModelActivity.class));
 //                break;
 //            case R.id.item_user_take_water:
 //                startActivity(new Intent(ItemsActivity.this, UserTakeWater.class));
@@ -48,13 +48,13 @@ public class ItemsActivity extends BaseActivity implements View.OnClickListener{
 //                startActivity(new Intent(ItemsActivity.this, UserBuyWater.class));
 //                break;
 //            case R.id.item_address_well_type:
-//                startActivity(new Intent(ItemsActivity.this, User.class));
+//                startActivity(new Intent(ItemsActivity.this, UserModelActivity.class));
 //                break;
 //            case R.id.item_water_price:
-//                startActivity(new Intent(ItemsActivity.this, WaterPice.class));
+//                startActivity(new Intent(ItemsActivity.this, WaterPriceActivity.class));
 //                break;
 //            case R.id.item_operator:
-//                startActivity(new Intent(ItemsActivity.this, MainUser.class));
+//                startActivity(new Intent(ItemsActivity.this, AdministratorActivity.class));
 //                break;
 //            case R.id.bt_rfid:
 //                startActivity(new Intent(ItemsActivity.this, demo1443A.class));

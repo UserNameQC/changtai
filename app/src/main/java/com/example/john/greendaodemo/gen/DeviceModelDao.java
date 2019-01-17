@@ -22,7 +22,7 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
     /**
      * Properties of entity DeviceModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property DeviceId = new Property(0, Long.class, "DeviceId", true, "_id");
         public final static Property DeviceNo = new Property(1, String.class, "deviceNo", false, "DEVICE_NO");
@@ -43,7 +43,7 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
         public final static Property ClientVersion = new Property(16, long.class, "clientVersion", false, "CLIENT_VERSION");
         public final static Property DelFlag = new Property(17, boolean.class, "DelFlag", false, "DEL_FLAG");
         public final static Property Key = new Property(18, int.class, "key", false, "KEY");
-    };
+    }
 
 
     public DeviceModelDao(DaoConfig config) {
@@ -304,6 +304,11 @@ public class DeviceModelDao extends AbstractDao<DeviceModel, Long> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(DeviceModel entity) {
+        return entity.getDeviceId() != null;
     }
 
     @Override

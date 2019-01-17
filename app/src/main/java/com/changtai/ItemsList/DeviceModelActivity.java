@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class DeviceList extends Activity implements View.OnClickListener{
+public class DeviceModelActivity extends Activity implements View.OnClickListener{
 
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;

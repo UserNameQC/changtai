@@ -22,14 +22,14 @@ public class LoginModelDao extends AbstractDao<LoginModel, Long> {
     /**
      * Properties of entity LoginModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property LoginName = new Property(1, String.class, "loginName", false, "LOGIN_NAME");
         public final static Property UserName = new Property(2, String.class, "userName", false, "USER_NAME");
         public final static Property Password = new Property(3, String.class, "password", false, "PASSWORD");
         public final static Property QxString = new Property(4, String.class, "qxString", false, "QX_STRING");
-    };
+    }
 
 
     public LoginModelDao(DaoConfig config) {
@@ -156,6 +156,11 @@ public class LoginModelDao extends AbstractDao<LoginModel, Long> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(LoginModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

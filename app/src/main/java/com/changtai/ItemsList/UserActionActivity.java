@@ -1,8 +1,6 @@
 package com.changtai.ItemsList;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Entity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,10 +8,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import com.android.RfidControll;
 import com.changtai.R;
 import com.changtai.RFID.RfidUtils;
-import com.changtai.Utils.HelloWorldController;
 import com.changtai.activites.BaseActivity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.WaterSettingLayoutBinding;
@@ -35,11 +31,11 @@ import java.util.List;
  * Created by qjcjob on 2018/12/25.
  */
 
-public class WaterSettings extends BaseActivity  {
+public class UserActionActivity extends BaseActivity  {
 
     public WaterSettingLayoutBinding binding;
     public UserModel userModel;
-    public String TAG = "WaterSettings";
+    public String TAG = "UserActionActivity";
     public RfidUtils rfidUtils;
     public String type;
 
@@ -68,19 +64,19 @@ public class WaterSettings extends BaseActivity  {
             public void onClick(View v) {
                 if (type.equals("setting")) {
                     if (TextUtils.isEmpty(binding.userSettingUse.getText().toString())) {
-                        com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "累计用水量不能为空");
+                        com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "累计用水量不能为空");
                         return;
                     }
                 }
                 if (rfidUtils.isnNewCard()){
-                    com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "此卡为新卡，请初始化以后再操作");
+                    com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "此卡为新卡，请初始化以后再操作");
                     return;
                 }
                 int result = rfidUtils.isEmptyCard();
                 if (result == 1){
-                    com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "此卡已被使用，请更换空卡或者格式化后在操作");
+                    com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "此卡已被使用，请更换空卡或者格式化后在操作");
                 }else if (result == -1){
-                    com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "此卡非本系统卡，不允许使用");
+                    com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "此卡非本系统卡，不允许使用");
                 }
 
                 StringBuffer stringBuffer = new StringBuffer("");
@@ -93,7 +89,7 @@ public class WaterSettings extends BaseActivity  {
                 }
 
                 if (rfidUtils.writeToCard(stringBuffer.toString())){
-                    com.changtai.Utils.Entity.toastMsg(WaterSettings.this, "写卡成功");
+                    com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "写卡成功");
                 }
             }
         });

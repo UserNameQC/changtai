@@ -11,9 +11,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.changtai.ItemsList.MainUser;
+import com.changtai.ItemsList.AdministratorActivity;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.activites.AddUserActivity;
@@ -96,7 +95,7 @@ public class FragmentMine extends Fragment {
         binding.mainUserInformation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MainUser.class));
+                startActivity(new Intent(getActivity(), AdministratorActivity.class));
             }
         });
 

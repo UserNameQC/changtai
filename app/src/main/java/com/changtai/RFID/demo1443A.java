@@ -1,11 +1,9 @@
 package com.changtai.RFID;
 
 import com.android.RfidControll;
-import com.changtai.ItemsList.User;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.HelloWorldController;
-import com.changtai.activites.MainActivity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.Rfid1443aBinding;
 import com.changtai.sqlModel.PriceModel;

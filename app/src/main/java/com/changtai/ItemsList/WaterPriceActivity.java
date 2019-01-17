@@ -29,7 +29,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class WaterPice extends Activity implements View.OnClickListener{
+public class WaterPriceActivity extends Activity implements View.OnClickListener{
 
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;

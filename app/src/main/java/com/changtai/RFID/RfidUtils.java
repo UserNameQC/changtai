@@ -13,7 +13,7 @@ import com.changtai.Utils.HelloWorldController;
 
 public class RfidUtils {
 
-    public String TAG = "WaterSettings";
+    public String TAG = "UserActionActivity";
     RfidControll rfid = new RfidControll();
     public int res = -1;
     public int read = -1;

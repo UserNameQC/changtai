@@ -44,7 +44,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <Spinner
+                    <org.angmarch.views.NiceSpinner
                         android:id="@+id/made_base_id"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content" />
@@ -73,14 +73,6 @@
                         android:text="机井测试卡"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/device_test_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
 
                     <LinearLayout
                         android:id="@+id/device_test_linearLayout"
@@ -117,13 +109,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/device_check_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
 
                     <LinearLayout
                         android:id="@+id/device_check_linearLayout"
@@ -160,13 +145,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/device_clear_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
 
                     <LinearLayout
                         android:id="@+id/device_clear_linearLayout"
@@ -204,13 +182,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/channel_set_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
+
 
                     <LinearLayout
                         android:id="@+id/channel_set_linearLayout"
@@ -282,14 +254,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/critical_set_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
-
                     <LinearLayout
                         android:id="@+id/critical_set_linearLayout"
                         android:layout_width="match_parent"
@@ -346,14 +310,6 @@
                         android:text="仪表系数设定卡*"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/meter_factor_set_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
 
                     <LinearLayout
                         android:id="@+id/meter_factor_linearLayout"
@@ -413,14 +369,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/user_check_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
-
                     <LinearLayout
                         android:id="@+id/user_check_linearLayout"
                         android:layout_width="match_parent"
@@ -456,14 +404,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <ImageView
-                        android:id="@+id/user_clear_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
-
                     <LinearLayout
                         android:id="@+id/user_clear_linearLayout"
                         android:layout_width="match_parent"
@@ -498,14 +438,6 @@
                         android:text="用户清零卡*"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
-                    <ImageView
-                        android:id="@+id/user_remove_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/hui_discount_item_rule_arrow" />
 
                     <LinearLayout
                         android:id="@+id/user_remove_linerLayout"
@@ -546,7 +478,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <Spinner
+                    <org.angmarch.views.NiceSpinner
                         android:id="@+id/made_device_no"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
@@ -600,7 +532,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <Spinner
+                    <org.angmarch.views.NiceSpinner
                         android:id="@+id/made_user_no"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"

@@ -22,7 +22,7 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
     /**
      * Properties of entity PriceModel.<br/>
      * Can be used for QueryBuilder and for referencing column names.
-    */
+     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
         public final static Property SjId = new Property(1, Integer.class, "sjId", false, "SJ_ID");
@@ -34,7 +34,7 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
         public final static Property AdministratorName = new Property(7, String.class, "administratorName", false, "ADMINISTRATOR_NAME");
         public final static Property ServerVersion = new Property(8, Long.class, "serverVersion", false, "SERVER_VERSION");
         public final static Property ClientVersion = new Property(9, long.class, "clientVersion", false, "CLIENT_VERSION");
-    };
+    }
 
 
     public PriceModelDao(DaoConfig config) {
@@ -218,6 +218,11 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public boolean hasKey(PriceModel entity) {
+        return entity.getId() != null;
     }
 
     @Override

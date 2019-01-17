@@ -10,15 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.changtai.BaiduMap.BaiduMapActivity;
-import com.changtai.ItemsList.DeviceList;
-import com.changtai.ItemsList.MainUser;
-import com.changtai.ItemsList.User;
+import com.changtai.ItemsList.DeviceModelActivity;
+import com.changtai.ItemsList.AdministratorActivity;
+import com.changtai.ItemsList.UserModelActivity;
 import com.changtai.ItemsList.UserBuyWater;
-import com.changtai.ItemsList.WaterPice;
+import com.changtai.ItemsList.WaterPriceActivity;
 import com.changtai.R;
 import com.changtai.RFID.demo1443A;
-import com.changtai.activites.MainActivity;
-import com.changtai.activites.ResetPassWord;
 import com.changtai.databinding.ActivityItemsBinding;
 
 /**
@@ -60,35 +58,35 @@ public class FragmentMain extends Fragment {
         binding.itemWellList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), DeviceList.class));
+                startActivity(new Intent(getActivity(), DeviceModelActivity.class));
             }
         });
 
         binding.itemUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), User.class));
+                startActivity(new Intent(getActivity(), UserModelActivity.class));
             }
         });
         
         binding.itemWaterPrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), WaterPice.class));
+                startActivity(new Intent(getActivity(), WaterPriceActivity.class));
             }
         });
         
         binding.itemOperator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MainUser.class));
+                startActivity(new Intent(getActivity(), AdministratorActivity.class));
             }
         });
         
         binding.itemAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MainUser.class));
+                startActivity(new Intent(getActivity(), AdministratorActivity.class));
             }
         });
         
