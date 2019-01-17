@@ -41,35 +41,35 @@ public class FragmentMain extends Fragment {
 
     public void initEvent(){
         
-        binding.btRfid.setOnClickListener(new View.OnClickListener() {
+        binding.scanLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), demo1443A.class));
             }
         });
         
-        binding.btBdMap.setOnClickListener(new View.OnClickListener() {
+        binding.locationLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), BaiduMapActivity.class));
             }
         });
 
-        binding.itemWellList.setOnClickListener(new View.OnClickListener() {
+        binding.deviceLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), DeviceModelActivity.class));
             }
         });
 
-        binding.itemUser.setOnClickListener(new View.OnClickListener() {
+        binding.userLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), UserModelActivity.class));
             }
         });
         
-        binding.itemWaterPrice.setOnClickListener(new View.OnClickListener() {
+        binding.priceLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), WaterPriceActivity.class));
