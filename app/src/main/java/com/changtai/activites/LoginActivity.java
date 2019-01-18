@@ -1,41 +1,25 @@
 package com.changtai.activites;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.ActivityManager;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Message;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import com.changtai.R;
-import com.changtai.Utils.AESOperator;
 import com.changtai.Utils.Entity;
-import com.changtai.Utils.GreenDaoUtil;
-import com.changtai.Utils.HttpBaseTest;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityLoginBinding;
 import com.changtai.sqlModel.ConfigModel;
-import com.changtai.sqlModel.DBEntityModel;
 import com.changtai.sqlModel.LoginModel;
-import com.example.john.greendaodemo.gen.LoginModelDao;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
+import com.changtai.sqlModelDao.LoginModelDao;
 import java.util.List;
-import java.util.Map;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     public ActivityLoginBinding binding;
-    public GreenDaoUtil greenDaoUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +32,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     public void initView() {
         binding.loginBtn.setOnClickListener(this);
-        greenDaoUtil = new GreenDaoUtil();
     }
 
     @Override

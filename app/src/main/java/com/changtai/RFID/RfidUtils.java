@@ -14,19 +14,19 @@ import com.changtai.Utils.HelloWorldController;
 public class RfidUtils {
 
     public String TAG = "UserActionActivity";
-    RfidControll rfid = new RfidControll();
+    private RfidControll RFID = new RfidControll();
     public int res = -1;
     public int read = -1;
     public byte buffer[] = new byte[256];
     public byte buffer1[] = new byte[256];
 
     public RfidUtils() {
-        rfid.OpenComm();
+        RFID.OpenComm();
     }
 
     public int readCard(byte[] password) {
         if (password == null) return -1;
-        read = rfid.API_MF_Read(0x00, 0x01, 57/*m_readblock*/, 1, password, buffer);
+        read = RFID.API_MF_Read(0x00, 0x01, 57/*m_readblock*/, 1, password, buffer);
         Log.e(TAG, "readCard: " + read);
         if (read == 0) {
             String result = toHexString(buffer, 16);
@@ -40,14 +40,16 @@ public class RfidUtils {
     }
 
     public boolean writeToCard(String data) {
+        if (data.length() != 32){
+            Log.e(TAG, "writeToCard: 长度小于32位");
+            return false;
+        }
         byte buffer[] = toBytes(data);
         byte buffer3[] = new byte[32];
+
         System.arraycopy(buffer, 0, buffer3, 0, buffer.length);
-        res = rfid.API_MF_Write(0x00, 0x01, 57, 2, getPassWord(), buffer3);
-        if (res == 0) {
-            return true;
-        }
-        return false;
+        res = RFID.API_MF_Write(0x00, 0x01, 57, 2, getPassWord(), buffer3);
+        return  res == 0;
     }
 
     /**
@@ -56,7 +58,7 @@ public class RfidUtils {
     public boolean isnNewCard() {
         byte buffer[] = new byte[256];
         byte snr[] = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF};
-        int res = rfid.API_MF_Read(0x00, 0x01, 57, 1, snr, buffer);
+        int res = RFID.API_MF_Read(0x00, 0x01, 57, 1, snr, buffer);
         if (res == 0) {
             Log.e(TAG, "isEmptyCard: " + "新卡");
             return true;
@@ -74,7 +76,7 @@ public class RfidUtils {
             Log.e(TAG, "isEmptyCard: NULL");
             return -1;
         }
-        int res = rfid.API_MF_Read(0x00, 0x01, 57, 1, getPassWord(), buffer);
+        int res = RFID.API_MF_Read(0x00, 0x01, 57, 1, getPassWord(), buffer);
         if (res == 0) {
             Log.e(TAG, "isEmptyCard: " + "空卡");
             Log.e(TAG, "isEmptyCard: " + toHexString(buffer, 16));
@@ -123,14 +125,14 @@ public class RfidUtils {
         byte[] pdata = new byte[1];
         pdata[0] = 0x00;
         byte buffer[] = new byte[256];
-        res = rfid.API_MF_Request(0, 0x26, buffer);
+        res = RFID.API_MF_Request(0, 0x26, buffer);
         if (res == 0) {
-            res = rfid.API_MF_Anticoll(0, pdata, buffer);
+            res = RFID.API_MF_Anticoll(0, pdata, buffer);
             if (res == 0) {
                 System.arraycopy(buffer, 0, uid, 0, 4);
             }
             if (res == 0) {
-                res = rfid.API_MF_Select(0, uid, buffer);
+                res = RFID.API_MF_Select(0, uid, buffer);
                 byte[] n = {buffer[0], buffer[1], buffer[2], buffer[3]};
                 cardNum = toHexString(n, 4);
                 Log.e("0-carNum", cardNum);
@@ -152,7 +154,7 @@ public class RfidUtils {
         Log.e("ReCard", cardNum);
         HelloWorldController controller = new HelloWorldController();
         //Log.e("Test1",toHexString(controller.GetPass(cardL), 6));
-        int a = rfid.API_MF_Request(0x00, 0x52, new byte[2]);
+        int a = RFID.API_MF_Request(0x00, 0x52, new byte[2]);
         //Log.e("RFID", a + "");
         byte[] snr = controller.GetPass(cardL);
         return snr;

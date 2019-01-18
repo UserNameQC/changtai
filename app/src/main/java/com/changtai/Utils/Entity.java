@@ -1,5 +1,6 @@
 package com.changtai.Utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.content.LocalBroadcastManager;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import com.baidu.mapapi.model.LatLng;
 import com.changtai.sqlModel.LoginModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -186,5 +189,11 @@ public class Entity {
             map.put(i, list.get(i));
         }
         return map;
+    }
+
+    public static String GetNowTime(){
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+        return format.format(new Date());
     }
 }

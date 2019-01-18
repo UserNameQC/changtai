@@ -1,15 +1,12 @@
 package com.changtai.activites;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
@@ -36,8 +33,8 @@ import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.ConfigModelDao;
-import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
+import com.changtai.sqlModelDao.ConfigModelDao;
+import com.changtai.sqlModelDao.PurchaseRecordModelDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;

@@ -18,7 +18,7 @@ import com.changtai.activites.AddUserActivity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMainUserLvBinding;
 import com.changtai.sqlModel.LoginModel;
-import com.example.john.greendaodemo.gen.LoginModelDao;
+import com.changtai.sqlModelDao.LoginModelDao;
 import com.google.gson.Gson;
 
 import java.util.HashMap;

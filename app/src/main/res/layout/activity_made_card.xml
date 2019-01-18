@@ -182,8 +182,6 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-
-
                     <LinearLayout
                         android:id="@+id/channel_set_linearLayout"
                         android:layout_width="match_parent"
@@ -435,7 +433,7 @@
                         android:id="@+id/user_remove_card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="用户清零卡*"
+                        android:text="用户转移卡*"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
