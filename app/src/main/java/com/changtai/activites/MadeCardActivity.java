@@ -11,8 +11,6 @@ import android.widget.RadioButton;
 import com.changtai.R;
 import com.changtai.RFID.RfidUtils;
 import com.changtai.Utils.Entity;
-import com.changtai.adapter.DeviceSpinnerAdapter;
-import com.changtai.adapter.UserSpinnerAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMadeCardBinding;
 import com.changtai.sqlModel.ConfigModel;
