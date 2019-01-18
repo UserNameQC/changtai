@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +24,7 @@ import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
 import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
 import com.changtai.SynchronizationWithPCModels.SwpUserModel;
 import com.changtai.Utils.Entity;
+import com.changtai.Utils.SpUtils;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityMainBinding;
 import com.changtai.fragment.FragmentAdapter;
@@ -44,6 +46,7 @@ import org.greenrobot.greendao.query.QueryBuilder;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.Map;
 
@@ -58,6 +61,8 @@ public class MainActivity extends BaseActivity {
     public List<TextView> textViews;
     public List<Fragment> fragments;
     public FragmentAdapter fragmentAdapter;
+
+    public SpUtils spUtils;
 
     //消息显示框
     TextView textView ;
@@ -74,6 +79,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
         //initView();
+        spUtils = new SpUtils();
         checkBaseId();
         initBottomMenu();
         initViewPager();
@@ -188,7 +194,11 @@ public class MainActivity extends BaseActivity {
         //设置ProgressDialog样式为水平的样式
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 
-        new DownloadFromWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaDownLoadFromWeb","010101","100","200");
+        String url = spUtils.getString(Entity.SERVER);
+        if (!TextUtils.isEmpty(url)){
+            Entity.MAIN_URL = url;
+        }
+        new DownloadFromWebTask().execute(Entity.MAIN_URL + "/PdaDownLoadFromWeb","010101","100","200");
     }
 
     public void onBackPressed(View view) {

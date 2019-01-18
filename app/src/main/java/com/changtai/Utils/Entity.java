@@ -28,8 +28,10 @@ public class Entity {
 
     //当前登录的用户，admin用户不保存在数据中，如果是admin用户，在用户登录时手动创建一个model赋值到这里，如果是其它用户则到数据库里查找然后赋值到这里
     public static ExecutorService executorService = Executors.newCachedThreadPool();
-    public static final String mainUrl = "http://tzctdz.51mypc.cn:8081/changtai";
-    //public static final String mainUrl = "http://192.168.1.101/changtai";
+    public static String mainUrl = "http://tzctdz.51mypc.cn:8081/changtai";
+    public static String pcUrl = "http://192.168.1.101/changtai";
+    public static String MAIN_URL = "http://tzctdz.51mypc.cn:8000";
+    public static String PC_IP = "192.168.101.102";
     public static String loginUrl;
     public static String getDataUrl;
     public static String updateUrl;
@@ -45,9 +47,13 @@ public class Entity {
     public static String isFirstUseApp = "isFirstUseApp";
 
     public static String Well_list = "WELL_LIST";
-
-
     public final static String LATLNG_INFOMATION = "LATLNG_INFOMATION";
+
+    //缓存数据key
+    public static final String SERVER = "SERVER";
+    public static final String IP = "PC_IP";
+    public static final String SERVER_CHECK = "SERVER_CHECK";
+    public static final String IP_CHECK = "IP_CHECK";
 
 
     public static void toastMsg(Context context, String msg){
@@ -61,6 +67,7 @@ public class Entity {
         resetPasswordUrl = url + "/user/restLoginPwd";
         updateUrl = url + "/data/syncDataToService";
     }
+
 
     /**
      * 机井信息表

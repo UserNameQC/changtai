@@ -46,7 +46,7 @@
 
                     <org.angmarch.views.NiceSpinner
                         android:id="@+id/made_base_id"
-                        android:layout_width="100dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                 </LinearLayout>
@@ -478,7 +478,7 @@
 
                     <org.angmarch.views.NiceSpinner
                         android:id="@+id/made_device_no"
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textAlignment="center"/>
@@ -532,7 +532,7 @@
 
                     <org.angmarch.views.NiceSpinner
                         android:id="@+id/made_user_no"
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"/>
                 </LinearLayout>

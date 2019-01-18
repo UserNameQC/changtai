@@ -20,6 +20,7 @@ import com.changtai.activites.LoginActivity;
 import com.changtai.activites.MadeCardActivity;
 import com.changtai.activites.MainActivity;
 import com.changtai.activites.ResetPassWord;
+import com.changtai.activites.SelectedIpServiceActivity;
 import com.changtai.activites.SettingActivity;
 import com.changtai.databinding.IndexMyBinding;
 
@@ -103,6 +104,13 @@ public class FragmentMine extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), MadeCardActivity.class));
+            }
+        });
+
+        binding.mainIpSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SelectedIpServiceActivity.class));
             }
         });
 

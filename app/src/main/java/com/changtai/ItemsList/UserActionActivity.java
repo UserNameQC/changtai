@@ -18,6 +18,7 @@ import com.changtai.sqlModel.CardReeplacementModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.UserModel;
+import com.changtai.sqlModelDao.CardReeplacementModelDao;
 import com.changtai.sqlModelDao.DeviceModelDao;
 import com.changtai.sqlModelDao.PriceModelDao;
 import com.google.gson.Gson;
@@ -39,6 +40,8 @@ public class UserActionActivity extends BaseActivity  {
 
     public WaterSettingLayoutBinding binding;
     public UserModel userModel;
+    public DeviceModel deviceModel;
+    public PriceModel priceModel;
     public String TAG = "UserActionActivity";
     public RfidUtils rfidUtils;
     public String type;
@@ -100,7 +103,9 @@ public class UserActionActivity extends BaseActivity  {
                         int replaceTimes = userModel.getCreditcardTimes();
                         replaceTimes++;
                         userModel.setCreditcardTimes(replaceTimes);
+                        userModel.setClientVersion(Long.parseLong(Entity.GetNowTime()));
                         MyApplication.getInstance().getDaoSession().getUserModelDao().insertOrReplace(userModel);
+                        insertCardReplaceModel();
                     }
                 }
             }
@@ -170,7 +175,7 @@ public class UserActionActivity extends BaseActivity  {
             QueryBuilder queryBuilder = deviceModelDao.queryBuilder();
             List<DeviceModel> deviceModels = queryBuilder.where(DeviceModelDao.Properties.DeviceNo.eq(deviceNum)).list();
             if (deviceModels != null && deviceModels.size() > 0){
-                DeviceModel deviceModel = deviceModels.get(0);
+                deviceModel = deviceModels.get(0);
                 binding.userSettingDevice.setText(deviceModel.getLocation());
             }
             /**
@@ -181,7 +186,7 @@ public class UserActionActivity extends BaseActivity  {
             List<PriceModel> priceModels = queryBuilderPrice.where(PriceModelDao.Properties.SjId.eq(userModel.getSjId()))
                     .where(PriceModelDao.Properties.StationNo.eq(userModel.getStationNo())).list();
             if (priceModels != null && priceModels.size() > 0){
-                PriceModel priceModel = priceModels.get(0);
+                priceModel = priceModels.get(0);
                 binding.userSettingType.setText(priceModel.getMc());
                 binding.userSettingSj1.setText(priceModel.getSj1());
                 binding.userSettingSj2.setText(priceModel.getSj2());
@@ -206,7 +211,17 @@ public class UserActionActivity extends BaseActivity  {
         cardReeplacementModel.setUserName(userModel.getUserName());
         cardReeplacementModel.setUserNo(userModel.getUserNo());
         cardReeplacementModel.setUsedTotal(userModel.getUsedTotal());
-        cardReeplacementModel.setPhone(userModel.getPhone());
+        cardReeplacementModel.setPhone(deviceModel.getPhone());
+        cardReeplacementModel.setStationNo(deviceModel.getStationNo());
+        cardReeplacementModel.setLinkman(deviceModel.getLinkman());
+        cardReeplacementModel.setLocation(deviceModel.getLocation());
+        cardReeplacementModel.setPurchaseTotal(userModel.getPurchaseTotal());
+        cardReeplacementModel.setLastTotal(String.valueOf(Integer.parseInt(userModel.getPurchaseTotal()) - Integer.parseInt(userModel.getUsedTotal())));
+        cardReeplacementModel.setClientVersion(Long.parseLong(Entity.GetNowTime()));
+        cardReeplacementModel.setServerVersion(0L);
+
+        CardReeplacementModelDao cardReeplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReeplacementModelDao();
+        cardReeplacementModelDao.insertOrReplace(cardReeplacementModel);
     }
 
     @Override
