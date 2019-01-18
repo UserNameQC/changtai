@@ -16,9 +16,10 @@ import com.changtai.databinding.ActivityMadeCardBinding;
 import com.changtai.sqlModel.ConfigModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.ConfigModelDao;
-import com.example.john.greendaodemo.gen.DeviceModelDao;
-import com.example.john.greendaodemo.gen.UserModelDao;
+import com.changtai.sqlModelDao.ConfigModelDao;
+import com.changtai.sqlModelDao.DeviceModelDao;
+import com.changtai.sqlModelDao.UserModelDao;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -117,6 +118,26 @@ public class MadeCardActivity extends BaseActivity {
      * 下拉控件的数据准备
      */
     public void initData(){
+
+        //根据权限判断是否可点击
+        if (Entity.loginModel != null){
+            String qx = Entity.loginModel.getQxString();
+            if (!TextUtils.isEmpty(qx) && qx.equals("管理员")) {
+                binding.madeDeviceClearCard.setEnabled(true);
+                binding.channelSetCard.setEnabled(true);
+                binding.criticalSetCard.setEnabled(true);
+                binding.meterFactorSetCard.setEnabled(true);
+                binding.userClearCard.setEnabled(true);
+                binding.userRemoveCard.setEnabled(true);
+            } else {
+                binding.madeDeviceClearCard.setEnabled(false);
+                binding.channelSetCard.setEnabled(false);
+                binding.criticalSetCard.setEnabled(false);
+                binding.meterFactorSetCard.setEnabled(false);
+                binding.userClearCard.setEnabled(false);
+                binding.userRemoveCard.setEnabled(false);
+            }
+        }
 
         ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
         List<ConfigModel> configModels = configModelDao.queryBuilder().where(ConfigModelDao.Properties.Id.eq(0L)).list();

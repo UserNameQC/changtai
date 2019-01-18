@@ -9,10 +9,9 @@ import com.changtai.databinding.Rfid1443aBinding;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.PriceModelDao;
-import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
-import com.example.john.greendaodemo.gen.UserModelDao;
-
+import com.changtai.sqlModelDao.PriceModelDao;
+import com.changtai.sqlModelDao.PurchaseRecordModelDao;
+import com.changtai.sqlModelDao.UserModelDao;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
@@ -38,6 +37,7 @@ public class demo1443A extends Activity implements OnClickListener {
     private static final String[] mBLOCK = new String[64 * 4];
     public UserModelDao userModelDao;
     public UserModel userModel;
+    public RfidUtils utils;
 
     public int res = -1;
 
@@ -46,6 +46,7 @@ public class demo1443A extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(demo1443A.this, R.layout.rfid_1443a);
+        utils = new RfidUtils();
         rfid.OpenComm();
         initView();
         initData();
@@ -165,63 +166,22 @@ public class demo1443A extends Activity implements OnClickListener {
                 break;
             case R.id.btn_writestring:
 
-                byte buffer2[] = new byte[256];
-                byte buffer3[] = new byte[32];
-
-                StringBuffer stringBuffer = new StringBuffer("");
+                StringBuffer stringBuffer = new StringBuffer();
                 stringBuffer.append(binding.rfidUserNo.getText().toString())
                         .append(binding.rfidBz.getText().toString())
                         .append(binding.rfidPurchaseTotal.getText().toString())
                         .append(binding.rfidOverdraft.getText().toString())
                         .append(binding.rfidAlarmValue.getText().toString())
                         .append(binding.rfidBuyDate.getText().toString());
-                //buffer2=stringBuffer.toString().getBytes();
-                buffer2 = toBytes(stringBuffer.toString());
-                //buffer2 = toByteArray(msendtext.getText().toString());
 
-
-//                Log.e("write", "XXXXX" + buffer2);
-//                byte snr1[] = {(byte) 0xFF, (byte) 0xFF, (byte) 0xFF, (byte) 0xFF,
-//                        (byte) 0xFF, (byte) 0xFF};
-//                Log.e("write", "XXXXX" + snr1);
-                if (buffer2.length >= 32) {
-
-                    System.arraycopy(buffer2, 0, buffer3, 0, buffer2.length);
-                    res = rfid.API_MF_Write(0x00, 0x01, 57, 2, getPassWord(), buffer3);
-                    Toast.makeText(this, "" + res, Toast.LENGTH_SHORT).show();
-                    if (res == 0) {
-                        //msendtext.setText(toHexString(buffer3, 4));
-                        Toast.makeText(this, "写卡成功", Toast.LENGTH_SHORT).show();
-                        handler.sendEmptyMessage(300);
-                    }
-
-                } else {
-                    res = rfid.API_MF_Write(0x00, 0x01, 57, 1, getPassWord(), buffer2);
-
-                    Log.d("011", "res--->" + res);
-                    if (res == 0) {
-                        //msendtext.setText(toHexString(buffer2, 4));
-                        Toast.makeText(this, "写卡成功--1", Toast.LENGTH_SHORT).show();
-                        handler.sendEmptyMessage(300);
-                    }
+                if (utils.writeToCard(stringBuffer.toString())){
+                    Entity.toastMsg(demo1443A.this, "写卡成功！");
+                    handler.sendEmptyMessage(300);
                 }
                 break;
         }
     }
 
-    public static byte[] toBytes(String str) {
-        if (str == null || str.trim().equals("")) {
-            return new byte[0];
-        }
-
-        byte[] bytes = new byte[str.length() / 2];
-        for (int i = 0; i < str.length() / 2; i++) {
-            String subStr = str.substring(i * 2, i * 2 + 2);
-            bytes[i] = (byte) Integer.parseInt(subStr, 16);
-        }
-
-        return bytes;
-    }
 
     public byte[] getPassWord() {
         String cardNum = "";

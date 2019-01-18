@@ -40,11 +40,8 @@ import com.changtai.Utils.Entity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityBaiduMapBinding;
 import com.changtai.sqlModel.DeviceModel;
-import com.example.john.greendaodemo.gen.DeviceModelDao;
-
-import java.util.ArrayList;
+import com.changtai.sqlModelDao.DeviceModelDao;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class BaiduMapActivity extends Activity {
     private MapView mMapView;

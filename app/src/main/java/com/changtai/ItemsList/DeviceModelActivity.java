@@ -21,7 +21,7 @@ import com.changtai.adapter.DeviceAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityWellListBinding;
 import com.changtai.sqlModel.DeviceModel;
-import com.example.john.greendaodemo.gen.DeviceModelDao;
+import com.changtai.sqlModelDao.DeviceModelDao;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

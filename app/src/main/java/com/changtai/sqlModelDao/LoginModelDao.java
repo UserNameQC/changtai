@@ -1,4 +1,4 @@
-package com.example.john.greendaodemo.gen;
+package com.changtai.sqlModelDao;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;

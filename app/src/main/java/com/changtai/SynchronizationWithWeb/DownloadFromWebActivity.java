@@ -20,7 +20,7 @@ import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.PurchaseRecordModelDao;
+import com.changtai.sqlModelDao.PurchaseRecordModelDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;

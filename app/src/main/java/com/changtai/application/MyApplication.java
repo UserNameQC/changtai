@@ -9,8 +9,9 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.changtai.Utils.Entity;
-import com.example.john.greendaodemo.gen.DaoMaster;
-import com.example.john.greendaodemo.gen.DaoSession;
+import com.changtai.Utils.SqLiteOpenHelper;
+import com.changtai.sqlModelDao.DaoMaster;
+import com.changtai.sqlModelDao.DaoSession;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.text.SimpleDateFormat;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class MyApplication extends Application {
 
-    private DaoMaster.DevOpenHelper mHelper;
+    private SqLiteOpenHelper mHelper;
     private SQLiteDatabase db;
     public DaoMaster daoMaster;
     public DaoSession mDaoSession;
@@ -75,8 +76,6 @@ public class MyApplication extends Application {
         Entity.time =Long.valueOf(sdf.format(d));
     }
 
-
-
     public void initView(){
         /**
          * 接口地址拼接
@@ -88,14 +87,13 @@ public class MyApplication extends Application {
 
     /**
      * 数据库的初始化
-     * 已舍弃
      */
     private void setDatabase() {
         // 通过 DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的 SQLiteOpenHelper 对象。
         // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。
         // 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
         // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
-        mHelper = new DaoMaster.DevOpenHelper(context, "changtai5.db", null);
+        mHelper = new SqLiteOpenHelper(context, "CHANG-TAI.db", null);
         db = mHelper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         mDaoSession = daoMaster.newSession();

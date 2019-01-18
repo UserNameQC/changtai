@@ -16,14 +16,12 @@ import com.changtai.adapter.PriceAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityWaterPiceBinding;
 import com.changtai.sqlModel.PriceModel;
-import com.example.john.greendaodemo.gen.DeviceModelDao;
-import com.example.john.greendaodemo.gen.PriceModelDao;
+import com.changtai.sqlModelDao.PriceModelDao;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;

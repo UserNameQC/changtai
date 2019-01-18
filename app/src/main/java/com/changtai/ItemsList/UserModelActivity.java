@@ -21,7 +21,7 @@ import com.changtai.adapter.UserAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityUserBinding;
 import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.UserModelDao;
+import com.changtai.sqlModelDao.UserModelDao;
 import com.google.gson.Gson;
 
 import org.json.JSONException;

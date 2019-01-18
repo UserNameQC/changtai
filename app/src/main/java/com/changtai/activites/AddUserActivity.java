@@ -14,7 +14,7 @@ import com.changtai.Utils.Entity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityAddUserBinding;
 import com.changtai.sqlModel.LoginModel;
-import com.example.john.greendaodemo.gen.LoginModelDao;
+import com.changtai.sqlModelDao.LoginModelDao;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

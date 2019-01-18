@@ -1,7 +1,6 @@
 package com.changtai.activites;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +15,6 @@ import com.changtai.Utils.Entity;
 import com.changtai.Utils.HttpBaseTest;
 import com.changtai.databinding.ActivityResetPasswordBinding;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

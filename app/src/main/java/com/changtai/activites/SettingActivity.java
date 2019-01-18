@@ -10,7 +10,7 @@ import com.changtai.Utils.Entity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivitySettingBinding;
 import com.changtai.sqlModel.ConfigModel;
-import com.example.john.greendaodemo.gen.ConfigModelDao;
+import com.changtai.sqlModelDao.ConfigModelDao;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 

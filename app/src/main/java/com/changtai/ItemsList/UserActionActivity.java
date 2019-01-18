@@ -10,14 +10,16 @@ import android.view.View;
 
 import com.changtai.R;
 import com.changtai.RFID.RfidUtils;
+import com.changtai.Utils.Entity;
 import com.changtai.activites.BaseActivity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.WaterSettingLayoutBinding;
+import com.changtai.sqlModel.CardReeplacementModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.UserModel;
-import com.example.john.greendaodemo.gen.DeviceModelDao;
-import com.example.john.greendaodemo.gen.PriceModelDao;
+import com.changtai.sqlModelDao.DeviceModelDao;
+import com.changtai.sqlModelDao.PriceModelDao;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
@@ -25,6 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 /**
@@ -75,8 +79,10 @@ public class UserActionActivity extends BaseActivity  {
                 int result = rfidUtils.isEmptyCard();
                 if (result == 1){
                     com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "此卡已被使用，请更换空卡或者格式化后在操作");
+                    return;
                 }else if (result == -1){
                     com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "此卡非本系统卡，不允许使用");
+                    return;
                 }
 
                 StringBuffer stringBuffer = new StringBuffer("");
@@ -90,6 +96,12 @@ public class UserActionActivity extends BaseActivity  {
 
                 if (rfidUtils.writeToCard(stringBuffer.toString())){
                     com.changtai.Utils.Entity.toastMsg(UserActionActivity.this, "写卡成功");
+                    if (type.equals("user")){
+                        int replaceTimes = userModel.getCreditcardTimes();
+                        replaceTimes++;
+                        userModel.setCreditcardTimes(replaceTimes);
+                        MyApplication.getInstance().getDaoSession().getUserModelDao().insertOrReplace(userModel);
+                    }
                 }
             }
         });
@@ -182,6 +194,19 @@ public class UserActionActivity extends BaseActivity  {
         } catch (NullPointerException e){
             e.printStackTrace();
         }
+    }
+
+    public void insertCardReplaceModel(){
+        CardReeplacementModel cardReeplacementModel = new CardReeplacementModel();
+        cardReeplacementModel.setAdministratorName(Entity.loginModel.getUserName());
+        //cardReeplacementModel.setCardReplacementId(userModel.get);
+        cardReeplacementModel.setCreateDateTime(new Date());
+        cardReeplacementModel.setDeviceNo(userModel.getDeviceNo());
+        cardReeplacementModel.setLastDateTime(userModel.getLastDatetime());
+        cardReeplacementModel.setUserName(userModel.getUserName());
+        cardReeplacementModel.setUserNo(userModel.getUserNo());
+        cardReeplacementModel.setUsedTotal(userModel.getUsedTotal());
+        cardReeplacementModel.setPhone(userModel.getPhone());
     }
 
     @Override
