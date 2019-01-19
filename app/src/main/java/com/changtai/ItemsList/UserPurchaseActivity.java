@@ -29,23 +29,14 @@ import java.util.List;
 import java.util.Map;
 
 
-public class UserBuyWater extends Activity implements View.OnClickListener{
+public class UserPurchaseActivity extends Activity implements View.OnClickListener{
 
     /**
      * 用户购水明细表
      */
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
-    public String[]key = {Entity.PurchaseRecordId,Entity.BureauNo,Entity.DeviceNo,Entity.StationNo,Entity.UserName,
-            Entity.UserNo,Entity.PurchaseTotalThisTime,Entity.PurchaseAmountThisTime,Entity.PurchaseDateTimeThisTime,
-            Entity.PurchaseYear,Entity.PurchaseTotalThisYear,Entity.PurchaseTotal,Entity.PriceSj1,Entity.TotalSj1,
-            Entity.AmountSj1,Entity.PriceSj2,Entity.TotalSj2,Entity.AmountSj2,Entity.PriceSj3,Entity.TotalSj3,Entity.AmountSj3,
-            Entity.Comment,Entity.AdministratorName,Entity.TimeSpan,Entity.Version};
-
     public LinkedList<EditText> linkedList = new LinkedList<>();
     public ArrayAdapter adapter;
-    public ListView etListView;
-    public ScrollView etScroll;
-    public String resultFromServer;
     public PurchaseRecordModel purchaseRecordRealm;
     public boolean etIsChangedBuy = true;
 
@@ -90,9 +81,6 @@ public class UserBuyWater extends Activity implements View.OnClickListener{
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
 
-
-        etListView = findViewById(R.id.buy_listview);
-        etScroll = findViewById(R.id.buy_scroll);
         adapter = new ArrayAdapter(this, R.layout.list_view_layout, R.id.text_list_item, getUserNum());
         binding.buyListview.setAdapter(adapter);
 

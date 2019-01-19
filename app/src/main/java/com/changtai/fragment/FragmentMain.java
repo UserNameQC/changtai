@@ -13,7 +13,7 @@ import com.changtai.BaiduMap.BaiduMapActivity;
 import com.changtai.ItemsList.DeviceModelActivity;
 import com.changtai.ItemsList.AdministratorActivity;
 import com.changtai.ItemsList.UserModelActivity;
-import com.changtai.ItemsList.UserBuyWater;
+import com.changtai.ItemsList.UserPurchaseActivity;
 import com.changtai.ItemsList.WaterPriceActivity;
 import com.changtai.R;
 import com.changtai.RFID.demo1443A;
@@ -93,7 +93,7 @@ public class FragmentMain extends Fragment {
         binding.itemUserBuyWater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), UserBuyWater.class));
+                startActivity(new Intent(getActivity(), UserPurchaseActivity.class));
             }
         });
     }

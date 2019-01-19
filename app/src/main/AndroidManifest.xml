@@ -58,7 +58,6 @@
             android:name=".RFID.demo1443A"
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".BaiduMap.BaiduMapActivity" />
-        <activity android:name=".RFID.NfcDemoActivity" />
         <activity android:name=".activites.SettingActivity" />
         <activity android:name=".activites.ItemsActivity" />
         <activity
@@ -66,7 +65,7 @@
             tools:ignore="InnerclassSeparator" />
         <activity android:name=".ItemsList.WaterPriceActivity" />
         <activity android:name=".ItemsList.UserModelActivity" />
-        <activity android:name=".ItemsList.UserBuyWater" />
+        <activity android:name=".ItemsList.UserPurchaseActivity" />
         <activity android:name=".ItemsList.UserTakeWater" />
         <activity android:name=".ItemsList.AdministratorActivity" />
         <activity android:name=".activites.ResetPassWord" />

@@ -9,6 +9,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.baidu.mapapi.CoordType;
 import com.baidu.mapapi.SDKInitializer;
 import com.changtai.Utils.Entity;
+import com.changtai.Utils.GreenDaoContext;
 import com.changtai.Utils.SqLiteOpenHelper;
 import com.changtai.sqlModelDao.DaoMaster;
 import com.changtai.sqlModelDao.DaoSession;
@@ -93,7 +94,7 @@ public class MyApplication extends Application {
         // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。
         // 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
         // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
-        mHelper = new SqLiteOpenHelper(context, "CHANG-TAI.db", null);
+        mHelper = new SqLiteOpenHelper(new GreenDaoContext(context), "CHANG-TAI.db", null);
         db = mHelper.getWritableDatabase();
         daoMaster = new DaoMaster(db);
         mDaoSession = daoMaster.newSession();
@@ -108,5 +109,6 @@ public class MyApplication extends Application {
     public SQLiteDatabase getDb() {
         return db;
     }
+
 
 }

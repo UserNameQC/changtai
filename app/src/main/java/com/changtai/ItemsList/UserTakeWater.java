@@ -27,16 +27,12 @@ import java.util.Map;
 public class UserTakeWater extends Activity implements View.OnClickListener{
 
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
-    public String[] key = {Entity.Id,Entity.BureauNo,Entity.StationNo,Entity.DeviceNo,Entity.UserNo,
-            Entity.UsedAmount1,Entity.UsedAmount2,
-            Entity.UsedAmount3,Entity.TimeSpan,Entity.Location};
     public Button button;
     public LinkedList<EditText> linkedList = new LinkedList<>();
     public LinkedList<String> nameList = new LinkedList<>();
     public ListView etListView;
     public ArrayAdapter adapter;
     public ScrollView waterScroll;
-    public String resultFromServer;
     public boolean etIsChangedTake = true;
     public ActivityUserTakeWaterBinding binding;
 
