@@ -6,11 +6,11 @@
 
     <!-- 字体大小 -->
     <dimen name="title_text_size">20sp</dimen>
-    <dimen name="text_size_default">16sp</dimen>
+    <dimen name="text_size_default">18sp</dimen>
     <dimen name="text_size_index_home_title">16sp</dimen>
 
     <!-- 间距 -->
-    <dimen name="normal_space">10dp</dimen>
+    <dimen name="normal_space">8dp</dimen>
     <dimen name="little_sapce">5dp</dimen>
 
     <!-- 高度 -->
