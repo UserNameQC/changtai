@@ -121,7 +121,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="年度购水量: "
-                        android:layout_weight="1dp"
+                        android:layout_weight="1"
                         android:gravity="end"
                         android:textSize="@dimen/text_size_default" />
 

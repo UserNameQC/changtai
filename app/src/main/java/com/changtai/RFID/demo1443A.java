@@ -50,6 +50,11 @@ public class demo1443A extends Activity implements OnClickListener {
     public PriceModelDao priceModelDao;
     public int res = -1;
     public Rfid1443aBinding binding;
+    //原年度购水量是否已经超出范围
+    public boolean isMoreFirstTotal = false, isMoreSecTotal = false;
+
+    //水费
+    public BigDecimal firstCost, secondCost, thirdCost;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,15 +91,141 @@ public class demo1443A extends Activity implements OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
-                BigDecimal bigTotal = BigDecimal.valueOf(Double.parseDouble(s.toString())
-                        + Double.parseDouble(userModel.getPurchaseTotal()));
-                BigDecimal bigTotalYear = BigDecimal.valueOf(Double.parseDouble(s.toString())
-                        + Double.parseDouble(userModel.getPurchaseTotalThisYear()));
-                binding.rfidPurchaseTotal.setText(String.valueOf(bigTotal));
-                binding.rfidBuyYearAmount.setText(String.valueOf(bigTotalYear));
-                //binding.rfidBuyWaterAmount.setText();
+                setResultFromTotal(s.toString());
             }
         });
+    }
+
+    public void setResultFromTotal(String s) {
+        BigDecimal secLimit = new BigDecimal(userModel.getLimitSj2());
+        BigDecimal firLimit = new BigDecimal(userModel.getLimitSj1());
+        //购水量
+        BigDecimal purTotal = new BigDecimal(s);
+        //累计购水量
+        BigDecimal bigTotal = new BigDecimal(s).add(new BigDecimal(userModel.getPurchaseTotal()));
+        //年度购水量
+        BigDecimal bigTotalYear =
+                new BigDecimal(s).add(new BigDecimal(userModel.getPurchaseTotalThisYear()));
+        //一级水价
+        BigDecimal sj1 = new BigDecimal(priceModel.getSj1());
+        BigDecimal sj2 = new BigDecimal(priceModel.getSj2());
+        BigDecimal sj3 = new BigDecimal(priceModel.getSj3());
+
+        binding.rfidPurchaseTotal.setText(String.valueOf(bigTotal));
+        binding.rfidBuyYearAmount.setText(String.valueOf(bigTotalYear));
+        /**
+         * 1. isMoreSecTotal 为真：年度购水量超过二级水量上限；且肯定超过一级水量上限；
+         *    此时不在计算与一级水量相关的结果。
+         *
+         * 2.若isMoreSecTotal 为假：年度购水量小于或等于二级水量上限；
+         *  再判断通过isMoreFirstTotal的结果来判定是否超过一级水量上限；
+         *  若isMoreFirstTotal为真：年度购水量超过一级购水量上限；
+         *  若为假，则小于等于一级水量上限。
+         *
+         *  以上年度购水量的判断均以原年度购水量为准
+         *
+         * 3.增加本次购水量结果后，再次与水量上限进行比较，动态更改水量的数据，然后计算三种级别的水费。
+         *  并计算购水金额。
+         */
+        if (isMoreSecTotal) {//此时所有购买的水量，均为三级水量
+            BigDecimal thirdTotal = bigTotalYear.subtract(secLimit);
+            //三级水量
+            binding.rfidThirdAmount.setText(String.valueOf(thirdTotal));
+            //三级水费
+            /**
+             * 标注：此时水量全为三级水量，与一级、二级水量无关，一级水费、二级水费是否为零？
+             */
+            thirdCost = sj3.multiply(thirdTotal);
+            binding.rfidThirdCost.setText(String.valueOf(thirdCost));
+           //购水金额
+            binding.rfidBuyWaterAmount.setText(String.valueOf(thirdCost));
+        } else {
+            /**
+             * 此时要计算增加购水量后，是否超过二级水量上限
+             */
+            if (isMoreFirstTotal){
+                if (bigTotalYear.compareTo(secLimit) > 0){
+                    //超过二级水量部分按三级水价计算
+                    //三级水量 = 总年度购水量 - 二级水量上限
+                    thirdCost = sj3.multiply(bigTotalYear.subtract(secLimit));
+                    binding.rfidThirdCost.setText(String.valueOf(thirdCost));
+                    binding.rfidThirdAmount.setText(String.valueOf(bigTotalYear.subtract(secLimit)));
+                    //二级水量 = 购水量 - 三级水量
+                    secondCost = sj2.multiply(purTotal.subtract(bigTotalYear.subtract(secLimit)));
+                    binding.rfidSecondCost.setText(String.valueOf(secondCost));
+                    binding.rfidSecondAmount.setText(String.valueOf(secLimit.subtract(firLimit)));
+                    binding.rfidFirstCost.setText("0");
+
+                    binding.rfidBuyWaterAmount.setText(String.valueOf(secondCost.add(thirdCost)));
+                } else {
+                    //此时购水量全为二级水量
+                    secondCost = sj2.multiply(purTotal);
+                    binding.rfidSecondAmount.setText(String.valueOf(bigTotalYear.subtract(firLimit)));
+                    binding.rfidBuyWaterAmount.setText(String.valueOf(secondCost));
+                    binding.rfidSecondCost.setText(String.valueOf(secondCost));
+                    binding.rfidFirstCost.setText("0");
+                    binding.rfidThirdCost.setText("0");
+                }
+            } else {
+                /**
+                 * 此时要判断总购水量是否超过一级购水量上限，以至于超过二级购水量上限
+                 * 若超过一级水量上限且超过了二级水量上限：
+                 * 三级水量 = 总购水量 - 二级上限；
+                 * 二级水量 = 二级上限 - 一级上限；
+                 * 一级水量 = 本次购水量 - （三级水量 + 二级水量）
+                 *
+                 * 若只是超过一级上限，未能超过二级上限：
+                 * 二级水量 = 总购水量 - 一级上限
+                 * 一级水量 = 本次购水量 - 二级水量
+                 *
+                 * 若未能超过一级水量：
+                 * 一级水量 = 总购水量
+                 * 一级水费 = 一级水价 * 本次购水量
+                 */
+                if (bigTotalYear.compareTo(firLimit) > 0){
+                    if (bigTotalYear.compareTo(secLimit) > 0){
+                        BigDecimal thirdTotal = bigTotalYear.subtract(secLimit);
+                        thirdCost = sj3.multiply(thirdTotal);
+                        BigDecimal secTotal = secLimit.subtract(firLimit);
+                        secondCost = sj2.multiply(secTotal);
+                        firstCost = sj1.multiply(purTotal.subtract(thirdTotal.add(secTotal)));
+
+                        binding.rfidFirstCost.setText(String.valueOf(firstCost));
+                        binding.rfidSecondCost.setText(String.valueOf(secondCost));
+                        binding.rfidThirdCost.setText(String.valueOf(thirdCost));
+                        binding.rfidThirdAmount.setText(String.valueOf(thirdTotal));
+                        binding.rfidSecondAmount.setText(String.valueOf(secTotal));
+                        binding.rfidFirstAmount.setText(String.valueOf(firLimit));
+
+                        binding.rfidBuyWaterAmount.setText(String.valueOf(thirdCost.add(secondCost).add(firstCost)));
+                    } else {
+                        BigDecimal secTotal = bigTotalYear.subtract(firLimit);
+                        secondCost = sj2.multiply(secTotal);
+                        firstCost = sj1.multiply(purTotal.subtract(secTotal));
+
+                        binding.rfidFirstAmount.setText(String.valueOf(firLimit));
+                        binding.rfidSecondAmount.setText(String.valueOf(secTotal));
+                        binding.rfidThirdAmount.setText("0");
+                        binding.rfidFirstCost.setText(String.valueOf(firstCost));
+                        binding.rfidSecondCost.setText(String.valueOf(secondCost));
+                        binding.rfidThirdCost.setText("0");
+
+                        binding.rfidBuyWaterAmount.setText(String.valueOf(secondCost.add(firstCost)));
+                    }
+                } else {
+                    firstCost = sj1.multiply(purTotal);
+                    binding.rfidFirstCost.setText(String.valueOf(firstCost));
+                    binding.rfidFirstAmount.setText(String.valueOf(bigTotalYear));
+                    binding.rfidSecondCost.setText("0");
+                    binding.rfidSecondAmount.setText("0");
+                    binding.rfidThirdCost.setText("0");
+                    binding.rfidThirdAmount.setText("0");
+
+                    binding.rfidBuyWaterAmount.setText(String.valueOf(firstCost));
+                }
+            }
+        }
+
     }
 
     public void initData() {
@@ -131,8 +262,25 @@ public class demo1443A extends Activity implements OnClickListener {
                 int sl1 = Integer.parseInt(userModel.getLimitSj1());
                 int sl2 = Integer.parseInt(userModel.getLimitSj2());
                 int yearTotal = Integer.parseInt(binding.rfidBuyYearAmount.getText().toString());
-                binding.rfidFirstAmount.setText(yearTotal > sl1 ? String.valueOf(sl1) : String.valueOf(yearTotal));
-                binding.rfidSecondAmount.setText(yearTotal > sl2 ? String.valueOf(sl2) : String.valueOf(yearTotal - sl1));
+                //水量设置
+                if (yearTotal > sl1) {
+                    isMoreFirstTotal = true;
+                    binding.rfidFirstAmount.setText(String.valueOf(sl1));
+                    if (yearTotal > sl2) {
+                        isMoreSecTotal = true;
+                        binding.rfidSecondAmount.setText(String.valueOf(sl2));
+                        binding.rfidThirdAmount.setText(String.valueOf(yearTotal - sl2));
+                    } else {
+                        isMoreSecTotal = false;
+                        binding.rfidSecondAmount.setText(String.valueOf(yearTotal - sl1));
+                        binding.rfidThirdAmount.setText(String.valueOf(0));
+                    }
+                } else {
+                    isMoreFirstTotal = false;
+                    binding.rfidFirstAmount.setText(String.valueOf(yearTotal));
+                    binding.rfidSecondAmount.setText(String.valueOf(0));
+                    binding.rfidThirdAmount.setText(String.valueOf(0));
+                }
             }
 
             if (msg.what == 300) {
@@ -181,11 +329,11 @@ public class demo1443A extends Activity implements OnClickListener {
 
                     SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
                     String date = format.format(userModel.getLastDatetime());
-                    if (Entity.GetNowTime().compareTo(date) < 0){
+                    if (Entity.GetNowTime().compareTo(date) < 0) {
                         Entity.toastMsg(this, "本机时间小于最后购水时间，不允许购水！");
                         return;
                     }
-                    if (userFromCardBean.getFlag().equals("20")){
+                    if (userFromCardBean.getFlag().equals("20")) {
                         Entity.toastMsg(this, "此卡为水量设置卡，不允许购水！");
                         return;
                     }
@@ -207,7 +355,7 @@ public class demo1443A extends Activity implements OnClickListener {
                     /**
                      * 放在最后判断
                      */
-                    if (userFromCardBean.getFlag().equals("01") && Integer.parseInt(userFromCardBean.getToal()) > 0){
+                    if (userFromCardBean.getFlag().equals("01") && Integer.parseInt(userFromCardBean.getToal()) > 0) {
                         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
                         dialog.setTitle("提示：");
                         dialog.setMessage("此用户上次购水后未插卡，是否继续购水？");
@@ -228,15 +376,13 @@ public class demo1443A extends Activity implements OnClickListener {
                         dialog.show();
                     }
 
-                    if (userFromCardBean.getFlag().equals("00") && userFromCardBean.getPurchaseDate().compareTo(userModel.getUsedTotal()) > 0){
+                    if (userFromCardBean.getFlag().equals("00") && userFromCardBean.getPurchaseDate().compareTo(userModel.getUsedTotal()) > 0) {
                         UserModel userModel = new UserModel();
                         userModel.setServerVersion(0L);
                         userModel.setClientVersion(Long.parseLong(Entity.GetNowTime()));
                         userModel.setUsedTotal(userFromCardBean.getPurchaseDate());
                         userModelDao.insertOrReplace(userModel);
                     }
-
-
 
                     binding.rfidUserNo.setText(userFromCardBean.getUserCardNo());//用户号
                     //binding.rfidBz.setText(userFromCardBean.getFlag());//标志
