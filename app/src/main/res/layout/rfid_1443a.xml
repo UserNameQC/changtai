@@ -13,75 +13,38 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linearLayout_Button2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="15dp">
-
-                    <TextView
-                        android:id="@+id/a_446"
-                        android:layout_width="wrap_content"
-                        android:layout_height="15dp"
-                        android:gravity="center"
-                        android:text=" "
-                        android:textSize="20dp" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/linearLayoutd"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="0.01"
-                        android:gravity="center"
-                        android:text="WriteString" />
-
-
-                    <TextView
-
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-
-                        android:layout_weight="0.01"
-                        android:text="    " />
-
-                    <Spinner
-                        android:id="@+id/spinner2"
-                        android:layout_width="160dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="0.01" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:text="用户号："
+                        android:gravity="end"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_user_no"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
                         android:enabled="false"
+                        android:layout_weight="1"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
 
                 </LinearLayout>
 
@@ -90,21 +53,30 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="标志："
+                        android:text="累计用水量："
+                        android:gravity="end"
+                        android:layout_weight="1"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
-                        android:id="@+id/rfid_bz"
-                        android:layout_width="match_parent"
+                        android:id="@+id/rfid_use_water_amount"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
                         android:enabled="false"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" m³(非实时数据)"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -112,21 +84,30 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="累计购水量："
+                        android:layout_weight="1"
+                        android:gravity="end"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_purchaseTotal"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
                         android:enabled="false"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" m³"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -134,21 +115,61 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="年度购水量: "
+                        android:layout_weight="1dp"
+                        android:gravity="end"
+                        android:textSize="@dimen/text_size_default" />
+
+                    <EditText
+                        android:id="@+id/rfid_buy_year_amount"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:enabled="false"
+                        android:background="@drawable/background_edit_text"
+                        android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" m³"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="透支限量："
+                        android:layout_weight="1"
+                        android:gravity="end"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_overdraft"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
-                        android:enabled="false"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" ×100m³(0~99)"/>
                 </LinearLayout>
 
 
@@ -157,20 +178,30 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="报警水量："
+                        android:gravity="end"
+                        android:layout_weight="1"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_alarm_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" ×100m³(0~99)"/>
                 </LinearLayout>
 
 
@@ -179,19 +210,23 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp"
+                    android:visibility="gone">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="购水日期："
+                        android:text="购水日期:"
+                        android:layout_weight="1"
+                        android:gravity="end"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_buy_date"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
                         android:enabled="false"
                         android:textSize="@dimen/text_size_default" />
                 </LinearLayout>
@@ -201,20 +236,30 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="本次购水量："
+                        android:layout_weight="1"
+                        android:gravity="end"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_buy_purchase"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
+                        android:inputType="numberDecimal"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" m³(0-99999999)"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -222,43 +267,30 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="horizontal"
-                    android:padding="15dp"
-                    android:visibility="gone">
+                    android:padding="@dimen/padding_10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="当前水价："
-                        android:textSize="@dimen/text_size_default" />
-
-                    <EditText
-                        android:id="@+id/rfid_now_water_price"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@null"
-                        android:enabled="false"
-                        android:textSize="@dimen/text_size_default" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:padding="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="本次购水金额："
+                        android:text="本次购水金额: "
+                        android:gravity="end"
+                        android:layout_weight="1"
                         android:textSize="@dimen/text_size_default" />
 
                     <EditText
                         android:id="@+id/rfid_buy_water_amount"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:background="@null"
+                        android:background="@drawable/background_edit_text"
+                        android:layout_weight="1"
+                        android:enabled="false"
                         android:textSize="@dimen/text_size_default" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=" 元"/>
                 </LinearLayout>
 
                 <TextView
@@ -274,7 +306,7 @@
                     android:id="@+id/linearLayout_52"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="@dimen/padding_10dp"
                     android:orientation="vertical"
                     android:visibility="gone">
 
@@ -283,62 +315,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="年度购水量："
-                            android:textSize="@dimen/text_size_default" />
-
-                        <EditText
-                            android:id="@+id/rfid_buy_year_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:textSize="@dimen/text_size_default" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="累计用水量："
-                            android:textSize="@dimen/text_size_default" />
-
-                        <EditText
-                            android:id="@+id/rfid_use_water_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@null"
-                            android:textSize="@dimen/text_size_default" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="一级水量上限："
+                            android:gravity="end"
+                            android:layout_weight="1"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_first"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -346,20 +346,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="二级水量上限："
+                            android:text="二级水量上限: "
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_second"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -367,20 +377,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="一级水量："
+                            android:text="一级水量: "
+                            android:gravity="end"
+                            android:layout_weight="1"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_first_amount"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -388,20 +408,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="二级水量："
+                            android:text="二级水量: "
+                            android:gravity="end"
+                            android:layout_weight="1"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_second_amount"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -409,20 +439,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="三级水量："
+                            android:text="三级水量: "
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_third_amount"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -430,21 +470,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="一级水价："
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_first_price"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
                             android:textSize="@dimen/text_size_default"
+                            android:layout_weight="1"
                             android:enabled="false"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" 元/m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -452,22 +501,31 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="二级水价："
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_second_price"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
                             android:textSize="@dimen/text_size_default"
+                            android:layout_weight="1"
                             android:focusable="false"
                             android:enabled="false"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" 元/m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -475,22 +533,31 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="三级水价："
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_third_price"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
                             android:textSize="@dimen/text_size_default"
+                            android:layout_weight="1"
                             android:enabled="false"
                             android:focusable="false"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" 元/m³"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -498,20 +565,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="一级水费："
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_first_cost"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" 元"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -519,20 +596,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="二级水费："
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_second_cost"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" 元"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -540,20 +627,30 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:padding="@dimen/padding_10dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:text="三级水费："
+                            android:layout_weight="1"
+                            android:gravity="end"
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
                             android:id="@+id/rfid_third_cost"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:background="@null"
+                            android:background="@drawable/background_edit_text"
+                            android:layout_weight="1"
+                            android:enabled="false"
                             android:textSize="@dimen/text_size_default" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" 元"/>
                     </LinearLayout>
 
                 </LinearLayout>

@@ -45,7 +45,7 @@ public class ItemsActivity extends BaseActivity implements View.OnClickListener{
 //                startActivity(new Intent(ItemsActivity.this, UserTakeWater.class));
 //                break;
 //            case R.id.item_user_buy_water:
-//                startActivity(new Intent(ItemsActivity.this, UserBuyWater.class));
+//                startActivity(new Intent(ItemsActivity.this, UserPurchaseActivity.class));
 //                break;
 //            case R.id.item_address_well_type:
 //                startActivity(new Intent(ItemsActivity.this, UserModelActivity.class));

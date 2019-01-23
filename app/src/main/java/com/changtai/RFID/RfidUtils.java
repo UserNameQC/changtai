@@ -39,6 +39,15 @@ public class RfidUtils {
         return 2;
     }
 
+    public int GetReadResult(){
+        if (getPassWord() == null) {
+            Log.e(TAG, "GetReadResult: PassWord Error");
+            return 0xff;
+        }
+        byte[] password = getPassWord();
+        return RFID.API_MF_Read(0x00, 0x01, 57, 1, password, buffer);
+    }
+
     public boolean writeToCard(String data) {
         if (data.length() != 32){
             Log.e(TAG, "writeToCard: 长度小于32位");
@@ -158,5 +167,20 @@ public class RfidUtils {
         //Log.e("RFID", a + "");
         byte[] snr = controller.GetPass(cardL);
         return snr;
+    }
+
+    public UserFromCardBean getCardBean(byte[] buffer){
+        if (buffer.length > 0){
+            String result = toHexString(buffer, 16);
+            UserFromCardBean userFromCardBean = new UserFromCardBean();
+            userFromCardBean.setFlag(result.substring(10, 12));
+            userFromCardBean.setUserCardNo(result.substring(0, 10));
+            userFromCardBean.setToal(result.substring(12, 20));
+            userFromCardBean.setAlarmValue(result.substring(22, 24));
+            userFromCardBean.setOverdeRaft(result.substring(20, 22));
+            userFromCardBean.setPurchaseDate(result.substring(24));
+            return userFromCardBean;
+        }
+        return null;
     }
 }

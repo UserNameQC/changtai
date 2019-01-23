@@ -118,13 +118,14 @@
             android:id="@+id/add_user_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="@dimen/normal_space">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="创建操作员"
-                android:textSize="16sp" />
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/text_size_default" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -138,13 +139,14 @@
             android:id="@+id/add_base_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="@dimen/normal_space">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="设置地区号"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_size_default"
+                android:layout_centerVertical="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -158,13 +160,14 @@
             android:id="@+id/main_user_information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="@dimen/normal_space">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="操作员信息"
-                android:textSize="16sp" />
+                android:textSize="@dimen/text_size_default"
+                android:layout_centerVertical="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -178,13 +181,14 @@
             android:id="@+id/main_user_made_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="@dimen/normal_space">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="制作工具卡"
-                android:textSize="16sp" />
+                android:textSize="18sp"
+                android:layout_centerVertical="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -198,13 +202,14 @@
             android:id="@+id/main_ip_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:padding="@dimen/normal_space">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="选择服务器"
-                android:textSize="16sp" />
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/text_size_default" />
 
             <ImageView
                 android:layout_width="wrap_content"

@@ -50,12 +50,6 @@ public class BeanUtils {
         }
     }
 
-    /**
-     * ����class��get&set���㣬�����������л���
-     *
-     * @param cls
-     * @return
-     */
     private static ConcurrentHashMap<String, Method>[] searchGetAndSetMethods(Class<?> cls) {
         String className = cls.getName();
         ConcurrentHashMap<String, Method>[] getSetMethodArray = null;
