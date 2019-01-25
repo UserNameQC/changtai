@@ -33,6 +33,7 @@ import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @SuppressWarnings("all")
@@ -62,7 +63,7 @@ public class demo1443A extends Activity implements OnClickListener {
         utils = new RfidUtils();
         rfid.OpenComm();
         initView();
-        initData();
+        //initData();
     }
 
     public void initView() {
@@ -91,10 +92,41 @@ public class demo1443A extends Activity implements OnClickListener {
 
             @Override
             public void afterTextChanged(Editable s) {
+                BigDecimal bigDecimal = new BigDecimal(s.toString());
+                BigDecimal max = new BigDecimal("99999999");
+                BigDecimal min = new BigDecimal("0");
+                if (bigDecimal.compareTo(max) > 0 || bigDecimal.compareTo(min) < 0){
+                    Entity.toastMsg(demo1443A.this, "您输入的内容超出规定范围，请重新输入！");
+                    return;
+                }
                 setResultFromTotal(s.toString());
             }
         });
+
+        binding.rfidOverdraft.addTextChangedListener(textWatcher);
+        binding.rfidAlarmValue.addTextChangedListener(textWatcher);
     }
+
+    public TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            int result = Integer.parseInt(s.toString());
+            if (result < 0 || result > 99){
+                Entity.toastMsg(demo1443A.this, "您输入的内容不再范围内，请重新输入！");
+                return;
+            }
+        }
+    };
 
     public void setResultFromTotal(String s) {
         BigDecimal secLimit = new BigDecimal(userModel.getLimitSj2());
@@ -231,8 +263,11 @@ public class demo1443A extends Activity implements OnClickListener {
     public void initData() {
         PriceModelDao priceModelDao = MyApplication.getInstance().getDaoSession().getPriceModelDao();
         QueryBuilder<PriceModel> queryBuilder = priceModelDao.queryBuilder();
-        List<PriceModel> priceModels = queryBuilder.where(queryBuilder.and(PriceModelDao.Properties
-                .StationNo.eq(userModel.getStationNo()), PriceModelDao.Properties.SjId.eq(userModel.getSjId()))).list();
+//        List<PriceModel> priceModels = queryBuilder.where(queryBuilder.and(PriceModelDao.Properties
+//                .StationNo.eq(userModel.getStationNo()), PriceModelDao.Properties.SjId.eq(userModel.getSjId()))).list();
+        queryBuilder.and(PriceModelDao.Properties
+                .StationNo.eq(userModel.getStationNo()), PriceModelDao.Properties.SjId.eq(userModel.getSjId()));
+        List<PriceModel> priceModels =  queryBuilder.build().list();
         if (priceModels != null && priceModels.size() > 0) {
             PriceModel priceModel = priceModels.get(0);
             binding.rfidFirstPrice.setText(priceModel.getSj1());
@@ -325,10 +360,13 @@ public class demo1443A extends Activity implements OnClickListener {
                             Entity.toastMsg(this, "卡号不一致，不允许售水");
                             return;
                         }
+                    } else {
+                        Entity.toastMsg(this, "无此用户数据，非本水站用户");
+                        return;
                     }
 
                     SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
-                    String date = format.format(userModel.getLastDatetime());
+                    String date = format.format(userModel.getLastDatetime() == null ? "0" : userModel.getLastDatetime());
                     if (Entity.GetNowTime().compareTo(date) < 0) {
                         Entity.toastMsg(this, "本机时间小于最后购水时间，不允许购水！");
                         return;
@@ -376,6 +414,8 @@ public class demo1443A extends Activity implements OnClickListener {
                         dialog.show();
                     }
 
+                    initData();
+
                     if (userFromCardBean.getFlag().equals("00") && userFromCardBean.getPurchaseDate().compareTo(userModel.getUsedTotal()) > 0) {
                         UserModel userModel = new UserModel();
                         userModel.setServerVersion(0L);
@@ -399,18 +439,62 @@ public class demo1443A extends Activity implements OnClickListener {
                 break;
             case R.id.btn_writestring:
 
+                if (Entity.editIsNull(binding.rfidAlarmValue)) return;
+                if (Entity.editIsNull(binding.rfidOverdraft)) return;
+                if (Entity.editIsNull(binding.rfidPurchaseTotal)) return;
+                if (Entity.editIsNull(binding.rfidBuyPurchase)) return;
+
+                SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+                Date date = new Date();
+                String dates = format.format(new Date());
                 StringBuffer stringBuffer = new StringBuffer();
                 stringBuffer.append(binding.rfidUserNo.getText().toString())
-                        //.append(binding.rfidBz.getText().toString())
+                        .append("01")
                         .append(binding.rfidPurchaseTotal.getText().toString())
                         .append(binding.rfidOverdraft.getText().toString())
                         .append(binding.rfidAlarmValue.getText().toString())
-                        .append(binding.rfidBuyDate.getText().toString());
+                        .append(dates);
 
                 if (utils.writeToCard(stringBuffer.toString())) {
                     Entity.toastMsg(demo1443A.this, "写卡成功！");
-                    handler.sendEmptyMessage(300);
+                    //handler.sendEmptyMessage(300);
                 }
+
+                userModel.setAlarmValue(binding.rfidAlarmValue.getText().toString());
+                userModel.setOverdraft(binding.rfidOverdraft.getText().toString());
+                userModel.setLastDatetime(date);
+                userModel.setPurchaseTotal(binding.rfidPurchaseTotal.getText().toString());
+                userModel.setPurchaseTotalThisYear(binding.rfidBuyYearAmount.getText().toString());
+                userModel.setServerVersion(0L);
+                userModel.setClientVersion(Long.parseLong(dates));
+                userModelDao.insertOrReplace(userModel);
+
+                PurchaseRecordModel purchaseRecordModel = new PurchaseRecordModel();
+                purchaseRecordModel.setStationNo(userModel.getStationNo());
+                purchaseRecordModel.setDeviceNo(userModel.getDeviceNo());
+                purchaseRecordModel.setUserNo(userModel.getUserNo());
+                purchaseRecordModel.setUserName(userModel.getUserName());
+                purchaseRecordModel.setPurchaseTotalThisTime(binding.rfidBuyPurchase.getText().toString());
+                purchaseRecordModel.setPurchaseaMountThisTime(binding.rfidBuyWaterAmount.getText().toString());
+                purchaseRecordModel.setPurchaseDatetimeThisTime(date);
+                purchaseRecordModel.setPurchaseYear(new Date().getYear());
+                purchaseRecordModel.setPurchaseTotal(userModel.getPurchaseTotal());
+                purchaseRecordModel.setPurchaseTotalThisYear(userModel.getPurchaseTotalThisYear());
+                purchaseRecordModel.setPriceSj1(priceModel.getSj1());
+                purchaseRecordModel.setPriceSj2(priceModel.getSj2());
+                purchaseRecordModel.setPriceSj3(priceModel.getSj3());
+                purchaseRecordModel.setAmountSj1(binding.rfidFirstCost.getText().toString());
+                purchaseRecordModel.setAmountSj2(binding.rfidSecondCost.getText().toString());
+                purchaseRecordModel.setAmountSj3(binding.rfidThirdCost.getText().toString());
+                purchaseRecordModel.setTotalSj1(binding.rfidFirstAmount.getText().toString());
+                purchaseRecordModel.setTotalSj2(binding.rfidSecondAmount.getText().toString());
+                purchaseRecordModel.setTotalSj3(binding.rfidThirdAmount.getText().toString());
+                purchaseRecordModel.setAdministratorName(Entity.loginModel.getUserName());
+                purchaseRecordModel.setServerVersion(0L);
+                purchaseRecordModel.setClientVersion(Long.parseLong(dates));
+
+                PurchaseRecordModelDao purchaseRecordModelDao = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao();
+                purchaseRecordModelDao.insertOrReplace(purchaseRecordModel);
                 break;
         }
     }

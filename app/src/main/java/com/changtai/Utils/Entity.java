@@ -200,7 +200,7 @@ public class Entity {
 
     public static String GetNowTime(){
         @SuppressLint("SimpleDateFormat")
-        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssfff");
         return format.format(new Date());
     }
 }
