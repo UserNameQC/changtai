@@ -173,6 +173,7 @@ public class RfidUtils {
         if (buffer.length > 0){
             String result = toHexString(buffer, 16);
             UserFromCardBean userFromCardBean = new UserFromCardBean();
+            userFromCardBean.setStationNo(result.substring(0, 5));
             userFromCardBean.setFlag(result.substring(10, 12));
             userFromCardBean.setUserCardNo(result.substring(0, 10));
             userFromCardBean.setToal(result.substring(12, 20));

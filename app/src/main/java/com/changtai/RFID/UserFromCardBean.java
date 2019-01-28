@@ -1,14 +1,24 @@
 package com.changtai.RFID;
 
+@SuppressWarnings("all")
 public class UserFromCardBean {
 
     public String flag;
+    public String stationNo;
     public String userCardNo;
     public String deviceNo;
     public String toal;
     public String overdeRaft;
     public String alarmValue;
     public String purchaseDate;
+
+    public String getStationNo() {
+        return stationNo;
+    }
+
+    public void setStationNo(String stationNo) {
+        this.stationNo = stationNo;
+    }
 
     public String getFlag() {
         return flag;

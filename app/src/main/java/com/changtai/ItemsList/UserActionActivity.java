@@ -203,7 +203,7 @@ public class UserActionActivity extends BaseActivity  {
     public void insertCardReplaceModel(){
         CardReeplacementModel cardReeplacementModel = new CardReeplacementModel();
         cardReeplacementModel.setAdministratorName(Entity.loginModel.getUserName());
-        //cardReeplacementModel.setCardReplacementId(userModel.get);
+        cardReeplacementModel.setCardReplacementId(Entity.getUUID());
         cardReeplacementModel.setCreateDateTime(new Date());
         cardReeplacementModel.setDeviceNo(userModel.getDeviceNo());
         cardReeplacementModel.setLastDateTime(userModel.getLastDatetime());

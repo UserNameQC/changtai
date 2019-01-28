@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -56,11 +57,11 @@ public class Entity {
     public static final String IP_CHECK = "IP_CHECK";
 
 
-    public static void toastMsg(Context context, String msg){
+    public static void toastMsg(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
-    public static void paramUrl(String url){
+    public static void paramUrl(String url) {
         loginUrl = url + "/user/login";
         getDataUrl = url + "/data/syncData";
         verifyPasswordUrl = url + "/user/vailLoginPwd";
@@ -72,37 +73,37 @@ public class Entity {
     /**
      * 机井信息表
      */
-    public static final  String BureauNo = "BureauNo";//水利局编号
-    public static final  String StationNo = "stationNo";//水管站编号
-    public static final  String DeviceNo = "DeviceNo";//机井编号
-    public static final  String GprsNo = "GprsNo";//GPRS模块编号
-    public static final  String DeviceName = "DeviceName";//机井名称
-    public static final  String Index = "Index";//索引
-    public static final  String Linkman = "Linkman";//联系人
-    public static final  String Phone = "Phone";//电话
-    public static final  String Location = "Location";//安装位置
-    public static final  String CreateDateTime = "CreateDateTime";//登记时间
-    public static final  String Longitude = "Longitude";//经度
-    public static final  String Latitude = "Latitude";//纬度
-    public static final  String Comment = "comment";//备注
-    public static final  String AdministratorName = "administratorName";//操作员
-    public static final  String TimeSpan = "TimeSpan";//数据更新标签
-    public static final  String StopFlag = "StopFlag";//停用标志
-    public static final  String Version = "Version";//版本
+    public static final String BureauNo = "BureauNo";//水利局编号
+    public static final String StationNo = "stationNo";//水管站编号
+    public static final String DeviceNo = "DeviceNo";//机井编号
+    public static final String GprsNo = "GprsNo";//GPRS模块编号
+    public static final String DeviceName = "DeviceName";//机井名称
+    public static final String Index = "Index";//索引
+    public static final String Linkman = "Linkman";//联系人
+    public static final String Phone = "Phone";//电话
+    public static final String Location = "Location";//安装位置
+    public static final String CreateDateTime = "CreateDateTime";//登记时间
+    public static final String Longitude = "Longitude";//经度
+    public static final String Latitude = "Latitude";//纬度
+    public static final String Comment = "comment";//备注
+    public static final String AdministratorName = "administratorName";//操作员
+    public static final String TimeSpan = "TimeSpan";//数据更新标签
+    public static final String StopFlag = "StopFlag";//停用标志
+    public static final String Version = "Version";//版本
 
     /**
-     *水价表
+     * 水价表
      */
-    public static final  String SjId = "sjId";//水价序号
-    public static final  String Mc = "mc";//水价类型
-    public static final  String Sj1 = "sj1";//一级水价
-    public static final  String Sj2 = "sj2";//二级水价
-    public static final  String Sj3 = "sj3";//三级水价
+    public static final String SjId = "sjId";//水价序号
+    public static final String Mc = "mc";//水价类型
+    public static final String Sj1 = "sj1";//一级水价
+    public static final String Sj2 = "sj2";//二级水价
+    public static final String Sj3 = "sj3";//三级水价
     public static final String createTime = "createTime";
     public static final String updateTime = "updateTime";
 
     /**
-     *用户表
+     * 用户表
      */
     public final static String UserNo = "UserNo";
     public static final String UserName = "UserName";
@@ -165,42 +166,46 @@ public class Entity {
     public static String QX_STRING = "QX_STRING";
 
 
-    public static boolean editIsNull(EditText editText){
-        if(editText.length() > 0 && TextUtils.isEmpty(editText.getText().toString()))
-        {
+    public static boolean editIsNull(EditText editText) {
+        if (editText.length() > 0 && TextUtils.isEmpty(editText.getText().toString())) {
             return false;
         }
         return true;
     }
 
-    public static boolean editTextIsNull(Map<Integer, EditText> map){
-        for (int i = 0; i< map.size(); i++)
-        {
+    public static boolean editTextIsNull(Map<Integer, EditText> map) {
+        for (int i = 0; i < map.size(); i++) {
             EditText et = map.get(i);
-            if (!TextUtils.isEmpty(et.getText().toString()) && et.length() > 0)
-            {
+            if (!TextUtils.isEmpty(et.getText().toString()) && et.length() > 0) {
                 //return false;
-            }
-            else
-            {
-                return  true;
+            } else {
+                return true;
             }
         }
         return false;
     }
 
-    public static Map<Integer, EditText> saveInMap(LinkedList<EditText> list){
+    public static Map<Integer, EditText> saveInMap(LinkedList<EditText> list) {
         Map<Integer, EditText> map = new HashMap<>();
-        for (int i = 0; i < list.size(); i++)
-        {
+        for (int i = 0; i < list.size(); i++) {
             map.put(i, list.get(i));
         }
         return map;
     }
 
-    public static String GetNowTime(){
+    public static String GetNowTime() {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssfff");
         return format.format(new Date());
     }
+
+    //生成uuid
+    public static String getUUID() {
+        UUID uuid = UUID.randomUUID();
+        String str = uuid.toString();
+        // 去掉"-"符号
+        return str.replace("-", "");
+    }
+
+
 }

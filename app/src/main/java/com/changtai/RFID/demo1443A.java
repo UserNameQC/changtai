@@ -6,9 +6,11 @@ import com.changtai.Utils.Entity;
 import com.changtai.Utils.HelloWorldController;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.Rfid1443aBinding;
+import com.changtai.sqlModel.ConfigModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
+import com.changtai.sqlModelDao.ConfigModelDao;
 import com.changtai.sqlModelDao.PriceModelDao;
 import com.changtai.sqlModelDao.PurchaseRecordModelDao;
 import com.changtai.sqlModelDao.UserModelDao;
@@ -350,6 +352,15 @@ public class demo1443A extends Activity implements OnClickListener {
                     if (!code.equals("01")) {
                         Entity.toastMsg(this, "非用户卡，请更换卡片后重试");
                         return;
+                    }
+                    ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
+                    List<ConfigModel> configModels = configModelDao.loadAll();
+                    if (!configModels.isEmpty()){
+                        ConfigModel configModel = configModels.get(0);
+                        if (!configModel.getValue().equals(userFromCardBean.getStationNo())){
+                            Entity.toastMsg(this, "非本水站用户！");
+                            return;
+                        }
                     }
                     userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
                     List<UserModel> userModels = userModelDao.queryBuilder()
