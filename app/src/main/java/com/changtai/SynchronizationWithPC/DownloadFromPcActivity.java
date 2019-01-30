@@ -56,14 +56,11 @@ public class DownloadFromPcActivity extends Activity {
 
     public void onClick(View view) {
         new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
-
     }
 
     public void onBackPressed(View view) {
         super.onBackPressed();
     }
-
-
     /**
      * 下载线程
      */

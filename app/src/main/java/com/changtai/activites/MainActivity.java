@@ -30,13 +30,18 @@ import com.changtai.databinding.ActivityMainBinding;
 import com.changtai.fragment.FragmentAdapter;
 import com.changtai.fragment.FragmentMain;
 import com.changtai.fragment.FragmentMine;
+import com.changtai.sqlModel.CardReeplacementModel;
 import com.changtai.sqlModel.ConfigModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
+import com.changtai.sqlModelDao.CardReeplacementModelDao;
 import com.changtai.sqlModelDao.ConfigModelDao;
+import com.changtai.sqlModelDao.DeviceModelDao;
+import com.changtai.sqlModelDao.PriceModelDao;
 import com.changtai.sqlModelDao.PurchaseRecordModelDao;
+import com.changtai.sqlModelDao.UserModelDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
@@ -63,6 +68,7 @@ public class MainActivity extends BaseActivity {
     public FragmentAdapter fragmentAdapter;
 
     public SpUtils spUtils;
+    public ConfigModelDao configModelDao;
 
     //消息显示框
     TextView textView ;
@@ -78,8 +84,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
-        //initView();
         spUtils = new SpUtils();
+        configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
         checkBaseId();
         initBottomMenu();
         initViewPager();
@@ -159,7 +165,6 @@ public class MainActivity extends BaseActivity {
     }
 
     public void checkBaseId(){
-        ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
         List<ConfigModel> configModels = configModelDao.queryBuilder().list();
         if (configModels == null || configModels.size() == 0){
             final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -194,11 +199,17 @@ public class MainActivity extends BaseActivity {
         //设置ProgressDialog样式为水平的样式
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 
+        List<ConfigModel> configModels = configModelDao.queryBuilder().where(ConfigModelDao.Properties.Id.eq(0L)).list();
+        String baseId = "010101";
+        if (!configModels.isEmpty()){
+            ConfigModel configModel = configModels.get(0);
+            baseId = configModel.getValue();
+        }
         String url = spUtils.getString(Entity.SERVER);
         if (!TextUtils.isEmpty(url)){
             Entity.MAIN_URL = url;
         }
-        new DownloadFromWebTask().execute(Entity.MAIN_URL + "/PdaDownLoadFromWeb","010101","100","200");
+        new DownloadFromWebTask().execute(Entity.MAIN_URL + "/PdaDownLoadFromWeb", baseId, "100", "200");
     }
 
     public void onBackPressed(View view) {
@@ -259,22 +270,22 @@ public class MainActivity extends BaseActivity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
-                for(SwpDeviceModel model:downLoadFromPcModel.Device){
+                for(DeviceModel model:downLoadFromPcModel.Device){
                     DeviceModel model1= MappingObject(model,DeviceModel.class);
-                    model1.DeviceId= Long.parseLong(model.DeviceNo);
+                    model1.DeviceId= Long.parseLong(model.getDeviceNo());
                     MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
                 }
-                for(SwpUserModel model:downLoadFromPcModel.User){
+                for(UserModel model:downLoadFromPcModel.User){
                     UserModel model1= MappingObject(model,UserModel.class);
-                    model1.Id= Long.parseLong(model.UserNo);
+                    model1.Id= Long.parseLong(model.getUserNo());
                     MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model1);
                 }
-                for(SwpPriceModel model:downLoadFromPcModel.Price){
+                for(PriceModel model:downLoadFromPcModel.Price){
                     PriceModel model1= MappingObject(model,PriceModel.class);
                     model1.Id= Long.parseLong(String.format("%s%03d",model1.stationNo,model1.sjId));
                     MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
                 }
-                for(SwpPurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
+                for(PurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
                     PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
                     QueryBuilder<PurchaseRecordModel> qb =MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().queryBuilder();
                     qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.purchaseRecordId));
@@ -285,6 +296,11 @@ public class MainActivity extends BaseActivity {
                     MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model1);
                 }
 
+                ConfigModel configModel = new ConfigModel();
+                configModel.setId(1L);
+                configModel.setName("Update_Time");
+                configModel.setValue(Entity.GetNowTime());
+                configModelDao.insertOrReplace(configModel);
 
                 return value;
             } catch (Exception e) {
@@ -341,8 +357,11 @@ public class MainActivity extends BaseActivity {
             //textView.setText(s);
             Toast.makeText(MainActivity.this,"结束",Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
-            //
-            new  MainActivity.UploadToWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaUploadToWeb");
+            String url = spUtils.getString(Entity.SERVER);
+            if (!TextUtils.isEmpty(url)){
+                Entity.MAIN_URL = url;
+            }
+            new  MainActivity.UploadToWebTask().execute(Entity.MAIN_URL + "/PdaUploadToWeb");
         }
 
         class DownLoadCreatePackageOut{
@@ -406,10 +425,7 @@ public class MainActivity extends BaseActivity {
             params.put("packageId", packageId);
             getStringByWebMethodPost(path, params);
         }
-
-
     }
-
 
     /**
      * 上传线程
@@ -428,7 +444,7 @@ public class MainActivity extends BaseActivity {
         @Override
         protected String doInBackground(String... strings) {
             String path = strings[0];
-            String value = "qwertyuiop[]asdfghjkl;'zxcvbnm,./" +
+            /*String value = "qwertyuiop[]asdfghjkl;'zxcvbnm,./" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
@@ -437,7 +453,31 @@ public class MainActivity extends BaseActivity {
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "";
+                    "";*/
+            DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
+            List<DeviceModel> deviceModels = deviceModelDao.queryBuilder().where(DeviceModelDao.Properties.ServerVersion.eq("0")).list();
+
+            PriceModelDao priceModelDao = MyApplication.getInstance().getDaoSession().getPriceModelDao();
+            List<PriceModel> priceModels = priceModelDao.queryBuilder().where(PriceModelDao.Properties.ServerVersion.eq("0")).list();
+
+            UserModelDao userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
+            List<UserModel> userModels = userModelDao.queryBuilder().where(UserModelDao.Properties.ServerVersion.eq("0")).list();
+
+            CardReeplacementModelDao cardReeplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReeplacementModelDao();
+            List<CardReeplacementModel> cardReeplacementModels =
+                    cardReeplacementModelDao.queryBuilder().where(CardReeplacementModelDao.Properties.ServerVersion.eq("0")).list();
+
+            PurchaseRecordModelDao purchaseRecordModelDao = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao();
+            List<PurchaseRecordModel> purchaseRecordModels =
+                    purchaseRecordModelDao.queryBuilder().where(PurchaseRecordModelDao.Properties.ServerVersion.eq("0")).list();
+
+            DownLoadFromPcModel downLoadFromPcModel = new DownLoadFromPcModel();
+            downLoadFromPcModel.setDevice(deviceModels);
+            downLoadFromPcModel.setCardReplacement(cardReeplacementModels);
+            downLoadFromPcModel.setPrice(priceModels);
+            downLoadFromPcModel.setPurchaseRecord(purchaseRecordModels);
+            downLoadFromPcModel.setUser(userModels);
+            String value = gson.toJson(downLoadFromPcModel);
             Integer stepLength = 1;
             Integer stepCount = value.length() / stepLength + 1;
 
