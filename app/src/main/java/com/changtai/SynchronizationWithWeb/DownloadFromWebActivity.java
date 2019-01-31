@@ -71,7 +71,9 @@ public class DownloadFromWebActivity extends Activity {
         progressDialog.setCancelable(false);
         //设置ProgressDialog样式为水平的样式
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-
+        /**
+         * 后面四个参数：url, 水站号， 开始版本，结束版本
+         */
         new DownloadFromWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaDownLoadFromWeb","010101","100","200");
     }
 
@@ -302,6 +304,9 @@ public class DownloadFromWebActivity extends Activity {
         @Override
         protected String doInBackground(String... strings) {
             String path = strings[0];
+            /**
+             * 将数据库中所有的severversion为0的数据 转为json上传
+             */
             String value = "qwertyuiop[]asdfghjkl;'zxcvbnm,./" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
                     "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
