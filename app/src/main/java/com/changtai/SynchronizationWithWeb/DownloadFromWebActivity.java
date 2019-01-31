@@ -1,5 +1,6 @@
 package com.changtai.SynchronizationWithWeb;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -11,10 +12,6 @@ import android.widget.Toast;
 
 import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
-import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
-import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
-import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
-import com.changtai.SynchronizationWithPCModels.SwpUserModel;
 import com.changtai.application.MyApplication;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
@@ -38,6 +35,7 @@ import static com.utils.WebMethodHelper.getStringByWebMethodPost;
 /**
  * 从服务器下载数据
  */
+@SuppressWarnings("all")
 public class DownloadFromWebActivity extends Activity {
 
     //消息显示框
@@ -242,6 +240,7 @@ public class DownloadFromWebActivity extends Activity {
          * @return 返回包ID，包长度
          * @throws Exception
          */
+        @SuppressLint("DefaultLocale")
         private DownloadFromWebTask.DownLoadCreatePackageOut downLoadCreatePackage(String path, String stationNo, long startVersion, long endVersion) throws Exception {
             path = String.format("%s/DownLoadCreatePackage", path);
             Map<String, String> params = new HashMap<String, String>();
