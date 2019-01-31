@@ -9,7 +9,7 @@ import java.util.Date;
 import org.greenrobot.greendao.annotation.Generated;
 
 @Entity
-public class CardReeplacementModel {
+public class CardReplacementModel {
 
     @Id
     public Long id;
@@ -60,13 +60,13 @@ public class CardReeplacementModel {
     @Property
     public Date LastDateTime;//上一次购水日期;补卡前最后购水时间
 
-    @Generated(hash = 1122107132)
-    public CardReeplacementModel(Long id, String CardReplacementId,
-            String StationNo, String DeviceNo, String Linkman, String Phone,
-            String Location, String AdministratorName, Long ServerVersion,
-            long ClientVersion, String UserName, String UserNo, String UsedTotal,
-            String PurchaseTotal, Date CreateDateTime, String LastTotal,
-            Date LastDateTime) {
+
+    @Generated(hash = 991418885)
+    public CardReplacementModel(Long id, String CardReplacementId, String StationNo,
+            String DeviceNo, String Linkman, String Phone, String Location,
+            String AdministratorName, Long ServerVersion, long ClientVersion,
+            String UserName, String UserNo, String UsedTotal, String PurchaseTotal,
+            Date CreateDateTime, String LastTotal, Date LastDateTime) {
         this.id = id;
         this.CardReplacementId = CardReplacementId;
         this.StationNo = StationNo;
@@ -86,9 +86,10 @@ public class CardReeplacementModel {
         this.LastDateTime = LastDateTime;
     }
 
-    @Generated(hash = 996574645)
-    public CardReeplacementModel() {
+    @Generated(hash = 674894395)
+    public CardReplacementModel() {
     }
+    
 
     public Long getId() {
         return this.id;

@@ -14,11 +14,11 @@ import com.changtai.Utils.Entity;
 import com.changtai.activites.BaseActivity;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.WaterSettingLayoutBinding;
-import com.changtai.sqlModel.CardReeplacementModel;
+import com.changtai.sqlModel.CardReplacementModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.UserModel;
-import com.changtai.sqlModelDao.CardReeplacementModelDao;
+import com.changtai.sqlModelDao.CardReplacementModelDao;
 import com.changtai.sqlModelDao.DeviceModelDao;
 import com.changtai.sqlModelDao.PriceModelDao;
 import com.google.gson.Gson;
@@ -201,26 +201,26 @@ public class UserActionActivity extends BaseActivity  {
     }
 
     public void insertCardReplaceModel(){
-        CardReeplacementModel cardReeplacementModel = new CardReeplacementModel();
-        cardReeplacementModel.setAdministratorName(Entity.loginModel.getUserName());
-        cardReeplacementModel.setCardReplacementId(Entity.getUUID());
-        cardReeplacementModel.setCreateDateTime(new Date());
-        cardReeplacementModel.setDeviceNo(userModel.getDeviceNo());
-        cardReeplacementModel.setLastDateTime(userModel.getLastDatetime());
-        cardReeplacementModel.setUserName(userModel.getUserName());
-        cardReeplacementModel.setUserNo(userModel.getUserNo());
-        cardReeplacementModel.setUsedTotal(userModel.getUsedTotal());
-        cardReeplacementModel.setPhone(deviceModel.getPhone());
-        cardReeplacementModel.setStationNo(deviceModel.getStationNo());
-        cardReeplacementModel.setLinkman(deviceModel.getLinkman());
-        cardReeplacementModel.setLocation(deviceModel.getLocation());
-        cardReeplacementModel.setPurchaseTotal(userModel.getPurchaseTotal());
-        cardReeplacementModel.setLastTotal(String.valueOf(Integer.parseInt(userModel.getPurchaseTotal()) - Integer.parseInt(userModel.getUsedTotal())));
-        cardReeplacementModel.setClientVersion(Long.parseLong(Entity.GetNowTime()));
-        cardReeplacementModel.setServerVersion(0L);
+        CardReplacementModel cardReplacementModel = new CardReplacementModel();
+        cardReplacementModel.setAdministratorName(Entity.loginModel.getUserName());
+        cardReplacementModel.setCardReplacementId(Entity.getUUID());
+        cardReplacementModel.setCreateDateTime(new Date());
+        cardReplacementModel.setDeviceNo(userModel.getDeviceNo());
+        cardReplacementModel.setLastDateTime(userModel.getLastDatetime());
+        cardReplacementModel.setUserName(userModel.getUserName());
+        cardReplacementModel.setUserNo(userModel.getUserNo());
+        cardReplacementModel.setUsedTotal(userModel.getUsedTotal());
+        cardReplacementModel.setPhone(deviceModel.getPhone());
+        cardReplacementModel.setStationNo(deviceModel.getStationNo());
+        cardReplacementModel.setLinkman(deviceModel.getLinkman());
+        cardReplacementModel.setLocation(deviceModel.getLocation());
+        cardReplacementModel.setPurchaseTotal(userModel.getPurchaseTotal());
+        cardReplacementModel.setLastTotal(String.valueOf(Integer.parseInt(userModel.getPurchaseTotal()) - Integer.parseInt(userModel.getUsedTotal())));
+        cardReplacementModel.setClientVersion(Long.parseLong(Entity.GetNowTime()));
+        cardReplacementModel.setServerVersion(0L);
 
-        CardReeplacementModelDao cardReeplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReeplacementModelDao();
-        cardReeplacementModelDao.insertOrReplace(cardReeplacementModel);
+        CardReplacementModelDao cardReplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReplacementModelDao();
+        cardReplacementModelDao.insertOrReplace(cardReplacementModel);
     }
 
     @Override

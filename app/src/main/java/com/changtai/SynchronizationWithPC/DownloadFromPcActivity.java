@@ -1,23 +1,34 @@
 package com.changtai.SynchronizationWithPC;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
+import com.changtai.Utils.SpUtils;
+import com.changtai.application.MyApplication;
+import com.changtai.sqlModel.CardReplacementModel;
+import com.changtai.sqlModel.ConfigModel;
+import com.changtai.sqlModel.DeviceModel;
+import com.changtai.sqlModel.PriceModel;
+import com.changtai.sqlModel.PurchaseRecordModel;
+import com.changtai.sqlModel.UserModel;
+import com.changtai.sqlModelDao.CardReplacementModelDao;
+import com.changtai.sqlModelDao.ConfigModelDao;
+import com.changtai.sqlModelDao.DeviceModelDao;
+import com.changtai.sqlModelDao.PriceModelDao;
+import com.changtai.sqlModelDao.PurchaseRecordModelDao;
+import com.changtai.sqlModelDao.UserModelDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import com.changtai.Utils.Entity;
 
 import static com.utils.WebMethodHelper.getStringByWebMethodGet;
 import static com.utils.WebMethodHelper.getStringByWebMethodPost;
@@ -25,41 +36,57 @@ import static com.utils.WebMethodHelper.getStringByWebMethodPost;
 /**
  * 从电脑版售水软件下载数据
  */
-public class DownloadFromPcActivity extends Activity {
 
-    //消息显示框
-    TextView textView ;
+@SuppressWarnings("all")
+public class DownloadFromPcActivity {
 
+    public ConfigModelDao configModelDao;
+    public ConfigModel configModel;
+    public SpUtils spUtils;
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
 
     //进度条
     private ProgressDialog progressDialog ;
+    public Context context;
+    public DownloadFromPcActivity(Context context){
+        this.context = context;
+        configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
+        spUtils = new SpUtils();
+        initView();
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_download_from_pc);
-        textView=(TextView)findViewById(R.id.tvDownloadFromPc);
-
+    public void initView(){
         //弹出要给ProgressDialog
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("提示信息");
         progressDialog.setMessage("工作中，请稍后......");
         //设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
         progressDialog.setCancelable(false);
         //设置ProgressDialog样式为水平的样式
         progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-
     }
 
-    public void onClick(View view) {
-        new DownloadFromPcTask().execute("http://192.168.9.192:4000/DownLoad","010101","100","200");
+    public void onClick() {
+        String station = "010101";
+        if (configModelDao != null){
+            List<ConfigModel> configModels = configModelDao.queryBuilder().where(ConfigModelDao.Properties.Id.eq(0L)).list();
+            if (!configModels.isEmpty()){
+                ConfigModel configModel = configModels.get(0);
+                station = configModel.getValue();
+            }
+        }
+
+        new DownloadFromPcTask().execute(getPcUrl() + "/DownLoad", station, "100","200");
     }
 
-    public void onBackPressed(View view) {
-        super.onBackPressed();
+    public String getPcUrl(){
+        String ip = spUtils.getString(Entity.IP);
+        if (!TextUtils.isEmpty(ip)){
+            Entity.PC_IP = "http://" + ip;
+        }
+        return Entity.PC_IP;
     }
     /**
      * 下载线程
@@ -103,11 +130,17 @@ public class DownloadFromPcActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.User.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
 
+                ConfigModel configModel = new ConfigModel();
+                configModel.setId(1L);
+                configModel.setName("Update_Time");
+                configModel.setValue(Entity.GetNowTime());
+                configModelDao.insertOrReplace(configModel);
+
                 return value;
                 //转换成实体对像然后保存
 
             } catch (Exception e) {
-                Toast.makeText(DownloadFromPcActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
+                com.changtai.Utils.Entity.toastMsg(context, e.getMessage());
                 //e.printStackTrace();
             }
             return null;
@@ -127,10 +160,10 @@ public class DownloadFromPcActivity extends Activity {
             //使ProgressDialog框消失
             progressDialog.dismiss();
             //textView.setText(s);
-            Toast.makeText(DownloadFromPcActivity.this,"结束",Toast.LENGTH_LONG).show();
+            Entity.toastMsg(context, "结束");
             super.onPostExecute(s);
             //
-            new UploadToPcTask().execute("http://192.168.9.192:4000/Upload");
+            new UploadToPcTask().execute(getPcUrl() + "/Upload");
         }
 
         class DownLoadCreatePackageOut{
@@ -204,16 +237,30 @@ public class DownloadFromPcActivity extends Activity {
         @Override
         protected String doInBackground(String... strings) {
             String path = strings[0];
-            String value = "qwertyuiop[]asdfghjkl;'zxcvbnm,./" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "asdfghjkl;'sfghjkl;ertyuiop[]xcvbnm,./34567890-1234567890-wertyuiop[]sdfghjkl" +
-                    "";
+            DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
+            List<DeviceModel> deviceModels = deviceModelDao.queryBuilder().where(DeviceModelDao.Properties.ServerVersion.eq("0")).list();
+
+            PriceModelDao priceModelDao = MyApplication.getInstance().getDaoSession().getPriceModelDao();
+            List<PriceModel> priceModels = priceModelDao.queryBuilder().where(PriceModelDao.Properties.ServerVersion.eq("0")).list();
+
+            UserModelDao userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
+            List<UserModel> userModels = userModelDao.queryBuilder().where(UserModelDao.Properties.ServerVersion.eq("0")).list();
+
+            CardReplacementModelDao cardReplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReplacementModelDao();
+            List<CardReplacementModel> cardReplacementModels =
+                    cardReplacementModelDao.queryBuilder().where(CardReplacementModelDao.Properties.ServerVersion.eq("0")).list();
+
+            PurchaseRecordModelDao purchaseRecordModelDao = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao();
+            List<PurchaseRecordModel> purchaseRecordModels =
+                    purchaseRecordModelDao.queryBuilder().where(PurchaseRecordModelDao.Properties.ServerVersion.eq("0")).list();
+
+            DownLoadFromPcModel downLoadFromPcModel = new DownLoadFromPcModel();
+            downLoadFromPcModel.setDevice(deviceModels);
+            downLoadFromPcModel.setCardReplacement(cardReplacementModels);
+            downLoadFromPcModel.setPrice(priceModels);
+            downLoadFromPcModel.setPurchaseRecord(purchaseRecordModels);
+            downLoadFromPcModel.setUser(userModels);
+            String value = gson.toJson(downLoadFromPcModel);
             Integer stepLength = 1;
             Integer stepCount = value.length() / stepLength + 1;
 
@@ -239,7 +286,7 @@ public class DownloadFromPcActivity extends Activity {
                 }
                 UpLoadSavePackage(path, packageId);
             } catch (Exception e) {
-                Toast.makeText(DownloadFromPcActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                Entity.toastMsg(context, e.getMessage());
                 e.printStackTrace();
             }
 
@@ -260,7 +307,7 @@ public class DownloadFromPcActivity extends Activity {
         protected void onPostExecute(String s) {
             //使ProgressDialog框消失
             progressDialog.dismiss();
-            Toast.makeText(DownloadFromPcActivity.this, "结束", Toast.LENGTH_LONG).show();
+            Entity.toastMsg(context, "结束");
             super.onPostExecute(s);
         }
 
