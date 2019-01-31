@@ -135,22 +135,22 @@ public class DownloadFromWebActivity extends Activity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
-                for(SwpDeviceModel model:downLoadFromPcModel.Device){
+                for(DeviceModel model:downLoadFromPcModel.Device){
                     DeviceModel model1= MappingObject(model,DeviceModel.class);
-                    model1.DeviceId= Long.parseLong(model.DeviceNo);
+                    model1.DeviceId= Long.parseLong(model.getDeviceNo());
                     MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
                 }
-                for(SwpUserModel model:downLoadFromPcModel.User){
+                for(UserModel model:downLoadFromPcModel.User){
                     UserModel model1= MappingObject(model,UserModel.class);
-                    model1.Id= Long.parseLong(model.UserNo);
+                    model1.Id= Long.parseLong(model.getUserNo());
                     MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model1);
                 }
-                for(SwpPriceModel model:downLoadFromPcModel.Price){
+                for(PriceModel model:downLoadFromPcModel.Price){
                     PriceModel model1= MappingObject(model,PriceModel.class);
                     model1.Id= Long.parseLong(String.format("%s%03d",model1.stationNo,model1.sjId));
                     MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
                 }
-                for(SwpPurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
+                for(PurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
                     PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
                     QueryBuilder<PurchaseRecordModel> qb =MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().queryBuilder();
                     qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.purchaseRecordId));

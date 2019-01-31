@@ -19,10 +19,6 @@ import android.widget.Toast;
 
 import com.changtai.R;
 import com.changtai.SynchronizationWithPCModels.DownLoadFromPcModel;
-import com.changtai.SynchronizationWithPCModels.SwpDeviceModel;
-import com.changtai.SynchronizationWithPCModels.SwpPriceModel;
-import com.changtai.SynchronizationWithPCModels.SwpPurchaseRecordModel;
-import com.changtai.SynchronizationWithPCModels.SwpUserModel;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.SpUtils;
 import com.changtai.application.MyApplication;
@@ -51,7 +47,6 @@ import org.greenrobot.greendao.query.QueryBuilder;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.Map;
 
