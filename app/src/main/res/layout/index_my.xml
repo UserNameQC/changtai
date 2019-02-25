@@ -8,69 +8,54 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="160dp"
             android:orientation="horizontal"
             android:id="@+id/personal_center_layout"
+            android:background="@drawable/icon_heard"
             android:padding="@dimen/normal_space">
 
-            <ImageView
-                android:id="@+id/index_my_list1_touxiang"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/user_defult" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/index_avatar"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:src="@drawable/user_defult"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="25dp"
+                android:scaleType="centerCrop" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="6dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="3dp">
-
-                <TextView
-                    android:id="@+id/index_my_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#000"
-                    android:text="未登录"
-                    android:textSize="@dimen/title_text_size" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/index_qx"
-                    android:textColor="#000"
-                    android:layout_marginTop="10dp"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-
-            <ImageView
+            <TextView
+                android:id="@+id/percent_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:src="@drawable/hui_discount_item_rule_arrow"
-                android:visibility="gone"/>
-        </LinearLayout>
+                android:layout_below="@+id/index_avatar"
+                android:layout_centerHorizontal="true"
+                android:textColor="#fff"
+                android:text="未登录"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"/>
+
+
+        </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="8dp"
             android:background="@color/normal_bg_color" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:padding="@dimen/normal_space">
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:gravity="center_vertical" >
 
             <TextView
                 android:id="@+id/index_reset_pw"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_centerVertical="true"
                 android:drawablePadding="3dp"
                 android:gravity="center_vertical"
                 android:text="修改密码"
@@ -87,38 +72,43 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
-        </LinearLayout>
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_open"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/index_layout_sync"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:gravity="center_vertical"
-            android:padding="@dimen/normal_space">
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:id="@+id/index_sync_data"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:drawablePadding="3dp"
-                android:gravity="center_vertical"
+                android:layout_centerVertical="true"
                 android:text="同步数据"
                 android:textSize="@dimen/text_size_default" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
-        </LinearLayout>
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_open" />
+        </RelativeLayout>
 
 
         <RelativeLayout
             android:id="@+id/add_user_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/normal_space">
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,15 +121,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_open" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/add_base_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/normal_space">
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp" >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -152,15 +143,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_open" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/main_user_information"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/normal_space">
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -173,36 +165,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_open" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/main_user_made_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/normal_space">
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="制作工具卡"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_centerVertical="true"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_open" />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/main_ip_setting"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/normal_space">
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -215,8 +209,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/hui_discount_item_rule_arrow" />
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_open" />
         </RelativeLayout>
     </LinearLayout>
 

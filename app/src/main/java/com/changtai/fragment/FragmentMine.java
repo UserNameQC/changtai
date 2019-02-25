@@ -47,12 +47,12 @@ public class FragmentMine extends Fragment {
             try {
                 if (Entity.loginModel.getLoginName().equals("admin") && Entity.loginModel.getUserName().equals("admin")) {
                     hideView(true);
-                    binding.indexMyUsername.setText(Entity.loginModel.getUserName());
-                    binding.indexQx.setText(Entity.loginModel.getQxString());
+                    binding.percentName.setText(Entity.loginModel.getUserName());
+                    //binding.indexQx.setText(Entity.loginModel.getQxString());
                 } else {
                     hideView(false);
-                    binding.indexQx.setText(Entity.spres.getString(Entity.QX_STRING, ""));
-                    binding.indexMyUsername.setText(Entity.spres.getString(Entity.LOGIN_NAME, ""));
+                    //binding.indexQx.setText(Entity.spres.getString(Entity.QX_STRING, ""));
+                    binding.percentName.setText(Entity.spres.getString(Entity.LOGIN_NAME, ""));
                 }
             }catch (NullPointerException e){
                 e.printStackTrace();
@@ -60,8 +60,8 @@ public class FragmentMine extends Fragment {
             }
         }else {
             hideView(false);
-            binding.indexQx.setText(Entity.spres.getString(Entity.QX_STRING, ""));
-            binding.indexMyUsername.setText(Entity.spres.getString(Entity.LOGIN_NAME, ""));
+            //binding.indexQx.setText(Entity.spres.getString(Entity.QX_STRING, ""));
+            binding.percentName.setText(Entity.spres.getString(Entity.LOGIN_NAME, ""));
         }
     }
 
