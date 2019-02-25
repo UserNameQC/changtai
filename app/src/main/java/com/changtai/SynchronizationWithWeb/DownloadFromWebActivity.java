@@ -3,6 +3,7 @@ package com.changtai.SynchronizationWithWeb;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,7 +37,7 @@ import static com.utils.WebMethodHelper.getStringByWebMethodPost;
  * 从服务器下载数据
  */
 @SuppressWarnings("all")
-public class DownloadFromWebActivity extends Activity {
+public class DownloadFromWebActivity {
 
     //消息显示框
     TextView textView ;
@@ -48,11 +49,16 @@ public class DownloadFromWebActivity extends Activity {
     //进度条
     private ProgressDialog progressDialog ;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download_from_web);
 
+    }*/
+    public Context context;
+
+    public DownloadFromWebActivity(Context context){
+        this.context = context;
     }
 
     public void onClick(View view) {
@@ -62,7 +68,7 @@ public class DownloadFromWebActivity extends Activity {
     public void downLoadFromWeb(){
 
         //弹出要给ProgressDialog
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(context);
         progressDialog.setTitle("提示信息");
         progressDialog.setMessage("工作中，请稍后......");
         //设置setCancelable(false); 表示我们不能取消这个弹出框，等下载完成之后再让弹出框消失
@@ -75,9 +81,9 @@ public class DownloadFromWebActivity extends Activity {
         new DownloadFromWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaDownLoadFromWeb","010101","100","200");
     }
 
-    public void onBackPressed(View view) {
+    /*public void onBackPressed(View view) {
         super.onBackPressed();
-    }
+    }*/
 
     /**
      * 下载线程
@@ -213,7 +219,7 @@ public class DownloadFromWebActivity extends Activity {
             //使ProgressDialog框消失
             progressDialog.dismiss();
             //textView.setText(s);
-            Toast.makeText(DownloadFromWebActivity.this,"结束",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"结束",Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
             //
             new UploadToWebTask().execute("http://tzctdz.51mypc.cn:8000/PdaUploadToWeb");
@@ -341,7 +347,7 @@ public class DownloadFromWebActivity extends Activity {
                 }
                 UpLoadSavePackage(path, packageId);
             } catch (Exception e) {
-                Toast.makeText(DownloadFromWebActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
 
@@ -362,7 +368,7 @@ public class DownloadFromWebActivity extends Activity {
         protected void onPostExecute(String s) {
             //使ProgressDialog框消失
             progressDialog.dismiss();
-            Toast.makeText(DownloadFromWebActivity.this, "结束", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "结束", Toast.LENGTH_LONG).show();
             super.onPostExecute(s);
         }
 

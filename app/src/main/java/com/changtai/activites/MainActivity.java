@@ -26,13 +26,13 @@ import com.changtai.databinding.ActivityMainBinding;
 import com.changtai.fragment.FragmentAdapter;
 import com.changtai.fragment.FragmentMain;
 import com.changtai.fragment.FragmentMine;
-import com.changtai.sqlModel.CardReeplacementModel;
+import com.changtai.sqlModel.CardReplacementModel;
 import com.changtai.sqlModel.ConfigModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
-import com.changtai.sqlModelDao.CardReeplacementModelDao;
+import com.changtai.sqlModelDao.CardReplacementModelDao;
 import com.changtai.sqlModelDao.ConfigModelDao;
 import com.changtai.sqlModelDao.DeviceModelDao;
 import com.changtai.sqlModelDao.PriceModelDao;
@@ -458,9 +458,9 @@ public class MainActivity extends BaseActivity {
             UserModelDao userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
             List<UserModel> userModels = userModelDao.queryBuilder().where(UserModelDao.Properties.ServerVersion.eq("0")).list();
 
-            CardReeplacementModelDao cardReeplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReeplacementModelDao();
-            List<CardReeplacementModel> cardReeplacementModels =
-                    cardReeplacementModelDao.queryBuilder().where(CardReeplacementModelDao.Properties.ServerVersion.eq("0")).list();
+            CardReplacementModelDao cardReplacementModelDao = MyApplication.getInstance().getDaoSession().getCardReplacementModelDao();
+            List<CardReplacementModel> cardReplacementModels =
+                    cardReplacementModelDao.queryBuilder().where(CardReplacementModelDao.Properties.ServerVersion.eq("0")).list();
 
             PurchaseRecordModelDao purchaseRecordModelDao = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao();
             List<PurchaseRecordModel> purchaseRecordModels =
@@ -468,7 +468,7 @@ public class MainActivity extends BaseActivity {
 
             DownLoadFromPcModel downLoadFromPcModel = new DownLoadFromPcModel();
             downLoadFromPcModel.setDevice(deviceModels);
-            downLoadFromPcModel.setCardReplacement(cardReeplacementModels);
+            downLoadFromPcModel.setCardReplacement(cardReplacementModels);
             downLoadFromPcModel.setPrice(priceModels);
             downLoadFromPcModel.setPurchaseRecord(purchaseRecordModels);
             downLoadFromPcModel.setUser(userModels);

@@ -1,6 +1,6 @@
 package com.changtai.SynchronizationWithPCModels;
 
-import com.changtai.sqlModel.CardReeplacementModel;
+import com.changtai.sqlModel.CardReplacementModel;
 import com.changtai.sqlModel.DeviceModel;
 import com.changtai.sqlModel.PriceModel;
 import com.changtai.sqlModel.PurchaseRecordModel;
@@ -13,7 +13,7 @@ public class DownLoadFromPcModel {
     public List<UserModel> User;
     public List<PriceModel> Price;
     public List<PurchaseRecordModel> PurchaseRecord;
-    public List<CardReeplacementModel> CardReplacement;
+    public List<CardReplacementModel> CardReplacement;
 
     public List<DeviceModel> getDevice() {
         return Device;
@@ -47,11 +47,11 @@ public class DownLoadFromPcModel {
         PurchaseRecord = purchaseRecord;
     }
 
-    public List<CardReeplacementModel> getCardReplacement() {
+    public List<CardReplacementModel> getCardReplacement() {
         return CardReplacement;
     }
 
-    public void setCardReplacement(List<CardReeplacementModel> cardReplacement) {
+    public void setCardReplacement(List<CardReplacementModel> cardReplacement) {
         CardReplacement = cardReplacement;
     }
 }

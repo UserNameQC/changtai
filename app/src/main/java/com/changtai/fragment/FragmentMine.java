@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +15,9 @@ import android.view.ViewGroup;
 
 import com.changtai.ItemsList.AdministratorActivity;
 import com.changtai.R;
+import com.changtai.SynchronizationWithPC.DownloadFromPcActivity;
 import com.changtai.Utils.Entity;
+import com.changtai.Utils.SpUtils;
 import com.changtai.activites.AddUserActivity;
 import com.changtai.activites.LoginActivity;
 import com.changtai.activites.MadeCardActivity;
@@ -33,10 +36,12 @@ public class FragmentMine extends Fragment {
     private View mView;
     public IndexMyBinding binding;
     public ProgressDialog progressDialog;
+    public SpUtils spUtils;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.index_my, container, false);
+        spUtils = new SpUtils();
         initView();
         initEvent();
         return binding.getRoot();
@@ -120,8 +125,50 @@ public class FragmentMine extends Fragment {
         binding.indexLayoutSync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity mainActivity = (MainActivity) getActivity();
-                mainActivity.downLoadFromWeb();
+
+                boolean serverChecked = spUtils.getBoolean(Entity.SERVER_CHECK);
+                boolean pcChecked = spUtils.getBoolean(Entity.IP_CHECK);
+                if (serverChecked){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("确定从服务器更新数据？");
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            MainActivity mainActivity = (MainActivity) getActivity();
+                            mainActivity.downLoadFromWeb();
+                        }
+                    });
+
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+
+                } else if (pcChecked){
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("确定从PC终端更新数据？");
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            DownloadFromPcActivity pcActivity = new DownloadFromPcActivity(getActivity());
+                            pcActivity.onClick();
+                        }
+                    });
+
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+                }
             }
         });
 

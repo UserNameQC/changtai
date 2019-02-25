@@ -32,7 +32,7 @@ public class Entity {
     public static String mainUrl = "http://tzctdz.51mypc.cn:8081/changtai";
     public static String pcUrl = "http://192.168.1.101/changtai";
     public static String MAIN_URL = "http://tzctdz.51mypc.cn:8000";
-    public static String PC_IP = "192.168.101.102";
+    public static String PC_IP = "http://192.168.9.192:4000";
     public static String loginUrl;
     public static String getDataUrl;
     public static String updateUrl;
