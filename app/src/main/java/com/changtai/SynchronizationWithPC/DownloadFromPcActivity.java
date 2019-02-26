@@ -140,8 +140,8 @@ public class DownloadFromPcActivity {
                 //转换成实体对像然后保存
 
             } catch (Exception e) {
-                com.changtai.Utils.Entity.toastMsg(context, e.getMessage());
-                //e.printStackTrace();
+                //com.changtai.Utils.Entity.toastMsg(context, e.getMessage());
+                e.printStackTrace();
             }
             return null;
         }
@@ -286,7 +286,7 @@ public class DownloadFromPcActivity {
                 }
                 UpLoadSavePackage(path, packageId);
             } catch (Exception e) {
-                Entity.toastMsg(context, e.getMessage());
+                //Entity.toastMsg(context, e.getMessage());
                 e.printStackTrace();
             }
 

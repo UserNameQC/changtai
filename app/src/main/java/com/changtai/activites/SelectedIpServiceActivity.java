@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.CompoundButton;
 
 import com.changtai.R;
@@ -24,7 +25,9 @@ public class SelectedIpServiceActivity extends BaseActivity{
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(SelectedIpServiceActivity.this, R.layout.activity_selected_ip_service);
         spUtils = new SpUtils();
+        //checkedRadio(true);
         binding.editIp.addTextChangedListener(textWatcher);
+        binding.editServer.addTextChangedListener(textWatcher);
         boolean server_check = spUtils.getBoolean(Entity.SERVER_CHECK);
         boolean pcip_check = spUtils.getBoolean(Entity.IP_CHECK);
         if (server_check){
@@ -39,21 +42,38 @@ public class SelectedIpServiceActivity extends BaseActivity{
     }
 
     public void initEvent(){
-        binding.server.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+
+        binding.server.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                spUtils.setBoolean(Entity.SERVER_CHECK, isChecked);
-                Log.e(TAG, "server: " + isChecked );
+            public void onClick(View v) {
+                checkedRadio(true);
             }
         });
 
-        binding.pcIp.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        binding.pcIp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                spUtils.setBoolean(Entity.IP_CHECK, isChecked);
-                Log.e(TAG, "ip: " + isChecked );
+            public void onClick(View v) {
+                checkedRadio(false);
             }
         });
+
+
+    }
+
+    public CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        }
+    };
+
+    public void checkedRadio(boolean flag){
+        binding.server.setChecked(flag);
+        binding.pcIp.setChecked(!flag);
+
+        spUtils.setBoolean(Entity.SERVER_CHECK, flag);
+        spUtils.setBoolean(Entity.IP_CHECK, !flag);
     }
 
     public void initView(){

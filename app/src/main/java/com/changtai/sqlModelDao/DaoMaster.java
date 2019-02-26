@@ -21,7 +21,6 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        CardReplacementModelDao.createTable(db, ifNotExists);
         ConfigModelDao.createTable(db, ifNotExists);
         DBEntityModelDao.createTable(db, ifNotExists);
         DeviceModelDao.createTable(db, ifNotExists);
@@ -30,11 +29,11 @@ public class DaoMaster extends AbstractDaoMaster {
         PriceModelDao.createTable(db, ifNotExists);
         PurchaseRecordModelDao.createTable(db, ifNotExists);
         UserModelDao.createTable(db, ifNotExists);
+        CardReplacementModelDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        CardReplacementModelDao.dropTable(db, ifExists);
         ConfigModelDao.dropTable(db, ifExists);
         DBEntityModelDao.dropTable(db, ifExists);
         DeviceModelDao.dropTable(db, ifExists);
@@ -43,6 +42,7 @@ public class DaoMaster extends AbstractDaoMaster {
         PriceModelDao.dropTable(db, ifExists);
         PurchaseRecordModelDao.dropTable(db, ifExists);
         UserModelDao.dropTable(db, ifExists);
+        CardReplacementModelDao.dropTable(db, ifExists);
     }
 
     /**
@@ -61,7 +61,6 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(CardReplacementModelDao.class);
         registerDaoClass(ConfigModelDao.class);
         registerDaoClass(DBEntityModelDao.class);
         registerDaoClass(DeviceModelDao.class);
@@ -70,6 +69,7 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(PriceModelDao.class);
         registerDaoClass(PurchaseRecordModelDao.class);
         registerDaoClass(UserModelDao.class);
+        registerDaoClass(CardReplacementModelDao.class);
     }
 
     public DaoSession newSession() {

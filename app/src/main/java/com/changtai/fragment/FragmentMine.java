@@ -168,6 +168,25 @@ public class FragmentMine extends Fragment {
                         }
                     });
                     builder.show();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setMessage("您未设置服务器或者电脑IP, 系统将自动默认以服务器地址进行同步数据。");
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            MainActivity mainActivity = (MainActivity) getActivity();
+                            mainActivity.downLoadFromWeb();
+                        }
+                    });
+
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
                 }
             }
         });

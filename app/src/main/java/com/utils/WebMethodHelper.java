@@ -78,7 +78,11 @@ public class WebMethodHelper {
                 String s =new String(bytes,0,length);
                 return s;
             }
-            throw new Exception(String.format("%s,服务器返回错误代码",path));
+            //throw new Exception(String.format("%s,服务器返回错误代码",path));
+            return "";
+        } catch (Exception e){
+            e.printStackTrace();
+            return "";
         }
         finally {
             connection.disconnect();
