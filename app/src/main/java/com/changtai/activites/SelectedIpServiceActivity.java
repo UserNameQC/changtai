@@ -15,11 +15,12 @@ import com.changtai.Utils.SpUtils;
 import com.changtai.databinding.ActivitySelectedIpServiceBinding;
 
 @SuppressWarnings("all")
-public class SelectedIpServiceActivity extends BaseActivity{
+public class SelectedIpServiceActivity extends BaseActivity {
 
     public ActivitySelectedIpServiceBinding binding;
     public SpUtils spUtils;
     public String TAG = "SelectedIpServiceActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,66 +28,39 @@ public class SelectedIpServiceActivity extends BaseActivity{
         spUtils = new SpUtils();
         //checkedRadio(true);
         binding.editIp.addTextChangedListener(textWatcher);
-        binding.editServer.addTextChangedListener(textWatcher);
-        boolean server_check = spUtils.getBoolean(Entity.SERVER_CHECK);
-        boolean pcip_check = spUtils.getBoolean(Entity.IP_CHECK);
-        if (server_check){
+        binding.editServer.addTextChangedListener(serverWatch);
+        /*boolean server_check = spUtils.getBoolean(Entity.SERVER_CHECK);
+        boolean pcip_check = spUtils.getBoolean(Entity.IP_CHECK);*/
+        /*if (server_check){
             binding.server.setChecked(true);
         } else if (pcip_check){
             binding.pcIp.setChecked(true);
         } else{
             binding.server.setChecked(true);
-        }
+        }*/
         initEvent();
         initView();
     }
 
-    public void initEvent(){
-
-
-        binding.server.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkedRadio(true);
-            }
-        });
-
-        binding.pcIp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkedRadio(false);
-            }
-        });
+    public void initEvent() {
 
 
     }
 
-    public CompoundButton.OnCheckedChangeListener listener = new CompoundButton.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-        }
-    };
 
-    public void checkedRadio(boolean flag){
+    /*public void checkedRadio(boolean flag){
         binding.server.setChecked(flag);
         binding.pcIp.setChecked(!flag);
 
         spUtils.setBoolean(Entity.SERVER_CHECK, flag);
         spUtils.setBoolean(Entity.IP_CHECK, !flag);
-    }
+    }*/
 
-    public void initView(){
-        String url;
-        if (binding.server.isChecked()){
-            Log.e(TAG, "isSelected" + binding.server.isSelected());
-            url = spUtils.getString(Entity.SERVER);
-        } else {
-            url = spUtils.getString(Entity.IP);
-        }
-        if (!TextUtils.isEmpty(url)){
-            binding.editIp.setText(url);
-        }
+    public void initView() {
+
+        binding.editIp.setText(spUtils.getString(Entity.IP));
+        binding.editServer.setText(spUtils.getString(Entity.SERVER));
     }
 
     public TextWatcher textWatcher = new TextWatcher() {
@@ -102,11 +76,24 @@ public class SelectedIpServiceActivity extends BaseActivity{
 
         @Override
         public void afterTextChanged(Editable s) {
-            if (binding.server.isChecked()){
-                spUtils.setString(Entity.SERVER, s.toString());
-            } else {
-                spUtils.setString(Entity.IP, s.toString());
-            }
+            spUtils.setString(Entity.IP, s.toString());
+        }
+    };
+
+    public TextWatcher serverWatch = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            spUtils.setString(Entity.SERVER, s.toString());
         }
     };
 }

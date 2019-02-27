@@ -92,6 +92,7 @@ public class UserModelActivity extends Activity implements View.OnClickListener{
 
 
         final List<UserModel> userModels = userModelDao.loadAll();
+        if (userModels.isEmpty()) return;
         adapter = new UserAdapter(this,userModels, R.layout.user_item_layout);
         userBinding.userList.setAdapter(adapter);
 

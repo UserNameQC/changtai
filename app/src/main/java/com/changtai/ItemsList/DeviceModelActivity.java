@@ -91,6 +91,7 @@ public class DeviceModelActivity extends Activity implements View.OnClickListene
         RealmUtils.setEditWatch(etMap, textWatcher);
 
         deviceModels = deviceModelDao.loadAll();
+        if (deviceModels.isEmpty()) return;
         adapter = new DeviceAdapter(this, deviceModels, R.layout.user_item_layout);
         binding.wellListView.setAdapter(adapter);
         //binding.wellOk.setOnClickListener(this);

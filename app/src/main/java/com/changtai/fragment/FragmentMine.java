@@ -77,7 +77,7 @@ public class FragmentMine extends Fragment {
     }
 
     public void initEvent(){
-        binding.indexResetPw.setOnClickListener(new View.OnClickListener() {
+        binding.resetPasswordLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), ResetPassWord.class));
@@ -122,13 +122,9 @@ public class FragmentMine extends Fragment {
         /**
          * 同步数据
          */
-        binding.indexLayoutSync.setOnClickListener(new View.OnClickListener() {
+        binding.indexSyncFromServer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                boolean serverChecked = spUtils.getBoolean(Entity.SERVER_CHECK);
-                boolean pcChecked = spUtils.getBoolean(Entity.IP_CHECK);
-                if (serverChecked){
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                     builder.setMessage("确定从服务器更新数据？");
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -147,49 +143,33 @@ public class FragmentMine extends Fragment {
                         }
                     });
                     builder.show();
-
-                } else if (pcChecked){
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage("确定从PC终端更新数据？");
-                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            DownloadFromPcActivity pcActivity = new DownloadFromPcActivity(getActivity());
-                            pcActivity.onClick();
-                        }
-                    });
-
-                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    builder.show();
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setMessage("您未设置服务器或者电脑IP, 系统将自动默认以服务器地址进行同步数据。");
-                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            MainActivity mainActivity = (MainActivity) getActivity();
-                            mainActivity.downLoadFromWeb();
-                        }
-                    });
-
-                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    builder.show();
-                }
             }
         });
+
+        binding.indexSyncFromPc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("确定从PC终端更新数据？");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        DownloadFromPcActivity pcActivity = new DownloadFromPcActivity(getActivity());
+                        pcActivity.onClick();
+                    }
+                });
+
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+            }
+        });
+
 
         binding.personalCenterLayout.setOnClickListener(new View.OnClickListener() {
             @Override

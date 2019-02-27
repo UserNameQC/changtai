@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+    <LinearLayout
         android:id="@+id/index_my"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,10 +45,11 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:background="@color/normal_bg_color" />
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
 
         <RelativeLayout
+            android:id="@+id/reset_password_layout"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
@@ -77,8 +82,13 @@
                 android:layout_centerVertical="true"/>
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
+
         <RelativeLayout
-            android:id="@+id/index_layout_sync"
+            android:id="@+id/index_sync_from_server"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
@@ -86,12 +96,12 @@
             android:layout_marginEnd="15dp">
 
             <TextView
-                android:id="@+id/index_sync_data"
+                android:id="@+id/index_sync_data_from_server"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawablePadding="3dp"
                 android:layout_centerVertical="true"
-                android:text="同步数据"
+                android:text="同步数据(服务器)"
                 android:textSize="@dimen/text_size_default" />
 
             <ImageView
@@ -102,6 +112,40 @@
                 android:src="@drawable/icon_open" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
+
+        <RelativeLayout
+            android:id="@+id/index_sync_from_pc"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+            <TextView
+                android:id="@+id/index_sync_data_from_pc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="3dp"
+                android:layout_centerVertical="true"
+                android:text="同步数据(电脑)"
+                android:textSize="@dimen/text_size_default" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_open" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/add_user_layout"
@@ -125,6 +169,11 @@
                 android:src="@drawable/icon_open" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
+
         <RelativeLayout
             android:id="@+id/add_base_layout"
             android:layout_width="match_parent"
@@ -146,6 +195,11 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/icon_open" />
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/main_user_information"
@@ -169,6 +223,11 @@
                 android:src="@drawable/icon_open" />
         </RelativeLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
+
         <RelativeLayout
             android:id="@+id/main_user_made_card"
             android:layout_width="match_parent"
@@ -190,6 +249,11 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/icon_open" />
         </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
 
         <RelativeLayout
             android:id="@+id/main_ip_setting"
@@ -213,5 +277,5 @@
                 android:src="@drawable/icon_open" />
         </RelativeLayout>
     </LinearLayout>
-
+    </ScrollView>
 </layout>

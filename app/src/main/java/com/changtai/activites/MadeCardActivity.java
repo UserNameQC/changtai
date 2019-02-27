@@ -141,6 +141,7 @@ public class MadeCardActivity extends BaseActivity {
 
         ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
         List<ConfigModel> configModels = configModelDao.queryBuilder().where(ConfigModelDao.Properties.Id.eq(0L)).list();
+        if (configModels.isEmpty()) return;
         if (!configModels.isEmpty()){
             ConfigModel configModel = configModels.get(0);
             List<String> configNo = new LinkedList<>();
@@ -151,6 +152,7 @@ public class MadeCardActivity extends BaseActivity {
 
         DeviceModelDao deviceModelDao = MyApplication.getInstance().getDaoSession().getDeviceModelDao();
         final List<DeviceModel> deviceModels = deviceModelDao.loadAll();
+        if (deviceModels.isEmpty()) return;
         //DeviceSpinnerAdapter deviceNoAdapter = new DeviceSpinnerAdapter(this, deviceModels);
         for (DeviceModel deviceModel : deviceModels){
             deviceNos.add(deviceModel.getDeviceNo());

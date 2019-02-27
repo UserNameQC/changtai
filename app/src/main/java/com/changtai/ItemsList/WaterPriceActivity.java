@@ -66,6 +66,7 @@ public class WaterPriceActivity extends Activity implements View.OnClickListener
 
         final List<PriceModel> priceModels = priceModelDao.loadAll();
 
+        if (priceModels.isEmpty()) return;
         priceAdapter = new PriceAdapter(this, priceModels, R.layout.user_item_layout);
         binding.priceListView.setAdapter(priceAdapter);
 

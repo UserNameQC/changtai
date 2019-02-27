@@ -116,8 +116,7 @@ public class UserActionActivity extends BaseActivity  {
     public void initViews(){
         try {
             String data = getIntent().getExtras().getString("data", null);
-            userModel = new Gson().fromJson(data, new TypeToken<UserModel>() {
-            }.getType());
+            userModel = new Gson().fromJson(data, new TypeToken<UserModel>() {}.getType());
             binding.userSettingStation.setText(userModel.getStationNo());
             binding.userSettingDevice.setText(userModel.getDeviceNo());
             //binding.userSettingLocation.setText(userModel.get);//机井安装位置

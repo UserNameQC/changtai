@@ -81,6 +81,7 @@ public class UserPurchaseActivity extends Activity implements View.OnClickListen
         RealmUtils.setEditEnable(etMap, false);
         RealmUtils.setEditWatch(etMap, textWatcher);
 
+        if (getUserNum().isEmpty()) return;
         adapter = new ArrayAdapter(this, R.layout.list_view_layout, R.id.text_list_item, getUserNum());
         binding.buyListview.setAdapter(adapter);
 
