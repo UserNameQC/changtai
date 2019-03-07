@@ -25,15 +25,15 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
-        public final static Property SjId = new Property(1, Integer.class, "sjId", false, "SJ_ID");
-        public final static Property StationNo = new Property(2, String.class, "stationNo", false, "STATION_NO");
-        public final static Property Mc = new Property(3, String.class, "mc", false, "MC");
-        public final static Property Sj1 = new Property(4, String.class, "sj1", false, "SJ1");
-        public final static Property Sj2 = new Property(5, String.class, "sj2", false, "SJ2");
-        public final static Property Sj3 = new Property(6, String.class, "sj3", false, "SJ3");
-        public final static Property AdministratorName = new Property(7, String.class, "administratorName", false, "ADMINISTRATOR_NAME");
-        public final static Property ServerVersion = new Property(8, Long.class, "serverVersion", false, "SERVER_VERSION");
-        public final static Property ClientVersion = new Property(9, long.class, "clientVersion", false, "CLIENT_VERSION");
+        public final static Property SjId = new Property(1, Integer.class, "SjId", false, "SJ_ID");
+        public final static Property StationNo = new Property(2, String.class, "StationNo", false, "STATION_NO");
+        public final static Property Mc = new Property(3, String.class, "Mc", false, "MC");
+        public final static Property Sj1 = new Property(4, String.class, "Sj1", false, "SJ1");
+        public final static Property Sj2 = new Property(5, String.class, "Sj2", false, "SJ2");
+        public final static Property Sj3 = new Property(6, String.class, "Sj3", false, "SJ3");
+        public final static Property AdministratorName = new Property(7, String.class, "AdministratorName", false, "ADMINISTRATOR_NAME");
+        public final static Property ServerVersion = new Property(8, Long.class, "ServerVersion", false, "SERVER_VERSION");
+        public final static Property ClientVersion = new Property(9, long.class, "ClientVersion", false, "CLIENT_VERSION");
     }
 
 
@@ -50,15 +50,15 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PRICE_MODEL\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
-                "\"SJ_ID\" INTEGER," + // 1: sjId
-                "\"STATION_NO\" TEXT," + // 2: stationNo
-                "\"MC\" TEXT," + // 3: mc
-                "\"SJ1\" TEXT," + // 4: sj1
-                "\"SJ2\" TEXT," + // 5: sj2
-                "\"SJ3\" TEXT," + // 6: sj3
-                "\"ADMINISTRATOR_NAME\" TEXT," + // 7: administratorName
-                "\"SERVER_VERSION\" INTEGER," + // 8: serverVersion
-                "\"CLIENT_VERSION\" INTEGER NOT NULL );"); // 9: clientVersion
+                "\"SJ_ID\" INTEGER," + // 1: SjId
+                "\"STATION_NO\" TEXT," + // 2: StationNo
+                "\"MC\" TEXT," + // 3: Mc
+                "\"SJ1\" TEXT," + // 4: Sj1
+                "\"SJ2\" TEXT," + // 5: Sj2
+                "\"SJ3\" TEXT," + // 6: Sj3
+                "\"ADMINISTRATOR_NAME\" TEXT," + // 7: AdministratorName
+                "\"SERVER_VERSION\" INTEGER," + // 8: ServerVersion
+                "\"CLIENT_VERSION\" INTEGER NOT NULL );"); // 9: ClientVersion
     }
 
     /** Drops the underlying database table. */
@@ -76,44 +76,44 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
             stmt.bindLong(1, Id);
         }
  
-        Integer sjId = entity.getSjId();
-        if (sjId != null) {
-            stmt.bindLong(2, sjId);
+        Integer SjId = entity.getSjId();
+        if (SjId != null) {
+            stmt.bindLong(2, SjId);
         }
  
-        String stationNo = entity.getStationNo();
-        if (stationNo != null) {
-            stmt.bindString(3, stationNo);
+        String StationNo = entity.getStationNo();
+        if (StationNo != null) {
+            stmt.bindString(3, StationNo);
         }
  
-        String mc = entity.getMc();
-        if (mc != null) {
-            stmt.bindString(4, mc);
+        String Mc = entity.getMc();
+        if (Mc != null) {
+            stmt.bindString(4, Mc);
         }
  
-        String sj1 = entity.getSj1();
-        if (sj1 != null) {
-            stmt.bindString(5, sj1);
+        String Sj1 = entity.getSj1();
+        if (Sj1 != null) {
+            stmt.bindString(5, Sj1);
         }
  
-        String sj2 = entity.getSj2();
-        if (sj2 != null) {
-            stmt.bindString(6, sj2);
+        String Sj2 = entity.getSj2();
+        if (Sj2 != null) {
+            stmt.bindString(6, Sj2);
         }
  
-        String sj3 = entity.getSj3();
-        if (sj3 != null) {
-            stmt.bindString(7, sj3);
+        String Sj3 = entity.getSj3();
+        if (Sj3 != null) {
+            stmt.bindString(7, Sj3);
         }
  
-        String administratorName = entity.getAdministratorName();
-        if (administratorName != null) {
-            stmt.bindString(8, administratorName);
+        String AdministratorName = entity.getAdministratorName();
+        if (AdministratorName != null) {
+            stmt.bindString(8, AdministratorName);
         }
  
-        Long serverVersion = entity.getServerVersion();
-        if (serverVersion != null) {
-            stmt.bindLong(9, serverVersion);
+        Long ServerVersion = entity.getServerVersion();
+        if (ServerVersion != null) {
+            stmt.bindLong(9, ServerVersion);
         }
         stmt.bindLong(10, entity.getClientVersion());
     }
@@ -127,44 +127,44 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
             stmt.bindLong(1, Id);
         }
  
-        Integer sjId = entity.getSjId();
-        if (sjId != null) {
-            stmt.bindLong(2, sjId);
+        Integer SjId = entity.getSjId();
+        if (SjId != null) {
+            stmt.bindLong(2, SjId);
         }
  
-        String stationNo = entity.getStationNo();
-        if (stationNo != null) {
-            stmt.bindString(3, stationNo);
+        String StationNo = entity.getStationNo();
+        if (StationNo != null) {
+            stmt.bindString(3, StationNo);
         }
  
-        String mc = entity.getMc();
-        if (mc != null) {
-            stmt.bindString(4, mc);
+        String Mc = entity.getMc();
+        if (Mc != null) {
+            stmt.bindString(4, Mc);
         }
  
-        String sj1 = entity.getSj1();
-        if (sj1 != null) {
-            stmt.bindString(5, sj1);
+        String Sj1 = entity.getSj1();
+        if (Sj1 != null) {
+            stmt.bindString(5, Sj1);
         }
  
-        String sj2 = entity.getSj2();
-        if (sj2 != null) {
-            stmt.bindString(6, sj2);
+        String Sj2 = entity.getSj2();
+        if (Sj2 != null) {
+            stmt.bindString(6, Sj2);
         }
  
-        String sj3 = entity.getSj3();
-        if (sj3 != null) {
-            stmt.bindString(7, sj3);
+        String Sj3 = entity.getSj3();
+        if (Sj3 != null) {
+            stmt.bindString(7, Sj3);
         }
  
-        String administratorName = entity.getAdministratorName();
-        if (administratorName != null) {
-            stmt.bindString(8, administratorName);
+        String AdministratorName = entity.getAdministratorName();
+        if (AdministratorName != null) {
+            stmt.bindString(8, AdministratorName);
         }
  
-        Long serverVersion = entity.getServerVersion();
-        if (serverVersion != null) {
-            stmt.bindLong(9, serverVersion);
+        Long ServerVersion = entity.getServerVersion();
+        if (ServerVersion != null) {
+            stmt.bindLong(9, ServerVersion);
         }
         stmt.bindLong(10, entity.getClientVersion());
     }
@@ -178,15 +178,15 @@ public class PriceModelDao extends AbstractDao<PriceModel, Long> {
     public PriceModel readEntity(Cursor cursor, int offset) {
         PriceModel entity = new PriceModel( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
-            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // sjId
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // stationNo
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // mc
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // sj1
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // sj2
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // sj3
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // administratorName
-            cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8), // serverVersion
-            cursor.getLong(offset + 9) // clientVersion
+            cursor.isNull(offset + 1) ? null : cursor.getInt(offset + 1), // SjId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // StationNo
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // Mc
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // Sj1
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // Sj2
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // Sj3
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // AdministratorName
+            cursor.isNull(offset + 8) ? null : cursor.getLong(offset + 8), // ServerVersion
+            cursor.getLong(offset + 9) // ClientVersion
         );
         return entity;
     }

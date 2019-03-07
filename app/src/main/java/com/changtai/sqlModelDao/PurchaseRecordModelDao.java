@@ -25,30 +25,30 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
-        public final static Property PurchaseRecordId = new Property(1, String.class, "purchaseRecordId", false, "PURCHASE_RECORD_ID");
-        public final static Property DeviceNo = new Property(2, String.class, "deviceNo", false, "DEVICE_NO");
-        public final static Property StationNo = new Property(3, String.class, "stationNo", false, "STATION_NO");
-        public final static Property UserName = new Property(4, String.class, "userName", false, "USER_NAME");
-        public final static Property UserNo = new Property(5, String.class, "userNo", false, "USER_NO");
-        public final static Property PurchaseTotalThisTime = new Property(6, String.class, "purchaseTotalThisTime", false, "PURCHASE_TOTAL_THIS_TIME");
-        public final static Property PurchaseaMountThisTime = new Property(7, String.class, "purchaseaMountThisTime", false, "PURCHASEA_MOUNT_THIS_TIME");
-        public final static Property PurchaseDatetimeThisTime = new Property(8, java.util.Date.class, "purchaseDatetimeThisTime", false, "PURCHASE_DATETIME_THIS_TIME");
-        public final static Property PurchaseYear = new Property(9, Integer.class, "purchaseYear", false, "PURCHASE_YEAR");
-        public final static Property PurchaseTotalThisYear = new Property(10, String.class, "purchaseTotalThisYear", false, "PURCHASE_TOTAL_THIS_YEAR");
-        public final static Property PurchaseTotal = new Property(11, String.class, "purchaseTotal", false, "PURCHASE_TOTAL");
-        public final static Property PriceSj1 = new Property(12, String.class, "priceSj1", false, "PRICE_SJ1");
-        public final static Property TotalSj1 = new Property(13, String.class, "totalSj1", false, "TOTAL_SJ1");
-        public final static Property AmountSj1 = new Property(14, String.class, "amountSj1", false, "AMOUNT_SJ1");
-        public final static Property PriceSj2 = new Property(15, String.class, "priceSj2", false, "PRICE_SJ2");
-        public final static Property TotalSj2 = new Property(16, String.class, "totalSj2", false, "TOTAL_SJ2");
-        public final static Property AmountSj2 = new Property(17, String.class, "amountSj2", false, "AMOUNT_SJ2");
-        public final static Property PriceSj3 = new Property(18, String.class, "priceSj3", false, "PRICE_SJ3");
-        public final static Property TotalSj3 = new Property(19, String.class, "totalSj3", false, "TOTAL_SJ3");
-        public final static Property AmountSj3 = new Property(20, String.class, "amountSj3", false, "AMOUNT_SJ3");
-        public final static Property Comment = new Property(21, String.class, "comment", false, "COMMENT");
-        public final static Property AdministratorName = new Property(22, String.class, "administratorName", false, "ADMINISTRATOR_NAME");
-        public final static Property ServerVersion = new Property(23, long.class, "serverVersion", false, "SERVER_VERSION");
-        public final static Property ClientVersion = new Property(24, long.class, "clientVersion", false, "CLIENT_VERSION");
+        public final static Property PurchaseRecordId = new Property(1, String.class, "PurchaseRecordId", false, "PURCHASE_RECORD_ID");
+        public final static Property DeviceNo = new Property(2, String.class, "DeviceNo", false, "DEVICE_NO");
+        public final static Property StationNo = new Property(3, String.class, "StationNo", false, "STATION_NO");
+        public final static Property UserName = new Property(4, String.class, "UserName", false, "USER_NAME");
+        public final static Property UserNo = new Property(5, String.class, "UserNo", false, "USER_NO");
+        public final static Property PurchaseTotalThisTime = new Property(6, String.class, "PurchaseTotalThisTime", false, "PURCHASE_TOTAL_THIS_TIME");
+        public final static Property PurchaseaMountThisTime = new Property(7, String.class, "PurchaseaMountThisTime", false, "PURCHASEA_MOUNT_THIS_TIME");
+        public final static Property PurchaseDatetimeThisTime = new Property(8, java.util.Date.class, "PurchaseDatetimeThisTime", false, "PURCHASE_DATETIME_THIS_TIME");
+        public final static Property PurchaseYear = new Property(9, Integer.class, "PurchaseYear", false, "PURCHASE_YEAR");
+        public final static Property PurchaseTotalThisYear = new Property(10, String.class, "PurchaseTotalThisYear", false, "PURCHASE_TOTAL_THIS_YEAR");
+        public final static Property PurchaseTotal = new Property(11, String.class, "PurchaseTotal", false, "PURCHASE_TOTAL");
+        public final static Property PriceSj1 = new Property(12, String.class, "PriceSj1", false, "PRICE_SJ1");
+        public final static Property TotalSj1 = new Property(13, String.class, "TotalSj1", false, "TOTAL_SJ1");
+        public final static Property AmountSj1 = new Property(14, String.class, "AmountSj1", false, "AMOUNT_SJ1");
+        public final static Property PriceSj2 = new Property(15, String.class, "PriceSj2", false, "PRICE_SJ2");
+        public final static Property TotalSj2 = new Property(16, String.class, "TotalSj2", false, "TOTAL_SJ2");
+        public final static Property AmountSj2 = new Property(17, String.class, "AmountSj2", false, "AMOUNT_SJ2");
+        public final static Property PriceSj3 = new Property(18, String.class, "PriceSj3", false, "PRICE_SJ3");
+        public final static Property TotalSj3 = new Property(19, String.class, "TotalSj3", false, "TOTAL_SJ3");
+        public final static Property AmountSj3 = new Property(20, String.class, "AmountSj3", false, "AMOUNT_SJ3");
+        public final static Property Comment = new Property(21, String.class, "Comment", false, "COMMENT");
+        public final static Property AdministratorName = new Property(22, String.class, "AdministratorName", false, "ADMINISTRATOR_NAME");
+        public final static Property ServerVersion = new Property(23, long.class, "ServerVersion", false, "SERVER_VERSION");
+        public final static Property ClientVersion = new Property(24, long.class, "ClientVersion", false, "CLIENT_VERSION");
         public final static Property Key = new Property(25, int.class, "key", false, "KEY");
     }
 
@@ -66,30 +66,30 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"PURCHASE_RECORD_MODEL\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: Id
-                "\"PURCHASE_RECORD_ID\" TEXT," + // 1: purchaseRecordId
-                "\"DEVICE_NO\" TEXT," + // 2: deviceNo
-                "\"STATION_NO\" TEXT," + // 3: stationNo
-                "\"USER_NAME\" TEXT," + // 4: userName
-                "\"USER_NO\" TEXT," + // 5: userNo
-                "\"PURCHASE_TOTAL_THIS_TIME\" TEXT," + // 6: purchaseTotalThisTime
-                "\"PURCHASEA_MOUNT_THIS_TIME\" TEXT," + // 7: purchaseaMountThisTime
-                "\"PURCHASE_DATETIME_THIS_TIME\" INTEGER," + // 8: purchaseDatetimeThisTime
-                "\"PURCHASE_YEAR\" INTEGER," + // 9: purchaseYear
-                "\"PURCHASE_TOTAL_THIS_YEAR\" TEXT," + // 10: purchaseTotalThisYear
-                "\"PURCHASE_TOTAL\" TEXT," + // 11: purchaseTotal
-                "\"PRICE_SJ1\" TEXT," + // 12: priceSj1
-                "\"TOTAL_SJ1\" TEXT," + // 13: totalSj1
-                "\"AMOUNT_SJ1\" TEXT," + // 14: amountSj1
-                "\"PRICE_SJ2\" TEXT," + // 15: priceSj2
-                "\"TOTAL_SJ2\" TEXT," + // 16: totalSj2
-                "\"AMOUNT_SJ2\" TEXT," + // 17: amountSj2
-                "\"PRICE_SJ3\" TEXT," + // 18: priceSj3
-                "\"TOTAL_SJ3\" TEXT," + // 19: totalSj3
-                "\"AMOUNT_SJ3\" TEXT," + // 20: amountSj3
-                "\"COMMENT\" TEXT," + // 21: comment
-                "\"ADMINISTRATOR_NAME\" TEXT," + // 22: administratorName
-                "\"SERVER_VERSION\" INTEGER NOT NULL ," + // 23: serverVersion
-                "\"CLIENT_VERSION\" INTEGER NOT NULL ," + // 24: clientVersion
+                "\"PURCHASE_RECORD_ID\" TEXT," + // 1: PurchaseRecordId
+                "\"DEVICE_NO\" TEXT," + // 2: DeviceNo
+                "\"STATION_NO\" TEXT," + // 3: StationNo
+                "\"USER_NAME\" TEXT," + // 4: UserName
+                "\"USER_NO\" TEXT," + // 5: UserNo
+                "\"PURCHASE_TOTAL_THIS_TIME\" TEXT," + // 6: PurchaseTotalThisTime
+                "\"PURCHASEA_MOUNT_THIS_TIME\" TEXT," + // 7: PurchaseaMountThisTime
+                "\"PURCHASE_DATETIME_THIS_TIME\" INTEGER," + // 8: PurchaseDatetimeThisTime
+                "\"PURCHASE_YEAR\" INTEGER," + // 9: PurchaseYear
+                "\"PURCHASE_TOTAL_THIS_YEAR\" TEXT," + // 10: PurchaseTotalThisYear
+                "\"PURCHASE_TOTAL\" TEXT," + // 11: PurchaseTotal
+                "\"PRICE_SJ1\" TEXT," + // 12: PriceSj1
+                "\"TOTAL_SJ1\" TEXT," + // 13: TotalSj1
+                "\"AMOUNT_SJ1\" TEXT," + // 14: AmountSj1
+                "\"PRICE_SJ2\" TEXT," + // 15: PriceSj2
+                "\"TOTAL_SJ2\" TEXT," + // 16: TotalSj2
+                "\"AMOUNT_SJ2\" TEXT," + // 17: AmountSj2
+                "\"PRICE_SJ3\" TEXT," + // 18: PriceSj3
+                "\"TOTAL_SJ3\" TEXT," + // 19: TotalSj3
+                "\"AMOUNT_SJ3\" TEXT," + // 20: AmountSj3
+                "\"COMMENT\" TEXT," + // 21: Comment
+                "\"ADMINISTRATOR_NAME\" TEXT," + // 22: AdministratorName
+                "\"SERVER_VERSION\" INTEGER NOT NULL ," + // 23: ServerVersion
+                "\"CLIENT_VERSION\" INTEGER NOT NULL ," + // 24: ClientVersion
                 "\"KEY\" INTEGER NOT NULL );"); // 25: key
     }
 
@@ -108,114 +108,114 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
             stmt.bindLong(1, Id);
         }
  
-        String purchaseRecordId = entity.getPurchaseRecordId();
-        if (purchaseRecordId != null) {
-            stmt.bindString(2, purchaseRecordId);
+        String PurchaseRecordId = entity.getPurchaseRecordId();
+        if (PurchaseRecordId != null) {
+            stmt.bindString(2, PurchaseRecordId);
         }
  
-        String deviceNo = entity.getDeviceNo();
-        if (deviceNo != null) {
-            stmt.bindString(3, deviceNo);
+        String DeviceNo = entity.getDeviceNo();
+        if (DeviceNo != null) {
+            stmt.bindString(3, DeviceNo);
         }
  
-        String stationNo = entity.getStationNo();
-        if (stationNo != null) {
-            stmt.bindString(4, stationNo);
+        String StationNo = entity.getStationNo();
+        if (StationNo != null) {
+            stmt.bindString(4, StationNo);
         }
  
-        String userName = entity.getUserName();
-        if (userName != null) {
-            stmt.bindString(5, userName);
+        String UserName = entity.getUserName();
+        if (UserName != null) {
+            stmt.bindString(5, UserName);
         }
  
-        String userNo = entity.getUserNo();
-        if (userNo != null) {
-            stmt.bindString(6, userNo);
+        String UserNo = entity.getUserNo();
+        if (UserNo != null) {
+            stmt.bindString(6, UserNo);
         }
  
-        String purchaseTotalThisTime = entity.getPurchaseTotalThisTime();
-        if (purchaseTotalThisTime != null) {
-            stmt.bindString(7, purchaseTotalThisTime);
+        String PurchaseTotalThisTime = entity.getPurchaseTotalThisTime();
+        if (PurchaseTotalThisTime != null) {
+            stmt.bindString(7, PurchaseTotalThisTime);
         }
  
-        String purchaseaMountThisTime = entity.getPurchaseaMountThisTime();
-        if (purchaseaMountThisTime != null) {
-            stmt.bindString(8, purchaseaMountThisTime);
+        String PurchaseaMountThisTime = entity.getPurchaseaMountThisTime();
+        if (PurchaseaMountThisTime != null) {
+            stmt.bindString(8, PurchaseaMountThisTime);
         }
  
-        java.util.Date purchaseDatetimeThisTime = entity.getPurchaseDatetimeThisTime();
-        if (purchaseDatetimeThisTime != null) {
-            stmt.bindLong(9, purchaseDatetimeThisTime.getTime());
+        java.util.Date PurchaseDatetimeThisTime = entity.getPurchaseDatetimeThisTime();
+        if (PurchaseDatetimeThisTime != null) {
+            stmt.bindLong(9, PurchaseDatetimeThisTime.getTime());
         }
  
-        Integer purchaseYear = entity.getPurchaseYear();
-        if (purchaseYear != null) {
-            stmt.bindLong(10, purchaseYear);
+        Integer PurchaseYear = entity.getPurchaseYear();
+        if (PurchaseYear != null) {
+            stmt.bindLong(10, PurchaseYear);
         }
  
-        String purchaseTotalThisYear = entity.getPurchaseTotalThisYear();
-        if (purchaseTotalThisYear != null) {
-            stmt.bindString(11, purchaseTotalThisYear);
+        String PurchaseTotalThisYear = entity.getPurchaseTotalThisYear();
+        if (PurchaseTotalThisYear != null) {
+            stmt.bindString(11, PurchaseTotalThisYear);
         }
  
-        String purchaseTotal = entity.getPurchaseTotal();
-        if (purchaseTotal != null) {
-            stmt.bindString(12, purchaseTotal);
+        String PurchaseTotal = entity.getPurchaseTotal();
+        if (PurchaseTotal != null) {
+            stmt.bindString(12, PurchaseTotal);
         }
  
-        String priceSj1 = entity.getPriceSj1();
-        if (priceSj1 != null) {
-            stmt.bindString(13, priceSj1);
+        String PriceSj1 = entity.getPriceSj1();
+        if (PriceSj1 != null) {
+            stmt.bindString(13, PriceSj1);
         }
  
-        String totalSj1 = entity.getTotalSj1();
-        if (totalSj1 != null) {
-            stmt.bindString(14, totalSj1);
+        String TotalSj1 = entity.getTotalSj1();
+        if (TotalSj1 != null) {
+            stmt.bindString(14, TotalSj1);
         }
  
-        String amountSj1 = entity.getAmountSj1();
-        if (amountSj1 != null) {
-            stmt.bindString(15, amountSj1);
+        String AmountSj1 = entity.getAmountSj1();
+        if (AmountSj1 != null) {
+            stmt.bindString(15, AmountSj1);
         }
  
-        String priceSj2 = entity.getPriceSj2();
-        if (priceSj2 != null) {
-            stmt.bindString(16, priceSj2);
+        String PriceSj2 = entity.getPriceSj2();
+        if (PriceSj2 != null) {
+            stmt.bindString(16, PriceSj2);
         }
  
-        String totalSj2 = entity.getTotalSj2();
-        if (totalSj2 != null) {
-            stmt.bindString(17, totalSj2);
+        String TotalSj2 = entity.getTotalSj2();
+        if (TotalSj2 != null) {
+            stmt.bindString(17, TotalSj2);
         }
  
-        String amountSj2 = entity.getAmountSj2();
-        if (amountSj2 != null) {
-            stmt.bindString(18, amountSj2);
+        String AmountSj2 = entity.getAmountSj2();
+        if (AmountSj2 != null) {
+            stmt.bindString(18, AmountSj2);
         }
  
-        String priceSj3 = entity.getPriceSj3();
-        if (priceSj3 != null) {
-            stmt.bindString(19, priceSj3);
+        String PriceSj3 = entity.getPriceSj3();
+        if (PriceSj3 != null) {
+            stmt.bindString(19, PriceSj3);
         }
  
-        String totalSj3 = entity.getTotalSj3();
-        if (totalSj3 != null) {
-            stmt.bindString(20, totalSj3);
+        String TotalSj3 = entity.getTotalSj3();
+        if (TotalSj3 != null) {
+            stmt.bindString(20, TotalSj3);
         }
  
-        String amountSj3 = entity.getAmountSj3();
-        if (amountSj3 != null) {
-            stmt.bindString(21, amountSj3);
+        String AmountSj3 = entity.getAmountSj3();
+        if (AmountSj3 != null) {
+            stmt.bindString(21, AmountSj3);
         }
  
-        String comment = entity.getComment();
-        if (comment != null) {
-            stmt.bindString(22, comment);
+        String Comment = entity.getComment();
+        if (Comment != null) {
+            stmt.bindString(22, Comment);
         }
  
-        String administratorName = entity.getAdministratorName();
-        if (administratorName != null) {
-            stmt.bindString(23, administratorName);
+        String AdministratorName = entity.getAdministratorName();
+        if (AdministratorName != null) {
+            stmt.bindString(23, AdministratorName);
         }
         stmt.bindLong(24, entity.getServerVersion());
         stmt.bindLong(25, entity.getClientVersion());
@@ -231,114 +231,114 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
             stmt.bindLong(1, Id);
         }
  
-        String purchaseRecordId = entity.getPurchaseRecordId();
-        if (purchaseRecordId != null) {
-            stmt.bindString(2, purchaseRecordId);
+        String PurchaseRecordId = entity.getPurchaseRecordId();
+        if (PurchaseRecordId != null) {
+            stmt.bindString(2, PurchaseRecordId);
         }
  
-        String deviceNo = entity.getDeviceNo();
-        if (deviceNo != null) {
-            stmt.bindString(3, deviceNo);
+        String DeviceNo = entity.getDeviceNo();
+        if (DeviceNo != null) {
+            stmt.bindString(3, DeviceNo);
         }
  
-        String stationNo = entity.getStationNo();
-        if (stationNo != null) {
-            stmt.bindString(4, stationNo);
+        String StationNo = entity.getStationNo();
+        if (StationNo != null) {
+            stmt.bindString(4, StationNo);
         }
  
-        String userName = entity.getUserName();
-        if (userName != null) {
-            stmt.bindString(5, userName);
+        String UserName = entity.getUserName();
+        if (UserName != null) {
+            stmt.bindString(5, UserName);
         }
  
-        String userNo = entity.getUserNo();
-        if (userNo != null) {
-            stmt.bindString(6, userNo);
+        String UserNo = entity.getUserNo();
+        if (UserNo != null) {
+            stmt.bindString(6, UserNo);
         }
  
-        String purchaseTotalThisTime = entity.getPurchaseTotalThisTime();
-        if (purchaseTotalThisTime != null) {
-            stmt.bindString(7, purchaseTotalThisTime);
+        String PurchaseTotalThisTime = entity.getPurchaseTotalThisTime();
+        if (PurchaseTotalThisTime != null) {
+            stmt.bindString(7, PurchaseTotalThisTime);
         }
  
-        String purchaseaMountThisTime = entity.getPurchaseaMountThisTime();
-        if (purchaseaMountThisTime != null) {
-            stmt.bindString(8, purchaseaMountThisTime);
+        String PurchaseaMountThisTime = entity.getPurchaseaMountThisTime();
+        if (PurchaseaMountThisTime != null) {
+            stmt.bindString(8, PurchaseaMountThisTime);
         }
  
-        java.util.Date purchaseDatetimeThisTime = entity.getPurchaseDatetimeThisTime();
-        if (purchaseDatetimeThisTime != null) {
-            stmt.bindLong(9, purchaseDatetimeThisTime.getTime());
+        java.util.Date PurchaseDatetimeThisTime = entity.getPurchaseDatetimeThisTime();
+        if (PurchaseDatetimeThisTime != null) {
+            stmt.bindLong(9, PurchaseDatetimeThisTime.getTime());
         }
  
-        Integer purchaseYear = entity.getPurchaseYear();
-        if (purchaseYear != null) {
-            stmt.bindLong(10, purchaseYear);
+        Integer PurchaseYear = entity.getPurchaseYear();
+        if (PurchaseYear != null) {
+            stmt.bindLong(10, PurchaseYear);
         }
  
-        String purchaseTotalThisYear = entity.getPurchaseTotalThisYear();
-        if (purchaseTotalThisYear != null) {
-            stmt.bindString(11, purchaseTotalThisYear);
+        String PurchaseTotalThisYear = entity.getPurchaseTotalThisYear();
+        if (PurchaseTotalThisYear != null) {
+            stmt.bindString(11, PurchaseTotalThisYear);
         }
  
-        String purchaseTotal = entity.getPurchaseTotal();
-        if (purchaseTotal != null) {
-            stmt.bindString(12, purchaseTotal);
+        String PurchaseTotal = entity.getPurchaseTotal();
+        if (PurchaseTotal != null) {
+            stmt.bindString(12, PurchaseTotal);
         }
  
-        String priceSj1 = entity.getPriceSj1();
-        if (priceSj1 != null) {
-            stmt.bindString(13, priceSj1);
+        String PriceSj1 = entity.getPriceSj1();
+        if (PriceSj1 != null) {
+            stmt.bindString(13, PriceSj1);
         }
  
-        String totalSj1 = entity.getTotalSj1();
-        if (totalSj1 != null) {
-            stmt.bindString(14, totalSj1);
+        String TotalSj1 = entity.getTotalSj1();
+        if (TotalSj1 != null) {
+            stmt.bindString(14, TotalSj1);
         }
  
-        String amountSj1 = entity.getAmountSj1();
-        if (amountSj1 != null) {
-            stmt.bindString(15, amountSj1);
+        String AmountSj1 = entity.getAmountSj1();
+        if (AmountSj1 != null) {
+            stmt.bindString(15, AmountSj1);
         }
  
-        String priceSj2 = entity.getPriceSj2();
-        if (priceSj2 != null) {
-            stmt.bindString(16, priceSj2);
+        String PriceSj2 = entity.getPriceSj2();
+        if (PriceSj2 != null) {
+            stmt.bindString(16, PriceSj2);
         }
  
-        String totalSj2 = entity.getTotalSj2();
-        if (totalSj2 != null) {
-            stmt.bindString(17, totalSj2);
+        String TotalSj2 = entity.getTotalSj2();
+        if (TotalSj2 != null) {
+            stmt.bindString(17, TotalSj2);
         }
  
-        String amountSj2 = entity.getAmountSj2();
-        if (amountSj2 != null) {
-            stmt.bindString(18, amountSj2);
+        String AmountSj2 = entity.getAmountSj2();
+        if (AmountSj2 != null) {
+            stmt.bindString(18, AmountSj2);
         }
  
-        String priceSj3 = entity.getPriceSj3();
-        if (priceSj3 != null) {
-            stmt.bindString(19, priceSj3);
+        String PriceSj3 = entity.getPriceSj3();
+        if (PriceSj3 != null) {
+            stmt.bindString(19, PriceSj3);
         }
  
-        String totalSj3 = entity.getTotalSj3();
-        if (totalSj3 != null) {
-            stmt.bindString(20, totalSj3);
+        String TotalSj3 = entity.getTotalSj3();
+        if (TotalSj3 != null) {
+            stmt.bindString(20, TotalSj3);
         }
  
-        String amountSj3 = entity.getAmountSj3();
-        if (amountSj3 != null) {
-            stmt.bindString(21, amountSj3);
+        String AmountSj3 = entity.getAmountSj3();
+        if (AmountSj3 != null) {
+            stmt.bindString(21, AmountSj3);
         }
  
-        String comment = entity.getComment();
-        if (comment != null) {
-            stmt.bindString(22, comment);
+        String Comment = entity.getComment();
+        if (Comment != null) {
+            stmt.bindString(22, Comment);
         }
  
-        String administratorName = entity.getAdministratorName();
-        if (administratorName != null) {
-            stmt.bindString(23, administratorName);
+        String AdministratorName = entity.getAdministratorName();
+        if (AdministratorName != null) {
+            stmt.bindString(23, AdministratorName);
         }
         stmt.bindLong(24, entity.getServerVersion());
         stmt.bindLong(25, entity.getClientVersion());
@@ -354,30 +354,30 @@ public class PurchaseRecordModelDao extends AbstractDao<PurchaseRecordModel, Lon
     public PurchaseRecordModel readEntity(Cursor cursor, int offset) {
         PurchaseRecordModel entity = new PurchaseRecordModel( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // purchaseRecordId
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // deviceNo
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // stationNo
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // userName
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // userNo
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // purchaseTotalThisTime
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // purchaseaMountThisTime
-            cursor.isNull(offset + 8) ? null : new java.util.Date(cursor.getLong(offset + 8)), // purchaseDatetimeThisTime
-            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // purchaseYear
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // purchaseTotalThisYear
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // purchaseTotal
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // priceSj1
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // totalSj1
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // amountSj1
-            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // priceSj2
-            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // totalSj2
-            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // amountSj2
-            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // priceSj3
-            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // totalSj3
-            cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20), // amountSj3
-            cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // comment
-            cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22), // administratorName
-            cursor.getLong(offset + 23), // serverVersion
-            cursor.getLong(offset + 24), // clientVersion
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // PurchaseRecordId
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // DeviceNo
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // StationNo
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // UserName
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // UserNo
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // PurchaseTotalThisTime
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // PurchaseaMountThisTime
+            cursor.isNull(offset + 8) ? null : new java.util.Date(cursor.getLong(offset + 8)), // PurchaseDatetimeThisTime
+            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // PurchaseYear
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // PurchaseTotalThisYear
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // PurchaseTotal
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // PriceSj1
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // TotalSj1
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // AmountSj1
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // PriceSj2
+            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // TotalSj2
+            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // AmountSj2
+            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // PriceSj3
+            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // TotalSj3
+            cursor.isNull(offset + 20) ? null : cursor.getString(offset + 20), // AmountSj3
+            cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // Comment
+            cursor.isNull(offset + 22) ? null : cursor.getString(offset + 22), // AdministratorName
+            cursor.getLong(offset + 23), // ServerVersion
+            cursor.getLong(offset + 24), // ClientVersion
             cursor.getInt(offset + 25) // key
         );
         return entity;

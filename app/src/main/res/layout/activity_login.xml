@@ -36,7 +36,7 @@
             android:hint="用户名"
             android:maxLines="1"
             android:singleLine="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="60dp"
             android:paddingStart="5dp"
             android:paddingLeft="5dp"
             android:text="admin" />
@@ -62,7 +62,7 @@
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/background_button"
             android:gravity="center"
             android:text="登录"

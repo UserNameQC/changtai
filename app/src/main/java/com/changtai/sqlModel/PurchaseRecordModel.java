@@ -16,250 +16,300 @@ public class PurchaseRecordModel {
     @Id(autoincrement = true)
     public Long Id;
     @Property
-    public String purchaseRecordId;
+    public String PurchaseRecordId;
     @Property
-    public String deviceNo;
+    public String DeviceNo;
     @Property
-    public String stationNo;
+    public String StationNo;
     @Property
-    public String userName;
+    public String UserName;
     @Property
-    public String userNo;
+    public String UserNo;
     @Property
-    public String purchaseTotalThisTime;
+    public String PurchaseTotalThisTime;
     @Property
-    public String purchaseaMountThisTime;
+    public String PurchaseaMountThisTime;
     @Property
-    public Date purchaseDatetimeThisTime;
+    public Date PurchaseDatetimeThisTime;
     @Property
-    public Integer purchaseYear;
+    public Integer PurchaseYear;
     @Property
-    public String purchaseTotalThisYear;
+    public String PurchaseTotalThisYear;
     @Property
-    public String purchaseTotal;
+    public String PurchaseTotal;
     @Property
-    public String priceSj1;
+    public String PriceSj1;
     @Property
-    public String totalSj1;
+    public String TotalSj1;
     @Property
-    public String amountSj1;
+    public String AmountSj1;
     @Property
-    public String priceSj2;
+    public String PriceSj2;
     @Property
-    public String totalSj2;
+    public String TotalSj2;
     @Property
-    public String amountSj2;
+    public String AmountSj2;
     @Property
-    public String priceSj3;
+    public String PriceSj3;
     @Property
-    public String totalSj3;
+    public String TotalSj3;
     @Property
-    public String amountSj3;
+    public String AmountSj3;
 
     @Property
-    public String comment;
+    public String Comment;
     @Property
-    public String administratorName;
+    public String AdministratorName;
     @Property
-    public long serverVersion;
+    public long ServerVersion;
     @Property
-    public long clientVersion;
+    public long ClientVersion;
     @Property
     public int key;
+    @Generated(hash = 820737512)
+    public PurchaseRecordModel(Long Id, String PurchaseRecordId, String DeviceNo,
+            String StationNo, String UserName, String UserNo,
+            String PurchaseTotalThisTime, String PurchaseaMountThisTime,
+            Date PurchaseDatetimeThisTime, Integer PurchaseYear,
+            String PurchaseTotalThisYear, String PurchaseTotal, String PriceSj1,
+            String TotalSj1, String AmountSj1, String PriceSj2, String TotalSj2,
+            String AmountSj2, String PriceSj3, String TotalSj3, String AmountSj3,
+            String Comment, String AdministratorName, long ServerVersion,
+            long ClientVersion, int key) {
+        this.Id = Id;
+        this.PurchaseRecordId = PurchaseRecordId;
+        this.DeviceNo = DeviceNo;
+        this.StationNo = StationNo;
+        this.UserName = UserName;
+        this.UserNo = UserNo;
+        this.PurchaseTotalThisTime = PurchaseTotalThisTime;
+        this.PurchaseaMountThisTime = PurchaseaMountThisTime;
+        this.PurchaseDatetimeThisTime = PurchaseDatetimeThisTime;
+        this.PurchaseYear = PurchaseYear;
+        this.PurchaseTotalThisYear = PurchaseTotalThisYear;
+        this.PurchaseTotal = PurchaseTotal;
+        this.PriceSj1 = PriceSj1;
+        this.TotalSj1 = TotalSj1;
+        this.AmountSj1 = AmountSj1;
+        this.PriceSj2 = PriceSj2;
+        this.TotalSj2 = TotalSj2;
+        this.AmountSj2 = AmountSj2;
+        this.PriceSj3 = PriceSj3;
+        this.TotalSj3 = TotalSj3;
+        this.AmountSj3 = AmountSj3;
+        this.Comment = Comment;
+        this.AdministratorName = AdministratorName;
+        this.ServerVersion = ServerVersion;
+        this.ClientVersion = ClientVersion;
+        this.key = key;
+    }
+    @Generated(hash = 88488600)
+    public PurchaseRecordModel() {
+    }
     public int getKey() {
         return this.key;
     }
     public void setKey(int key) {
         this.key = key;
     }
-    public long getClientVersion() {
-        return this.clientVersion;
-    }
-    public void setClientVersion(long clientVersion) {
-        this.clientVersion = clientVersion;
-    }
-    public long getServerVersion() {
-        return this.serverVersion;
-    }
-    public void setServerVersion(long serverVersion) {
-        this.serverVersion = serverVersion;
-    }
-    public String getAdministratorName() {
-        return this.administratorName;
-    }
-    public void setAdministratorName(String administratorName) {
-        this.administratorName = administratorName;
-    }
-    public String getComment() {
-        return this.comment;
-    }
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-    public String getAmountSj3() {
-        return this.amountSj3;
-    }
-    public void setAmountSj3(String amountSj3) {
-        this.amountSj3 = amountSj3;
-    }
-    public String getTotalSj3() {
-        return this.totalSj3;
-    }
-    public void setTotalSj3(String totalSj3) {
-        this.totalSj3 = totalSj3;
-    }
-    public String getPriceSj3() {
-        return this.priceSj3;
-    }
-    public void setPriceSj3(String priceSj3) {
-        this.priceSj3 = priceSj3;
-    }
-    public String getAmountSj2() {
-        return this.amountSj2;
-    }
-    public void setAmountSj2(String amountSj2) {
-        this.amountSj2 = amountSj2;
-    }
-    public String getTotalSj2() {
-        return this.totalSj2;
-    }
-    public void setTotalSj2(String totalSj2) {
-        this.totalSj2 = totalSj2;
-    }
-    public String getPriceSj2() {
-        return this.priceSj2;
-    }
-    public void setPriceSj2(String priceSj2) {
-        this.priceSj2 = priceSj2;
-    }
-    public String getAmountSj1() {
-        return this.amountSj1;
-    }
-    public void setAmountSj1(String amountSj1) {
-        this.amountSj1 = amountSj1;
-    }
-    public String getTotalSj1() {
-        return this.totalSj1;
-    }
-    public void setTotalSj1(String totalSj1) {
-        this.totalSj1 = totalSj1;
-    }
-    public String getPriceSj1() {
-        return this.priceSj1;
-    }
-    public void setPriceSj1(String priceSj1) {
-        this.priceSj1 = priceSj1;
-    }
-    public String getPurchaseTotal() {
-        return this.purchaseTotal;
-    }
-    public void setPurchaseTotal(String purchaseTotal) {
-        this.purchaseTotal = purchaseTotal;
-    }
-    public String getPurchaseTotalThisYear() {
-        return this.purchaseTotalThisYear;
-    }
-    public void setPurchaseTotalThisYear(String purchaseTotalThisYear) {
-        this.purchaseTotalThisYear = purchaseTotalThisYear;
-    }
-    public Integer getPurchaseYear() {
-        return this.purchaseYear;
-    }
-    public void setPurchaseYear(Integer purchaseYear) {
-        this.purchaseYear = purchaseYear;
-    }
-    public Date getPurchaseDatetimeThisTime() {
-        return this.purchaseDatetimeThisTime;
-    }
-    public void setPurchaseDatetimeThisTime(Date purchaseDatetimeThisTime) {
-        this.purchaseDatetimeThisTime = purchaseDatetimeThisTime;
-    }
-    public String getPurchaseaMountThisTime() {
-        return this.purchaseaMountThisTime;
-    }
-    public void setPurchaseaMountThisTime(String purchaseaMountThisTime) {
-        this.purchaseaMountThisTime = purchaseaMountThisTime;
-    }
-    public String getPurchaseTotalThisTime() {
-        return this.purchaseTotalThisTime;
-    }
-    public void setPurchaseTotalThisTime(String purchaseTotalThisTime) {
-        this.purchaseTotalThisTime = purchaseTotalThisTime;
-    }
-    public String getUserNo() {
-        return this.userNo;
-    }
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
-    public String getUserName() {
-        return this.userName;
-    }
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    public String getStationNo() {
-        return this.stationNo;
-    }
-    public void setStationNo(String stationNo) {
-        this.stationNo = stationNo;
-    }
-    public String getDeviceNo() {
-        return this.deviceNo;
-    }
-    public void setDeviceNo(String deviceNo) {
-        this.deviceNo = deviceNo;
-    }
-    public String getPurchaseRecordId() {
-        return this.purchaseRecordId;
-    }
-    public void setPurchaseRecordId(String purchaseRecordId) {
-        this.purchaseRecordId = purchaseRecordId;
-    }
+
     public Long getId() {
-        return this.Id;
+        return Id;
     }
-    public void setId(Long Id) {
-        this.Id = Id;
+
+    public void setId(Long id) {
+        Id = id;
     }
-    @Generated(hash = 1503905516)
-    public PurchaseRecordModel(Long Id, String purchaseRecordId, String deviceNo,
-            String stationNo, String userName, String userNo,
-            String purchaseTotalThisTime, String purchaseaMountThisTime,
-            Date purchaseDatetimeThisTime, Integer purchaseYear,
-            String purchaseTotalThisYear, String purchaseTotal, String priceSj1,
-            String totalSj1, String amountSj1, String priceSj2, String totalSj2,
-            String amountSj2, String priceSj3, String totalSj3, String amountSj3,
-            String comment, String administratorName, long serverVersion,
-            long clientVersion, int key) {
-        this.Id = Id;
-        this.purchaseRecordId = purchaseRecordId;
-        this.deviceNo = deviceNo;
-        this.stationNo = stationNo;
-        this.userName = userName;
-        this.userNo = userNo;
-        this.purchaseTotalThisTime = purchaseTotalThisTime;
-        this.purchaseaMountThisTime = purchaseaMountThisTime;
-        this.purchaseDatetimeThisTime = purchaseDatetimeThisTime;
-        this.purchaseYear = purchaseYear;
-        this.purchaseTotalThisYear = purchaseTotalThisYear;
-        this.purchaseTotal = purchaseTotal;
-        this.priceSj1 = priceSj1;
-        this.totalSj1 = totalSj1;
-        this.amountSj1 = amountSj1;
-        this.priceSj2 = priceSj2;
-        this.totalSj2 = totalSj2;
-        this.amountSj2 = amountSj2;
-        this.priceSj3 = priceSj3;
-        this.totalSj3 = totalSj3;
-        this.amountSj3 = amountSj3;
-        this.comment = comment;
-        this.administratorName = administratorName;
-        this.serverVersion = serverVersion;
-        this.clientVersion = clientVersion;
-        this.key = key;
+
+    public String getPurchaseRecordId() {
+        return PurchaseRecordId;
     }
-    @Generated(hash = 88488600)
-    public PurchaseRecordModel() {
+
+    public void setPurchaseRecordId(String purchaseRecordId) {
+        PurchaseRecordId = purchaseRecordId;
+    }
+
+    public String getDeviceNo() {
+        return DeviceNo;
+    }
+
+    public void setDeviceNo(String deviceNo) {
+        DeviceNo = deviceNo;
+    }
+
+    public String getStationNo() {
+        return StationNo;
+    }
+
+    public void setStationNo(String stationNo) {
+        StationNo = stationNo;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getUserNo() {
+        return UserNo;
+    }
+
+    public void setUserNo(String userNo) {
+        UserNo = userNo;
+    }
+
+    public String getPurchaseTotalThisTime() {
+        return PurchaseTotalThisTime;
+    }
+
+    public void setPurchaseTotalThisTime(String purchaseTotalThisTime) {
+        PurchaseTotalThisTime = purchaseTotalThisTime;
+    }
+
+    public String getPurchaseaMountThisTime() {
+        return PurchaseaMountThisTime;
+    }
+
+    public void setPurchaseaMountThisTime(String purchaseaMountThisTime) {
+        PurchaseaMountThisTime = purchaseaMountThisTime;
+    }
+
+    public Date getPurchaseDatetimeThisTime() {
+        return PurchaseDatetimeThisTime;
+    }
+
+    public void setPurchaseDatetimeThisTime(Date purchaseDatetimeThisTime) {
+        PurchaseDatetimeThisTime = purchaseDatetimeThisTime;
+    }
+
+    public Integer getPurchaseYear() {
+        return PurchaseYear;
+    }
+
+    public void setPurchaseYear(Integer purchaseYear) {
+        PurchaseYear = purchaseYear;
+    }
+
+    public String getPurchaseTotalThisYear() {
+        return PurchaseTotalThisYear;
+    }
+
+    public void setPurchaseTotalThisYear(String purchaseTotalThisYear) {
+        PurchaseTotalThisYear = purchaseTotalThisYear;
+    }
+
+    public String getPurchaseTotal() {
+        return PurchaseTotal;
+    }
+
+    public void setPurchaseTotal(String purchaseTotal) {
+        PurchaseTotal = purchaseTotal;
+    }
+
+    public String getPriceSj1() {
+        return PriceSj1;
+    }
+
+    public void setPriceSj1(String priceSj1) {
+        PriceSj1 = priceSj1;
+    }
+
+    public String getTotalSj1() {
+        return TotalSj1;
+    }
+
+    public void setTotalSj1(String totalSj1) {
+        TotalSj1 = totalSj1;
+    }
+
+    public String getAmountSj1() {
+        return AmountSj1;
+    }
+
+    public void setAmountSj1(String amountSj1) {
+        AmountSj1 = amountSj1;
+    }
+
+    public String getPriceSj2() {
+        return PriceSj2;
+    }
+
+    public void setPriceSj2(String priceSj2) {
+        PriceSj2 = priceSj2;
+    }
+
+    public String getTotalSj2() {
+        return TotalSj2;
+    }
+
+    public void setTotalSj2(String totalSj2) {
+        TotalSj2 = totalSj2;
+    }
+
+    public String getAmountSj2() {
+        return AmountSj2;
+    }
+
+    public void setAmountSj2(String amountSj2) {
+        AmountSj2 = amountSj2;
+    }
+
+    public String getPriceSj3() {
+        return PriceSj3;
+    }
+
+    public void setPriceSj3(String priceSj3) {
+        PriceSj3 = priceSj3;
+    }
+
+    public String getTotalSj3() {
+        return TotalSj3;
+    }
+
+    public void setTotalSj3(String totalSj3) {
+        TotalSj3 = totalSj3;
+    }
+
+    public String getAmountSj3() {
+        return AmountSj3;
+    }
+
+    public void setAmountSj3(String amountSj3) {
+        AmountSj3 = amountSj3;
+    }
+
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        Comment = comment;
+    }
+
+    public String getAdministratorName() {
+        return AdministratorName;
+    }
+
+    public void setAdministratorName(String administratorName) {
+        AdministratorName = administratorName;
+    }
+
+    public long getServerVersion() {
+        return ServerVersion;
+    }
+
+    public void setServerVersion(long serverVersion) {
+        ServerVersion = serverVersion;
+    }
+
+    public long getClientVersion() {
+        return ClientVersion;
+    }
+
+    public void setClientVersion(long clientVersion) {
+        ClientVersion = clientVersion;
     }
 }

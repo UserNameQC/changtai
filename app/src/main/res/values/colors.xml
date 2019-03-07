@@ -17,4 +17,5 @@
     <color name="normal_orange_btn_unclickable">#f5d0a8</color>
     <color name="normal_orange_btn_pressed">#d25000</color>
     <color name="line_color">#ededed</color>
+    <color name="back_color">#009fc6</color>
 </resources>

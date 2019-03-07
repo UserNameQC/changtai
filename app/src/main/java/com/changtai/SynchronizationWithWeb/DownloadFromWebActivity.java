@@ -151,13 +151,13 @@ public class DownloadFromWebActivity {
                 }
                 for(PriceModel model:downLoadFromPcModel.Price){
                     PriceModel model1= MappingObject(model,PriceModel.class);
-                    model1.Id= Long.parseLong(String.format("%s%03d",model1.stationNo,model1.sjId));
+                    model1.Id= Long.parseLong(String.format("%s%03d",model1.StationNo,model1.SjId));
                     MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
                 }
                 for(PurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
                     PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
                     QueryBuilder<PurchaseRecordModel> qb =MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().queryBuilder();
-                    qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.purchaseRecordId));
+                    qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.PurchaseRecordId));
                     List<PurchaseRecordModel> list = qb.list();
                     if(list.size()>0){
                         model1.Id=list.get(0).Id;

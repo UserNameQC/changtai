@@ -13,7 +13,7 @@
     <!-- 间距 -->
     <dimen name="normal_space">8dp</dimen>
     <dimen name="little_sapce">5dp</dimen>
-    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="padding_10dp">6dp</dimen>
     <dimen name="padding_12dp">12dp</dimen>
     <dimen name="padding_14dp">14dp</dimen>
     <dimen name="padding_16dp">16dp</dimen>

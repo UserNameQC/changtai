@@ -16,267 +16,333 @@ public class UserModel {
     @Id
     public Long Id;
     @Property
-    public String userNo;
+    public String UserNo;
     @Property
-    public String stationNo;
+    public String StationNo;
     @Property
-    public String deviceNo;
+    public String DeviceNo;
     @Property
-    public Integer index;
+    public Integer Index;
     @Property
-    public String userName;
+    public String UserName;
     @Property
-    public String phone;
+    public String Phone;
     @Property
-    public Date createDatetime;
+    public Date CreateDatetime;
     @Property
-    public String linkman;
+    public String Linkman;
     @Property
-    public Integer sjId;
+    public Integer SjId;
     @Property
-    public String usedTotal;
+    public String UsedTotal;
     @Property
-    public String purchaseTotal;
+    public String PurchaseTotal;
     @Property
-    public String purchaseTotalThisYear;
+    public String PurchaseTotalThisYear;
     @Property
-    public String overdraft;
+    public String Overdraft;
     @Property
-    public String alarmValue;
+    public String AlarmValue;
     @Property
-    public String credentialNo;
+    public String CredentialNo;
     @Property
-    public String limitSj1;
+    public String LimitSj1;
     @Property
-    public String limitSj2;
+    public String LimitSj2;
     @Property
-    public String comment;
+    public String Comment;
     @Property
-    public String administratorName;
+    public String AdministratorName;
     @Property
-    public boolean stopFlag;
+    public boolean StopFlag;
     @Property
-    public String cardNo;
+    public String CardNo;
     @Property
-    public Integer creditcardTimes;
+    public Integer CreditcardTimes;
     @Property
-    public Date lastDatetime;
+    public Date LastDatetime;
     //删除标志
     @Property
     public boolean DelFlag;//新增加
     @Property
     public int key;
     @Property
-    public long serverVersion;
+    public long ServerVersion;
     @Property
-    public long clientVersion;
-    public long getClientVersion() {
-        return this.clientVersion;
+    public long ClientVersion;
+
+    @Generated(hash = 1785884839)
+    public UserModel(Long Id, String UserNo, String StationNo, String DeviceNo,
+            Integer Index, String UserName, String Phone, Date CreateDatetime,
+            String Linkman, Integer SjId, String UsedTotal, String PurchaseTotal,
+            String PurchaseTotalThisYear, String Overdraft, String AlarmValue,
+            String CredentialNo, String LimitSj1, String LimitSj2, String Comment,
+            String AdministratorName, boolean StopFlag, String CardNo,
+            Integer CreditcardTimes, Date LastDatetime, boolean DelFlag, int key,
+            long ServerVersion, long ClientVersion) {
+        this.Id = Id;
+        this.UserNo = UserNo;
+        this.StationNo = StationNo;
+        this.DeviceNo = DeviceNo;
+        this.Index = Index;
+        this.UserName = UserName;
+        this.Phone = Phone;
+        this.CreateDatetime = CreateDatetime;
+        this.Linkman = Linkman;
+        this.SjId = SjId;
+        this.UsedTotal = UsedTotal;
+        this.PurchaseTotal = PurchaseTotal;
+        this.PurchaseTotalThisYear = PurchaseTotalThisYear;
+        this.Overdraft = Overdraft;
+        this.AlarmValue = AlarmValue;
+        this.CredentialNo = CredentialNo;
+        this.LimitSj1 = LimitSj1;
+        this.LimitSj2 = LimitSj2;
+        this.Comment = Comment;
+        this.AdministratorName = AdministratorName;
+        this.StopFlag = StopFlag;
+        this.CardNo = CardNo;
+        this.CreditcardTimes = CreditcardTimes;
+        this.LastDatetime = LastDatetime;
+        this.DelFlag = DelFlag;
+        this.key = key;
+        this.ServerVersion = ServerVersion;
+        this.ClientVersion = ClientVersion;
     }
-    public void setClientVersion(long clientVersion) {
-        this.clientVersion = clientVersion;
+
+    @Generated(hash = 782181818)
+    public UserModel() {
     }
-    public long getServerVersion() {
-        return this.serverVersion;
+
+    public Long getId() {
+        return Id;
     }
-    public void setServerVersion(long serverVersion) {
-        this.serverVersion = serverVersion;
+
+    public void setId(Long id) {
+        Id = id;
     }
+
+    public String getUserNo() {
+        return UserNo;
+    }
+
+    public void setUserNo(String userNo) {
+        UserNo = userNo;
+    }
+
+    public String getStationNo() {
+        return StationNo;
+    }
+
+    public void setStationNo(String stationNo) {
+        StationNo = stationNo;
+    }
+
+    public String getDeviceNo() {
+        return DeviceNo;
+    }
+
+    public void setDeviceNo(String deviceNo) {
+        DeviceNo = deviceNo;
+    }
+
+    public Integer getIndex() {
+        return Index;
+    }
+
+    public void setIndex(Integer index) {
+        Index = index;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+    public Date getCreateDatetime() {
+        return CreateDatetime;
+    }
+
+    public void setCreateDatetime(Date createDatetime) {
+        CreateDatetime = createDatetime;
+    }
+
+    public String getLinkman() {
+        return Linkman;
+    }
+
+    public void setLinkman(String linkman) {
+        Linkman = linkman;
+    }
+
+    public Integer getSjId() {
+        return SjId;
+    }
+
+    public void setSjId(Integer sjId) {
+        SjId = sjId;
+    }
+
+    public String getUsedTotal() {
+        return UsedTotal;
+    }
+
+    public void setUsedTotal(String usedTotal) {
+        UsedTotal = usedTotal;
+    }
+
+    public String getPurchaseTotal() {
+        return PurchaseTotal;
+    }
+
+    public void setPurchaseTotal(String purchaseTotal) {
+        PurchaseTotal = purchaseTotal;
+    }
+
+    public String getPurchaseTotalThisYear() {
+        return PurchaseTotalThisYear;
+    }
+
+    public void setPurchaseTotalThisYear(String purchaseTotalThisYear) {
+        PurchaseTotalThisYear = purchaseTotalThisYear;
+    }
+
+    public String getOverdraft() {
+        return Overdraft;
+    }
+
+    public void setOverdraft(String overdraft) {
+        Overdraft = overdraft;
+    }
+
+    public String getAlarmValue() {
+        return AlarmValue;
+    }
+
+    public void setAlarmValue(String alarmValue) {
+        AlarmValue = alarmValue;
+    }
+
+    public String getCredentialNo() {
+        return CredentialNo;
+    }
+
+    public void setCredentialNo(String credentialNo) {
+        CredentialNo = credentialNo;
+    }
+
+    public String getLimitSj1() {
+        return LimitSj1;
+    }
+
+    public void setLimitSj1(String limitSj1) {
+        LimitSj1 = limitSj1;
+    }
+
+    public String getLimitSj2() {
+        return LimitSj2;
+    }
+
+    public void setLimitSj2(String limitSj2) {
+        LimitSj2 = limitSj2;
+    }
+
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        Comment = comment;
+    }
+
+    public String getAdministratorName() {
+        return AdministratorName;
+    }
+
+    public void setAdministratorName(String administratorName) {
+        AdministratorName = administratorName;
+    }
+
+    public boolean isStopFlag() {
+        return StopFlag;
+    }
+
+    public void setStopFlag(boolean stopFlag) {
+        StopFlag = stopFlag;
+    }
+
+    public String getCardNo() {
+        return CardNo;
+    }
+
+    public void setCardNo(String cardNo) {
+        CardNo = cardNo;
+    }
+
+    public Integer getCreditcardTimes() {
+        return CreditcardTimes;
+    }
+
+    public void setCreditcardTimes(Integer creditcardTimes) {
+        CreditcardTimes = creditcardTimes;
+    }
+
+    public Date getLastDatetime() {
+        return LastDatetime;
+    }
+
+    public void setLastDatetime(Date lastDatetime) {
+        LastDatetime = lastDatetime;
+    }
+
+    public boolean isDelFlag() {
+        return DelFlag;
+    }
+
+    public void setDelFlag(boolean delFlag) {
+        DelFlag = delFlag;
+    }
+
     public int getKey() {
-        return this.key;
+        return key;
     }
+
     public void setKey(int key) {
         this.key = key;
     }
+
+    public long getServerVersion() {
+        return ServerVersion;
+    }
+
+    public void setServerVersion(long serverVersion) {
+        ServerVersion = serverVersion;
+    }
+
+    public long getClientVersion() {
+        return ClientVersion;
+    }
+
+    public void setClientVersion(long clientVersion) {
+        ClientVersion = clientVersion;
+    }
+
+    public boolean getStopFlag() {
+        return this.StopFlag;
+    }
+
     public boolean getDelFlag() {
         return this.DelFlag;
-    }
-    public void setDelFlag(boolean DelFlag) {
-        this.DelFlag = DelFlag;
-    }
-    public Date getLastDatetime() {
-        return this.lastDatetime;
-    }
-    public void setLastDatetime(Date lastDatetime) {
-        this.lastDatetime = lastDatetime;
-    }
-    public Integer getCreditcardTimes() {
-        return this.creditcardTimes;
-    }
-    public void setCreditcardTimes(Integer creditcardTimes) {
-        this.creditcardTimes = creditcardTimes;
-    }
-    public String getCardNo() {
-        return this.cardNo;
-    }
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo;
-    }
-    public boolean getStopFlag() {
-        return this.stopFlag;
-    }
-    public void setStopFlag(boolean stopFlag) {
-        this.stopFlag = stopFlag;
-    }
-    public String getAdministratorName() {
-        return this.administratorName;
-    }
-    public void setAdministratorName(String administratorName) {
-        this.administratorName = administratorName;
-    }
-    public String getComment() {
-        return this.comment;
-    }
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-    public String getLimitSj2() {
-        return this.limitSj2;
-    }
-    public void setLimitSj2(String limitSj2) {
-        this.limitSj2 = limitSj2;
-    }
-    public String getLimitSj1() {
-        return this.limitSj1;
-    }
-    public void setLimitSj1(String limitSj1) {
-        this.limitSj1 = limitSj1;
-    }
-    public String getCredentialNo() {
-        return this.credentialNo;
-    }
-    public void setCredentialNo(String credentialNo) {
-        this.credentialNo = credentialNo;
-    }
-    public String getAlarmValue() {
-        return this.alarmValue;
-    }
-    public void setAlarmValue(String alarmValue) {
-        this.alarmValue = alarmValue;
-    }
-    public String getOverdraft() {
-        return this.overdraft;
-    }
-    public void setOverdraft(String overdraft) {
-        this.overdraft = overdraft;
-    }
-    public String getPurchaseTotalThisYear() {
-        return this.purchaseTotalThisYear;
-    }
-    public void setPurchaseTotalThisYear(String purchaseTotalThisYear) {
-        this.purchaseTotalThisYear = purchaseTotalThisYear;
-    }
-    public String getPurchaseTotal() {
-        return this.purchaseTotal;
-    }
-    public void setPurchaseTotal(String purchaseTotal) {
-        this.purchaseTotal = purchaseTotal;
-    }
-    public String getUsedTotal() {
-        return this.usedTotal;
-    }
-    public void setUsedTotal(String usedTotal) {
-        this.usedTotal = usedTotal;
-    }
-    public Integer getSjId() {
-        return this.sjId;
-    }
-    public void setSjId(Integer sjId) {
-        this.sjId = sjId;
-    }
-    public String getLinkman() {
-        return this.linkman;
-    }
-    public void setLinkman(String linkman) {
-        this.linkman = linkman;
-    }
-    public Date getCreateDatetime() {
-        return this.createDatetime;
-    }
-    public void setCreateDatetime(Date createDatetime) {
-        this.createDatetime = createDatetime;
-    }
-    public String getPhone() {
-        return this.phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getUserName() {
-        return this.userName;
-    }
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    public Integer getIndex() {
-        return this.index;
-    }
-    public void setIndex(Integer index) {
-        this.index = index;
-    }
-    public String getDeviceNo() {
-        return this.deviceNo;
-    }
-    public void setDeviceNo(String deviceNo) {
-        this.deviceNo = deviceNo;
-    }
-    public String getStationNo() {
-        return this.stationNo;
-    }
-    public void setStationNo(String stationNo) {
-        this.stationNo = stationNo;
-    }
-    public String getUserNo() {
-        return this.userNo;
-    }
-    public void setUserNo(String userNo) {
-        this.userNo = userNo;
-    }
-    public Long getId() {
-        return this.Id;
-    }
-    public void setId(Long Id) {
-        this.Id = Id;
-    }
-    @Generated(hash = 1559398575)
-    public UserModel(Long Id, String userNo, String stationNo, String deviceNo,
-            Integer index, String userName, String phone, Date createDatetime,
-            String linkman, Integer sjId, String usedTotal, String purchaseTotal,
-            String purchaseTotalThisYear, String overdraft, String alarmValue,
-            String credentialNo, String limitSj1, String limitSj2, String comment,
-            String administratorName, boolean stopFlag, String cardNo,
-            Integer creditcardTimes, Date lastDatetime, boolean DelFlag, int key,
-            long serverVersion, long clientVersion) {
-        this.Id = Id;
-        this.userNo = userNo;
-        this.stationNo = stationNo;
-        this.deviceNo = deviceNo;
-        this.index = index;
-        this.userName = userName;
-        this.phone = phone;
-        this.createDatetime = createDatetime;
-        this.linkman = linkman;
-        this.sjId = sjId;
-        this.usedTotal = usedTotal;
-        this.purchaseTotal = purchaseTotal;
-        this.purchaseTotalThisYear = purchaseTotalThisYear;
-        this.overdraft = overdraft;
-        this.alarmValue = alarmValue;
-        this.credentialNo = credentialNo;
-        this.limitSj1 = limitSj1;
-        this.limitSj2 = limitSj2;
-        this.comment = comment;
-        this.administratorName = administratorName;
-        this.stopFlag = stopFlag;
-        this.cardNo = cardNo;
-        this.creditcardTimes = creditcardTimes;
-        this.lastDatetime = lastDatetime;
-        this.DelFlag = DelFlag;
-        this.key = key;
-        this.serverVersion = serverVersion;
-        this.clientVersion = clientVersion;
-    }
-    @Generated(hash = 782181818)
-    public UserModel() {
     }
 }

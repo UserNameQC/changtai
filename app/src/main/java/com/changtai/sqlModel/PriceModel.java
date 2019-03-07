@@ -14,101 +14,123 @@ public class PriceModel {
     @Id
     public Long Id;
     @Property
-    public Integer sjId;
+    public Integer SjId;
     @Property
-    public String stationNo;
+    public String StationNo;
     @Property
-    public String mc;
+    public String Mc;
     @Property
-    public String sj1;
+    public String Sj1;
     @Property
-    public String sj2;
+    public String Sj2;
     @Property
-    public String sj3;
+    public String Sj3;
     @Property
-    public String administratorName;
+    public String AdministratorName;
     //服务器端数据版本
     @Property
-    public Long serverVersion;//新增加
+    public Long ServerVersion;//新增加
     //电脑版售水软件数据版本
     @Property
-    public long clientVersion;//新增加
-    public long getClientVersion() {
-        return this.clientVersion;
-    }
-    public void setClientVersion(long clientVersion) {
-        this.clientVersion = clientVersion;
-    }
-    public Long getServerVersion() {
-        return this.serverVersion;
-    }
-    public void setServerVersion(Long serverVersion) {
-        this.serverVersion = serverVersion;
-    }
-    public String getAdministratorName() {
-        return this.administratorName;
-    }
-    public void setAdministratorName(String administratorName) {
-        this.administratorName = administratorName;
-    }
-    public String getSj3() {
-        return this.sj3;
-    }
-    public void setSj3(String sj3) {
-        this.sj3 = sj3;
-    }
-    public String getSj2() {
-        return this.sj2;
-    }
-    public void setSj2(String sj2) {
-        this.sj2 = sj2;
-    }
-    public String getSj1() {
-        return this.sj1;
-    }
-    public void setSj1(String sj1) {
-        this.sj1 = sj1;
-    }
-    public String getMc() {
-        return this.mc;
-    }
-    public void setMc(String mc) {
-        this.mc = mc;
-    }
-    public String getStationNo() {
-        return this.stationNo;
-    }
-    public void setStationNo(String stationNo) {
-        this.stationNo = stationNo;
-    }
-    public Integer getSjId() {
-        return this.sjId;
-    }
-    public void setSjId(Integer sjId) {
-        this.sjId = sjId;
-    }
-    public Long getId() {
-        return this.Id;
-    }
-    public void setId(Long Id) {
+    public long ClientVersion;//新增加
+
+    @Generated(hash = 1688317656)
+    public PriceModel(Long Id, Integer SjId, String StationNo, String Mc,
+            String Sj1, String Sj2, String Sj3, String AdministratorName,
+            Long ServerVersion, long ClientVersion) {
         this.Id = Id;
+        this.SjId = SjId;
+        this.StationNo = StationNo;
+        this.Mc = Mc;
+        this.Sj1 = Sj1;
+        this.Sj2 = Sj2;
+        this.Sj3 = Sj3;
+        this.AdministratorName = AdministratorName;
+        this.ServerVersion = ServerVersion;
+        this.ClientVersion = ClientVersion;
     }
-    @Generated(hash = 1554164879)
-    public PriceModel(Long Id, Integer sjId, String stationNo, String mc,
-            String sj1, String sj2, String sj3, String administratorName,
-            Long serverVersion, long clientVersion) {
-        this.Id = Id;
-        this.sjId = sjId;
-        this.stationNo = stationNo;
-        this.mc = mc;
-        this.sj1 = sj1;
-        this.sj2 = sj2;
-        this.sj3 = sj3;
-        this.administratorName = administratorName;
-        this.serverVersion = serverVersion;
-        this.clientVersion = clientVersion;
-    }
+
     @Generated(hash = 1120898458)
     public PriceModel() {
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public Integer getSjId() {
+        return SjId;
+    }
+
+    public void setSjId(Integer sjId) {
+        SjId = sjId;
+    }
+
+    public String getStationNo() {
+        return StationNo;
+    }
+
+    public void setStationNo(String stationNo) {
+        StationNo = stationNo;
+    }
+
+    public String getMc() {
+        return Mc;
+    }
+
+    public void setMc(String mc) {
+        Mc = mc;
+    }
+
+    public String getSj1() {
+        return Sj1;
+    }
+
+    public void setSj1(String sj1) {
+        Sj1 = sj1;
+    }
+
+    public String getSj2() {
+        return Sj2;
+    }
+
+    public void setSj2(String sj2) {
+        Sj2 = sj2;
+    }
+
+    public String getSj3() {
+        return Sj3;
+    }
+
+    public void setSj3(String sj3) {
+        Sj3 = sj3;
+    }
+
+    public String getAdministratorName() {
+        return AdministratorName;
+    }
+
+    public void setAdministratorName(String administratorName) {
+        AdministratorName = administratorName;
+    }
+
+    public Long getServerVersion() {
+        return ServerVersion;
+    }
+
+    public void setServerVersion(Long serverVersion) {
+        ServerVersion = serverVersion;
+    }
+
+    public long getClientVersion() {
+        return ClientVersion;
+    }
+
+    public void setClientVersion(long clientVersion) {
+        ClientVersion = clientVersion;
     }
 }

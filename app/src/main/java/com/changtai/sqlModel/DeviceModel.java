@@ -16,41 +16,74 @@ public class DeviceModel {
     @Id
     public Long DeviceId;
     @Property
-    public String deviceNo;//机井编号
+    public String DeviceNo;//机井编号
     @Property
-    public String stationNo;//售水站号
+    public String BureauNo;
     @Property
-    public String gprsNo;//GPS模块编号
+    public String StationNo;//售水站号
     @Property
-    public String deviceName;//机井名称
+    public String GprsNo;//GPS模块编号
+    @Property
+    public String DeviceName;//机井名称
 
-    public int index;//索引
+    public int Index;//索引
     @Property
-    public String linkman;//联系人
+    public String Linkman;//联系人
     @Property
-    public String phone;//电话
+    public String Phone;//电话
     @Property
-    public String location;//安装位置
+    public String Location;//安装位置
     @Property
-    public Date createDatetime;//登记时间
+    public Date CreateDatetime;//登记时间
     @Property
-    public String longitude;//经度
+    public String Longitude;//经度
     @Property
-    public String latitude;//维度
+    public String Latitude;//维度
     @Property
-    public String comment;//备注
+    public String Comment;//备注
     @Property
-    public String administratorName;//操作员
+    public String AdministratorName;//操作员
     @Property
-    public boolean stopFlag;//停用标志
+    public boolean StopFlag;//停用标志
     @Property
-    public long serverVersion;//服务器端数据编号
+    public long ServerVersion;//服务器端数据编号
     @Property
-    public long clientVersion;//pc端数据版本
+    public long ClientVersion;//pc端数据版本
     @Property
     public boolean DelFlag;//删除标志
     @Property
     public int key;
+    @Generated(hash = 1711113101)
+    public DeviceModel(Long DeviceId, String DeviceNo, String BureauNo,
+            String StationNo, String GprsNo, String DeviceName, int Index,
+            String Linkman, String Phone, String Location, Date CreateDatetime,
+            String Longitude, String Latitude, String Comment,
+            String AdministratorName, boolean StopFlag, long ServerVersion,
+            long ClientVersion, boolean DelFlag, int key) {
+        this.DeviceId = DeviceId;
+        this.DeviceNo = DeviceNo;
+        this.BureauNo = BureauNo;
+        this.StationNo = StationNo;
+        this.GprsNo = GprsNo;
+        this.DeviceName = DeviceName;
+        this.Index = Index;
+        this.Linkman = Linkman;
+        this.Phone = Phone;
+        this.Location = Location;
+        this.CreateDatetime = CreateDatetime;
+        this.Longitude = Longitude;
+        this.Latitude = Latitude;
+        this.Comment = Comment;
+        this.AdministratorName = AdministratorName;
+        this.StopFlag = StopFlag;
+        this.ServerVersion = ServerVersion;
+        this.ClientVersion = ClientVersion;
+        this.DelFlag = DelFlag;
+        this.key = key;
+    }
+    @Generated(hash = 210163102)
+    public DeviceModel() {
+    }
     public int getKey() {
         return this.key;
     }
@@ -64,135 +97,152 @@ public class DeviceModel {
         this.DelFlag = DelFlag;
     }
     public long getClientVersion() {
-        return this.clientVersion;
+        return this.ClientVersion;
     }
     public void setClientVersion(long clientVersion) {
-        this.clientVersion = clientVersion;
+        this.ClientVersion = clientVersion;
     }
+
+    public Long getDeviceId() {
+        return DeviceId;
+    }
+
+    public void setDeviceId(Long deviceId) {
+        DeviceId = deviceId;
+    }
+
+    public String getDeviceNo() {
+        return DeviceNo;
+    }
+
+    public void setDeviceNo(String deviceNo) {
+        DeviceNo = deviceNo;
+    }
+
+    public String getStationNo() {
+        return StationNo;
+    }
+
+    public void setStationNo(String stationNo) {
+        StationNo = stationNo;
+    }
+
+    public String getGprsNo() {
+        return GprsNo;
+    }
+
+    public void setGprsNo(String gprsNo) {
+        GprsNo = gprsNo;
+    }
+
+    public String getDeviceName() {
+        return DeviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        DeviceName = deviceName;
+    }
+
+    public int getIndex() {
+        return Index;
+    }
+
+    public void setIndex(int index) {
+        Index = index;
+    }
+
+    public String getLinkman() {
+        return Linkman;
+    }
+
+    public void setLinkman(String linkman) {
+        Linkman = linkman;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+    public String getLocation() {
+        return Location;
+    }
+
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+    public Date getCreateDatetime() {
+        return CreateDatetime;
+    }
+
+    public void setCreateDatetime(Date createDatetime) {
+        CreateDatetime = createDatetime;
+    }
+
+    public String getLongitude() {
+        return Longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        Longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return Latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        Latitude = latitude;
+    }
+
+    public String getComment() {
+        return Comment;
+    }
+
+    public void setComment(String comment) {
+        Comment = comment;
+    }
+
+    public String getAdministratorName() {
+        return AdministratorName;
+    }
+
+    public void setAdministratorName(String administratorName) {
+        AdministratorName = administratorName;
+    }
+
+    public boolean isStopFlag() {
+        return StopFlag;
+    }
+
+    public void setStopFlag(boolean stopFlag) {
+        StopFlag = stopFlag;
+    }
+
     public long getServerVersion() {
-        return this.serverVersion;
+        return ServerVersion;
     }
+
     public void setServerVersion(long serverVersion) {
-        this.serverVersion = serverVersion;
+        ServerVersion = serverVersion;
+    }
+
+    public boolean isDelFlag() {
+        return DelFlag;
+    }
+
+    public String getBureauNo() {
+        return BureauNo;
+    }
+
+    public void setBureauNo(String bureauNo) {
+        BureauNo = bureauNo;
     }
     public boolean getStopFlag() {
-        return this.stopFlag;
-    }
-    public void setStopFlag(boolean stopFlag) {
-        this.stopFlag = stopFlag;
-    }
-    public String getAdministratorName() {
-        return this.administratorName;
-    }
-    public void setAdministratorName(String administratorName) {
-        this.administratorName = administratorName;
-    }
-    public String getComment() {
-        return this.comment;
-    }
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-    public String getLatitude() {
-        return this.latitude;
-    }
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-    public String getLongitude() {
-        return this.longitude;
-    }
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-    public Date getCreateDatetime() {
-        return this.createDatetime;
-    }
-    public void setCreateDatetime(Date createDatetime) {
-        this.createDatetime = createDatetime;
-    }
-    public String getLocation() {
-        return this.location;
-    }
-    public void setLocation(String location) {
-        this.location = location;
-    }
-    public String getPhone() {
-        return this.phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    public String getLinkman() {
-        return this.linkman;
-    }
-    public void setLinkman(String linkman) {
-        this.linkman = linkman;
-    }
-    public int getIndex() {
-        return this.index;
-    }
-    public void setIndex(int index) {
-        this.index = index;
-    }
-    public String getDeviceName() {
-        return this.deviceName;
-    }
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
-    public String getGprsNo() {
-        return this.gprsNo;
-    }
-    public void setGprsNo(String gprsNo) {
-        this.gprsNo = gprsNo;
-    }
-    public String getStationNo() {
-        return this.stationNo;
-    }
-    public void setStationNo(String stationNo) {
-        this.stationNo = stationNo;
-    }
-    public String getDeviceNo() {
-        return this.deviceNo;
-    }
-    public void setDeviceNo(String deviceNo) {
-        this.deviceNo = deviceNo;
-    }
-    public Long getDeviceId() {
-        return this.DeviceId;
-    }
-    public void setDeviceId(Long DeviceId) {
-        this.DeviceId = DeviceId;
-    }
-    @Generated(hash = 684830812)
-    public DeviceModel(Long DeviceId, String deviceNo, String stationNo,
-            String gprsNo, String deviceName, int index, String linkman,
-            String phone, String location, Date createDatetime, String longitude,
-            String latitude, String comment, String administratorName,
-            boolean stopFlag, long serverVersion, long clientVersion,
-            boolean DelFlag, int key) {
-        this.DeviceId = DeviceId;
-        this.deviceNo = deviceNo;
-        this.stationNo = stationNo;
-        this.gprsNo = gprsNo;
-        this.deviceName = deviceName;
-        this.index = index;
-        this.linkman = linkman;
-        this.phone = phone;
-        this.location = location;
-        this.createDatetime = createDatetime;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.comment = comment;
-        this.administratorName = administratorName;
-        this.stopFlag = stopFlag;
-        this.serverVersion = serverVersion;
-        this.clientVersion = clientVersion;
-        this.DelFlag = DelFlag;
-        this.key = key;
-    }
-    @Generated(hash = 210163102)
-    public DeviceModel() {
+        return this.StopFlag;
     }
 }

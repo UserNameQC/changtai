@@ -25,33 +25,33 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "Id", true, "_id");
-        public final static Property UserNo = new Property(1, String.class, "userNo", false, "USER_NO");
-        public final static Property StationNo = new Property(2, String.class, "stationNo", false, "STATION_NO");
-        public final static Property DeviceNo = new Property(3, String.class, "deviceNo", false, "DEVICE_NO");
-        public final static Property Index = new Property(4, Integer.class, "index", false, "INDEX");
-        public final static Property UserName = new Property(5, String.class, "userName", false, "USER_NAME");
-        public final static Property Phone = new Property(6, String.class, "phone", false, "PHONE");
-        public final static Property CreateDatetime = new Property(7, java.util.Date.class, "createDatetime", false, "CREATE_DATETIME");
-        public final static Property Linkman = new Property(8, String.class, "linkman", false, "LINKMAN");
-        public final static Property SjId = new Property(9, Integer.class, "sjId", false, "SJ_ID");
-        public final static Property UsedTotal = new Property(10, String.class, "usedTotal", false, "USED_TOTAL");
-        public final static Property PurchaseTotal = new Property(11, String.class, "purchaseTotal", false, "PURCHASE_TOTAL");
-        public final static Property PurchaseTotalThisYear = new Property(12, String.class, "purchaseTotalThisYear", false, "PURCHASE_TOTAL_THIS_YEAR");
-        public final static Property Overdraft = new Property(13, String.class, "overdraft", false, "OVERDRAFT");
-        public final static Property AlarmValue = new Property(14, String.class, "alarmValue", false, "ALARM_VALUE");
-        public final static Property CredentialNo = new Property(15, String.class, "credentialNo", false, "CREDENTIAL_NO");
-        public final static Property LimitSj1 = new Property(16, String.class, "limitSj1", false, "LIMIT_SJ1");
-        public final static Property LimitSj2 = new Property(17, String.class, "limitSj2", false, "LIMIT_SJ2");
-        public final static Property Comment = new Property(18, String.class, "comment", false, "COMMENT");
-        public final static Property AdministratorName = new Property(19, String.class, "administratorName", false, "ADMINISTRATOR_NAME");
-        public final static Property StopFlag = new Property(20, boolean.class, "stopFlag", false, "STOP_FLAG");
-        public final static Property CardNo = new Property(21, String.class, "cardNo", false, "CARD_NO");
-        public final static Property CreditcardTimes = new Property(22, Integer.class, "creditcardTimes", false, "CREDITCARD_TIMES");
-        public final static Property LastDatetime = new Property(23, java.util.Date.class, "lastDatetime", false, "LAST_DATETIME");
+        public final static Property UserNo = new Property(1, String.class, "UserNo", false, "USER_NO");
+        public final static Property StationNo = new Property(2, String.class, "StationNo", false, "STATION_NO");
+        public final static Property DeviceNo = new Property(3, String.class, "DeviceNo", false, "DEVICE_NO");
+        public final static Property Index = new Property(4, Integer.class, "Index", false, "INDEX");
+        public final static Property UserName = new Property(5, String.class, "UserName", false, "USER_NAME");
+        public final static Property Phone = new Property(6, String.class, "Phone", false, "PHONE");
+        public final static Property CreateDatetime = new Property(7, java.util.Date.class, "CreateDatetime", false, "CREATE_DATETIME");
+        public final static Property Linkman = new Property(8, String.class, "Linkman", false, "LINKMAN");
+        public final static Property SjId = new Property(9, Integer.class, "SjId", false, "SJ_ID");
+        public final static Property UsedTotal = new Property(10, String.class, "UsedTotal", false, "USED_TOTAL");
+        public final static Property PurchaseTotal = new Property(11, String.class, "PurchaseTotal", false, "PURCHASE_TOTAL");
+        public final static Property PurchaseTotalThisYear = new Property(12, String.class, "PurchaseTotalThisYear", false, "PURCHASE_TOTAL_THIS_YEAR");
+        public final static Property Overdraft = new Property(13, String.class, "Overdraft", false, "OVERDRAFT");
+        public final static Property AlarmValue = new Property(14, String.class, "AlarmValue", false, "ALARM_VALUE");
+        public final static Property CredentialNo = new Property(15, String.class, "CredentialNo", false, "CREDENTIAL_NO");
+        public final static Property LimitSj1 = new Property(16, String.class, "LimitSj1", false, "LIMIT_SJ1");
+        public final static Property LimitSj2 = new Property(17, String.class, "LimitSj2", false, "LIMIT_SJ2");
+        public final static Property Comment = new Property(18, String.class, "Comment", false, "COMMENT");
+        public final static Property AdministratorName = new Property(19, String.class, "AdministratorName", false, "ADMINISTRATOR_NAME");
+        public final static Property StopFlag = new Property(20, boolean.class, "StopFlag", false, "STOP_FLAG");
+        public final static Property CardNo = new Property(21, String.class, "CardNo", false, "CARD_NO");
+        public final static Property CreditcardTimes = new Property(22, Integer.class, "CreditcardTimes", false, "CREDITCARD_TIMES");
+        public final static Property LastDatetime = new Property(23, java.util.Date.class, "LastDatetime", false, "LAST_DATETIME");
         public final static Property DelFlag = new Property(24, boolean.class, "DelFlag", false, "DEL_FLAG");
         public final static Property Key = new Property(25, int.class, "key", false, "KEY");
-        public final static Property ServerVersion = new Property(26, long.class, "serverVersion", false, "SERVER_VERSION");
-        public final static Property ClientVersion = new Property(27, long.class, "clientVersion", false, "CLIENT_VERSION");
+        public final static Property ServerVersion = new Property(26, long.class, "ServerVersion", false, "SERVER_VERSION");
+        public final static Property ClientVersion = new Property(27, long.class, "ClientVersion", false, "CLIENT_VERSION");
     }
 
 
@@ -68,33 +68,33 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"USER_MODEL\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: Id
-                "\"USER_NO\" TEXT," + // 1: userNo
-                "\"STATION_NO\" TEXT," + // 2: stationNo
-                "\"DEVICE_NO\" TEXT," + // 3: deviceNo
-                "\"INDEX\" INTEGER," + // 4: index
-                "\"USER_NAME\" TEXT," + // 5: userName
-                "\"PHONE\" TEXT," + // 6: phone
-                "\"CREATE_DATETIME\" INTEGER," + // 7: createDatetime
-                "\"LINKMAN\" TEXT," + // 8: linkman
-                "\"SJ_ID\" INTEGER," + // 9: sjId
-                "\"USED_TOTAL\" TEXT," + // 10: usedTotal
-                "\"PURCHASE_TOTAL\" TEXT," + // 11: purchaseTotal
-                "\"PURCHASE_TOTAL_THIS_YEAR\" TEXT," + // 12: purchaseTotalThisYear
-                "\"OVERDRAFT\" TEXT," + // 13: overdraft
-                "\"ALARM_VALUE\" TEXT," + // 14: alarmValue
-                "\"CREDENTIAL_NO\" TEXT," + // 15: credentialNo
-                "\"LIMIT_SJ1\" TEXT," + // 16: limitSj1
-                "\"LIMIT_SJ2\" TEXT," + // 17: limitSj2
-                "\"COMMENT\" TEXT," + // 18: comment
-                "\"ADMINISTRATOR_NAME\" TEXT," + // 19: administratorName
-                "\"STOP_FLAG\" INTEGER NOT NULL ," + // 20: stopFlag
-                "\"CARD_NO\" TEXT," + // 21: cardNo
-                "\"CREDITCARD_TIMES\" INTEGER," + // 22: creditcardTimes
-                "\"LAST_DATETIME\" INTEGER," + // 23: lastDatetime
+                "\"USER_NO\" TEXT," + // 1: UserNo
+                "\"STATION_NO\" TEXT," + // 2: StationNo
+                "\"DEVICE_NO\" TEXT," + // 3: DeviceNo
+                "\"INDEX\" INTEGER," + // 4: Index
+                "\"USER_NAME\" TEXT," + // 5: UserName
+                "\"PHONE\" TEXT," + // 6: Phone
+                "\"CREATE_DATETIME\" INTEGER," + // 7: CreateDatetime
+                "\"LINKMAN\" TEXT," + // 8: Linkman
+                "\"SJ_ID\" INTEGER," + // 9: SjId
+                "\"USED_TOTAL\" TEXT," + // 10: UsedTotal
+                "\"PURCHASE_TOTAL\" TEXT," + // 11: PurchaseTotal
+                "\"PURCHASE_TOTAL_THIS_YEAR\" TEXT," + // 12: PurchaseTotalThisYear
+                "\"OVERDRAFT\" TEXT," + // 13: Overdraft
+                "\"ALARM_VALUE\" TEXT," + // 14: AlarmValue
+                "\"CREDENTIAL_NO\" TEXT," + // 15: CredentialNo
+                "\"LIMIT_SJ1\" TEXT," + // 16: LimitSj1
+                "\"LIMIT_SJ2\" TEXT," + // 17: LimitSj2
+                "\"COMMENT\" TEXT," + // 18: Comment
+                "\"ADMINISTRATOR_NAME\" TEXT," + // 19: AdministratorName
+                "\"STOP_FLAG\" INTEGER NOT NULL ," + // 20: StopFlag
+                "\"CARD_NO\" TEXT," + // 21: CardNo
+                "\"CREDITCARD_TIMES\" INTEGER," + // 22: CreditcardTimes
+                "\"LAST_DATETIME\" INTEGER," + // 23: LastDatetime
                 "\"DEL_FLAG\" INTEGER NOT NULL ," + // 24: DelFlag
                 "\"KEY\" INTEGER NOT NULL ," + // 25: key
-                "\"SERVER_VERSION\" INTEGER NOT NULL ," + // 26: serverVersion
-                "\"CLIENT_VERSION\" INTEGER NOT NULL );"); // 27: clientVersion
+                "\"SERVER_VERSION\" INTEGER NOT NULL ," + // 26: ServerVersion
+                "\"CLIENT_VERSION\" INTEGER NOT NULL );"); // 27: ClientVersion
     }
 
     /** Drops the underlying database table. */
@@ -112,115 +112,115 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
             stmt.bindLong(1, Id);
         }
  
-        String userNo = entity.getUserNo();
-        if (userNo != null) {
-            stmt.bindString(2, userNo);
+        String UserNo = entity.getUserNo();
+        if (UserNo != null) {
+            stmt.bindString(2, UserNo);
         }
  
-        String stationNo = entity.getStationNo();
-        if (stationNo != null) {
-            stmt.bindString(3, stationNo);
+        String StationNo = entity.getStationNo();
+        if (StationNo != null) {
+            stmt.bindString(3, StationNo);
         }
  
-        String deviceNo = entity.getDeviceNo();
-        if (deviceNo != null) {
-            stmt.bindString(4, deviceNo);
+        String DeviceNo = entity.getDeviceNo();
+        if (DeviceNo != null) {
+            stmt.bindString(4, DeviceNo);
         }
  
-        Integer index = entity.getIndex();
-        if (index != null) {
-            stmt.bindLong(5, index);
+        Integer Index = entity.getIndex();
+        if (Index != null) {
+            stmt.bindLong(5, Index);
         }
  
-        String userName = entity.getUserName();
-        if (userName != null) {
-            stmt.bindString(6, userName);
+        String UserName = entity.getUserName();
+        if (UserName != null) {
+            stmt.bindString(6, UserName);
         }
  
-        String phone = entity.getPhone();
-        if (phone != null) {
-            stmt.bindString(7, phone);
+        String Phone = entity.getPhone();
+        if (Phone != null) {
+            stmt.bindString(7, Phone);
         }
  
-        java.util.Date createDatetime = entity.getCreateDatetime();
-        if (createDatetime != null) {
-            stmt.bindLong(8, createDatetime.getTime());
+        java.util.Date CreateDatetime = entity.getCreateDatetime();
+        if (CreateDatetime != null) {
+            stmt.bindLong(8, CreateDatetime.getTime());
         }
  
-        String linkman = entity.getLinkman();
-        if (linkman != null) {
-            stmt.bindString(9, linkman);
+        String Linkman = entity.getLinkman();
+        if (Linkman != null) {
+            stmt.bindString(9, Linkman);
         }
  
-        Integer sjId = entity.getSjId();
-        if (sjId != null) {
-            stmt.bindLong(10, sjId);
+        Integer SjId = entity.getSjId();
+        if (SjId != null) {
+            stmt.bindLong(10, SjId);
         }
  
-        String usedTotal = entity.getUsedTotal();
-        if (usedTotal != null) {
-            stmt.bindString(11, usedTotal);
+        String UsedTotal = entity.getUsedTotal();
+        if (UsedTotal != null) {
+            stmt.bindString(11, UsedTotal);
         }
  
-        String purchaseTotal = entity.getPurchaseTotal();
-        if (purchaseTotal != null) {
-            stmt.bindString(12, purchaseTotal);
+        String PurchaseTotal = entity.getPurchaseTotal();
+        if (PurchaseTotal != null) {
+            stmt.bindString(12, PurchaseTotal);
         }
  
-        String purchaseTotalThisYear = entity.getPurchaseTotalThisYear();
-        if (purchaseTotalThisYear != null) {
-            stmt.bindString(13, purchaseTotalThisYear);
+        String PurchaseTotalThisYear = entity.getPurchaseTotalThisYear();
+        if (PurchaseTotalThisYear != null) {
+            stmt.bindString(13, PurchaseTotalThisYear);
         }
  
-        String overdraft = entity.getOverdraft();
-        if (overdraft != null) {
-            stmt.bindString(14, overdraft);
+        String Overdraft = entity.getOverdraft();
+        if (Overdraft != null) {
+            stmt.bindString(14, Overdraft);
         }
  
-        String alarmValue = entity.getAlarmValue();
-        if (alarmValue != null) {
-            stmt.bindString(15, alarmValue);
+        String AlarmValue = entity.getAlarmValue();
+        if (AlarmValue != null) {
+            stmt.bindString(15, AlarmValue);
         }
  
-        String credentialNo = entity.getCredentialNo();
-        if (credentialNo != null) {
-            stmt.bindString(16, credentialNo);
+        String CredentialNo = entity.getCredentialNo();
+        if (CredentialNo != null) {
+            stmt.bindString(16, CredentialNo);
         }
  
-        String limitSj1 = entity.getLimitSj1();
-        if (limitSj1 != null) {
-            stmt.bindString(17, limitSj1);
+        String LimitSj1 = entity.getLimitSj1();
+        if (LimitSj1 != null) {
+            stmt.bindString(17, LimitSj1);
         }
  
-        String limitSj2 = entity.getLimitSj2();
-        if (limitSj2 != null) {
-            stmt.bindString(18, limitSj2);
+        String LimitSj2 = entity.getLimitSj2();
+        if (LimitSj2 != null) {
+            stmt.bindString(18, LimitSj2);
         }
  
-        String comment = entity.getComment();
-        if (comment != null) {
-            stmt.bindString(19, comment);
+        String Comment = entity.getComment();
+        if (Comment != null) {
+            stmt.bindString(19, Comment);
         }
  
-        String administratorName = entity.getAdministratorName();
-        if (administratorName != null) {
-            stmt.bindString(20, administratorName);
+        String AdministratorName = entity.getAdministratorName();
+        if (AdministratorName != null) {
+            stmt.bindString(20, AdministratorName);
         }
         stmt.bindLong(21, entity.getStopFlag() ? 1L: 0L);
  
-        String cardNo = entity.getCardNo();
-        if (cardNo != null) {
-            stmt.bindString(22, cardNo);
+        String CardNo = entity.getCardNo();
+        if (CardNo != null) {
+            stmt.bindString(22, CardNo);
         }
  
-        Integer creditcardTimes = entity.getCreditcardTimes();
-        if (creditcardTimes != null) {
-            stmt.bindLong(23, creditcardTimes);
+        Integer CreditcardTimes = entity.getCreditcardTimes();
+        if (CreditcardTimes != null) {
+            stmt.bindLong(23, CreditcardTimes);
         }
  
-        java.util.Date lastDatetime = entity.getLastDatetime();
-        if (lastDatetime != null) {
-            stmt.bindLong(24, lastDatetime.getTime());
+        java.util.Date LastDatetime = entity.getLastDatetime();
+        if (LastDatetime != null) {
+            stmt.bindLong(24, LastDatetime.getTime());
         }
         stmt.bindLong(25, entity.getDelFlag() ? 1L: 0L);
         stmt.bindLong(26, entity.getKey());
@@ -237,115 +237,115 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
             stmt.bindLong(1, Id);
         }
  
-        String userNo = entity.getUserNo();
-        if (userNo != null) {
-            stmt.bindString(2, userNo);
+        String UserNo = entity.getUserNo();
+        if (UserNo != null) {
+            stmt.bindString(2, UserNo);
         }
  
-        String stationNo = entity.getStationNo();
-        if (stationNo != null) {
-            stmt.bindString(3, stationNo);
+        String StationNo = entity.getStationNo();
+        if (StationNo != null) {
+            stmt.bindString(3, StationNo);
         }
  
-        String deviceNo = entity.getDeviceNo();
-        if (deviceNo != null) {
-            stmt.bindString(4, deviceNo);
+        String DeviceNo = entity.getDeviceNo();
+        if (DeviceNo != null) {
+            stmt.bindString(4, DeviceNo);
         }
  
-        Integer index = entity.getIndex();
-        if (index != null) {
-            stmt.bindLong(5, index);
+        Integer Index = entity.getIndex();
+        if (Index != null) {
+            stmt.bindLong(5, Index);
         }
  
-        String userName = entity.getUserName();
-        if (userName != null) {
-            stmt.bindString(6, userName);
+        String UserName = entity.getUserName();
+        if (UserName != null) {
+            stmt.bindString(6, UserName);
         }
  
-        String phone = entity.getPhone();
-        if (phone != null) {
-            stmt.bindString(7, phone);
+        String Phone = entity.getPhone();
+        if (Phone != null) {
+            stmt.bindString(7, Phone);
         }
  
-        java.util.Date createDatetime = entity.getCreateDatetime();
-        if (createDatetime != null) {
-            stmt.bindLong(8, createDatetime.getTime());
+        java.util.Date CreateDatetime = entity.getCreateDatetime();
+        if (CreateDatetime != null) {
+            stmt.bindLong(8, CreateDatetime.getTime());
         }
  
-        String linkman = entity.getLinkman();
-        if (linkman != null) {
-            stmt.bindString(9, linkman);
+        String Linkman = entity.getLinkman();
+        if (Linkman != null) {
+            stmt.bindString(9, Linkman);
         }
  
-        Integer sjId = entity.getSjId();
-        if (sjId != null) {
-            stmt.bindLong(10, sjId);
+        Integer SjId = entity.getSjId();
+        if (SjId != null) {
+            stmt.bindLong(10, SjId);
         }
  
-        String usedTotal = entity.getUsedTotal();
-        if (usedTotal != null) {
-            stmt.bindString(11, usedTotal);
+        String UsedTotal = entity.getUsedTotal();
+        if (UsedTotal != null) {
+            stmt.bindString(11, UsedTotal);
         }
  
-        String purchaseTotal = entity.getPurchaseTotal();
-        if (purchaseTotal != null) {
-            stmt.bindString(12, purchaseTotal);
+        String PurchaseTotal = entity.getPurchaseTotal();
+        if (PurchaseTotal != null) {
+            stmt.bindString(12, PurchaseTotal);
         }
  
-        String purchaseTotalThisYear = entity.getPurchaseTotalThisYear();
-        if (purchaseTotalThisYear != null) {
-            stmt.bindString(13, purchaseTotalThisYear);
+        String PurchaseTotalThisYear = entity.getPurchaseTotalThisYear();
+        if (PurchaseTotalThisYear != null) {
+            stmt.bindString(13, PurchaseTotalThisYear);
         }
  
-        String overdraft = entity.getOverdraft();
-        if (overdraft != null) {
-            stmt.bindString(14, overdraft);
+        String Overdraft = entity.getOverdraft();
+        if (Overdraft != null) {
+            stmt.bindString(14, Overdraft);
         }
  
-        String alarmValue = entity.getAlarmValue();
-        if (alarmValue != null) {
-            stmt.bindString(15, alarmValue);
+        String AlarmValue = entity.getAlarmValue();
+        if (AlarmValue != null) {
+            stmt.bindString(15, AlarmValue);
         }
  
-        String credentialNo = entity.getCredentialNo();
-        if (credentialNo != null) {
-            stmt.bindString(16, credentialNo);
+        String CredentialNo = entity.getCredentialNo();
+        if (CredentialNo != null) {
+            stmt.bindString(16, CredentialNo);
         }
  
-        String limitSj1 = entity.getLimitSj1();
-        if (limitSj1 != null) {
-            stmt.bindString(17, limitSj1);
+        String LimitSj1 = entity.getLimitSj1();
+        if (LimitSj1 != null) {
+            stmt.bindString(17, LimitSj1);
         }
  
-        String limitSj2 = entity.getLimitSj2();
-        if (limitSj2 != null) {
-            stmt.bindString(18, limitSj2);
+        String LimitSj2 = entity.getLimitSj2();
+        if (LimitSj2 != null) {
+            stmt.bindString(18, LimitSj2);
         }
  
-        String comment = entity.getComment();
-        if (comment != null) {
-            stmt.bindString(19, comment);
+        String Comment = entity.getComment();
+        if (Comment != null) {
+            stmt.bindString(19, Comment);
         }
  
-        String administratorName = entity.getAdministratorName();
-        if (administratorName != null) {
-            stmt.bindString(20, administratorName);
+        String AdministratorName = entity.getAdministratorName();
+        if (AdministratorName != null) {
+            stmt.bindString(20, AdministratorName);
         }
         stmt.bindLong(21, entity.getStopFlag() ? 1L: 0L);
  
-        String cardNo = entity.getCardNo();
-        if (cardNo != null) {
-            stmt.bindString(22, cardNo);
+        String CardNo = entity.getCardNo();
+        if (CardNo != null) {
+            stmt.bindString(22, CardNo);
         }
  
-        Integer creditcardTimes = entity.getCreditcardTimes();
-        if (creditcardTimes != null) {
-            stmt.bindLong(23, creditcardTimes);
+        Integer CreditcardTimes = entity.getCreditcardTimes();
+        if (CreditcardTimes != null) {
+            stmt.bindLong(23, CreditcardTimes);
         }
  
-        java.util.Date lastDatetime = entity.getLastDatetime();
-        if (lastDatetime != null) {
-            stmt.bindLong(24, lastDatetime.getTime());
+        java.util.Date LastDatetime = entity.getLastDatetime();
+        if (LastDatetime != null) {
+            stmt.bindLong(24, LastDatetime.getTime());
         }
         stmt.bindLong(25, entity.getDelFlag() ? 1L: 0L);
         stmt.bindLong(26, entity.getKey());
@@ -362,33 +362,33 @@ public class UserModelDao extends AbstractDao<UserModel, Long> {
     public UserModel readEntity(Cursor cursor, int offset) {
         UserModel entity = new UserModel( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // Id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // userNo
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // stationNo
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // deviceNo
-            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // index
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // userName
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // phone
-            cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)), // createDatetime
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // linkman
-            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // sjId
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // usedTotal
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // purchaseTotal
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // purchaseTotalThisYear
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // overdraft
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // alarmValue
-            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // credentialNo
-            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // limitSj1
-            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // limitSj2
-            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // comment
-            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // administratorName
-            cursor.getShort(offset + 20) != 0, // stopFlag
-            cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // cardNo
-            cursor.isNull(offset + 22) ? null : cursor.getInt(offset + 22), // creditcardTimes
-            cursor.isNull(offset + 23) ? null : new java.util.Date(cursor.getLong(offset + 23)), // lastDatetime
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // UserNo
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // StationNo
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // DeviceNo
+            cursor.isNull(offset + 4) ? null : cursor.getInt(offset + 4), // Index
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // UserName
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // Phone
+            cursor.isNull(offset + 7) ? null : new java.util.Date(cursor.getLong(offset + 7)), // CreateDatetime
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // Linkman
+            cursor.isNull(offset + 9) ? null : cursor.getInt(offset + 9), // SjId
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // UsedTotal
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // PurchaseTotal
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // PurchaseTotalThisYear
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // Overdraft
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // AlarmValue
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15), // CredentialNo
+            cursor.isNull(offset + 16) ? null : cursor.getString(offset + 16), // LimitSj1
+            cursor.isNull(offset + 17) ? null : cursor.getString(offset + 17), // LimitSj2
+            cursor.isNull(offset + 18) ? null : cursor.getString(offset + 18), // Comment
+            cursor.isNull(offset + 19) ? null : cursor.getString(offset + 19), // AdministratorName
+            cursor.getShort(offset + 20) != 0, // StopFlag
+            cursor.isNull(offset + 21) ? null : cursor.getString(offset + 21), // CardNo
+            cursor.isNull(offset + 22) ? null : cursor.getInt(offset + 22), // CreditcardTimes
+            cursor.isNull(offset + 23) ? null : new java.util.Date(cursor.getLong(offset + 23)), // LastDatetime
             cursor.getShort(offset + 24) != 0, // DelFlag
             cursor.getInt(offset + 25), // key
-            cursor.getLong(offset + 26), // serverVersion
-            cursor.getLong(offset + 27) // clientVersion
+            cursor.getLong(offset + 26), // ServerVersion
+            cursor.getLong(offset + 27) // ClientVersion
         );
         return entity;
     }

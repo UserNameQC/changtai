@@ -89,7 +89,7 @@ public class UserActionActivity extends BaseActivity  {
 
                 StringBuffer stringBuffer = new StringBuffer("");
                 stringBuffer.append(userModel.getUserNo());
-                stringBuffer.append((int) Double.parseDouble(userModel.purchaseTotal));
+                stringBuffer.append((int) Double.parseDouble(userModel.PurchaseTotal));
                 stringBuffer.append((int) (Double.parseDouble(userModel.getOverdraft())/100));
                 stringBuffer.append((int) (Double.parseDouble(userModel.getAlarmValue())/100));
                 if (type.equals("setting")) {

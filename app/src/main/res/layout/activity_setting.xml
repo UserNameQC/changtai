@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/timg" />
+            android:background="@drawable/china_water_conservancy" />
 
         <EditText
             android:id="@+id/buy_water_id"
@@ -27,7 +27,7 @@
             android:paddingStart="5dp"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/setting_logo"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
 
         <Button

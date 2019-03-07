@@ -265,30 +265,30 @@ public class MainActivity extends BaseActivity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
-                for(DeviceModel model:downLoadFromPcModel.Device){
+                for(DeviceModel model:downLoadFromPcModel.getDevice()){
                     DeviceModel model1= MappingObject(model,DeviceModel.class);
                     model1.DeviceId= Long.parseLong(model.getDeviceNo());
-                    MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
+                    MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model);
                 }
-                for(UserModel model:downLoadFromPcModel.User){
+                for(UserModel model:downLoadFromPcModel.getUser()){
                     UserModel model1= MappingObject(model,UserModel.class);
                     model1.Id= Long.parseLong(model.getUserNo());
-                    MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model1);
+                    MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model);
                 }
-                for(PriceModel model:downLoadFromPcModel.Price){
+                for(PriceModel model:downLoadFromPcModel.getPrice()){
                     PriceModel model1= MappingObject(model,PriceModel.class);
-                    model1.Id= Long.parseLong(String.format("%s%03d",model1.stationNo,model1.sjId));
-                    MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
+                    model1.Id= Long.parseLong(String.format("%s%03d",model1.StationNo,model1.SjId));
+                    MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model);
                 }
-                for(PurchaseRecordModel model:downLoadFromPcModel.PurchaseRecord){
+                for(PurchaseRecordModel model:downLoadFromPcModel.getPurchaseRecord()){
                     PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
                     QueryBuilder<PurchaseRecordModel> qb =MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().queryBuilder();
-                    qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.purchaseRecordId));
+                    qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.PurchaseRecordId));
                     List<PurchaseRecordModel> list = qb.list();
                     if(list.size()>0){
                         model1.Id=list.get(0).Id;
                     }
-                    MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model1);
+                    MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model);
                 }
 
                 ConfigModel configModel = new ConfigModel();

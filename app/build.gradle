@@ -46,7 +46,7 @@ android {
 }
 
 greendao {
-    schemaVersion 2
+    schemaVersion 3
     daoPackage 'com.changtai.sqlModelDao'
     targetGenDir 'src/main/java'
 }

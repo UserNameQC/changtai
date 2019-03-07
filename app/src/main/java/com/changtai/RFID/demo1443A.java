@@ -4,6 +4,7 @@ import com.android.RfidControll;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.HelloWorldController;
+import com.changtai.Utils.VoiceUtils;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.Rfid1443aBinding;
 import com.changtai.sqlModel.ConfigModel;
@@ -58,14 +59,27 @@ public class demo1443A extends Activity implements OnClickListener {
 
     //水费
     public BigDecimal firstCost, secondCost, thirdCost;
+    public VoiceUtils voiceUtils;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(demo1443A.this, R.layout.rfid_1443a);
         utils = new RfidUtils();
+        voiceUtils = new VoiceUtils();
         rfid.OpenComm();
         initView();
+        //requestCard();
         //initData();
+    }
+
+    public void requestCard() {
+//        byte[] buffer = new byte[256];
+//        int a = rfid.API_MF_Request(0, 0x52, buffer);
+//        if (a == 0) {
+//            voiceUtils.playSuccessVoice(demo1443A.this, R.raw.success);
+//        } else {
+//            voiceUtils.playSuccessVoice(demo1443A.this, R.raw.failed);
+//        }
     }
 
     public void initView() {
@@ -97,7 +111,7 @@ public class demo1443A extends Activity implements OnClickListener {
                 BigDecimal bigDecimal = new BigDecimal(s.toString());
                 BigDecimal max = new BigDecimal("99999999");
                 BigDecimal min = new BigDecimal("0");
-                if (bigDecimal.compareTo(max) > 0 || bigDecimal.compareTo(min) < 0){
+                if (bigDecimal.compareTo(max) > 0 || bigDecimal.compareTo(min) < 0) {
                     Entity.toastMsg(demo1443A.this, "您输入的内容超出规定范围，请重新输入！");
                     return;
                 }
@@ -123,7 +137,7 @@ public class demo1443A extends Activity implements OnClickListener {
         @Override
         public void afterTextChanged(Editable s) {
             int result = Integer.parseInt(s.toString());
-            if (result < 0 || result > 99){
+            if (result < 0 || result > 99) {
                 Entity.toastMsg(demo1443A.this, "您输入的内容不再范围内，请重新输入！");
                 return;
             }
@@ -171,14 +185,14 @@ public class demo1443A extends Activity implements OnClickListener {
              */
             thirdCost = sj3.multiply(thirdTotal);
             binding.rfidThirdCost.setText(String.valueOf(thirdCost));
-           //购水金额
+            //购水金额
             binding.rfidBuyWaterAmount.setText(String.valueOf(thirdCost));
         } else {
             /**
              * 此时要计算增加购水量后，是否超过二级水量上限
              */
-            if (isMoreFirstTotal){
-                if (bigTotalYear.compareTo(secLimit) > 0){
+            if (isMoreFirstTotal) {
+                if (bigTotalYear.compareTo(secLimit) > 0) {
                     //超过二级水量部分按三级水价计算
                     //三级水量 = 总年度购水量 - 二级水量上限
                     thirdCost = sj3.multiply(bigTotalYear.subtract(secLimit));
@@ -216,8 +230,8 @@ public class demo1443A extends Activity implements OnClickListener {
                  * 一级水量 = 总购水量
                  * 一级水费 = 一级水价 * 本次购水量
                  */
-                if (bigTotalYear.compareTo(firLimit) > 0){
-                    if (bigTotalYear.compareTo(secLimit) > 0){
+                if (bigTotalYear.compareTo(firLimit) > 0) {
+                    if (bigTotalYear.compareTo(secLimit) > 0) {
                         BigDecimal thirdTotal = bigTotalYear.subtract(secLimit);
                         thirdCost = sj3.multiply(thirdTotal);
                         BigDecimal secTotal = secLimit.subtract(firLimit);
@@ -269,7 +283,7 @@ public class demo1443A extends Activity implements OnClickListener {
 //                .StationNo.eq(userModel.getStationNo()), PriceModelDao.Properties.SjId.eq(userModel.getSjId()))).list();
         queryBuilder.and(PriceModelDao.Properties
                 .StationNo.eq(userModel.getStationNo()), PriceModelDao.Properties.SjId.eq(userModel.getSjId()));
-        List<PriceModel> priceModels =  queryBuilder.build().list();
+        List<PriceModel> priceModels = queryBuilder.build().list();
         if (priceModels != null && priceModels.size() > 0) {
             PriceModel priceModel = priceModels.get(0);
             binding.rfidFirstPrice.setText(priceModel.getSj1());
@@ -281,58 +295,64 @@ public class demo1443A extends Activity implements OnClickListener {
     public Handler handler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == 200) {
-                if (userModel == null) return;
-                binding.rfidBuyYearAmount.setText(userModel.getPurchaseTotalThisYear());
-                binding.rfidFirst.setText(userModel.getLimitSj1());
-                binding.rfidSecond.setText(userModel.getLimitSj2());
+            switch (msg.what) {
+                case 200:
+                    if (userModel == null) return;
+                    binding.rfidBuyYearAmount.setText(userModel.getPurchaseTotalThisYear());
+                    binding.rfidFirst.setText(userModel.getLimitSj1());
+                    binding.rfidSecond.setText(userModel.getLimitSj2());
 
-                //判断累计购水量是否相同
-                String purchaseTotal = userModel.getPurchaseTotal();
-                String card_purchaseTotal = binding.rfidPurchaseTotal.getText().toString();
-                if (!TextUtils.isEmpty(card_purchaseTotal) && !TextUtils.isEmpty(purchaseTotal)) {
-                    if (!purchaseTotal.equals(card_purchaseTotal)) {
-                        Entity.toastMsg(demo1443A.this, "数据不一致，请重新同步数据");
-                        return;
+                    //判断累计购水量是否相同
+                    String purchaseTotal = userModel.getPurchaseTotal();
+                    String card_purchaseTotal = binding.rfidPurchaseTotal.getText().toString();
+                    if (!TextUtils.isEmpty(card_purchaseTotal) && !TextUtils.isEmpty(purchaseTotal)) {
+                        if (!purchaseTotal.equals(card_purchaseTotal)) {
+                            Entity.toastMsg(demo1443A.this, "数据不一致，请重新同步数据");
+                            return;
+                        }
                     }
-                }
-                int sl1 = Integer.parseInt(userModel.getLimitSj1());
-                int sl2 = Integer.parseInt(userModel.getLimitSj2());
-                int yearTotal = Integer.parseInt(binding.rfidBuyYearAmount.getText().toString());
-                //水量设置
-                if (yearTotal > sl1) {
-                    isMoreFirstTotal = true;
-                    binding.rfidFirstAmount.setText(String.valueOf(sl1));
-                    if (yearTotal > sl2) {
-                        isMoreSecTotal = true;
-                        binding.rfidSecondAmount.setText(String.valueOf(sl2));
-                        binding.rfidThirdAmount.setText(String.valueOf(yearTotal - sl2));
+                    int sl1 = Integer.parseInt(userModel.getLimitSj1());
+                    int sl2 = Integer.parseInt(userModel.getLimitSj2());
+                    int yearTotal = Integer.parseInt(binding.rfidBuyYearAmount.getText().toString());
+                    //水量设置
+                    if (yearTotal > sl1) {
+                        isMoreFirstTotal = true;
+                        binding.rfidFirstAmount.setText(String.valueOf(sl1));
+                        if (yearTotal > sl2) {
+                            isMoreSecTotal = true;
+                            binding.rfidSecondAmount.setText(String.valueOf(sl2));
+                            binding.rfidThirdAmount.setText(String.valueOf(yearTotal - sl2));
+                        } else {
+                            isMoreSecTotal = false;
+                            binding.rfidSecondAmount.setText(String.valueOf(yearTotal - sl1));
+                            binding.rfidThirdAmount.setText(String.valueOf(0));
+                        }
                     } else {
-                        isMoreSecTotal = false;
-                        binding.rfidSecondAmount.setText(String.valueOf(yearTotal - sl1));
+                        isMoreFirstTotal = false;
+                        binding.rfidFirstAmount.setText(String.valueOf(yearTotal));
+                        binding.rfidSecondAmount.setText(String.valueOf(0));
                         binding.rfidThirdAmount.setText(String.valueOf(0));
                     }
-                } else {
-                    isMoreFirstTotal = false;
-                    binding.rfidFirstAmount.setText(String.valueOf(yearTotal));
-                    binding.rfidSecondAmount.setText(String.valueOf(0));
-                    binding.rfidThirdAmount.setText(String.valueOf(0));
-                }
-            }
+                    break;
 
-            if (msg.what == 300) {
-                int thisPurchase = Integer.parseInt(binding.rfidBuyPurchase.getText().toString());//本次购水量
-                String year = binding.rfidBuyYearAmount.getText().toString();//原年度购水量
-                String total = binding.rfidPurchaseTotal.getText().toString();//原累计购水量
-                int resultYear = Integer.parseInt(year) + thisPurchase;
-                int resultTotal = Integer.parseInt(total) + thisPurchase;
-                binding.rfidBuyYearAmount.setText(String.valueOf(resultYear));
-                binding.rfidPurchaseTotal.setText(String.valueOf(resultTotal));
-                //更新数据库
-                userModel.setPurchaseTotalThisYear(String.valueOf(resultYear));
-                userModel.setPurchaseTotal(String.valueOf(resultTotal));
-                userModel.setAdministratorName(Entity.spres.getString(Entity.LOGIN_NAME, ""));
-                userModelDao.insertOrReplace(userModel);
+                case 300:
+                    int thisPurchase = Integer.parseInt(binding.rfidBuyPurchase.getText().toString());//本次购水量
+                    String year = binding.rfidBuyYearAmount.getText().toString();//原年度购水量
+                    String total = binding.rfidPurchaseTotal.getText().toString();//原累计购水量
+                    int resultYear = Integer.parseInt(year) + thisPurchase;
+                    int resultTotal = Integer.parseInt(total) + thisPurchase;
+                    binding.rfidBuyYearAmount.setText(String.valueOf(resultYear));
+                    binding.rfidPurchaseTotal.setText(String.valueOf(resultTotal));
+                    //更新数据库
+                    userModel.setPurchaseTotalThisYear(String.valueOf(resultYear));
+                    userModel.setPurchaseTotal(String.valueOf(resultTotal));
+                    userModel.setAdministratorName(Entity.spres.getString(Entity.LOGIN_NAME, ""));
+                    userModelDao.insertOrReplace(userModel);
+                    break;
+
+                case 400:
+                    requestCard();
+                    break;
             }
         }
     };
@@ -342,6 +362,9 @@ public class demo1443A extends Activity implements OnClickListener {
 
         switch (v.getId()) {
             case R.id.btn_readstring:
+
+                handler.sendEmptyMessage(400);
+
                 byte buffer1[] = new byte[256];
                 if (getPassWord() == null) return;
                 res = rfid.API_MF_Read(0x00, 0x01, 57, 1, getPassWord(), buffer1);
@@ -355,9 +378,9 @@ public class demo1443A extends Activity implements OnClickListener {
                     }
                     ConfigModelDao configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
                     List<ConfigModel> configModels = configModelDao.loadAll();
-                    if (!configModels.isEmpty()){
+                    if (!configModels.isEmpty()) {
                         ConfigModel configModel = configModels.get(0);
-                        if (!configModel.getValue().equals(userFromCardBean.getStationNo())){
+                        if (!configModel.getValue().equals(userFromCardBean.getStationNo())) {
                             Entity.toastMsg(this, "非本水站用户！");
                             return;
                         }
@@ -449,6 +472,8 @@ public class demo1443A extends Activity implements OnClickListener {
                 }
                 break;
             case R.id.btn_writestring:
+
+                handler.sendEmptyMessage(400);
 
                 if (Entity.editIsNull(binding.rfidAlarmValue)) return;
                 if (Entity.editIsNull(binding.rfidOverdraft)) return;
