@@ -390,7 +390,7 @@ public class demo1443A extends Activity implements OnClickListener {
                             .where(UserModelDao.Properties.UserNo.eq(userFromCardBean.getUserCardNo())).list();
                     if (!userModels.isEmpty()) {
                         userModel = userModels.get(0);
-                        if (!userModel.getCardNo().equals(this.cardNum)) {
+                        if (!TextUtils.isEmpty(userModel.getCardNo()) && !userModel.getCardNo().equals(this.cardNum)) {
                             Entity.toastMsg(this, "卡号不一致，不允许售水");
                             return;
                         }
@@ -399,8 +399,8 @@ public class demo1443A extends Activity implements OnClickListener {
                         return;
                     }
 
-                    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
-                    String date = format.format(userModel.getLastDatetime() == null ? "0" : userModel.getLastDatetime());
+                    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+                    String date = format.format(userModel.getLastDatetime() == null ? new Date(): userModel.getLastDatetime());
                     if (Entity.GetNowTime().compareTo(date) < 0) {
                         Entity.toastMsg(this, "本机时间小于最后购水时间，不允许购水！");
                         return;
@@ -415,10 +415,10 @@ public class demo1443A extends Activity implements OnClickListener {
                             queryBuilder.where(PurchaseRecordModelDao.Properties.UserNo.eq(userFromCardBean.getUserCardNo())).list();
                     if (purModels != null && purModels.size() > 0) {
                         PurchaseRecordModel purchaseRecordModel = purModels.get(0);
-                        if (Long.parseLong(purchaseRecordModel.getPurchaseTotal()) > Long.parseLong(userFromCardBean.getToal())) {
+                        if (purchaseRecordModel.getPurchaseTotal().compareTo(userFromCardBean.getToal()) > 0) {
                             Entity.toastMsg(this, "该用户已补卡，本卡是丢失的原用户卡，不允许继续使用");
                             return;
-                        } else if (Long.parseLong(purchaseRecordModel.getPurchaseTotal()) < Long.parseLong(userFromCardBean.getToal())) {
+                        } else if (purchaseRecordModel.getPurchaseTotal().compareTo(userFromCardBean.getToal()) < 0) {
                             Entity.toastMsg(this, "本卡数据缺失， 请同步数据后再操作");
                             return;
                         }

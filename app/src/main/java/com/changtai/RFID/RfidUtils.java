@@ -7,6 +7,8 @@ import android.widget.Toast;
 import com.android.RfidControll;
 import com.changtai.Utils.HelloWorldController;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by qjcjob on 2018/12/26.
  */
@@ -174,9 +176,10 @@ public class RfidUtils {
             String result = toHexString(buffer, 16);
             UserFromCardBean userFromCardBean = new UserFromCardBean();
             userFromCardBean.setStationNo(result.substring(0, 5));
+            userFromCardBean.setDeviceNo(result.substring(0, 8));
             userFromCardBean.setFlag(result.substring(10, 12));
             userFromCardBean.setUserCardNo(result.substring(0, 10));
-            userFromCardBean.setToal(result.substring(12, 20));
+            userFromCardBean.setToal(String.valueOf(Integer.parseInt(result.substring(12, 20))));
             userFromCardBean.setAlarmValue(result.substring(22, 24));
             userFromCardBean.setOverdeRaft(result.substring(20, 22));
             userFromCardBean.setPurchaseDate(result.substring(24));
