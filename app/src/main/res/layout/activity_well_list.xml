@@ -121,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="stationNo"
+                        android:tag="StationNo"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -150,7 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="deviceNo"
+                        android:tag="DeviceNo"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -179,7 +179,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="gprsNo"
+                        android:tag="GprsNo"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -208,7 +208,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="deviceName"
+                        android:tag="DeviceName"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -237,7 +237,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="index"
+                        android:tag="Index"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -266,7 +266,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="linkman"
+                        android:tag="Linkman"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -295,7 +295,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="phone"
+                        android:tag="Phone"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -324,7 +324,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="location"
+                        android:tag="Location"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -355,7 +355,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:background="@null"
-                        android:tag="createDatetime"
+                        android:tag="CreateDatetime"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -384,7 +384,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="longitude"
+                        android:tag="Longitude"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -413,7 +413,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="latitude"
+                        android:tag="Latitude"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -442,7 +442,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="comment"
+                        android:tag="Comment"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -471,12 +471,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="administratorName"
+                        android:tag="AdministratorName"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
 
-                <View
+                <!--<View
                     android:layout_width="match_parent"
                     android:layout_height="2px"
                     android:layout_marginLeft="12dp"
@@ -500,10 +500,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="timeSpan"
+                        android:tag="TimeSpan"
                         android:textSize="@dimen/text_size_default" />
 
-                </LinearLayout>
+                </LinearLayout>-->
 
                 <View
                     android:layout_width="match_parent"
@@ -529,7 +529,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="stopFlag"
+                        android:tag="StopFlag"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>
@@ -558,7 +558,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@null"
-                        android:tag="version"
+                        android:tag="ServerVersion"
                         android:textSize="@dimen/text_size_default" />
 
                 </LinearLayout>

@@ -66,7 +66,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@null"
-                            android:tag="purchaseRecordId"
+                            android:tag="PurchaseRecordId"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -96,7 +96,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="stationNo"
+                            android:tag="StationNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -125,7 +125,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="deviceNo"
+                            android:tag="DeviceNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -154,7 +154,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="userNo"
+                            android:tag="UserNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -185,7 +185,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="43dp"
                             android:background="@null"
-                            android:tag="userName"
+                            android:tag="UserName"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -214,7 +214,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseTotalThisTime"
+                            android:tag="PurchaseTotalThisTime"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -243,7 +243,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseaMountThisTime"
+                            android:tag="PurchaseaMountThisTime"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -274,7 +274,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@null"
-                            android:tag="purchaseDatetimeThisTime"
+                            android:tag="PurchaseDatetimeThisTime"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -303,7 +303,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseYear"
+                            android:tag="PurchaseYear"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -332,7 +332,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseTotalThisYear"
+                            android:tag="PurchaseTotalThisYear"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -361,7 +361,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseTotal"
+                            android:tag="PurchaseTotal"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -390,7 +390,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="priceSj1"
+                            android:tag="PriceSj1"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -419,7 +419,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="totalSj1"
+                            android:tag="TotalSj1"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -448,7 +448,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="amountSj1"
+                            android:tag="AmountSj1"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -477,7 +477,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="priceSj2"
+                            android:tag="PriceSj2"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -506,7 +506,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="totalSj2"
+                            android:tag="TotalSj2"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -535,7 +535,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="amountSj2"
+                            android:tag="AmountSj2"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -564,7 +564,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="priceSj3"
+                            android:tag="PriceSj3"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -593,7 +593,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="totalSj3"
+                            android:tag="TotalSj3"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -622,7 +622,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="amountSj3"
+                            android:tag="AmountSj3"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -651,7 +651,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="comment"
+                            android:tag="Comment"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -680,7 +680,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="administratorName"
+                            android:tag="AdministratorName"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -709,7 +709,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="timespan"
+                            android:tag="Timespan"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -738,7 +738,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="version"
+                            android:tag="Version"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>

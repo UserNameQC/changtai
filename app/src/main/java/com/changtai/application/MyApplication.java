@@ -11,8 +11,10 @@ import com.baidu.mapapi.SDKInitializer;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.GreenDaoContext;
 import com.changtai.Utils.SqLiteOpenHelper;
+import com.changtai.sqlModel.UserModel;
 import com.changtai.sqlModelDao.DaoMaster;
 import com.changtai.sqlModelDao.DaoSession;
+import com.changtai.sqlModelDao.UserModelDao;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import java.text.SimpleDateFormat;
@@ -84,6 +86,9 @@ public class MyApplication extends Application {
          */
         Entity.paramUrl(Entity.mainUrl);
         Entity.spres = context.getSharedPreferences("MyShare", MODE_PRIVATE);
+
+        //daoMaster.dropAllTables(daoMaster.getDatabase(),true);
+        //daoMaster.createAllTables(daoMaster.getDatabase(), true);
     }
 
     /**
@@ -103,6 +108,7 @@ public class MyApplication extends Application {
     }
 
     public DaoSession getDaoSession() {
+        mDaoSession.clear();
         return mDaoSession;
     }
 

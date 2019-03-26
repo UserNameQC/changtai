@@ -167,7 +167,7 @@ public class Entity {
 
 
     public static boolean editIsNull(EditText editText) {
-        if (editText.length() > 0 && TextUtils.isEmpty(editText.getText().toString())) {
+        if (editText.length() > 0 && !TextUtils.isEmpty(editText.getText().toString())) {
             return false;
         }
         return true;

@@ -50,8 +50,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="5dp">
+                android:layout_marginStart="5dp">
 
                 <TextView
                     android:id="@+id/user_no_title"
@@ -66,13 +65,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@+id/user_no_title"
-                    android:layout_toRightOf="@+id/user_no_title"
                     android:gravity="center"
+                    android:singleLine="true"
                     android:text="用户名称"
                     android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
                     android:textStyle="bold"
-                    android:textSize="16dp" />
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <View
@@ -126,10 +124,8 @@
                             android:textSize="16sp"
                             android:text="水量设置"
                             android:layout_marginEnd="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_centerVertical="true"
                             android:gravity="center"
-                            android:layout_alignParentRight="true"
                             android:layout_alignParentEnd="true"
                             android:visibility="gone"/>
 
@@ -138,9 +134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_alignParentEnd="true"
-                            android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:src="@drawable/menu"/>
 
@@ -149,10 +143,10 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -165,23 +159,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="stationNo"
+                            android:tag="StationNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -194,23 +188,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="deviceNo"
+                            android:tag="DeviceNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -223,25 +217,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="userNo"
+                            android:tag="UserNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingEnd="15dp"
-                        android:paddingStart="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -252,25 +245,26 @@
                         <EditText
                             android:id="@+id/user_name"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="userName"
+                            android:tag="UserName"
+                            android:singleLine="true"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -283,23 +277,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="index"
+                            android:tag="Index"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -312,28 +306,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="linkman"
+                            android:tag="Linkman"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="电          话："
+                            android:text="电     话："
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
@@ -341,25 +335,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="phone"
+                            android:tag="Phone"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingEnd="15dp"
-                        android:paddingStart="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -372,23 +365,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@null"
-                            android:tag="createDatetime"
+                            android:tag="CreateDatetime"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -401,23 +394,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="sjId"
+                            android:tag="SjId"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -430,23 +423,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="usedTotal"
+                            android:tag="UsedTotal"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -459,23 +452,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseTotal"
+                            android:tag="PurchaseTotal"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -488,23 +481,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseTotalThisYear"
+                            android:tag="PurchaseTotalThisYear"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -517,23 +510,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="overdraft"
+                            android:tag="Overdraft"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -546,23 +539,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="alarmValue"
+                            android:tag="AlarmValue"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -575,28 +568,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="credentialNo"
+                            android:tag="CredentialNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="一级水价上限："
+                            android:text="一级水量上限："
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
@@ -604,28 +597,28 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="limitSj1"
+                            android:tag="LimitSj1"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="二级水价上限："
+                            android:text="二级水量上限："
                             android:textSize="@dimen/text_size_default" />
 
                         <EditText
@@ -633,23 +626,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="limitSj2"
+                            android:tag="LimitSj2"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -662,23 +655,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="comment"
+                            android:tag="Comment"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -691,25 +684,24 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="administratorName"
+                            android:tag="AdministratorName"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingEnd="15dp"
-                        android:paddingStart="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -722,23 +714,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@null"
-                            android:tag="lastDatetime"
+                            android:tag="LastDatetime"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -751,23 +743,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="cardNo"
+                            android:tag="CardNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -780,23 +772,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="creditcardTimes"
+                            android:tag="CreditcardTimes"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
-                    <View
+                    <!--<View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal" >
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -809,23 +801,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="timespan"
+                            android:tag="Timespan"
                             android:textSize="@dimen/text_size_default" />
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -838,23 +830,23 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="stopFlag"
+                            android:tag="StopFlag"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="15dp"
                         android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="15dp">
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -867,15 +859,15 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="version"
+                            android:tag="ServerVersion"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2px"
-                        android:layout_marginLeft="12dp"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="12dp"
                         android:background="@color/silverGray" />
 
                 </LinearLayout>

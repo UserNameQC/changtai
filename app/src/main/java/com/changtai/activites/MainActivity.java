@@ -34,6 +34,7 @@ import com.changtai.sqlModel.PurchaseRecordModel;
 import com.changtai.sqlModel.UserModel;
 import com.changtai.sqlModelDao.CardReplacementModelDao;
 import com.changtai.sqlModelDao.ConfigModelDao;
+import com.changtai.sqlModelDao.DaoSession;
 import com.changtai.sqlModelDao.DeviceModelDao;
 import com.changtai.sqlModelDao.PriceModelDao;
 import com.changtai.sqlModelDao.PurchaseRecordModelDao;
@@ -75,12 +76,22 @@ public class MainActivity extends BaseActivity {
     //进度条
     private ProgressDialog progressDialog ;
 
+    public DeviceModelDao deviceModelDao;
+    public UserModelDao userModelDao;
+    public PriceModelDao priceModelDao;
+    public PurchaseRecordModelDao purModelDao;
+    public DaoSession daoSession;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainBinding = DataBindingUtil.setContentView(MainActivity.this, R.layout.activity_main);
         spUtils = new SpUtils();
-        configModelDao = MyApplication.getInstance().getDaoSession().getConfigModelDao();
+        daoSession = MyApplication.getInstance().getDaoSession();
+        configModelDao = daoSession.getConfigModelDao();
+        userModelDao = daoSession.getUserModelDao();
+        priceModelDao = daoSession.getPriceModelDao();
+        purModelDao = daoSession.getPurchaseRecordModelDao();
         checkBaseId();
         initBottomMenu();
         initViewPager();
@@ -265,20 +276,26 @@ public class MainActivity extends BaseActivity {
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.Price.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.PurchaseRecord.size()));
                 Log.i("TEST",String.format("%d",downLoadFromPcModel.CardReplacement.size()));
+
+                //QueryBuilder<DeviceModel> deviceQuery = deviceModelDao.queryBuilder();
+
                 for(DeviceModel model:downLoadFromPcModel.getDevice()){
                     DeviceModel model1= MappingObject(model,DeviceModel.class);
                     model1.DeviceId= Long.parseLong(model.getDeviceNo());
-                    MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model);
+                    MyApplication.myApplication.getDaoSession().getDeviceModelDao().insertOrReplace(model1);
                 }
+
+                //QueryBuilder<UserModel> userModelQuery = userModelDao.queryBuilder();
                 for(UserModel model:downLoadFromPcModel.getUser()){
                     UserModel model1= MappingObject(model,UserModel.class);
-                    model1.Id= Long.parseLong(model.getUserNo());
-                    MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model);
+                    //model1.Id= Long.parseLong(model.getUserNo());
+                    model1.setId(Long.parseLong(model.getUserNo()));
+                    MyApplication.myApplication.getDaoSession().getUserModelDao().insertOrReplace(model1);
                 }
                 for(PriceModel model:downLoadFromPcModel.getPrice()){
                     PriceModel model1= MappingObject(model,PriceModel.class);
-                    model1.Id= Long.parseLong(String.format("%s%03d",model1.StationNo,model1.SjId));
-                    MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model);
+                    model1.setId(Long.parseLong(String.format("%s%03d",model1.StationNo,model1.SjId)));
+                    MyApplication.myApplication.getDaoSession().getPriceModelDao().insertOrReplace(model1);
                 }
                 for(PurchaseRecordModel model:downLoadFromPcModel.getPurchaseRecord()){
                     PurchaseRecordModel model1= MappingObject(model,PurchaseRecordModel.class);
@@ -286,9 +303,9 @@ public class MainActivity extends BaseActivity {
                     qb.where(PurchaseRecordModelDao.Properties.PurchaseRecordId.eq(model1.PurchaseRecordId));
                     List<PurchaseRecordModel> list = qb.list();
                     if(list.size()>0){
-                        model1.Id=list.get(0).Id;
+                        model1.setId(list.get(0).getId());
                     }
-                    MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model);
+                    MyApplication.myApplication.getDaoSession().getPurchaseRecordModelDao().insertOrReplace(model1);
                 }
 
                 ConfigModel configModel = new ConfigModel();

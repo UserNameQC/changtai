@@ -44,7 +44,7 @@ public class WebMethodHelper {
                 }
                 return sb.toString();
             }
-            throw new Exception(String.format("%s,服务器返回错误代码",path));
+            throw new Exception(String.format("%s,服务器返回错误代码, requestCode =" + responseCode,path));
         } finally {
             connection.disconnect();
         }

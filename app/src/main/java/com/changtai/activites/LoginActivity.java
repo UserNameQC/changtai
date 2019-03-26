@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.changtai.R;
 import com.changtai.Utils.Entity;
+import com.changtai.Utils.SpUtils;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityLoginBinding;
 import com.changtai.sqlModel.ConfigModel;
@@ -20,11 +21,13 @@ import java.util.List;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     public ActivityLoginBinding binding;
+    public SpUtils spUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
+        spUtils = new SpUtils();
         initView();
         //checkToken();
         //sendPost();
@@ -123,6 +126,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     Entity.loginModel.setLoginName("admin");
                     Entity.loginModel.setUserName("admin");
                     Entity.loginModel.setPassword("admin");
+
+                    spUtils.setString("QxString", "管理员");
+                    spUtils.setString(Entity.LOGIN_NAME, name);
+                    spUtils.setString(Entity.UserName, "admin");
+                    spUtils.setString(Entity.PassWord, "admin");
+
                     startActivity(new Intent(this, MainActivity.class));
                 } else {
                     try {

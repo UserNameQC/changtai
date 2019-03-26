@@ -129,7 +129,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="stationNo"
+                            android:tag="StationNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -158,7 +158,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="sjId"
+                            android:tag="SjId"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -187,7 +187,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="mc"
+                            android:tag="Mc"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -216,7 +216,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="sj1"
+                            android:tag="Sj1"
                             android:textSize="@dimen/text_size_default" />
 
                         <TextView
@@ -254,7 +254,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="sj2"
+                            android:tag="Sj2"
                             android:textSize="@dimen/text_size_default" />
 
                         <TextView
@@ -292,7 +292,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="sj3"
+                            android:tag="Sj3"
                             android:textSize="@dimen/text_size_default" />
 
                         <TextView
@@ -386,7 +386,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="administratorName"
+                            android:tag="AdministratorName"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>

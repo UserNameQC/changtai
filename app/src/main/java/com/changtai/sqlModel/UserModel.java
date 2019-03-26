@@ -71,6 +71,7 @@ public class UserModel {
     @Property
     public long ClientVersion;
 
+
     @Generated(hash = 1785884839)
     public UserModel(Long Id, String UserNo, String StationNo, String DeviceNo,
             Integer Index, String UserName, String Phone, Date CreateDatetime,
@@ -113,6 +114,7 @@ public class UserModel {
     @Generated(hash = 782181818)
     public UserModel() {
     }
+    
 
     public Long getId() {
         return Id;

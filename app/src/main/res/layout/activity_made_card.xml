@@ -32,7 +32,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:orientation="horizontal">
 
@@ -54,7 +53,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:text="说明：制作本地区使用的工具卡。带*号的工具卡只能由管理员制作"
@@ -86,7 +84,6 @@
                             android:id="@+id/device_test_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:text="说明：测试水泵运行是否正常，每次插卡测试水量均为100m³。"
@@ -122,7 +119,6 @@
                             android:id="@+id/made_device_check_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:text="说明：显示机井数据（旧版本控制器显示最后插卡的用户数据）。"
@@ -158,7 +154,6 @@
                             android:id="@+id/made_device_clear_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:text="说明：清楚控制器内的所有数据。"
@@ -195,10 +190,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="说明：在以时长/频率折算水量的机井上，设定水泵"
+                            android:text="说明：在以时长/频率折算水量的机井上，设"
                             android:textColor="#555555"
                             android:textSize="16sp" />
 
@@ -212,10 +206,9 @@
                                 android:id="@+id/channel_set_detail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
-                                android:text="稳定运行时流量为"
+                                android:text="定水泵稳定运行时流量为"
                                 android:textColor="#555555"
                                 android:textSize="16sp" />
 
@@ -223,12 +216,12 @@
                                 android:id="@+id/channel_set_edit"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
+                                android:paddingStart="2dp"
                                 android:background="@drawable/background_edit_text" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
                                 android:text="m³/h (5~500)"
@@ -264,10 +257,9 @@
                             android:id="@+id/critical_set_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="说明：在以频率折算水量的机井上，设定频率低于"
+                            android:text="说明：在以频率折算水量的机井上，设定频"
                             android:textColor="#555555"
                             android:textSize="16sp" />
 
@@ -276,16 +268,25 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16sp"
+                                android:textColor="#555555"
+                                android:layout_marginTop="5dp"
+                                android:text="率低于"/>
+
                             <EditText
                                 android:id="@+id/critical_set_edit"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
+                                android:paddingStart="2dp"
+                                android:paddingEnd="2dp"
                                 android:background="@drawable/background_edit_text" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
                                 android:text="Hz (1~50)时不计水量。"
@@ -321,10 +322,9 @@
                             android:id="@+id/meter_factor_set_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:text="说明：仅适用于使用n脉冲/m³流量计的机井，不适用于使用1脉冲/m³流量计的机井。设定流量计每m³水量对应"
+                            android:text="说明：仅适用于使用n脉冲/m³流量计的机井，不适用于使用1脉冲/m³流量计的机井。"
                             android:textColor="#555555"
                             android:textSize="16sp" />
 
@@ -333,23 +333,42 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="5dp"
+                                android:text="设定流量计每m³水量对应"
+                                android:textColor="#555555"
+                                android:textSize="16sp" />
+
                             <EditText
                                 android:id="@+id/meter_factor_set_edit"
                                 android:layout_width="50dp"
                                 android:layout_height="wrap_content"
-
+                                android:paddingStart="2dp"
+                                android:paddingEnd="2dp"
                                 android:background="@drawable/background_edit_text" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginTop="5dp"
-                                android:text="(100~50000)个脉冲信号。"
+                                android:text="(100~50000)"
                                 android:textColor="#555555"
                                 android:textSize="16sp" />
+
                         </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="个脉冲信号。"
+                            android:textColor="#555555"
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -379,7 +398,6 @@
                             android:id="@+id/user_check_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:text="说明：在指定的机井控制器上，显示指定的用户数据。"
@@ -414,7 +432,6 @@
                             android:id="@+id/user_clear_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:text="说明：在指定的机井控制器上，清除指定的用户数据。"
@@ -449,7 +466,6 @@
                             android:id="@+id/user_remove_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:text="说明：在指定的机井控制器上，导出指定的用户数据。
@@ -462,7 +478,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
@@ -488,7 +503,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center_vertical"
@@ -516,7 +530,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="15dp"
                     android:gravity="center_vertical"
@@ -540,7 +553,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"

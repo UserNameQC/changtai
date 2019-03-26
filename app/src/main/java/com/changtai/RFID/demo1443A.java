@@ -98,7 +98,16 @@ public class demo1443A extends Activity implements OnClickListener {
         binding.rfidBuyPurchase.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                if (userModel != null){
+                    int sjNo = userModel.getSjId();
+                    priceModelDao = MyApplication.getInstance().getDaoSession().getPriceModelDao();
+                    QueryBuilder<PriceModel> queryBuilder = priceModelDao.queryBuilder();
+                    List<PriceModel> priceModels =
+                            queryBuilder.where(PriceModelDao.Properties.SjId.eq(sjNo)).list();
+                    if (!priceModels.isEmpty()){
+                        priceModel = priceModels.get(0);
+                    }
+                }
             }
 
             @Override
@@ -413,12 +422,12 @@ public class demo1443A extends Activity implements OnClickListener {
                     QueryBuilder<PurchaseRecordModel> queryBuilder = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao().queryBuilder();
                     List<PurchaseRecordModel> purModels =
                             queryBuilder.where(PurchaseRecordModelDao.Properties.UserNo.eq(userFromCardBean.getUserCardNo())).list();
-                    if (purModels != null && purModels.size() > 0) {
+                    if (userModel != null) {
                         PurchaseRecordModel purchaseRecordModel = purModels.get(0);
-                        if (purchaseRecordModel.getPurchaseTotal().compareTo(userFromCardBean.getToal()) > 0) {
+                        if (String.valueOf((int) Double.parseDouble(userModel.getPurchaseTotal())).compareTo(userFromCardBean.getToal()) > 0) {
                             Entity.toastMsg(this, "该用户已补卡，本卡是丢失的原用户卡，不允许继续使用");
                             return;
-                        } else if (purchaseRecordModel.getPurchaseTotal().compareTo(userFromCardBean.getToal()) < 0) {
+                        } else if (String.valueOf((int) Double.parseDouble(userModel.getPurchaseTotal())).compareTo(userFromCardBean.getToal()) < 0) {
                             Entity.toastMsg(this, "本卡数据缺失， 请同步数据后再操作");
                             return;
                         }
@@ -461,8 +470,8 @@ public class demo1443A extends Activity implements OnClickListener {
                     binding.rfidUserNo.setText(userFromCardBean.getUserCardNo());//用户号
                     //binding.rfidBz.setText(userFromCardBean.getFlag());//标志
                     binding.rfidPurchaseTotal.setText(userFromCardBean.getToal());//累计购水量
-                    binding.rfidOverdraft.setText(String.valueOf(Integer.parseInt(userModel.getOverdraft()) / 100));//透支限量
-                    binding.rfidAlarmValue.setText(String.valueOf(Integer.parseInt(userModel.getAlarmValue()) / 100));//报警水量
+                    binding.rfidOverdraft.setText(String.valueOf((int) (Double.parseDouble(userModel.getOverdraft()) / 100)));//透支限量
+                    binding.rfidAlarmValue.setText(String.valueOf((int) (Double.parseDouble(userModel.getAlarmValue()) / 100)));//报警水量
                     binding.rfidBuyDate.setText(userFromCardBean.getPurchaseDate());//购水日期
                     binding.rfidUseWaterAmount.setText(userModel.getUsedTotal());
                     Log.d("012", toHexString(buffer1, 1 * 16));
@@ -480,26 +489,30 @@ public class demo1443A extends Activity implements OnClickListener {
                 if (Entity.editIsNull(binding.rfidPurchaseTotal)) return;
                 if (Entity.editIsNull(binding.rfidBuyPurchase)) return;
 
-                SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmm");
+                SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
                 Date date = new Date();
                 String dates = format.format(new Date());
                 StringBuffer stringBuffer = new StringBuffer();
+                String total = String.valueOf((int) Double.parseDouble(binding.rfidPurchaseTotal.getText().toString()));
+                if (total.length() != 8){
+                    int size = 8 - total.length();
+                    for (int i = 0; i < size; i++){
+                        total = "0" + total;
+                    }
+                }
                 stringBuffer.append(binding.rfidUserNo.getText().toString())
                         .append("01")
-                        .append(binding.rfidPurchaseTotal.getText().toString())
+                        .append(total)
                         .append(binding.rfidOverdraft.getText().toString())
                         .append(binding.rfidAlarmValue.getText().toString())
                         .append(dates);
 
-                if (utils.writeToCard(stringBuffer.toString())) {
-                    Entity.toastMsg(demo1443A.this, "写卡成功！");
-                    //handler.sendEmptyMessage(300);
-                }
+                if (!utils.writeToCard(stringBuffer.toString()))  return;
 
                 userModel.setAlarmValue(binding.rfidAlarmValue.getText().toString());
                 userModel.setOverdraft(binding.rfidOverdraft.getText().toString());
                 userModel.setLastDatetime(date);
-                userModel.setPurchaseTotal(binding.rfidPurchaseTotal.getText().toString());
+                userModel.setPurchaseTotal(String.valueOf(Integer.parseInt(total)));
                 userModel.setPurchaseTotalThisYear(binding.rfidBuyYearAmount.getText().toString());
                 userModel.setServerVersion(0L);
                 userModel.setClientVersion(Long.parseLong(dates));
@@ -531,6 +544,8 @@ public class demo1443A extends Activity implements OnClickListener {
 
                 PurchaseRecordModelDao purchaseRecordModelDao = MyApplication.getInstance().getDaoSession().getPurchaseRecordModelDao();
                 purchaseRecordModelDao.insertOrReplace(purchaseRecordModel);
+
+                Entity.toastMsg(demo1443A.this, "写卡成功！");
                 break;
         }
     }

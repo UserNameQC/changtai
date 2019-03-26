@@ -132,7 +132,7 @@ public class UserActionActivity extends BaseActivity  {
             binding.userSettingTop1.setText(userModel.getLimitSj1());
             binding.userSettingTop2.setText(userModel.getLimitSj2());
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String date = format.format(userModel.getLastDatetime());
+            String date = format.format(userModel.getLastDatetime()== null ? new Date() : userModel.getLastDatetime());
             binding.userSettingTime.setText(date);
             binding.userSettingTotal.setText(userModel.getPurchaseTotal());
             binding.userSettingYear.setText(userModel.getPurchaseTotalThisYear());
@@ -201,6 +201,7 @@ public class UserActionActivity extends BaseActivity  {
 
     public void insertCardReplaceModel(){
         CardReplacementModel cardReplacementModel = new CardReplacementModel();
+        cardReplacementModel.setId(userModel.getId());
         cardReplacementModel.setAdministratorName(Entity.loginModel.getUserName());
         cardReplacementModel.setCardReplacementId(Entity.getUUID());
         cardReplacementModel.setCreateDateTime(new Date());

@@ -1,5 +1,6 @@
 package com.changtai.Utils;
 
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
@@ -24,5 +25,9 @@ public class  RealmUtils<T> {
             EditText et = map.get(i);
             et.addTextChangedListener(textWatcher);
         }
+    }
+
+    public static boolean isEmpty(String value){
+        return TextUtils.isEmpty(value) || String.valueOf(value).equals("null");
     }
 }

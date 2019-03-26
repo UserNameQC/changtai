@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -83,7 +84,7 @@ public class DeviceModelActivity extends Activity implements View.OnClickListene
         etWellList.add(binding.wellLo);
         etWellList.add(binding.wellNote);
         etWellList.add(binding.wellOperator);
-        etWellList.add(binding.wellDataUpdate);
+        //etWellList.add(binding.wellDataUpdate);
         etWellList.add(binding.wellStop);
         etWellList.add(binding.wellVersion);
         etMap = Entity.saveInMap(etWellList);
@@ -112,7 +113,18 @@ public class DeviceModelActivity extends Activity implements View.OnClickListene
                         for (int i = 0; i < etMap.size(); i++)
                         {
                             EditText et = etMap.get(i);
-                            et.setText(String.valueOf(jsonObject.get(et.getTag().toString())));
+                            String tag = et.getTag().toString();
+                            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                            if (tag.equals("CreateDatetime")){
+                                et.setText(deviceModel.getCreateDatetime() == null ? "" : format.format(deviceModel.getCreateDatetime()));
+                            } /*else if (tag.equals("LastDatetime")){
+                                et.setText(deviceModel.getLastDatetime() == null ? "" :format.format(deviceModel.getLastDatetime()));
+                            } else if (tag.equals("CreditcardTimes")){
+                                et.setText(deviceModel.getCreditcardTimes() == null ? "" : String.valueOf((int)deviceModel.getCreditcardTimes()));
+                            }*/else {
+
+                                et.setText(String.valueOf(jsonObject.get(tag)));
+                            }
                         }
                     }
                     catch (JSONException e)

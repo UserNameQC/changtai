@@ -74,7 +74,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="idwatertake"
+                            android:tag="Idwatertake"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -104,7 +104,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="bureauno"
+                            android:tag="Bureauno"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -133,7 +133,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="stationNo"
+                            android:tag="StationNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -162,7 +162,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="deviceNo"
+                            android:tag="DeviceNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -191,7 +191,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="userNo"
+                            android:tag="UserNo"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -220,7 +220,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="flow"
+                            android:tag="Flow"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -249,7 +249,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="usedTotal"
+                            android:tag="UsedTotal"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -278,7 +278,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="purchaseTotal"
+                            android:tag="PurchaseTotal"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -307,7 +307,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="overdraft"
+                            android:tag="Overdraft"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -336,7 +336,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:tag="alarmValue"
+                            android:tag="AlarmValue"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -367,7 +367,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@null"
-                            android:tag="purchasedate"
+                            android:tag="Purchasedate"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>
@@ -398,7 +398,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
                             android:background="@null"
-                            android:tag="createDatetime"
+                            android:tag="CreateDatetime"
                             android:textSize="@dimen/text_size_default" />
 
                     </LinearLayout>

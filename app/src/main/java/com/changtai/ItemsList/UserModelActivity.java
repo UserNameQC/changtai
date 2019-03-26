@@ -17,6 +17,7 @@ import android.widget.EditText;
 import com.changtai.R;
 import com.changtai.Utils.Entity;
 import com.changtai.Utils.RealmUtils;
+import com.changtai.Utils.SpUtils;
 import com.changtai.adapter.UserAdapter;
 import com.changtai.application.MyApplication;
 import com.changtai.databinding.ActivityUserBinding;
@@ -27,6 +28,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -39,6 +41,7 @@ public class UserModelActivity extends Activity implements View.OnClickListener{
      */
     public Map<Integer, EditText> etMap = new HashMap<Integer, EditText>();
     public Button button;
+    public SpUtils spUtils;
 
     public UserAdapter adapter;
     public LinkedList<EditText> etLinkList = new LinkedList<>();
@@ -53,6 +56,7 @@ public class UserModelActivity extends Activity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         userBinding = DataBindingUtil.setContentView(this, R.layout.activity_user);
+        spUtils = new SpUtils();
         realmUtils = new RealmUtils<>();
         userModelDao = MyApplication.getInstance().getDaoSession().getUserModelDao();
         initView();
@@ -83,7 +87,7 @@ public class UserModelActivity extends Activity implements View.OnClickListener{
         etLinkList.add(userBinding.userLastWaterTime);
         etLinkList.add(userBinding.userCardNum);
         etLinkList.add(userBinding.userIssuedTimes);
-        etLinkList.add(userBinding.userDataUpdate);
+        //etLinkList.add(userBinding.userDataUpdate);
         etLinkList.add(userBinding.userStop);
         etLinkList.add(userBinding.userVersion);
         etMap = Entity.saveInMap(etLinkList);
@@ -111,7 +115,19 @@ public class UserModelActivity extends Activity implements View.OnClickListener{
                     for (int i = 0; i < etMap.size(); i++)
                     {
                         EditText et = etMap.get(i);
-                        et.setText(jsonObject.getString(et.getTag().toString()));
+                        String tag = et.getTag().toString();
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        if (tag.equals("CreateDatetime")){
+                            et.setText(userModel.getCreateDatetime() == null ? "" : format.format(userModel.getCreateDatetime()));
+                        } else if (tag.equals("LastDatetime")){
+                            et.setText(userModel.getLastDatetime() == null ? "" :format.format(userModel.getLastDatetime()));
+                        } else if (tag.equals("CreditcardTimes")){
+                            et.setText(userModel.getCreditcardTimes() == null ? "" : String.valueOf((int)userModel.getCreditcardTimes()));
+                        }else {
+                            String value =
+                                    jsonObject.getString(tag) == null ? "" : String.valueOf(jsonObject.getString(tag));
+                            et.setText(value);
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -122,7 +138,7 @@ public class UserModelActivity extends Activity implements View.OnClickListener{
         });
 
         final String[] items = new String[]{"水量设置", "用户补卡"};
-        if (Entity.loginModel.getLoginName().equals("admin")){
+        if (spUtils.getString(Entity.LOGIN_NAME).equals("admin")){
             userBinding.userImageMenu.setVisibility(View.VISIBLE);
             userBinding.userImageMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
